@@ -1,0 +1,66 @@
+# depslib dependency file v1.0
+1553880329 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/Game.cpp
+	<SFML/Graphics.hpp>
+
+1553878616 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/State.h
+
+1553876671 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/State.cpp
+	"State.h"
+
+1553876689 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/MainMenu.cpp
+	"MainMenu.h"
+
+1553872788 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/MainMenu.h
+	<State.h>
+
+1553872883 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Bullet.cpp
+	"Bullet.h"
+
+1553872998 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Bullet.h
+
+1553874178 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Weapon.cpp
+	"Weapon.h"
+
+1553878579 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Weapon.h
+
+1553876866 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
+	"Character.h"
+
+1553876085 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
+	<Weapon.h>
+
+1553876667 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/WeaponSpawner.cpp
+	"WeaponSpawner.h"
+
+1553875823 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/WeaponSpawner.h
+	<Weapon.h>
+
+1553873937 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/WeaponType.h
+
+1553876689 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
+	"Level.h"
+
+1553879005 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Level.h
+	<State.h>
+	<Bullet.h>
+	<Character.h>
+	<WeaponSpawner.h>
+
+1553876790 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Gun.cpp
+	"Gun.h"
+
+1553876607 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Gun.h
+	<Weapon.h>
+
+1553876900 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Grenade.cpp
+	"Grenade.h"
+
+1553876553 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Grenade.h
+	<Weapon.h>
+
+1553876799 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/ShotGun.cpp
+	"ShotGun.h"
+
+1553876491 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/ShotGun.h
+	<Weapon.h>
+
