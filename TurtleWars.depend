@@ -1,6 +1,8 @@
 # depslib dependency file v1.0
-1553880329 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/Game.cpp
+1554219431 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/Game.cpp
 	<SFML/Graphics.hpp>
+	<Character.h>
+	<iostream>
 
 1553878616 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/State.h
 
@@ -23,11 +25,12 @@
 
 1553878579 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Weapon.h
 
-1553876866 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
+1554219368 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
 	"Character.h"
 
-1553876085 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
+1554219545 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
 	<Weapon.h>
+	<SFML/Graphics.hpp>
 
 1553876667 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/WeaponSpawner.cpp
 	"WeaponSpawner.h"
