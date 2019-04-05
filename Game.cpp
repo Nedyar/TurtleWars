@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "WeaponSpawner.h"
 
+
 #define UPDATE_TICK_TIME (1000/15) // ~67
 #define WIDTH 900
 #define HEIGHT 600
@@ -29,6 +30,7 @@ int main()
 
 
     WeaponSpawner* spawner = new WeaponSpawner(1, 30.0, 30.0);
+    Gun* pistola = new Gun(100.0, 30.0);
 
 
 
@@ -41,11 +43,64 @@ int main()
         sf::Event event;
         while (app.pollEvent(event))
         {
-// Close window : exit
-            if (event.type == sf::Event::Closed)
-                app.close();
+
+            switch(event.type){
+
+                //Si se recibe el evento de cerrar la ventana la cierro
+                case sf::Event::Closed:
+                    app.close();
+                    break;
+
+                //Se pulsó una tecla, imprimo su codigo
+                case sf::Event::KeyPressed:
+
+                    //Verifico si se pulsa alguna tecla de movimiento
+                    switch(event.key.code) {
+
+                        //Mapeo del cursor
+                        case sf::Keyboard::Right:
+
+                        break;
+
+                        case sf::Keyboard::Left:
+
+                        break;
+
+                        case sf::Keyboard::Up:
+
+                        break;
+
+                        case sf::Keyboard::Down:
+
+                        break;
+
+                        case sf::Keyboard::Space: //disparo
+                            pistola->shoot();
+                        break;
+
+
+                        //Tecla ESC para salir
+                        case sf::Keyboard::Escape:
+                            app.close();
+                        break;
+
+                        //Cualquier tecla desconocida se imprime por pantalla su código
+                        default:
+                            std::cout << event.key.code << std::endl;
+                        break;
+
+                    }
+
+            }
 
         }
+
+
+        if(pistola->shootAnim)
+        {
+            pistola->shootAnimation();
+        }
+
 
         spawner->spawnWeapon();
         spawner->ballAnimation();
@@ -75,6 +130,8 @@ int main()
 
         app.draw(spawner->ballSprite1);
         app.draw(spawner->platformSprite);
+
+        app.draw(pistola->gunSprite);
 // Update the window
         app.display();
     }

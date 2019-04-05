@@ -111,3 +111,51 @@
 1554455462 source:/home/rob/Documentos/FV/TurtleWars/src/WeaponSpawner.cpp
 	"WeaponSpawner.h"
 
+1554460535 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/Game.cpp
+	<SFML/Graphics.hpp>
+	"WeaponSpawner.h"
+
+1554456119 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/WeaponSpawner.h
+	<SFML/Graphics.hpp>
+	<Weapon.h>
+	<Gun.h>
+	<Grenade.h>
+	<ShotGun.h>
+	<iostream>
+
+1554456119 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Weapon.h
+	<SFML/Graphics.hpp>
+
+1554459731 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Gun.h
+	<Weapon.h>
+	<iostream>
+
+1554456119 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Grenade.h
+	<Weapon.h>
+
+1554456119 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/ShotGun.h
+	<Weapon.h>
+
+1554456119 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Bullet.cpp
+	"Bullet.h"
+
+1554456119 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Bullet.h
+
+1554456119 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Character.cpp
+	"Character.h"
+
+1554456119 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Character.h
+	<Weapon.h>
+
+1554456119 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Grenade.cpp
+	"Grenade.h"
+
+1554456119 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/ShotGun.cpp
+	"ShotGun.h"
+
+1554456713 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/WeaponSpawner.cpp
+	"WeaponSpawner.h"
+
+1554461345 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Gun.cpp
+	"Gun.h"
+

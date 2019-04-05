@@ -43,7 +43,7 @@ bool WeaponSpawner::spawnWeapon()
         case 1: // Gun
         {
             cout<< "Arma creada" << endl;
-            Gun* gun = new Gun(posx, posy);
+            Gun* gun = new Gun(posx, posy-5);
             created = true;
         }
         break;
@@ -51,7 +51,7 @@ bool WeaponSpawner::spawnWeapon()
         case 2: // Grenade
         {
             cout<< "Granadita" << endl;
-            Grenade* grenade = new Grenade(posx, posy);
+            Grenade* grenade = new Grenade(posx, posy-5);
             created = true;
         }
         break;
@@ -59,7 +59,7 @@ bool WeaponSpawner::spawnWeapon()
         case 3: // Shotgun
         {
             cout<< "Escopetita" << endl;
-            ShotGun* shotGun = new ShotGun(posx, posy);
+            ShotGun* shotGun = new ShotGun(posx, posy-5);
             created = true;
         }
         break;
