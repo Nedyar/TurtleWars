@@ -1,5 +1,6 @@
 #include "Character.h"
 
+// Will deprecate
 #define XINIT 100
 #define YINIT 200
 
@@ -7,7 +8,7 @@ Character::Character(int n)
 {
     player = n;
     has_weapon = false;
-    pos = 0;
+    posture = 0;
     facingLeft = false;
     jumping = false;
     onGround = true;
@@ -106,7 +107,7 @@ void Character::update()
     if (sliding)
     {
         ypos = 32*2;
-        pos = 0;
+        posture = 0;
         if (!facingLeft)
         {
             sprite.setScale(1,1);
@@ -120,14 +121,14 @@ void Character::update()
     }
     else if (crouching)
     {
-        pos = 5;
+        posture = 5;
         ypos = 32;
     }
     else if (walking)
     {
-        pos+=0.2;
-        if (pos >= 6)
-            pos = 0;
+        posture+=0.2;
+        if (posture >= 6)
+            posture = 0;
 
         if (!facingLeft)
         {
@@ -142,9 +143,9 @@ void Character::update()
 
     }
     else
-        pos = 0;
+        posture = 0;
 
-    rect = sf::IntRect(32*((int)pos),ypos,32,32);
+    rect = sf::IntRect(32*((int)posture),ypos,32,32);
 
 
     if (jumping)

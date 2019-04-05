@@ -4,7 +4,7 @@
 	<Character.h>
 	<iostream>
 
-1553878616 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/State.h
+1554453640 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/State.h
 
 1553876671 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/State.cpp
 	"State.h"
@@ -25,10 +25,10 @@
 
 1553878579 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Weapon.h
 
-1554219368 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
+1554452800 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
 	"Character.h"
 
-1554219545 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
+1554452774 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
 	<Weapon.h>
 	<SFML/Graphics.hpp>
 
@@ -40,14 +40,11 @@
 
 1553873937 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/WeaponType.h
 
-1553876689 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
+1554454260 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
 	"Level.h"
 
-1553879005 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Level.h
+1554453952 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Level.h
 	<State.h>
-	<Bullet.h>
-	<Character.h>
-	<WeaponSpawner.h>
 
 1553876790 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Gun.cpp
 	"Gun.h"

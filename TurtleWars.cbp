@@ -47,13 +47,16 @@
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/Grenade.h" />
 		<Unit filename="include/Gun.h" />
+		<Unit filename="include/Level.h" />
 		<Unit filename="include/ShotGun.h" />
+		<Unit filename="include/State.h" />
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="include/WeaponSpawner.h" />
 		<Unit filename="src/Bullet.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/Grenade.cpp" />
 		<Unit filename="src/Gun.cpp" />
+		<Unit filename="src/Level.cpp" />
 		<Unit filename="src/ShotGun.cpp" />
 		<Unit filename="src/WeaponSpawner.cpp" />
 		<Extensions>

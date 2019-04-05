@@ -8,7 +8,7 @@
 class Character
 {
     public:
-        Character(int number);
+        Character(int player);
         virtual ~Character();
 
         int getPlayer();
@@ -35,7 +35,7 @@ class Character
         bool has_weapon;
 
 
-        float pos;
+        float posture;
         bool walking;
         bool facingLeft;
         bool jumping;
