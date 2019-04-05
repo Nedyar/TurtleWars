@@ -49,6 +49,7 @@
 		<Unit filename="include/Gun.h" />
 		<Unit filename="include/Level.h" />
 		<Unit filename="include/ShotGun.h" />
+		<Unit filename="include/State.cpp" />
 		<Unit filename="include/State.h" />
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="include/WeaponSpawner.h" />
