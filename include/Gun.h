@@ -7,10 +7,17 @@
 class Gun : public Weapon
 {
     public:
-        Gun();
+        Gun(double posx, double posy);
         virtual ~Gun();
 
         bool shoot() override;
+
+
+        sf::Sprite gunSprite;
+        sf::Texture gunTexture;
+
+
+
 
     protected:
 

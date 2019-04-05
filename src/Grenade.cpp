@@ -1,8 +1,11 @@
 #include "Grenade.h"
 
-Grenade::Grenade()
+Grenade::Grenade(double posx, double posy)
 {
-    //ctor
+    grenadeTexture.loadFromFile("img/grenade.png");
+    grenadeSprite.setTexture(grenadeTexture);
+
+    grenadeSprite.setPosition(posx,posy);
 }
 
 Grenade::~Grenade()

@@ -1,8 +1,11 @@
 #include "ShotGun.h"
 
-ShotGun::ShotGun()
+ShotGun::ShotGun(double posx, double posy)
 {
-    //ctor
+    shotGunTexture.loadFromFile("img/shotgun.png");
+    shotGunSprite.setTexture(shotGunTexture);
+
+    shotGunSprite.setPosition(posx,posy);
 }
 
 ShotGun::~ShotGun()

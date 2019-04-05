@@ -64,3 +64,50 @@
 1553876491 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/ShotGun.h
 	<Weapon.h>
 
+1554197970 source:/home/rob/Documentos/FV/TurtleWars/src/Bullet.cpp
+	"Bullet.h"
+
+1554197970 /home/rob/Documentos/FV/TurtleWars/include/Bullet.h
+
+1554197970 source:/home/rob/Documentos/FV/TurtleWars/src/Character.cpp
+	"Character.h"
+
+1554197970 /home/rob/Documentos/FV/TurtleWars/include/Character.h
+	<Weapon.h>
+
+1554306960 /home/rob/Documentos/FV/TurtleWars/include/Weapon.h
+	<SFML/Graphics.hpp>
+
+1554455451 source:/home/rob/Documentos/FV/TurtleWars/src/Grenade.cpp
+	"Grenade.h"
+
+1554453837 /home/rob/Documentos/FV/TurtleWars/include/Grenade.h
+	<Weapon.h>
+
+1554452962 source:/home/rob/Documentos/FV/TurtleWars/src/Gun.cpp
+	"Gun.h"
+
+1554307173 /home/rob/Documentos/FV/TurtleWars/include/Gun.h
+	<Weapon.h>
+
+1554455443 source:/home/rob/Documentos/FV/TurtleWars/src/ShotGun.cpp
+	"ShotGun.h"
+
+1554453741 /home/rob/Documentos/FV/TurtleWars/include/ShotGun.h
+	<Weapon.h>
+
+1554452294 source:/home/rob/Documentos/FV/TurtleWars/Game.cpp
+	<SFML/Graphics.hpp>
+	"WeaponSpawner.h"
+
+1554453643 /home/rob/Documentos/FV/TurtleWars/include/WeaponSpawner.h
+	<SFML/Graphics.hpp>
+	<Weapon.h>
+	<Gun.h>
+	<Grenade.h>
+	<ShotGun.h>
+	<iostream>
+
+1554455462 source:/home/rob/Documentos/FV/TurtleWars/src/WeaponSpawner.cpp
+	"WeaponSpawner.h"
+

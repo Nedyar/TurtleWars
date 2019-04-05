@@ -1,8 +1,12 @@
 #include "Gun.h"
 
-Gun::Gun()
+Gun::Gun(double posx, double posy)
 {
-    //ctor
+    gunTexture.loadFromFile("img/pistol.png");
+    gunSprite.setTexture(gunTexture);
+
+
+
 }
 
 Gun::~Gun()

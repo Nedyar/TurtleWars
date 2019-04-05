@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "WeaponSpawner.h"
 
 #define UPDATE_TICK_TIME (1000/15) // ~67
 #define WIDTH 900
@@ -27,6 +28,10 @@ int main()
     sprite.setPosition(newX,posY);
 
 
+    WeaponSpawner* spawner = new WeaponSpawner(1, 30.0, 30.0);
+
+
+
     bool firstTime = true;
 
 // Start the game loop
@@ -41,6 +46,10 @@ int main()
                 app.close();
 
         }
+
+        spawner->spawnWeapon();
+        spawner->ballAnimation();
+
 
         if (updateClock.getElapsedTime().asMilliseconds() >= UPDATE_TICK_TIME)
         {
@@ -63,6 +72,9 @@ int main()
         app.clear();
 // Draw the sprite
         app.draw(sprite);
+
+        app.draw(spawner->ballSprite1);
+        app.draw(spawner->platformSprite);
 // Update the window
         app.display();
     }
