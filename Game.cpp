@@ -32,7 +32,7 @@ int main()
     sf::RenderWindow app(sf::VideoMode(WIDTH, HEIGHT), "TurtleWars");
     app.setFramerateLimit(60);
 
-    setState(Level::instance());
+    setState(Level::instance(2));
 
     // Start the game loop
     while (app.isOpen())

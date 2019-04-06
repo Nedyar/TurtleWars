@@ -2,13 +2,13 @@
 
 Level* Level::pinstance = 0;
 
-Level::Level()
+Level::Level(int nPlayers)
 {
-    //players = new Character[1]*;
-    players = new Character*[1];
-    Character* player = new Character(1);
-    players[0] = player;
-    //players[0] = new Character(0);
+    players = new Character*[nPlayers];
+    for (int i = 0; i < nPlayers; i++) {
+        Character* player = new Character(i+1);
+        players[i] = player;
+    }
 }
 
 Level::~Level()
@@ -16,36 +16,55 @@ Level::~Level()
     //dtor
 }
 
-Level* Level::instance() {
+Level* Level::instance(int nPlayers) {
     if (pinstance == 0)
-        pinstance = new Level();
+        pinstance = new Level(nPlayers);
     return pinstance;
 }
 
 void Level::handleEvents() {
+
+    // TODO: Making the event handler control the current number of players
     Character* player = players[0];
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            player->walk(true);
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            player->walk(false);
+        player->walk(true);
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        player->walk(false);
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-            player->jump();
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            player->crouch();
-        else
-            player->standUp();
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        player->jump();
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        player->crouch();
+    else
+        player->standUp();
+
+    Character* player2 = players[1];
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+        player2->walk(true);
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::J))
+        player2->walk(false);
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::I))
+        player2->jump();
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::K))
+        player2->crouch();
+    else
+        player2->standUp();
+
 }
 
 void Level::update() {
-    Character* player = players[0];
-
-     player->update();
+    for (int i = 0; i < sizeof(players)/sizeof(int); i++) {
+        Character* player = players[i];
+        player->update();
+    }
 }
 
 void Level::draw(sf::RenderWindow &app) {
-    Character* player = players[0];
-
-     player->draw(app);
+    for (int i = 0; i < sizeof(players)/sizeof(int); i++) {
+        Character* player = players[i];
+        player->draw(app);
+    }
 }

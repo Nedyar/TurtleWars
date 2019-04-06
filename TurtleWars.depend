@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1554459698 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/Game.cpp
+1554560861 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/Game.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<State.h>
 	<Level.h>
 
-1554459849 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/State.h
+1554461309 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/State.h
 	<SFML/Graphics.hpp>
 
 1553876671 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/State.cpp
@@ -27,10 +27,10 @@
 
 1553878579 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Weapon.h
 
-1554458782 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
+1554560439 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
 	"Character.h"
 
-1554458779 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
+1554460934 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
 	<Weapon.h>
 	<SFML/Graphics.hpp>
 
@@ -42,12 +42,15 @@
 
 1553873937 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/WeaponType.h
 
-1554459881 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
+1554560006 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
 	"Level.h"
 
-1554459905 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Level.h
+1554559745 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Level.h
 	<State.h>
 	<Character.h>
+	<Bullet.h>
+	<WeaponSpawner.h>
+	<Weapon.h>
 
 1553876790 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Gun.cpp
 	"Gun.h"
@@ -67,6 +70,6 @@
 1553876491 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/ShotGun.h
 	<Weapon.h>
 
-1554457884 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/State.cpp
+1554461309 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/State.cpp
 	"State.h"
 

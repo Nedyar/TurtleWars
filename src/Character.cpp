@@ -14,7 +14,6 @@ Character::Character(int n)
     onGround = true;
 
     // will deprecate
-    texture;
     texture.loadFromFile("img/quackduck.png");
 
     sprite = sf::Sprite(texture);
@@ -22,7 +21,7 @@ Character::Character(int n)
     sf::IntRect rect = sf::IntRect(0,0,32,32);
     sprite.setTextureRect(rect);
     sprite.setOrigin(sprite.getLocalBounds().width/2,sprite.getLocalBounds().height/2);
-    sprite.setPosition(XINIT,YINIT);
+    sprite.setPosition(XINIT*n,YINIT);
 }
 
 Character::~Character()
