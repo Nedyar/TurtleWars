@@ -1,5 +1,8 @@
 // Will deprecate
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <Physics2D.h>
+#include <Test.h>
 
 #include <iostream>
 #include <State.h>
