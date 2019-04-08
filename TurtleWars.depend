@@ -33,7 +33,7 @@
 1554732709 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
 	"Character.h"
 
-1554730798 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
+1554732872 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
 	<Weapon.h>
 	<SFML/Graphics.hpp>
 	<Physics2D.h>
@@ -50,7 +50,7 @@
 	"Level.h"
 	<SFML/Graphics.hpp>
 
-1554731599 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Level.h
+1554732872 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Level.h
 	<State.h>
 	<Character.h>
 	<Bullet.h>
