@@ -64,7 +64,7 @@
 1553876491 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/ShotGun.h
 	<Weapon.h>
 
-1554708266 source:/home/yupipi93/Escritorio/Git/TurtleWars/Game.cpp
+1554721273 source:/home/yupipi93/Escritorio/Git/TurtleWars/Game.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<Phisics2D.h>
@@ -107,10 +107,10 @@
 1554190953 /home/yupipi93/Escritorio/Git/TurtleWars/include/WeaponSpawner.h
 	<Weapon.h>
 
-1554710702 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Phisics2D.cpp
+1554723852 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Phisics2D.cpp
 	"Phisics2D.h"
 
-1554656205 /home/yupipi93/Escritorio/Git/TurtleWars/include/Phisics2D.h
+1554723173 /home/yupipi93/Escritorio/Git/TurtleWars/include/Phisics2D.h
 	<iostream>
 	<Body.h>
 	<SFML/Graphics.hpp>
@@ -121,10 +121,10 @@
 1554709624 /home/yupipi93/Escritorio/Git/TurtleWars/include/World.h
 	<Box2D/Box2D.h>
 
-1554710273 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Body.cpp
+1554724138 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Body.cpp
 	"Body.h"
 
-1554710254 /home/yupipi93/Escritorio/Git/TurtleWars/include/Body.h
+1554723945 /home/yupipi93/Escritorio/Git/TurtleWars/include/Body.h
 	<Box2D/Box2D.h>
 	<World.h>
 	<iostream>
@@ -133,4 +133,12 @@
 	"Test.h"
 
 1554633120 /home/yupipi93/Escritorio/Git/TurtleWars/include/Test.h
+
+1554729594 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Physics2D.cpp
+	"Physics2D.h"
+
+1554729573 /home/yupipi93/Escritorio/Git/TurtleWars/include/Physics2D.h
+	<iostream>
+	<Body.h>
+	<SFML/Graphics.hpp>
 

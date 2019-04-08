@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <Phisics2D.h>
+#include <Physics2D.h>
 #include <Test.h>
 
 #define UPDATE_TICK_TIME (1000/15) // ~67
@@ -30,19 +30,21 @@ int main()
     sprite.setPosition(newX,posY);
 
 
-//BODY TEST
+//###############    BODY TEST
 
-Phisics2D *motor =  Phisics2D::Instance();
+Physics2D *physicEngine =  Physics2D::Instance();
 
-if(motor != nullptr)
-std::cout << "no es nulo" << std::endl;
-motor->createBody(sprite);
-
-//TEST CLASS
-//Test *test = new Test();
-//test->metodo();
+//metodo propio
+Body * body = physicEngine->createRectangleBody(sprite, 8, 0); //0 static, 1 dynamic, , -1 kynematic
 
 
+//body->
+
+
+
+
+
+//###############    BODY TEST ### END
 
 
 

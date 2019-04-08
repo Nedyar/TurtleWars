@@ -11,6 +11,8 @@ class Body
 {
     public:
         Body();
+        Body(b2BodyType type,b2Vec2 spawn, b2CircleShape shape);
+        Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape);
         ~Body();
 
         //FUNCTIONS
