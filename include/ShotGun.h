@@ -2,6 +2,9 @@
 #define SHOTGUN_H
 
 #include <Weapon.h>
+#include <iostream>
+
+using namespace std;
 
 
 class ShotGun : public Weapon

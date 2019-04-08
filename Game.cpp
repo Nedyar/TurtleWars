@@ -31,6 +31,8 @@ int main()
 
     WeaponSpawner* spawner = new WeaponSpawner(1, 30.0, 30.0);
     Gun* pistola = new Gun(100.0, 30.0);
+    ShotGun* escopeta = new ShotGun(170.0, 30.0);
+    Grenade* granada = new Grenade(230.0, 30.0);
 
 
 
@@ -78,6 +80,14 @@ int main()
                             pistola->shoot();
                         break;
 
+                        case sf::Keyboard::S: //disparo
+                            escopeta->shoot();
+                        break;
+
+                        case sf::Keyboard::G: //disparo
+                            granada->shoot();
+                        break;
+
 
                         //Tecla ESC para salir
                         case sf::Keyboard::Escape:
@@ -99,6 +109,11 @@ int main()
         if(pistola->shootAnim)
         {
             pistola->shootAnimation();
+        }
+
+        if(granada->fire())
+        {
+            cout << "Boom" << endl; //y destruir la granada
         }
 
 
@@ -132,6 +147,8 @@ int main()
         app.draw(spawner->platformSprite);
 
         app.draw(pistola->gunSprite);
+        app.draw(escopeta->shotGunSprite);
+        app.draw(granada->grenadeSprite);
 // Update the window
         app.display();
     }

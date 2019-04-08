@@ -27,38 +27,43 @@ bool Gun::shoot()
 {
     if (ammo > 0)
     {
-        ammo--;
-        shootAnim=true;
-        cout << "Piu" << endl;
-        clockAnimation.restart();
-        return true;
+        if(!shootAnim) //para que dispare al finalizar la animación de la pistola (hay colddown)
+        {
+            ammo--;
+            shootAnim=true;
+            cout << "Piu" << endl;
+            clockAnimation.restart();
+            return true;
+        }
+        else
+            return false;
     }
     else
+    {
+        cout << "Sin municion" << endl;
         return false;
+    }
 }
 
 void Gun::shootAnimation()
 {
     if(clockAnimation.getElapsedTime().asSeconds()<0.5)
     {
-        gunSprite.setTextureRect(sf::IntRect(0,0,18,10)); //las medidas de la imagen son 72x10
+        gunSprite.setTextureRect(sf::IntRect(18,0,18,10)); //las medidas de la imagen son 72x10
     }
     else if(clockAnimation.getElapsedTime().asSeconds()<1)
     {
-        gunSprite.setTextureRect(sf::IntRect(18,0,18,10));
+        gunSprite.setTextureRect(sf::IntRect(36,0,18,10));
     }
     else if(clockAnimation.getElapsedTime().asSeconds()<1.5)
     {
-        gunSprite.setTextureRect(sf::IntRect(36,0,18,10));
+        gunSprite.setTextureRect(sf::IntRect(54,0,18,10));
     }
     else if(clockAnimation.getElapsedTime().asSeconds()<2)
     {
-        gunSprite.setTextureRect(sf::IntRect(54,0,18,10));
-    }
-    else if(clockAnimation.getElapsedTime().asSeconds()<2.1)
-    {
-        gunSprite.setTextureRect(sf::IntRect(0,0,18,10)); //para que vuelva a la inicial
+        gunSprite.setTextureRect(sf::IntRect(0,0,18,10));
         shootAnim=false;
     }
+
 
 }

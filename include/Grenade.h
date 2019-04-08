@@ -2,6 +2,9 @@
 #define GRENADE_H
 
 #include <Weapon.h>
+#include <iostream>
+
+using namespace std;
 
 
 class Grenade : public Weapon
@@ -15,14 +18,18 @@ class Grenade : public Weapon
         bool explode();
         bool fire();
 
+
         sf::Sprite grenadeSprite;
         sf::Texture grenadeTexture;
+        sf::Clock grenadeTimer;
 
     protected:
 
     private:
+        double grenadeTime;
         bool activated;
         bool throwed;
+
 };
 
 #endif // GRENADE_H

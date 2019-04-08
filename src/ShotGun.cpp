@@ -5,6 +5,9 @@ ShotGun::ShotGun(double posx, double posy)
     shotGunTexture.loadFromFile("img/shotgun.png");
     shotGunSprite.setTexture(shotGunTexture);
 
+    ammo=3;
+    shooted = false;
+
     shotGunSprite.setPosition(posx,posy);
 }
 
@@ -18,7 +21,7 @@ bool ShotGun::reload()
     if (ammo > 0 && shooted)
     {
         shooted = false;
-        ammo--;
+        cout << "Recarga" << endl;
         return true;
     }
     else
@@ -31,8 +34,16 @@ bool ShotGun::shoot()
     {
         if (!reload())
         {
+            shooted = true;
+            ammo--;
+            cout << "Pam" << endl;
             return true;
         }
     }
-    return false;
+    else
+    {
+        cout << "Sin municion" << endl;
+        return false;
+    }
+
 }
