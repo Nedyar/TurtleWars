@@ -40,22 +40,35 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
+			<Add directory="/usr/include/Box2D" />
 		</Compiler>
+		<Linker>
+			<Add library="/usr/lib/x86_64-linux-gnu/libBox2D.a" />
+		</Linker>
 		<Unit filename="Game.cpp" />
 		<Unit filename="cb.bmp" />
+		<Unit filename="include/Body.h" />
 		<Unit filename="include/Bullet.h" />
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/Grenade.h" />
 		<Unit filename="include/Gun.h" />
+		<Unit filename="include/Phisics2D.h" />
 		<Unit filename="include/ShotGun.h" />
+		<Unit filename="include/Test.h" />
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="include/WeaponSpawner.h" />
+		<Unit filename="include/World.h" />
+		<Unit filename="src/Body.cpp" />
 		<Unit filename="src/Bullet.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/Grenade.cpp" />
 		<Unit filename="src/Gun.cpp" />
+		<Unit filename="src/Phisics2D.cpp" />
 		<Unit filename="src/ShotGun.cpp" />
+		<Unit filename="src/Test.cpp" />
 		<Unit filename="src/WeaponSpawner.cpp" />
+		<Unit filename="src/World.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

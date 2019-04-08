@@ -1,4 +1,7 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <Phisics2D.h>
+#include <Test.h>
 
 #define UPDATE_TICK_TIME (1000/15) // ~67
 #define WIDTH 900
@@ -25,6 +28,26 @@ int main()
 
     sprite.setOrigin(texture.getSize().x/2, texture.getSize().y/2);
     sprite.setPosition(newX,posY);
+
+
+//BODY TEST
+
+Phisics2D *motor =  Phisics2D::Instance();
+
+if(motor != nullptr)
+std::cout << "no es nulo" << std::endl;
+motor->createBody(sprite);
+
+//TEST CLASS
+//Test *test = new Test();
+//test->metodo();
+
+
+
+
+
+
+
 
 
     bool firstTime = true;
