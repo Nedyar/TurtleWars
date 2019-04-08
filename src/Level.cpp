@@ -1,4 +1,5 @@
 #include "Level.h"
+#include <SFML/Graphics.hpp>
 
 Level* Level::pinstance = 0;
 
@@ -9,6 +10,13 @@ Level::Level(int nPlayers)
         Character* player = new Character(i+1);
         players[i] = player;
     }
+
+    texture.loadFromFile("img/ground.png");
+    sprite = sf::Sprite(texture);
+    sprite.setPosition(-25,500);
+
+
+    //ground = Physics2D::Instance()->createRectangleBody(sprite,8,0);
 }
 
 Level::~Level()
@@ -72,4 +80,5 @@ void Level::draw(sf::RenderWindow &app) {
         Character* player = players[i];
         player->draw(app);
     }
+    app.draw(sprite);
 }

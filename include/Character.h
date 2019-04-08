@@ -3,6 +3,7 @@
 
 #include <Weapon.h>
 #include <SFML/Graphics.hpp>
+#include <Physics2D.h>
 
 
 class Character
@@ -47,6 +48,8 @@ class Character
         bool crouching;
         bool sliding;
         bool dead;
+
+        Body *body;
 
         // Will deprecate
         double yJumpedFrom;

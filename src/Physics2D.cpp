@@ -8,7 +8,6 @@ Physics2D* Physics2D::Instance(){
     if(!instance)
     {
         instance = new Physics2D;
-        printf("Init Physics!\n");
     }
 
     return instance;
@@ -53,7 +52,13 @@ Body* Physics2D::createRectangleBody(sf::Sprite &sprite,float pSize, int pType){
 
     // Body Shape
     b2PolygonShape shape;
-    shape.SetAsBox(pSize,pSize);
+
+    float offset = sprite.getLocalBounds().width/sprite.getLocalBounds().height;
+    if (offset < 0)
+            shape.SetAsBox(pSize*offset,pSize);
+    else
+        shape.SetAsBox(pSize,pSize*offset);
+
     // aplicar ajuste mas tarde tamSprite.x/tamSprite.y, if(res<0) = pSizeX*res  y lo contrario
 
     sprite.getPosition().x;

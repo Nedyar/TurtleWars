@@ -48,17 +48,17 @@
 		</Linker>
 		<Unit filename="Game.cpp" />
 		<Unit filename="cb.bmp" />
+		<Unit filename="img/ground.png" />
+		<Unit filename="img/quackduck.png" />
 		<Unit filename="include/Body.h" />
 		<Unit filename="include/Bullet.h" />
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/Grenade.h" />
 		<Unit filename="include/Gun.h" />
 		<Unit filename="include/Level.h" />
-		<Unit filename="include/ShotGun.h" />
-		<Unit filename="include/State.cpp" />
-		<Unit filename="include/State.h" />
 		<Unit filename="include/Physics2D.h" />
 		<Unit filename="include/ShotGun.h" />
+		<Unit filename="include/State.h" />
 		<Unit filename="include/Test.h" />
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="include/WeaponSpawner.h" />
@@ -71,6 +71,7 @@
 		<Unit filename="src/Level.cpp" />
 		<Unit filename="src/Physics2D.cpp" />
 		<Unit filename="src/ShotGun.cpp" />
+		<Unit filename="src/State.cpp" />
 		<Unit filename="src/Test.cpp" />
 		<Unit filename="src/WeaponSpawner.cpp" />
 		<Unit filename="src/World.cpp" />

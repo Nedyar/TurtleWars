@@ -23,6 +23,8 @@ Character::Character(int n)
     sprite.setTextureRect(rect);
     sprite.setOrigin(sprite.getLocalBounds().width/2,sprite.getLocalBounds().height/2);
     sprite.setPosition(XINIT*n,YINIT);
+
+    body = Physics2D::Instance()->createRectangleBody(sprite,32);
 }
 
 Character::~Character()
@@ -208,7 +210,7 @@ void Character::update()
     }
 
     walking = false;
-
+    //sprite.setPosition(body->getPositionX(),body->getPositionY());
     sprite.setTextureRect(rect);
 }
 

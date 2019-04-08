@@ -1,14 +1,17 @@
 # depslib dependency file v1.0
-1554561110 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/Game.cpp
+1554729858 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/Game.cpp
 	<SFML/Graphics.hpp>
+	<iostream>
+	<Physics2D.h>
+	<Test.h>
 	<iostream>
 	<State.h>
 	<Level.h>
 
-1554461309 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/State.h
+1554729753 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/State.h
 	<SFML/Graphics.hpp>
 
-1553876671 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/State.cpp
+1554729753 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/State.cpp
 	"State.h"
 
 1553876689 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/MainMenu.cpp
@@ -27,12 +30,13 @@
 
 1553878579 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Weapon.h
 
-1554562278 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
+1554732709 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
 	"Character.h"
 
-1554562035 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
+1554730798 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
 	<Weapon.h>
 	<SFML/Graphics.hpp>
+	<Physics2D.h>
 
 1553876667 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/WeaponSpawner.cpp
 	"WeaponSpawner.h"
@@ -42,15 +46,17 @@
 
 1553873937 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/WeaponType.h
 
-1554616058 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
+1554732223 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
 	"Level.h"
+	<SFML/Graphics.hpp>
 
-1554561110 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Level.h
+1554731599 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Level.h
 	<State.h>
 	<Character.h>
 	<Bullet.h>
 	<WeaponSpawner.h>
 	<Weapon.h>
+	<Physics2D.h>
 
 1553876790 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Gun.cpp
 	"Gun.h"
@@ -70,10 +76,13 @@
 1553876491 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/ShotGun.h
 	<Weapon.h>
 
-<<<<<<< HEAD
+1553876491 D
+
 1554461309 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/State.cpp
 	"State.h"
-=======
+
+1554461309 
+
 1554721273 source:/home/yupipi93/Escritorio/Git/TurtleWars/Game.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -151,5 +160,33 @@
 	<iostream>
 	<Body.h>
 	<SFML/Graphics.hpp>
->>>>>>> Mi_Rama_Yupipi93
+
+1554729573 Rama_Yupipi93
+
+1554729759 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Physics2D.h
+	<iostream>
+	<Body.h>
+	<SFML/Graphics.hpp>
+
+1554729759 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Body.h
+	<Box2D/Box2D.h>
+	<World.h>
+	<iostream>
+
+1554729759 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/World.h
+	<Box2D/Box2D.h>
+
+1554729759 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Test.h
+
+1554729759 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Body.cpp
+	"Body.h"
+
+1554731989 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Physics2D.cpp
+	"Physics2D.h"
+
+1554729759 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Test.cpp
+	"Test.h"
+
+1554729759 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/World.cpp
+	"World.h"
 

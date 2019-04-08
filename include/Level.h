@@ -6,6 +6,7 @@
 #include <Bullet.h>
 #include <WeaponSpawner.h>
 #include <Weapon.h>
+#include <Physics2D.h>
 
 
 class Level : public State
@@ -16,18 +17,24 @@ class Level : public State
         void handleEvents() override;
         void update() override;
         void draw(sf::RenderWindow &app) override;
-
-        Character **players;
-        Bullet **bullets;
-        WeaponSpawner **weaponSpawners;
-        Weapon **weapons;
-
     protected:
         Level(int nPlayers);
         virtual ~Level();
 
     private:
         static Level* pinstance;
+
+        Character **players;
+        Bullet **bullets;
+        WeaponSpawner **weaponSpawners;
+        Weapon **weapons;
+
+        Body *ground;
+
+        // Will deprecate
+        sf::Texture texture;
+        sf::Sprite sprite;
+
 };
 
 #endif // LEVEL_H
