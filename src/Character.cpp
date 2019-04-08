@@ -12,6 +12,7 @@ Character::Character(int n)
     facingLeft = false;
     jumping = false;
     onGround = true;
+    dead = false;
 
     // will deprecate
     texture.loadFromFile("img/quackduck.png");
@@ -55,16 +56,35 @@ bool Character::hasWeapon()
     return has_weapon;
 }
 
+bool Character::dropWeapon() {
+    if (has_weapon) {
+        has_weapon = false;
+        return true;
+    }
+    return false;
+}
+
+bool Character::takeWeapon(Weapon* weapon) {
+    if (!has_weapon) {
+        this->weapon = weapon;
+        has_weapon = true;
+        return true;
+    }
+    return false;
+}
+
 void Character::walk(bool right)
 {
-    this->walking = true;
-    if (walking && !sliding)
-        this->facingLeft = !right;
+    if (!dead) {
+        this->walking = true;
+        if (walking && !sliding)
+            this->facingLeft = !right;
+    }
 }
 
 bool Character::jump()
 {
-    if (onGround && !jumping)
+    if (!dead && onGround && !jumping)
     {
         standUp();
         jumping = true;
@@ -75,7 +95,7 @@ bool Character::jump()
 
 bool Character::crouch()
 {
-    if (!crouching && !jumping && onGround)
+    if (!dead && !crouching && !jumping && onGround)
     {
         crouching = true;
         if (walking)
@@ -89,8 +109,15 @@ bool Character::crouch()
 
 void Character::standUp()
 {
-    crouching = false;
-    sliding = false;
+    if (!dead) {
+        crouching = false;
+        sliding = false;
+    }
+}
+
+void Character::die() {
+    dropWeapon();
+    dead = true;
 }
 
 void Character::draw(sf::RenderWindow &app)
@@ -100,6 +127,8 @@ void Character::draw(sf::RenderWindow &app)
 
 void Character::update()
 {
+    // TODO: Dead sprite
+
     // will deprecate
     sf::IntRect rect;
     int ypos = 0;

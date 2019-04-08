@@ -20,6 +20,10 @@ class Character
         bool jump();
         bool crouch();
         void standUp();
+        void die();
+
+        bool dropWeapon();
+        bool takeWeapon(Weapon* weapon);
 
         void draw(sf::RenderWindow &app);
         void update();
@@ -42,6 +46,7 @@ class Character
         bool onGround;
         bool crouching;
         bool sliding;
+        bool dead;
 
         // Will deprecate
         double yJumpedFrom;
