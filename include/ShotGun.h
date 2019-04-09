@@ -17,11 +17,7 @@ class ShotGun : public Weapon
         bool reload();
 
         void update() override;
-        void render(sf::RenderWindow &app) override;
-
-        sf::Sprite shotGunSprite;
-        sf::Texture shotGunTexture;
-
+        void draw(sf::RenderWindow &app) override;
 
     protected:
 

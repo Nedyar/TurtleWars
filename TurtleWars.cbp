@@ -72,6 +72,7 @@
 		<Unit filename="src/Physics2D.cpp" />
 		<Unit filename="src/ShotGun.cpp" />
 		<Unit filename="src/State.cpp" />
+		<Unit filename="src/Weapon.cpp" />
 		<Unit filename="src/WeaponSpawner.cpp" />
 		<Unit filename="src/World.cpp" />
 		<Extensions>

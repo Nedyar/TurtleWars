@@ -2,13 +2,13 @@
 
 ShotGun::ShotGun(double posx, double posy)
 {
-    shotGunTexture.loadFromFile("img/shotgun.png");
-    shotGunSprite.setTexture(shotGunTexture);
+    texture.loadFromFile("img/shotgun.png");
+    sprite.setTexture(texture);
 
     ammo=3;
     shooted = false;
 
-    shotGunSprite.setPosition(posx,posy);
+    sprite.setPosition(posx,posy);
 }
 
 ShotGun::~ShotGun()
@@ -53,7 +53,7 @@ void ShotGun::update()
 
 }
 
-void ShotGun::render(sf::RenderWindow &app)
+void ShotGun::draw(sf::RenderWindow &app)
 {
-    app.draw(shotGunSprite);
+    app.draw(sprite);
 }

@@ -1,4 +1,5 @@
 #include "WeaponSpawner.h"
+#include <Level.h>
 
 WeaponSpawner::WeaponSpawner(int t, double x, double y)
 {
@@ -18,6 +19,8 @@ WeaponSpawner::WeaponSpawner(int t, double x, double y)
     animationAux=true;
     animationScale=true;
 
+    weaponSpawned = nullptr;
+
 }
 
 WeaponSpawner::~WeaponSpawner()
@@ -35,9 +38,11 @@ void WeaponSpawner::update()
     ballAnimation();
 }
 
-void WeaponSpawner::render(sf::RenderWindow &app)
+void WeaponSpawner::draw(sf::RenderWindow &app)
 {
     app.draw(platformSprite);
+    if (weaponSpawned != nullptr)
+        weaponSpawned->draw(app);
     app.draw(ballSprite1);
     app.draw(ballSprite2);
 }
@@ -53,29 +58,25 @@ void WeaponSpawner::setpos()
 
 bool WeaponSpawner::spawnWeapon()
 {
-    cout<< type  << endl;
     switch (type)
     {
         case 1: // Gun
         {
-            cout<< "Arma creada" << endl;
-            Gun* gun = new Gun(posx, posy-5);
+            weaponSpawned = new Gun(posx, posy-10);
             created = true;
         }
         break;
 
         case 2: // Grenade
         {
-            cout<< "Granadita" << endl;
-            Grenade* grenade = new Grenade(posx, posy-5);
+            weaponSpawned = new Grenade(posx, posy-15);
             created = true;
         }
         break;
 
         case 3: // Shotgun
         {
-            cout<< "Escopetita" << endl;
-            ShotGun* shotGun = new ShotGun(posx, posy-5);
+            weaponSpawned = new ShotGun(posx-5, posy-25);
             created = true;
         }
         break;

@@ -1,6 +1,5 @@
 #include "Level.h"
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 Level* Level::pinstance = 0;
 
@@ -12,24 +11,11 @@ Level::Level(int nPlayers)
         players[i] = player;
     }
 
-    Grenade* pistola=new Grenade(30.0, 200.0);
-
-    weapons=new Weapon* [1];
-
-    weapons[0]=pistola;
-
     weaponSpawners = new WeaponSpawner*[10];
 
     for (int i = 0; i < sizeof(weaponSpawners); i++) {
-        weaponSpawners[i] = new WeaponSpawner(i%3+1,32*i,100);
+        weaponSpawners[i] = new WeaponSpawner(i%3+1,32*i,200);
     }
-
-    texture.loadFromFile("img/ground.png");
-    sprite = sf::Sprite(texture);
-    sprite.setPosition(-25,500);
-
-
-    //ground = Physics2D::Instance()->createRectangleBody(sprite,8,0);
 }
 
 Level::~Level()
@@ -37,7 +23,7 @@ Level::~Level()
     //dtor
 }
 
-Level* Level::instance(int nPlayers) {
+Level* Level::instance(int nPlayers = 1) {
     if (pinstance == 0)
         pinstance = new Level(nPlayers);
     return pinstance;
@@ -79,9 +65,9 @@ void Level::handleEvents() {
     //std::cout << sf::Joystick::isButtonPressed(0, 2) << std::endl; // X
     //std::cout << sf::Joystick::isButtonPressed(0, 3) << std::endl; // Y
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-        weapons[0]->shoot();
-
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        player->dropWeapon();
+    }
 }
 
 void Level::update() {
@@ -94,8 +80,8 @@ void Level::update() {
         weaponSpawners[i]->update();
     }
 
-    for (int i = 0; i < sizeof(weapons)/sizeof(Weapon); i++) {
-        weapons[i]->update();
+    for (int i = 0; i < weapons.size(); i++) {
+        weapons.at(i)->update();
     }
 }
 
@@ -106,12 +92,36 @@ void Level::draw(sf::RenderWindow &app) {
     }
 
     for (int i = 0; i < sizeof(weaponSpawners); i++) {
-        weaponSpawners[i]->render(app);
+        weaponSpawners[i]->draw(app);
     }
 
-    for (int i = 0; i < sizeof(weapons)/sizeof(Weapon); i++) {
-        weapons[i]->render(app);
+    for (int i = 0; i < weapons.size(); i++) {
+        weapons.at(i)->draw(app);
     }
+}
 
-    app.draw(sprite);
+void Level::addWeapon(Weapon* weapon) {
+    weapons.push_back(weapon);
+}
+
+void Level::addBullet(Bullet* bullet) {
+    bullets.push_back(bullet);
+}
+
+void Level::removeWeapon(Weapon* weapon) {
+    for (int i = 0; i < weapons.size(); i++) {
+        if (weapons.at(i) == weapon) {
+            weapons.erase(weapons.begin()+i);
+            break;
+        }
+    }
+}
+
+void Level::removeBullet(Bullet* bullet) {
+    for (int i = 0; i < bullets.size(); i++) {
+        if (bullets.at(i) == bullet) {
+            bullets.erase(bullets.begin()+i);
+            break;
+        }
+    }
 }

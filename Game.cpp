@@ -1,10 +1,6 @@
 // Will deprecate
 #include <SFML/Graphics.hpp>
-#include <iostream>
-#include <Physics2D.h>
-#include <Test.h>
 
-#include <iostream>
 #include <State.h>
 #include <Level.h>
 
@@ -17,16 +13,31 @@ void setState(State* newState) {
     currentState = newState;
 }
 
-void handleEvents() {
+void handleEvents(sf::RenderWindow &app) {
+    currentState->handleEvents();
 
+    // Process events
+    sf::Event event;
+    while (app.pollEvent(event))
+    {
+        // Close window : exit
+        if (event.type == sf::Event::Closed)
+            app.close();
+    }
 }
 
 void update() {
-
+    currentState->update();
 }
 
-void render() {
-
+void draw(sf::RenderWindow &app) {
+    // Clear screen
+    app.clear(sf::Color(200,200,200,255));
+    // Draw the sprite
+    //player->draw(app);
+    currentState->draw(app);
+    // Update the window
+    app.display();
 }
 
 int main()
@@ -40,25 +51,11 @@ int main()
     // Start the game loop
     while (app.isOpen())
     {
-        // Process events
-        sf::Event event;
-        while (app.pollEvent(event))
-        {
-            // Close window : exit
-            if (event.type == sf::Event::Closed)
-                app.close();
-        }
+        handleEvents(app);
+        update();
 
-        currentState->handleEvents();
-        currentState->update();
+        draw(app);
 
-        // Clear screen
-        app.clear(sf::Color(200,200,200,255));
-        // Draw the sprite
-        //player->draw(app);
-        currentState->draw(app);
-        // Update the window
-        app.display();
     }
 
     return EXIT_SUCCESS;

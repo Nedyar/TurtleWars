@@ -6,37 +6,35 @@
 #include <Gun.h>
 #include <Grenade.h>
 #include <ShotGun.h>
-#include <iostream>
-
-using namespace std;
-
 
 class WeaponSpawner
 {
     public:
         WeaponSpawner(int type, double x, double y);
         virtual ~WeaponSpawner();
+
         void setpos();
         void update();
-        void render(sf::RenderWindow &app);
+        void draw(sf::RenderWindow &app);
 
         bool spawnWeapon();
         void ballAnimation();
 
-
-
-
-
-
     protected:
 
     private:
+
         int type;
+
         bool created;
         bool animationAux;
         bool animationScale;
+
         double posx;
         double posy;
+
+        Weapon* weaponSpawned;
+
         sf::Clock clock;
         sf::Clock clockA;
         sf::Sprite platformSprite;

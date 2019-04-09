@@ -1,4 +1,5 @@
 #include "Character.h"
+#include <Level.h>
 
 // Will deprecate
 #define XINIT 100
@@ -7,7 +8,7 @@
 Character::Character(int n)
 {
     player = n;
-    has_weapon = false;
+    weapon = new Gun(0,0);
     posture = 0;
     facingLeft = false;
     jumping = false;
@@ -44,7 +45,7 @@ Weapon* Character::getWeapon()
 
 bool Character::shoot()
 {
-    if (has_weapon)
+    if (weapon != nullptr)
     {
         weapon->shoot();
         return true;
@@ -55,21 +56,23 @@ bool Character::shoot()
 
 bool Character::hasWeapon()
 {
-    return has_weapon;
+    return weapon != nullptr;
 }
 
 bool Character::dropWeapon() {
-    if (has_weapon) {
-        has_weapon = false;
+    if (weapon != nullptr) {
+        Level* level = Level::instance(0);
+        level->addWeapon(weapon);
+
+        weapon = nullptr;
         return true;
     }
     return false;
 }
 
 bool Character::takeWeapon(Weapon* weapon) {
-    if (!has_weapon) {
+    if (weapon == nullptr) {
         this->weapon = weapon;
-        has_weapon = true;
         return true;
     }
     return false;
@@ -125,6 +128,9 @@ void Character::die() {
 void Character::draw(sf::RenderWindow &app)
 {
     app.draw(sprite);
+    if (weapon != nullptr)
+        weapon->draw(app);
+    //app.draw(armSprite);
 }
 
 void Character::update()
@@ -209,12 +215,12 @@ void Character::update()
 
     }
 
+    if (weapon != nullptr) {
+        weapon->setPos(sprite.getPosition().x,sprite.getPosition().y);
+        weapon->update();
+    }
+
     walking = false;
     //sprite.setPosition(body->getPositionX(),body->getPositionY());
     sprite.setTextureRect(rect);
-}
-
-sf::Sprite Character::getSprite()
-{
-    return sprite;
 }

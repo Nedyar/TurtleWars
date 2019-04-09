@@ -2,6 +2,7 @@
 #define CHARACTER_H
 
 #include <Weapon.h>
+#include <Gun.h>
 #include <SFML/Graphics.hpp>
 #include <Physics2D.h>
 
@@ -29,16 +30,11 @@ class Character
         void draw(sf::RenderWindow &app);
         void update();
 
-        // Will deprecate
-        sf::Sprite getSprite();
-
     protected:
 
     private:
         int player;
         Weapon* weapon;
-        bool has_weapon;
-
 
         float posture;
         bool walking;
