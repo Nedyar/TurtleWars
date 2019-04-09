@@ -45,7 +45,7 @@ std::vector<Bullet*> Gun::shoot()
         {
             ammo--;
             shootAnim=true;
-            bullets.push_back(new Bullet(gunSprite.getPosition().x,gunSprite.getPosition().y,1,20));
+            bullets.push_back(new Bullet(gunSprite.getPosition().x,gunSprite.getPosition().y,-16,200));
 
             cout << "Piu" << endl;
             clockAnimation.restart();

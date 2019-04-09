@@ -99,22 +99,27 @@
 1554794073 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/WeaponSpawner.cpp
 	"WeaponSpawner.h"
 
-1554456119 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Bullet.cpp
+1554823054 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Bullet.cpp
 	"Bullet.h"
 
-1554456119 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Bullet.h
+1554819734 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Bullet.h
+	<SFML/Graphics.hpp>
+	<math.h>
+	<iostream>
 
-1554799091 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Grenade.cpp
+1554817446 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Grenade.cpp
 	"Grenade.h"
 
-1554797724 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Grenade.h
+1554817446 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Grenade.h
 	<Weapon.h>
 	<iostream>
 
-1554797684 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Weapon.h
+1554817446 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Weapon.h
 	<SFML/Graphics.hpp>
+	<Bullet.h>
+	<vector>
 
-1554795446 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/Game.cpp
+1554817255 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/Game.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<Physics2D.h>
@@ -123,38 +128,39 @@
 	<State.h>
 	<Level.h>
 
-1554795286 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Physics2D.h
+1554817255 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Physics2D.h
 	<iostream>
 	<Body.h>
 	<SFML/Graphics.hpp>
 
-1554795286 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Body.h
+1554817255 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Body.h
 	<Box2D/Box2D.h>
 	<World.h>
 	<iostream>
 
-1554795286 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/World.h
+1554817255 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/World.h
 	<Box2D/Box2D.h>
 
-1554795286 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Test.h
+1554817255 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Test.h
 
-1554795286 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/State.h
+1554817255 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/State.h
 	<SFML/Graphics.hpp>
 
-1554795286 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Level.h
+1554817446 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Level.h
 	<State.h>
 	<Character.h>
 	<Bullet.h>
 	<WeaponSpawner.h>
 	<Weapon.h>
 	<Physics2D.h>
+	<vector>
 
-1554795286 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Character.h
+1554817255 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Character.h
 	<Weapon.h>
 	<SFML/Graphics.hpp>
 	<Physics2D.h>
 
-1554797064 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/WeaponSpawner.h
+1554817255 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/WeaponSpawner.h
 	<SFML/Graphics.hpp>
 	<Weapon.h>
 	<Gun.h>
@@ -162,41 +168,41 @@
 	<ShotGun.h>
 	<iostream>
 
-1554797655 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Gun.h
+1554822805 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/Gun.h
 	<Weapon.h>
 	<iostream>
 
-1554797735 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/ShotGun.h
+1554817446 /home/dani/Escritorio/Practica-TurtleWars/TurtleWars/include/ShotGun.h
 	<Weapon.h>
 	<iostream>
 
-1554795286 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Body.cpp
+1554817255 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Body.cpp
 	"Body.h"
 
-1554795286 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Character.cpp
+1554817255 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Character.cpp
 	"Character.h"
 
-1554797623 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Gun.cpp
+1554823085 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Gun.cpp
 	"Gun.h"
 
-1554795286 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Physics2D.cpp
+1554817255 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Physics2D.cpp
 	"Physics2D.h"
 
-1554797994 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/ShotGun.cpp
+1554823240 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/ShotGun.cpp
 	"ShotGun.h"
 
-1554795286 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/State.cpp
+1554817255 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/State.cpp
 	"State.h"
 
-1554795286 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/World.cpp
+1554817255 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/World.cpp
 	"World.h"
 
-1554799190 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Level.cpp
+1554823261 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Level.cpp
 	"Level.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1554796954 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/WeaponSpawner.cpp
+1554817255 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/WeaponSpawner.cpp
 	"WeaponSpawner.h"
 
 1554800248 source:/home/rob/Documentos/FV/TurtleWars/Game.cpp

@@ -12,7 +12,7 @@ Level::Level(int nPlayers)
         players[i] = player;
     }
 
-    Gun* pistola=new Gun(30.0, 200.0);
+    ShotGun* pistola=new ShotGun(30.0, 200.0);
 
     weapons=new Weapon* [1];
 
@@ -107,8 +107,14 @@ void Level::update() {
         weaponSpawners[i]->update();
     }
 
+
+
     for (int i = 0; i < sizeof(weapons)/sizeof(Weapon); i++) {
         weapons[i]->update();
+    }
+
+    for(int i=0; i<bullets.size(); i++){
+        bullets.at(i)->update();
     }
 }
 

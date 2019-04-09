@@ -18,12 +18,6 @@ class Gun : public Weapon
         void setpos(double posx, double posy);
         void shootAnimation();
 
-
-
-
-
-
-
     protected:
 
     private:

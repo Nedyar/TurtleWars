@@ -37,6 +37,11 @@ std::vector<Bullet*> ShotGun::shoot()
         {
             shooted = true;
             ammo--;
+            bullets.push_back(new Bullet(shotGunSprite.getPosition().x+shotGunTexture.getSize().x,shotGunSprite.getPosition().y+10,rand() % 6 + 9,100));
+            bullets.push_back(new Bullet(shotGunSprite.getPosition().x+shotGunTexture.getSize().x,shotGunSprite.getPosition().y+10,rand() % 6 + 3,100));
+            bullets.push_back(new Bullet(shotGunSprite.getPosition().x+shotGunTexture.getSize().x,shotGunSprite.getPosition().y+10,rand() % 6 + (-3),100));
+            bullets.push_back(new Bullet(shotGunSprite.getPosition().x+shotGunTexture.getSize().x,shotGunSprite.getPosition().y+10,rand() % 6 + (-9),100));
+            bullets.push_back(new Bullet(shotGunSprite.getPosition().x+shotGunTexture.getSize().x,shotGunSprite.getPosition().y+10,rand() % 6 + (-15),100));
             cout << "Pam" << endl;
             return bullets;
         }
