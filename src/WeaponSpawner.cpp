@@ -1,8 +1,23 @@
 #include "WeaponSpawner.h"
 
-WeaponSpawner::WeaponSpawner()
+WeaponSpawner::WeaponSpawner(int t, double x, double y)
 {
-    //ctor
+    type=t;
+
+    platformTexture.loadFromFile("img/popupPad.png");
+    platformSprite.setTexture(platformTexture);
+
+    ballTexture1.loadFromFile("img/spawnerBall.png");
+    ballSprite1.setTexture(ballTexture1);
+
+    posx = x;
+    posy = y;
+    setpos();
+
+    created = false;
+    animationAux=true;
+    animationScale=true;
+
 }
 
 WeaponSpawner::~WeaponSpawner()
@@ -10,19 +25,93 @@ WeaponSpawner::~WeaponSpawner()
     //dtor
 }
 
-bool WeaponSpawner::spawnWeapon(int type)
+void WeaponSpawner::setpos()
+{
+    platformSprite.setPosition(posx, posy);
+    //platformSprite.setScale(50,50);
+    ballSprite1.setPosition(posx, posy-10);
+    //ballSprite2.setPosition(x+platformTexture.getSize().x, y-10);
+}
+
+
+bool WeaponSpawner::spawnWeapon()
 {
     // if clock and not already a weapown spawned
-    switch (type)
-    {
-    case 1: // Gun
+    if(clock.getElapsedTime().asSeconds()>=4 && !created){
+        switch (type)
+        {
+        case 1: // Gun
+        {
+            cout<< "Arma creada" << endl;
+            Gun* gun = new Gun(posx, posy-5);
+            created = true;
+        }
         break;
 
-    case 2: // Grenade
+        case 2: // Grenade
+        {
+            cout<< "Granadita" << endl;
+            Grenade* grenade = new Grenade(posx, posy-5);
+            created = true;
+        }
         break;
 
-    case 3: // Shotgun
+        case 3: // Shotgun
+        {
+            cout<< "Escopetita" << endl;
+            ShotGun* shotGun = new ShotGun(posx, posy-5);
+            created = true;
+        }
         break;
+        }
     }
-    return false;
+    return created;
+}
+
+void WeaponSpawner::ballAnimation()
+{
+    int a=-1;
+    float percentDone = std::min(1.0, clockA.getElapsedTime().asMilliseconds()/3000.0);
+
+    if(ballSprite1.getPosition().x>=platformSprite.getPosition().x+platformTexture.getSize().x)
+    {
+        animationAux=false;
+        clockA.restart();
+    }
+
+    if(ballSprite1.getPosition().x<=platformSprite.getPosition().x-ballTexture1.getSize().x)
+        animationAux=true;
+
+    if(animationAux)
+        a=1;
+
+    ballSprite1.setPosition(ballSprite1.getPosition().x+platformTexture.getSize().x*0.01*a, ballSprite1.getPosition().y);
+
+   /* cout << clockA.getElapsedTime().asMilliseconds() << endl;
+
+    if(ballSprite1.getPosition().x==(platformSprite.getPosition().x+platformTexture.getSize().x)/2)
+    {
+        if(animationScale)
+            animationScale=false;
+        else
+            animationScale=true;
+    }
+
+    if(animationAux && animationScale){
+
+    }
+    else if(animationAux && !animationScale){
+    }
+    else if(!animationAux && !animationScale){
+    }
+    else if(!animationAux && animationScale){
+    }
+
+    double sizex=0.0;
+
+    sizex=percentDone*4;
+
+    ballSprite1.setScale(sizex, sizex);
+
+*/
 }

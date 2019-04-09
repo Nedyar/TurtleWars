@@ -2,16 +2,23 @@
 #define SHOTGUN_H
 
 #include <Weapon.h>
+#include <iostream>
+
+using namespace std;
 
 
 class ShotGun : public Weapon
 {
     public:
-        ShotGun();
+        ShotGun(double posx, double posy);
         virtual ~ShotGun();
 
         bool shoot() override;
         bool reload();
+
+        sf::Sprite shotGunSprite;
+        sf::Texture shotGunTexture;
+
 
     protected:
 

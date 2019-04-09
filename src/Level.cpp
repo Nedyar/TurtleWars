@@ -11,6 +11,12 @@ Level::Level(int nPlayers)
         players[i] = player;
     }
 
+    weaponSpawners = new WeaponSpawner*[10];
+
+    for (int i = 0; i < sizeof(weaponSpawners); i++) {
+        weaponSpawners[i] = new WeaponSpawner(0,32*i,100);
+    }
+
     texture.loadFromFile("img/ground.png");
     sprite = sf::Sprite(texture);
     sprite.setPosition(-25,500);
@@ -80,5 +86,10 @@ void Level::draw(sf::RenderWindow &app) {
         Character* player = players[i];
         player->draw(app);
     }
+
+    for (int i = 0; i < sizeof(weaponSpawners); i++) {
+        app.draw(weaponSpawners[i]->platformSprite);
+    }
+
     app.draw(sprite);
 }
