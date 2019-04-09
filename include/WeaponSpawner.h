@@ -17,12 +17,21 @@ class WeaponSpawner
         WeaponSpawner(int type, double x, double y);
         virtual ~WeaponSpawner();
         void setpos();
+        void update();
+        void render(sf::RenderWindow &app);
 
         bool spawnWeapon();
         void ballAnimation();
 
 
 
+
+
+
+    protected:
+
+    private:
+        int type;
         bool created;
         bool animationAux;
         bool animationScale;
@@ -35,12 +44,6 @@ class WeaponSpawner
         sf::Sprite ballSprite1;
         sf::Texture ballTexture1;
         sf::Sprite ballSprite2;
-
-
-    protected:
-
-    private:
-        int type;
 
 
 };

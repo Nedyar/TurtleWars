@@ -1,5 +1,6 @@
 #include "Level.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 Level* Level::pinstance = 0;
 
@@ -11,10 +12,16 @@ Level::Level(int nPlayers)
         players[i] = player;
     }
 
+    Grenade* pistola=new Grenade(30.0, 200.0);
+
+    weapons=new Weapon* [1];
+
+    weapons[0]=pistola;
+
     weaponSpawners = new WeaponSpawner*[10];
 
     for (int i = 0; i < sizeof(weaponSpawners); i++) {
-        weaponSpawners[i] = new WeaponSpawner(0,32*i,100);
+        weaponSpawners[i] = new WeaponSpawner(i%3+1,32*i,100);
     }
 
     texture.loadFromFile("img/ground.png");
@@ -72,12 +79,23 @@ void Level::handleEvents() {
     //std::cout << sf::Joystick::isButtonPressed(0, 2) << std::endl; // X
     //std::cout << sf::Joystick::isButtonPressed(0, 3) << std::endl; // Y
 
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        weapons[0]->shoot();
+
 }
 
 void Level::update() {
     for (int i = 0; i < sizeof(players)/sizeof(int); i++) {
         Character* player = players[i];
         player->update();
+    }
+
+    for (int i = 0; i < sizeof(weaponSpawners); i++) {
+        weaponSpawners[i]->update();
+    }
+
+    for (int i = 0; i < sizeof(weapons)/sizeof(Weapon); i++) {
+        weapons[i]->update();
     }
 }
 
@@ -88,7 +106,11 @@ void Level::draw(sf::RenderWindow &app) {
     }
 
     for (int i = 0; i < sizeof(weaponSpawners); i++) {
-        app.draw(weaponSpawners[i]->platformSprite);
+        weaponSpawners[i]->render(app);
+    }
+
+    for (int i = 0; i < sizeof(weapons)/sizeof(Weapon); i++) {
+        weapons[i]->render(app);
     }
 
     app.draw(sprite);

@@ -25,6 +25,23 @@ WeaponSpawner::~WeaponSpawner()
     //dtor
 }
 
+void WeaponSpawner::update()
+{
+
+    if(clock.getElapsedTime().asSeconds()>=4 && !created){
+        spawnWeapon();
+    }
+
+    ballAnimation();
+}
+
+void WeaponSpawner::render(sf::RenderWindow &app)
+{
+    app.draw(platformSprite);
+    app.draw(ballSprite1);
+    app.draw(ballSprite2);
+}
+
 void WeaponSpawner::setpos()
 {
     platformSprite.setPosition(posx, posy);
@@ -36,10 +53,9 @@ void WeaponSpawner::setpos()
 
 bool WeaponSpawner::spawnWeapon()
 {
-    // if clock and not already a weapown spawned
-    if(clock.getElapsedTime().asSeconds()>=4 && !created){
-        switch (type)
-        {
+    cout<< type  << endl;
+    switch (type)
+    {
         case 1: // Gun
         {
             cout<< "Arma creada" << endl;
@@ -63,7 +79,6 @@ bool WeaponSpawner::spawnWeapon()
             created = true;
         }
         break;
-        }
     }
     return created;
 }

@@ -11,16 +11,15 @@ class Gun : public Weapon
     public:
         Gun(double posx, double posy);
         virtual ~Gun();
+        void update() override;
+        void render(sf::RenderWindow &app) override;
 
         bool shoot() override;
         void setpos(double posx, double posy);
         void shootAnimation();
 
 
-        sf::Sprite gunSprite;
-        sf::Texture gunTexture;
-        sf::Clock clockAnimation;
-        bool shootAnim;
+
 
 
 
@@ -29,6 +28,10 @@ class Gun : public Weapon
 
     private:
         int ammo;
+        sf::Sprite gunSprite;
+        sf::Texture gunTexture;
+        sf::Clock clockAnimation;
+        bool shootAnim;
 };
 
 #endif // GUN_H

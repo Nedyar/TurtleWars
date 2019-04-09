@@ -23,6 +23,19 @@ Gun::~Gun()
     //dtor
 }
 
+void Gun::update()
+{
+    if(shootAnim)
+    {
+        shootAnimation();
+    }
+}
+
+void Gun::render(sf::RenderWindow &app)
+{
+    app.draw(gunSprite);
+}
+
 bool Gun::shoot()
 {
     if (ammo > 0)

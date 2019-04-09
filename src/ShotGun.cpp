@@ -43,7 +43,17 @@ bool ShotGun::shoot()
     else
     {
         cout << "Sin municion" << endl;
-        return false;
     }
+    return false;
 
+}
+
+void ShotGun::update()
+{
+
+}
+
+void ShotGun::render(sf::RenderWindow &app)
+{
+    app.draw(shotGunSprite);
 }

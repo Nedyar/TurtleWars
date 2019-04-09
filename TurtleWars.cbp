@@ -42,6 +42,7 @@
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
 			<Add directory="/usr/include/Box2D" />
+			<Add directory="/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/" />
 		</Compiler>
 		<Linker>
 			<Add library="/usr/lib/x86_64-linux-gnu/libBox2D.a" />

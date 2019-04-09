@@ -18,6 +18,9 @@ class Grenade : public Weapon
         bool explode();
         bool fire();
 
+        void update() override;
+        void render(sf::RenderWindow &app) override;
+
 
         sf::Sprite grenadeSprite;
         sf::Texture grenadeTexture;

@@ -33,9 +33,6 @@ bool Grenade::activate()
 
 bool Grenade::fire() //para comprobar si explota
 {
-    if (activated) //para pruebas
-        cout << grenadeTimer.getElapsedTime().asSeconds() << endl;
-
     if (activated && grenadeTimer.getElapsedTime().asSeconds()>=grenadeTime)
     {
         if(explode())
@@ -62,5 +59,16 @@ bool Grenade::shoot()
 
 bool Grenade::explode()
 {
-    return true; //aqui debemos de crear las balas
+    cout << "Booooooom" << endl;
+    return true; //aqui debemos de crear las balas y llamar a destrir esta granada
+}
+
+void Grenade::update()
+{
+    fire();
+}
+
+void Grenade::render(sf::RenderWindow &app)
+{
+    app.draw(grenadeSprite);
 }
