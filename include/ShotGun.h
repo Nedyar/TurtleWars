@@ -19,6 +19,15 @@ class ShotGun : public Weapon
         void update() override;
         void draw(sf::RenderWindow &app) override;
 
+        void shootAnimation();
+        void setpos(double posx, double posy);
+
+        sf::Sprite shotGunLoaderSprite;
+        sf::Texture shotGunLoaderTexture;
+        sf::Clock clockAnimation;
+        bool shootAnim;
+        bool shootAnimBack;
+
     protected:
 
     private:

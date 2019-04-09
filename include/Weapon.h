@@ -1,6 +1,10 @@
 #ifndef WEAPON_H
 #define WEAPON_H
 #include <SFML/Graphics.hpp>
+#include <Bullet.h>
+#include <vector>
+
+using namespace std;
 
 class Weapon
 {

@@ -1,4 +1,5 @@
 #include "Gun.h"
+#include <Level.h>
 
 Gun::Gun(double posx, double posy)
 {
@@ -44,6 +45,10 @@ bool Gun::shoot()
         {
             ammo--;
             shootAnim=true;
+
+            Level* level = Level::instance(0);
+            level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 7 + -3,200));
+
             cout << "Piu" << endl;
             clockAnimation.restart();
             return true;
@@ -53,26 +58,25 @@ bool Gun::shoot()
     }
     else
     {
-        cout << "Sin municion" << endl;
-        return false;
+       return false;
     }
 }
 
 void Gun::shootAnimation()
 {
-    if(clockAnimation.getElapsedTime().asSeconds()<0.5)
+    if(clockAnimation.getElapsedTime().asSeconds()<0.05)
     {
         sprite.setTextureRect(sf::IntRect(18,0,18,10)); //las medidas de la imagen son 72x10
     }
-    else if(clockAnimation.getElapsedTime().asSeconds()<1)
+    else if(clockAnimation.getElapsedTime().asSeconds()<0.1)
     {
         sprite.setTextureRect(sf::IntRect(36,0,18,10));
     }
-    else if(clockAnimation.getElapsedTime().asSeconds()<1.5)
+    else if(clockAnimation.getElapsedTime().asSeconds()<0.15)
     {
         sprite.setTextureRect(sf::IntRect(54,0,18,10));
     }
-    else if(clockAnimation.getElapsedTime().asSeconds()<2)
+    else if(clockAnimation.getElapsedTime().asSeconds()<0.2)
     {
         sprite.setTextureRect(sf::IntRect(0,0,18,10));
         shootAnim=false;

@@ -14,8 +14,6 @@ void setState(State* newState) {
 }
 
 void handleEvents(sf::RenderWindow &app) {
-    currentState->handleEvents();
-
     // Process events
     sf::Event event;
     while (app.pollEvent(event))
@@ -24,6 +22,7 @@ void handleEvents(sf::RenderWindow &app) {
         if (event.type == sf::Event::Closed)
             app.close();
     }
+    currentState->handleEvents();
 }
 
 void update() {

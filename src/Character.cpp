@@ -8,7 +8,7 @@
 Character::Character(int n)
 {
     player = n;
-    weapon = new Gun(0,0);
+    weapon = new Grenade(0,0);
     posture = 0;
     facingLeft = false;
     jumping = false;

@@ -30,6 +30,9 @@ class Level : public State
     private:
         static Level* pinstance;
 
+        /*bool finishGunShoot;
+        bool startGunShoot;*/
+
         Character **players;
         WeaponSpawner **weaponSpawners;
         std::vector<Bullet*> bullets;

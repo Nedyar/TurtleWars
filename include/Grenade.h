@@ -1,6 +1,8 @@
 #ifndef GRENADE_H
 #define GRENADE_H
 
+#define GRENADETIME 5
+
 #include <Weapon.h>
 #include <iostream>
 

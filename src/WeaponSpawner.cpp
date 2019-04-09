@@ -58,6 +58,7 @@ void WeaponSpawner::setpos()
 
 bool WeaponSpawner::spawnWeapon()
 {
+
     switch (type)
     {
         case 1: // Gun
