@@ -53,12 +53,12 @@ void WeaponSpawner::setpos()
 
 bool WeaponSpawner::spawnWeapon()
 {
-    cout<< type  << endl;
+    //cout<< type  << endl;
     switch (type)
     {
         case 1: // Gun
         {
-            cout<< "Arma creada" << endl;
+            //cout<< "Arma creada" << endl;
             Gun* gun = new Gun(posx, posy-5);
             created = true;
         }
@@ -66,7 +66,7 @@ bool WeaponSpawner::spawnWeapon()
 
         case 2: // Grenade
         {
-            cout<< "Granadita" << endl;
+            //cout<< "Granadita" << endl;
             Grenade* grenade = new Grenade(posx, posy-5);
             created = true;
         }
@@ -74,7 +74,7 @@ bool WeaponSpawner::spawnWeapon()
 
         case 3: // Shotgun
         {
-            cout<< "Escopetita" << endl;
+            //cout<< "Escopetita" << endl;
             ShotGun* shotGun = new ShotGun(posx, posy-5);
             created = true;
         }

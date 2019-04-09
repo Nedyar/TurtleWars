@@ -12,15 +12,17 @@ class Bullet
         void update();
         void render(sf::RenderWindow &app);
 
-    protected:
-
-    private:
-        sf::Sprite bulletSprite;
-        sf::Texture bulletTexture;
-        double angle;
         double maxLength;
         double posiniX;
         double posiniY;
+        sf::Sprite bulletSprite;
+        sf::Texture bulletTexture;
+    protected:
+
+    private:
+
+        double angle;
+
         double vel;
 };
 

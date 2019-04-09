@@ -1,6 +1,7 @@
 #include "Level.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <math.h>
 
 Level* Level::pinstance = 0;
 
@@ -17,6 +18,9 @@ Level::Level(int nPlayers)
     weapons=new Weapon* [1];
 
     weapons[0]=pistola;
+
+    finishGunShoot = false;
+    startGunShoot = false;
 
     weaponSpawners = new WeaponSpawner*[10];
 
@@ -44,6 +48,8 @@ Level* Level::instance(int nPlayers) {
 }
 
 void Level::handleEvents() {
+    startGunShoot = false;
+
 
     // TODO: Making the event handler control the current number of players
     Character* player = players[0];
@@ -59,6 +65,30 @@ void Level::handleEvents() {
         player->crouch();
     else
         player->standUp();
+
+
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) startGunShoot = true;
+    if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) finishGunShoot = true;
+
+    if(startGunShoot && finishGunShoot)
+    {
+
+        bulletAux=weapons[0]->shoot();
+
+        if(!bulletAux.empty()){
+
+            for(int i=0; i<bulletAux.size(); i++){
+
+                bullets.push_back(bulletAux.at(i));
+            }
+        }
+        bulletAux.clear();
+        finishGunShoot = false;
+    }
+
+
+
 
     Character* player2 = players[1];
 
@@ -79,20 +109,7 @@ void Level::handleEvents() {
     //std::cout << sf::Joystick::isButtonPressed(0, 2) << std::endl; // X
     //std::cout << sf::Joystick::isButtonPressed(0, 3) << std::endl; // Y
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    {
 
-        bulletAux=weapons[0]->shoot();
-
-        if(!bulletAux.empty()){
-
-            for(int i=0; i<bulletAux.size(); i++){
-
-                bullets.push_back(bulletAux.at(i));
-            }
-        }
-        bulletAux.clear();
-    }
 
 
 }
@@ -115,6 +132,14 @@ void Level::update() {
 
     for(int i=0; i<bullets.size(); i++){
         bullets.at(i)->update();
+
+        if(sqrt(pow(bullets.at(i)->bulletSprite.getPosition().x-bullets.at(i)->posiniX, 2)+pow(bullets.at(i)->bulletSprite.getPosition().y-bullets.at(i)->posiniY, 2))>=bullets.at(i)->maxLength){
+
+            delete bullets[i];
+            bullets.erase(bullets.begin()+i);
+
+
+        }
     }
 }
 

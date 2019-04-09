@@ -205,7 +205,7 @@
 1554817255 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/WeaponSpawner.cpp
 	"WeaponSpawner.h"
 
-1554800248 source:/home/rob/Documentos/FV/TurtleWars/Game.cpp
+1554830778 source:/home/rob/Documentos/FV/TurtleWars/Game.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<Physics2D.h>
@@ -232,7 +232,7 @@
 1554800248 /home/rob/Documentos/FV/TurtleWars/include/State.h
 	<SFML/Graphics.hpp>
 
-1554812219 /home/rob/Documentos/FV/TurtleWars/include/Level.h
+1554832081 /home/rob/Documentos/FV/TurtleWars/include/Level.h
 	<State.h>
 	<Character.h>
 	<Bullet.h>
@@ -246,13 +246,15 @@
 	<SFML/Graphics.hpp>
 	<Physics2D.h>
 
-1554811205 /home/rob/Documentos/FV/TurtleWars/include/Weapon.h
+1554823571 /home/rob/Documentos/FV/TurtleWars/include/Weapon.h
 	<SFML/Graphics.hpp>
 	<Bullet.h>
 	<vector>
 
-1554806108 /home/rob/Documentos/FV/TurtleWars/include/Bullet.h
+1554825061 /home/rob/Documentos/FV/TurtleWars/include/Bullet.h
 	<SFML/Graphics.hpp>
+	<math.h>
+	<iostream>
 
 1554800248 /home/rob/Documentos/FV/TurtleWars/include/WeaponSpawner.h
 	<SFML/Graphics.hpp>
@@ -262,48 +264,49 @@
 	<ShotGun.h>
 	<iostream>
 
-1554811556 /home/rob/Documentos/FV/TurtleWars/include/Gun.h
+1554823571 /home/rob/Documentos/FV/TurtleWars/include/Gun.h
 	<Weapon.h>
 	<iostream>
 
-1554810691 /home/rob/Documentos/FV/TurtleWars/include/Grenade.h
+1554823571 /home/rob/Documentos/FV/TurtleWars/include/Grenade.h
 	<Weapon.h>
 	<iostream>
 
-1554810743 /home/rob/Documentos/FV/TurtleWars/include/ShotGun.h
+1554827101 /home/rob/Documentos/FV/TurtleWars/include/ShotGun.h
 	<Weapon.h>
 	<iostream>
 
 1554800248 source:/home/rob/Documentos/FV/TurtleWars/src/Body.cpp
 	"Body.h"
 
-1554806281 source:/home/rob/Documentos/FV/TurtleWars/src/Bullet.cpp
+1554825193 source:/home/rob/Documentos/FV/TurtleWars/src/Bullet.cpp
 	"Bullet.h"
 
 1554800248 source:/home/rob/Documentos/FV/TurtleWars/src/Character.cpp
 	"Character.h"
 
-1554812557 source:/home/rob/Documentos/FV/TurtleWars/src/Grenade.cpp
+1554823571 source:/home/rob/Documentos/FV/TurtleWars/src/Grenade.cpp
 	"Grenade.h"
 
-1554812574 source:/home/rob/Documentos/FV/TurtleWars/src/Gun.cpp
+1554824089 source:/home/rob/Documentos/FV/TurtleWars/src/Gun.cpp
 	"Gun.h"
 
-1554816618 source:/home/rob/Documentos/FV/TurtleWars/src/Level.cpp
+1554832540 source:/home/rob/Documentos/FV/TurtleWars/src/Level.cpp
 	"Level.h"
 	<SFML/Graphics.hpp>
 	<iostream>
+	<math.h>
 
 1554800248 source:/home/rob/Documentos/FV/TurtleWars/src/Physics2D.cpp
 	"Physics2D.h"
 
-1554812527 source:/home/rob/Documentos/FV/TurtleWars/src/ShotGun.cpp
+1554828067 source:/home/rob/Documentos/FV/TurtleWars/src/ShotGun.cpp
 	"ShotGun.h"
 
 1554800248 source:/home/rob/Documentos/FV/TurtleWars/src/State.cpp
 	"State.h"
 
-1554800248 source:/home/rob/Documentos/FV/TurtleWars/src/WeaponSpawner.cpp
+1554827610 source:/home/rob/Documentos/FV/TurtleWars/src/WeaponSpawner.cpp
 	"WeaponSpawner.h"
 
 1554800248 source:/home/rob/Documentos/FV/TurtleWars/src/World.cpp

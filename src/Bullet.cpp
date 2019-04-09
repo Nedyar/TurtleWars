@@ -19,15 +19,9 @@ Bullet::Bullet(double posx, double posy, double ang, double maxLen)
 
 void Bullet::update()
 {
-    if(sqrt(pow(bulletSprite.getPosition().x-posiniX, 2)+pow(bulletSprite.getPosition().y-posiniY, 2))<maxLength)
-    {
-        bulletSprite.move(vel*cos(angle), vel*sin(angle));
-    }
-    else //cuando ha llegado a su límite
-    {
-        //destruir bala
-    }
+    bulletSprite.move(vel*cos(angle), vel*sin(angle));
 }
+
 void Bullet::render(sf::RenderWindow &app)
 {
     app.draw(bulletSprite);

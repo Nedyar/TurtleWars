@@ -27,6 +27,9 @@ class Level : public State
     private:
         static Level* pinstance;
 
+        bool finishGunShoot;
+        bool startGunShoot;
+
         Character **players;
         vector<Bullet*> bullets;
         vector<Bullet*> bulletAux;
