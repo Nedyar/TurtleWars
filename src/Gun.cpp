@@ -36,25 +36,28 @@ void Gun::render(sf::RenderWindow &app)
     app.draw(gunSprite);
 }
 
-bool Gun::shoot()
+std::vector<Bullet*> Gun::shoot()
 {
+    std::vector<Bullet*> bullets;
     if (ammo > 0)
     {
         if(!shootAnim) //para que dispare al finalizar la animación de la pistola (hay colddown)
         {
             ammo--;
             shootAnim=true;
+            bullets.push_back(new Bullet(gunSprite.getPosition().x,gunSprite.getPosition().y,1,20));
+
             cout << "Piu" << endl;
             clockAnimation.restart();
-            return true;
+            return bullets;
         }
         else
-            return false;
+            return bullets;
     }
     else
     {
         cout << "Sin municion" << endl;
-        return false;
+        return bullets;
     }
 }
 

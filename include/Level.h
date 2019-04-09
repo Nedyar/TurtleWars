@@ -7,6 +7,9 @@
 #include <WeaponSpawner.h>
 #include <Weapon.h>
 #include <Physics2D.h>
+#include <vector>
+
+using namespace std;
 
 
 class Level : public State
@@ -25,7 +28,8 @@ class Level : public State
         static Level* pinstance;
 
         Character **players;
-        Bullet **bullets;
+        vector<Bullet*> bullets;
+        vector<Bullet*> bulletAux;
         WeaponSpawner **weaponSpawners;
         Weapon **weapons;
 

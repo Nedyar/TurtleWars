@@ -13,7 +13,7 @@ class ShotGun : public Weapon
         ShotGun(double posx, double posy);
         virtual ~ShotGun();
 
-        bool shoot() override;
+        vector<Bullet*> shoot() override;
         bool reload();
 
         void update() override;

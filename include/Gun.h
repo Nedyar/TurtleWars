@@ -14,7 +14,7 @@ class Gun : public Weapon
         void update() override;
         void render(sf::RenderWindow &app) override;
 
-        bool shoot() override;
+        std::vector<Bullet*> shoot() override;
         void setpos(double posx, double posy);
         void shootAnimation();
 

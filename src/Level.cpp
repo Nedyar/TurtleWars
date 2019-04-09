@@ -12,7 +12,7 @@ Level::Level(int nPlayers)
         players[i] = player;
     }
 
-    Grenade* pistola=new Grenade(30.0, 200.0);
+    Gun* pistola=new Gun(30.0, 200.0);
 
     weapons=new Weapon* [1];
 
@@ -80,7 +80,20 @@ void Level::handleEvents() {
     //std::cout << sf::Joystick::isButtonPressed(0, 3) << std::endl; // Y
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-        weapons[0]->shoot();
+    {
+
+        bulletAux=weapons[0]->shoot();
+
+        if(!bulletAux.empty()){
+
+            for(int i=0; i<bulletAux.size(); i++){
+
+                bullets.push_back(bulletAux.at(i));
+            }
+        }
+        bulletAux.clear();
+    }
+
 
 }
 
@@ -114,4 +127,9 @@ void Level::draw(sf::RenderWindow &app) {
     }
 
     app.draw(sprite);
+
+    for(int i=0; i<bullets.size(); i++){
+        bullets.at(i)->render(app);
+    }
+
 }

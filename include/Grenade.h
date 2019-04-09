@@ -1,6 +1,5 @@
 #ifndef GRENADE_H
 #define GRENADE_H
-
 #include <Weapon.h>
 #include <iostream>
 
@@ -13,7 +12,7 @@ class Grenade : public Weapon
         Grenade(double posx, double posy);
         virtual ~Grenade();
 
-        bool shoot() override;
+        vector<Bullet*> shoot() override;
         bool activate();
         bool explode();
         bool fire();

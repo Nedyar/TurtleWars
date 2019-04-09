@@ -28,8 +28,9 @@ bool ShotGun::reload()
         return false;
 }
 
-bool ShotGun::shoot()
+std::vector<Bullet*> ShotGun::shoot()
 {
+    std::vector<Bullet*> bullets;
     if (ammo > 0)
     {
         if (!reload())
@@ -37,14 +38,14 @@ bool ShotGun::shoot()
             shooted = true;
             ammo--;
             cout << "Pam" << endl;
-            return true;
+            return bullets;
         }
     }
     else
     {
         cout << "Sin municion" << endl;
     }
-    return false;
+    return bullets;
 
 }
 

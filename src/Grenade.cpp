@@ -44,17 +44,18 @@ bool Grenade::fire() //para comprobar si explota
     return false;
 }
 
-bool Grenade::shoot()
+std::vector<Bullet*> Grenade::shoot()
 {
+    std::vector<Bullet*> bullets;
     if (!throwed)
     {
         if (!activate())
         {
             activate();
-            return true;
+            return bullets;
         }
     }
-    return false;
+    return bullets;
 }
 
 bool Grenade::explode()
