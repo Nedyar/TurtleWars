@@ -30,4 +30,8 @@
 *.exe
 *.out
 *.app
+
+#Others
 ./bin
+TurtleWars.depend
+TurtleWars.layout
