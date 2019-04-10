@@ -7,6 +7,8 @@
 #include <WeaponSpawner.h>
 #include <Weapon.h>
 #include <vector>
+#include <Physics2D.h>
+#include <Body.h>
 
 
 class Level : public State
@@ -23,15 +25,17 @@ public:
     void removeWeapon(Weapon* weapon);
     void removeBullet(Bullet* bullet);
 
+    //Will deprecate
+    sf::Sprite groundSprite;
+    sf::Texture groundTexture;
+    Body* groundBody;
+
 protected:
     Level(int nPlayers = 1);
     virtual ~Level();
 
 private:
     static Level* pinstance;
-
-    /*bool finishGunShoot;
-    bool startGunShoot;*/
 
     Character **players;
     WeaponSpawner **weaponSpawners;

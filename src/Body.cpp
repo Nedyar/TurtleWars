@@ -1,31 +1,12 @@
 #include "Body.h"
 
-Body::Body()
-{
-
-    //Define body
-    bodDef.type = b2BodyType::b2_dynamicBody;
-    bodDef.position = b2Vec2(50.f,50.f);
-
-    //Create body
-    bod = world->CreateBody(bodDef);
-
-    //Collider form
-    b2PolygonShape shape;
-    shape.SetAsBox(5.f,5.f);
-
-    //Propertis of collider
-    fixDef.shape = &shape;
-    fixDef.density = 1.f;
-    fixDef.friction = 0.f;
-    fixDef.restitution = 0.0f;
-    fix = bod->CreateFixture(&fixDef);
-
-}
-
+#define MULTIPLIER 100.f
 
 Body::Body(b2BodyType type,b2Vec2 spawn, b2CircleShape shape)
 {
+
+    b2BodyDef bodDef;
+    b2FixtureDef fixDef;
     bodDef.type = type;
     bodDef.position = spawn;
     //Create body
@@ -34,7 +15,7 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2CircleShape shape)
     //Propertis of collider
     fixDef.shape = &shape;
     fixDef.density = 1.f;
-    fixDef.friction = 0.f;
+    fixDef.friction = 0.1f;
     fixDef.restitution = 0.0f;
     fix = bod->CreateFixture(&fixDef);
 
@@ -42,6 +23,11 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2CircleShape shape)
 
 Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape)
 {
+    // will deprecate
+    collideShape = shape;
+    b2BodyDef bodDef;
+    b2FixtureDef fixDef;
+
     bodDef.type = type;
     bodDef.position = spawn;
     //Create body
@@ -50,40 +36,54 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape)
     //Propertis of collider
     fixDef.shape = &shape;
     fixDef.density = 1.f;
-    fixDef.friction = 0.f;
+    fixDef.friction = 0.1f;
     fixDef.restitution = 0.0f;
     fix = bod->CreateFixture(&fixDef);
 
 }
 
+sf::RectangleShape Body::dameRect(){
+    sf::RectangleShape Polygon(sf::Vector2f((collideShape.GetVertex(2).x-collideShape.GetVertex(0).x)*MULTIPLIER,(collideShape.GetVertex(2).y-collideShape.GetVertex(0).y)*MULTIPLIER));
+    Polygon.setFillColor(sf::Color::Transparent);
+    Polygon.setOutlineThickness(1);
+    Polygon.setOrigin(Polygon.getSize().x/2,Polygon.getSize().y/2);
+    Polygon.setPosition(getPositionX(),getPositionY());
+
+    return Polygon;
+}
 
 
-b2Body* Body::getBody()
-{
+b2Body* Body::getBody(){
     return bod;
 }
 
-// ### INITIALITION ###
-
-
-
-
-
 // ### PROPERTIES ###
 
-void Body::setDensity(float density)
-{
-    fixDef.density = density;
+void Body::setDensity(float density){
+    fix->SetDensity(density);
 }
 
-void Body::setFriction(float friction)
-{
+void Body::setFriction(float friction){
+    std::cout << bod->GetFixtureList()[0].GetFriction() << std::endl;
+
+
+    /*bod->DestroyFixture(fix);
+
+    b2FixtureDef fixDef;
+    fixDef.shape = fix->GetShape();
+    fixDef.density = fix->GetDensity();
     fixDef.friction = friction;
+    fixDef.restitution = fix->GetRestitution();
+
+    fix = bod->CreateFixture(&fixDef);*/
+    fix->SetFriction(friction);
+
+
+    std::cout << bod->GetFixtureList()[0].GetFriction() << std::endl;
 }
 
-void Body::setRestitution(float restitution)
-{
-    fixDef.restitution = restitution;
+void Body::setRestitution(float restitution){
+    fix->SetRestitution(restitution);
 }
 
 
@@ -91,29 +91,22 @@ void Body::setRestitution(float restitution)
 // ### GETTERS and SETTERS ##
 
 
-float Body::getPositionX()
-{
+float Body::getPositionX(){
 
-    return bod->GetPosition().x;
+   return bod->GetPosition().x*MULTIPLIER;
 }
 
-float Body::getPositionY()
-{
-    return bod->GetPosition().y;
+float Body::getPositionY(){
+   return bod->GetPosition().y*MULTIPLIER;
 }
+
+
+
 
 
 
 
 Body::~Body()
 {
-    if(world)
-        delete world;
-    //if(bod)
-    //delete bod;
-    //if(fix)
-    //delete fix;
-
-
 
 }

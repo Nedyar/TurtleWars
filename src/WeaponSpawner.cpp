@@ -3,24 +3,27 @@
 
 WeaponSpawner::WeaponSpawner(int t, double x, double y)
 {
+    if (t < 1 || t > 3)
+        t = 1;
     type=t;
 
     platformTexture.loadFromFile("img/popupPad.png");
     platformSprite.setTexture(platformTexture);
+    platformSprite.setOrigin(platformSprite.getLocalBounds().width/2,platformSprite.getLocalBounds().height);
+    platformSprite.setPosition(x, y);
 
     ballTexture1.loadFromFile("img/spawnerBall.png");
     ballSprite1.setTexture(ballTexture1);
+    ballSprite1.setOrigin(ballSprite1.getLocalBounds().width/2,ballSprite1.getLocalBounds().height/2);
+    ballSprite1.setPosition(x-platformTexture.getSize().x/2, y-10);
 
-    posx = x;
-    posy = y;
-    setpos();
-
-    created = false;
-    animationAux=true;
-    animationScale=true;
+    ballSprite2.setTexture(ballTexture1);
+    ballSprite2.setOrigin(ballSprite2.getLocalBounds().width/2,ballSprite2.getLocalBounds().height/2);
+    ballSprite2.setPosition(x+platformTexture.getSize().x/2, y-10);
 
     weaponSpawned = nullptr;
 
+    body = Physics2D::Instance()->createRectangleBody(x,y,platformTexture.getSize().x,platformTexture.getSize().y,-1);
 }
 
 WeaponSpawner::~WeaponSpawner()
@@ -28,34 +31,37 @@ WeaponSpawner::~WeaponSpawner()
     //dtor
 }
 
+Body* WeaponSpawner::getBody() {
+    return body;
+}
+
 void WeaponSpawner::update()
 {
 
-    if(clock.getElapsedTime().asSeconds()>=4 && !created)
+    if(clock.getElapsedTime().asSeconds()>=4 && weaponSpawned == nullptr)
     {
         spawnWeapon();
     }
 
-    ballAnimation();
+    // Balls Animation
+    if(ballSprite1.getPosition().x>=platformSprite.getPosition().x+platformTexture.getSize().x/2)
+    {
+        ballSprite1.setPosition(ballSprite1.getPosition().x-platformTexture.getSize().x,ballSprite1.getPosition().y);
+        ballSprite2.setPosition(ballSprite2.getPosition().x+platformTexture.getSize().x,ballSprite2.getPosition().y);
+    }
+
+    ballSprite1.setPosition(ballSprite1.getPosition().x+.1, ballSprite1.getPosition().y);
+    ballSprite2.setPosition(ballSprite2.getPosition().x-.1, ballSprite2.getPosition().y);
 }
 
 void WeaponSpawner::draw(sf::RenderWindow &app)
 {
     app.draw(platformSprite);
+    app.draw(ballSprite1);
     if (weaponSpawned != nullptr)
         weaponSpawned->draw(app);
-    app.draw(ballSprite1);
     app.draw(ballSprite2);
 }
-
-void WeaponSpawner::setpos()
-{
-    platformSprite.setPosition(posx, posy);
-    //platformSprite.setScale(50,50);
-    ballSprite1.setPosition(posx, posy-10);
-    //ballSprite2.setPosition(x+platformTexture.getSize().x, y-10);
-}
-
 
 bool WeaponSpawner::spawnWeapon()
 {
@@ -63,73 +69,16 @@ bool WeaponSpawner::spawnWeapon()
     switch (type)
     {
     case 1: // Gun
-    {
-        weaponSpawned = new Gun(posx, posy-10);
-        created = true;
-    }
-    break;
+        weaponSpawned = new Gun(platformSprite.getPosition().x, platformSprite.getPosition().y);
+        return true;
 
     case 2: // Grenade
-    {
-        weaponSpawned = new Grenade(posx, posy-15);
-        created = true;
-    }
-    break;
+        weaponSpawned = new Grenade(platformSprite.getPosition().x, platformSprite.getPosition().y-15);
+        return true;
 
     case 3: // Shotgun
-    {
-        weaponSpawned = new ShotGun(posx-5, posy-25);
-        created = true;
+        weaponSpawned = new ShotGun(platformSprite.getPosition().x, platformSprite.getPosition().y-25);
+        return true;
     }
-    break;
-    }
-    return created;
-}
-
-void WeaponSpawner::ballAnimation()
-{
-    int a=-1;
-    float percentDone = std::min(1.0, clockA.getElapsedTime().asMilliseconds()/3000.0);
-
-    if(ballSprite1.getPosition().x>=platformSprite.getPosition().x+platformTexture.getSize().x)
-    {
-        animationAux=false;
-        clockA.restart();
-    }
-
-    if(ballSprite1.getPosition().x<=platformSprite.getPosition().x-ballTexture1.getSize().x)
-        animationAux=true;
-
-    if(animationAux)
-        a=1;
-
-    ballSprite1.setPosition(ballSprite1.getPosition().x+platformTexture.getSize().x*0.01*a, ballSprite1.getPosition().y);
-
-    /* cout << clockA.getElapsedTime().asMilliseconds() << endl;
-
-     if(ballSprite1.getPosition().x==(platformSprite.getPosition().x+platformTexture.getSize().x)/2)
-     {
-         if(animationScale)
-             animationScale=false;
-         else
-             animationScale=true;
-     }
-
-     if(animationAux && animationScale){
-
-     }
-     else if(animationAux && !animationScale){
-     }
-     else if(!animationAux && !animationScale){
-     }
-     else if(!animationAux && animationScale){
-     }
-
-     double sizex=0.0;
-
-     sizex=percentDone*4;
-
-     ballSprite1.setScale(sizex, sizex);
-
-    */
+    return false;
 }

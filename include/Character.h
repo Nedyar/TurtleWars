@@ -5,6 +5,7 @@
 #include <Gun.h>
 #include <SFML/Graphics.hpp>
 #include <Physics2D.h>
+#include <Box2D.h>
 
 
 class Character
@@ -31,6 +32,8 @@ public:
     void draw(sf::RenderWindow &app);
     void update();
 
+    Body* getBody();
+
 protected:
 
 private:
@@ -48,9 +51,8 @@ private:
     bool dead;
     bool fakingDead;
 
-    Body *body;
+    Body* body;
 
-    // Will deprecate
     double yJumpedFrom;
     sf::Sprite sprite;
     sf::Texture texture;

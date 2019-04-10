@@ -5,6 +5,12 @@ Level* Level::pinstance = 0;
 
 Level::Level(int nPlayers)
 {
+    groundTexture.loadFromFile("img/ground.png");
+    groundSprite = sf::Sprite(groundTexture);
+    groundSprite.setOrigin(groundSprite.getLocalBounds().width/2,groundSprite.getLocalBounds().height/2);
+    groundSprite.setPosition(groundSprite.getLocalBounds().width/2,600-groundSprite.getLocalBounds().height/2);
+    groundBody = Physics2D::Instance()->createRectangleBody(groundSprite.getPosition().x,groundSprite.getPosition().y,groundSprite.getGlobalBounds().width,groundSprite.getGlobalBounds().height,0);
+
     players = new Character*[nPlayers];
     for (int i = 0; i < nPlayers; i++)
     {
@@ -12,21 +18,11 @@ Level::Level(int nPlayers)
         players[i] = player;
     }
 
-    /*
-        ShotGun* pistola=new ShotGun(30.0, 200.0);
+    weaponSpawners = new WeaponSpawner*[3];
 
-        weapons=new Weapon* [1];
-
-        weapons[0]=pistola;
-
-        finishGunShoot = false;
-        startGunShoot = false;*/
-
-    weaponSpawners = new WeaponSpawner*[10];
-
-    for (int i = 0; i < sizeof(weaponSpawners); i++)
+    for (int i = 0; i < 3; i++)
     {
-        weaponSpawners[i] = new WeaponSpawner(i%3+1,32*i,213);
+        weaponSpawners[i] = new WeaponSpawner(i%3+1,32*(i+2),600-groundSprite.getLocalBounds().height);
     }
 }
 
@@ -84,7 +80,7 @@ void Level::handleEvents()
 
 
 
-
+    /*
     Character* player2 = players[1];
 
     if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) > 10)
@@ -97,7 +93,7 @@ void Level::handleEvents()
     if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y) > 30)
         player2->crouch();
     else
-        player2->standUp();
+        player2->standUp();*/
 
     //std::cout << sf::Joystick::isButtonPressed(0, 0) << std::endl; // A
     //std::cout << sf::Joystick::isButtonPressed(0, 1) << std::endl; // B
@@ -123,13 +119,13 @@ void Level::handleEvents()
 
 void Level::update()
 {
-    for (int i = 0; i < sizeof(players)/sizeof(int); i++)
+    for (int i = 0; i < 1; i++)
     {
         Character* player = players[i];
         player->update();
     }
 
-    for (int i = 0; i < sizeof(weaponSpawners); i++)
+    for (int i = 0; i < 3; i++)
     {
         weaponSpawners[i]->update();
     }
@@ -150,13 +146,16 @@ void Level::update()
             bullets.erase(bullets.begin()+i);
         }
     }
+
+    Physics2D::Instance()->updateWorld();
 }
 
 void Level::draw(sf::RenderWindow &app)
 {
-    for (int i = 0; i < sizeof(weaponSpawners); i++)
+    for (int i = 0; i < 3; i++)
     {
         weaponSpawners[i]->draw(app);
+        app.draw(weaponSpawners[i]->getBody()->dameRect());
     }
 
     for (int i = 0; i < weapons.size(); i++)
@@ -169,11 +168,15 @@ void Level::draw(sf::RenderWindow &app)
         bullets.at(i)->draw(app);
     }
 
-    for (int i = 0; i < sizeof(players)/sizeof(int); i++)
+    for (int i = 0; i < 1; i++)
     {
         Character* player = players[i];
         player->draw(app);
+        app.draw(player->getBody()->dameRect());
     }
+
+    app.draw(groundSprite);
+    app.draw(groundBody->dameRect());
 }
 
 void Level::addWeapon(Weapon* weapon)

@@ -32,6 +32,7 @@
 *.app
 
 #Others
-./bin/*
+./bin
+./obj
 ./TurtleWars.depend
 ./TurtleWars.layout
