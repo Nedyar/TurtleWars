@@ -11,32 +11,32 @@
 
 class Level : public State
 {
-    public:
-        static Level* instance(int nPlayers);
+public:
+    static Level* instance(int nPlayers);
 
-        void handleEvents() override;
-        void update() override;
-        void draw(sf::RenderWindow &app) override;
+    void handleEvents() override;
+    void update() override;
+    void draw(sf::RenderWindow &app) override;
 
-        void addWeapon(Weapon* weapon);
-        void addBullet(Bullet* bullet);
-        void removeWeapon(Weapon* weapon);
-        void removeBullet(Bullet* bullet);
+    void addWeapon(Weapon* weapon);
+    void addBullet(Bullet* bullet);
+    void removeWeapon(Weapon* weapon);
+    void removeBullet(Bullet* bullet);
 
-    protected:
-        Level(int nPlayers = 1);
-        virtual ~Level();
+protected:
+    Level(int nPlayers = 1);
+    virtual ~Level();
 
-    private:
-        static Level* pinstance;
+private:
+    static Level* pinstance;
 
-        /*bool finishGunShoot;
-        bool startGunShoot;*/
+    /*bool finishGunShoot;
+    bool startGunShoot;*/
 
-        Character **players;
-        WeaponSpawner **weaponSpawners;
-        std::vector<Bullet*> bullets;
-        std::vector<Weapon*> weapons;
+    Character **players;
+    WeaponSpawner **weaponSpawners;
+    std::vector<Bullet*> bullets;
+    std::vector<Weapon*> weapons;
 
 };
 

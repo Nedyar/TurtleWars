@@ -9,39 +9,39 @@
 
 class WeaponSpawner
 {
-    public:
-        WeaponSpawner(int type, double x, double y);
-        virtual ~WeaponSpawner();
+public:
+    WeaponSpawner(int type, double x, double y);
+    virtual ~WeaponSpawner();
 
-        void setpos();
-        void update();
-        void draw(sf::RenderWindow &app);
+    void setpos();
+    void update();
+    void draw(sf::RenderWindow &app);
 
-        bool spawnWeapon();
-        void ballAnimation();
+    bool spawnWeapon();
+    void ballAnimation();
 
-    protected:
+protected:
 
-    private:
+private:
 
-        int type;
+    int type;
 
-        bool created;
-        bool animationAux;
-        bool animationScale;
+    bool created;
+    bool animationAux;
+    bool animationScale;
 
-        double posx;
-        double posy;
+    double posx;
+    double posy;
 
-        Weapon* weaponSpawned;
+    Weapon* weaponSpawned;
 
-        sf::Clock clock;
-        sf::Clock clockA;
-        sf::Sprite platformSprite;
-        sf::Texture platformTexture;
-        sf::Sprite ballSprite1;
-        sf::Texture ballTexture1;
-        sf::Sprite ballSprite2;
+    sf::Clock clock;
+    sf::Clock clockA;
+    sf::Sprite platformSprite;
+    sf::Texture platformTexture;
+    sf::Sprite ballSprite1;
+    sf::Texture ballTexture1;
+    sf::Sprite ballSprite2;
 
 
 };

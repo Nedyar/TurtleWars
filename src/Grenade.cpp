@@ -58,7 +58,8 @@ bool Grenade::explode()
 
 void Grenade::update()
 {
-    if (activated && grenadeTimer.getElapsedTime().asSeconds() >= GRENADETIME) {
+    if (activated && grenadeTimer.getElapsedTime().asSeconds() >= GRENADETIME)
+    {
         explode();
         Level* level = Level::instance(0);
         level->removeWeapon(this);

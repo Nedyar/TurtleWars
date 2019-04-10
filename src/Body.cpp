@@ -58,7 +58,8 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape)
 
 
 
-b2Body* Body::getBody(){
+b2Body* Body::getBody()
+{
     return bod;
 }
 
@@ -70,15 +71,18 @@ b2Body* Body::getBody(){
 
 // ### PROPERTIES ###
 
-void Body::setDensity(float density){
+void Body::setDensity(float density)
+{
     fixDef.density = density;
 }
 
-void Body::setFriction(float friction){
+void Body::setFriction(float friction)
+{
     fixDef.friction = friction;
 }
 
-void Body::setRestitution(float restitution){
+void Body::setRestitution(float restitution)
+{
     fixDef.restitution = restitution;
 }
 
@@ -87,13 +91,15 @@ void Body::setRestitution(float restitution){
 // ### GETTERS and SETTERS ##
 
 
-float Body::getPositionX(){
+float Body::getPositionX()
+{
 
-   return bod->GetPosition().x;
+    return bod->GetPosition().x;
 }
 
-float Body::getPositionY(){
-   return bod->GetPosition().y;
+float Body::getPositionY()
+{
+    return bod->GetPosition().y;
 }
 
 
@@ -104,9 +110,9 @@ Body::~Body()
     if(world)
         delete world;
     //if(bod)
-        //delete bod;
+    //delete bod;
     //if(fix)
-        //delete fix;
+    //delete fix;
 
 
 

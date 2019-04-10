@@ -1,17 +1,21 @@
 #include "State.h"
 
-void State::init() {
+void State::init()
+{
 
 }
 
-void pause() {
+void pause()
+{
 
 }
 
-void resume() {
+void resume()
+{
 
 }
 
-void cleanUp() {
+void cleanUp()
+{
 
 }

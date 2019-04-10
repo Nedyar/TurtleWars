@@ -4,7 +4,8 @@
 
 Physics2D* Physics2D::instance = nullptr;
 
-Physics2D* Physics2D::Instance(){
+Physics2D* Physics2D::Instance()
+{
     if(!instance)
     {
         instance = new Physics2D;
@@ -19,14 +20,15 @@ Physics2D::Physics2D()
 }
 
 
-Body* Physics2D::createCircleBody(sf::Sprite &sprite,float pSize, int pType){
+Body* Physics2D::createCircleBody(sf::Sprite &sprite,float pSize, int pType)
+{
 
     // Body Type
     type = b2BodyType::b2_dynamicBody;
     if(pType == 0)
-    type = b2BodyType::b2_staticBody;
+        type = b2BodyType::b2_staticBody;
     if(pType == -1)
-    type = b2BodyType::b2_kinematicBody;
+        type = b2BodyType::b2_kinematicBody;
 
     // Body Shape
     b2CircleShape shape;
@@ -41,21 +43,22 @@ Body* Physics2D::createCircleBody(sf::Sprite &sprite,float pSize, int pType){
 }
 
 
-Body* Physics2D::createRectangleBody(sf::Sprite &sprite,float pSize, int pType){
+Body* Physics2D::createRectangleBody(sf::Sprite &sprite,float pSize, int pType)
+{
 
-     // Body Type
+    // Body Type
     type = b2BodyType::b2_dynamicBody;
     if(pType == 0)
-    type = b2BodyType::b2_staticBody;
+        type = b2BodyType::b2_staticBody;
     if(pType == -1)
-    type = b2BodyType::b2_kinematicBody;
+        type = b2BodyType::b2_kinematicBody;
 
     // Body Shape
     b2PolygonShape shape;
 
     float offset = sprite.getLocalBounds().width/sprite.getLocalBounds().height;
     if (offset < 0)
-            shape.SetAsBox(pSize*offset,pSize);
+        shape.SetAsBox(pSize*offset,pSize);
     else
         shape.SetAsBox(pSize,pSize*offset);
 

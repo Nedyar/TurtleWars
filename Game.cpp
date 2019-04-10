@@ -9,11 +9,13 @@
 
 State* currentState;
 
-void setState(State* newState) {
+void setState(State* newState)
+{
     currentState = newState;
 }
 
-void handleEvents(sf::RenderWindow &app) {
+void handleEvents(sf::RenderWindow &app)
+{
     // Process events
     sf::Event event;
     while (app.pollEvent(event))
@@ -25,11 +27,13 @@ void handleEvents(sf::RenderWindow &app) {
     currentState->handleEvents();
 }
 
-void update() {
+void update()
+{
     currentState->update();
 }
 
-void draw(sf::RenderWindow &app) {
+void draw(sf::RenderWindow &app)
+{
     // Clear screen
     app.clear(sf::Color(200,200,200,255));
     // Draw the sprite

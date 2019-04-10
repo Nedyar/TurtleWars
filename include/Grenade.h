@@ -7,24 +7,24 @@
 
 class Grenade : public Weapon
 {
-    public:
-        Grenade(double posx, double posy);
-        virtual ~Grenade();
+public:
+    Grenade(double posx, double posy);
+    virtual ~Grenade();
 
-        bool shoot() override;
-        bool activate();
-        bool explode();
+    bool shoot() override;
+    bool activate();
+    bool explode();
 
-        void update() override;
-        void draw(sf::RenderWindow &app) override;
+    void update() override;
+    void draw(sf::RenderWindow &app) override;
 
-        sf::Clock grenadeTimer;
+    sf::Clock grenadeTimer;
 
-    protected:
+protected:
 
-    private:
-        double grenadeTime;
-        bool activated;
+private:
+    double grenadeTime;
+    bool activated;
 };
 
 #endif // GRENADE_H

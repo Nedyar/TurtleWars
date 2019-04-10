@@ -31,7 +31,8 @@ WeaponSpawner::~WeaponSpawner()
 void WeaponSpawner::update()
 {
 
-    if(clock.getElapsedTime().asSeconds()>=4 && !created){
+    if(clock.getElapsedTime().asSeconds()>=4 && !created)
+    {
         spawnWeapon();
     }
 
@@ -61,26 +62,26 @@ bool WeaponSpawner::spawnWeapon()
 
     switch (type)
     {
-        case 1: // Gun
-        {
-            weaponSpawned = new Gun(posx, posy-10);
-            created = true;
-        }
-        break;
+    case 1: // Gun
+    {
+        weaponSpawned = new Gun(posx, posy-10);
+        created = true;
+    }
+    break;
 
-        case 2: // Grenade
-        {
-            weaponSpawned = new Grenade(posx, posy-15);
-            created = true;
-        }
-        break;
+    case 2: // Grenade
+    {
+        weaponSpawned = new Grenade(posx, posy-15);
+        created = true;
+    }
+    break;
 
-        case 3: // Shotgun
-        {
-            weaponSpawned = new ShotGun(posx-5, posy-25);
-            created = true;
-        }
-        break;
+    case 3: // Shotgun
+    {
+        weaponSpawned = new ShotGun(posx-5, posy-25);
+        created = true;
+    }
+    break;
     }
     return created;
 }
@@ -104,31 +105,31 @@ void WeaponSpawner::ballAnimation()
 
     ballSprite1.setPosition(ballSprite1.getPosition().x+platformTexture.getSize().x*0.01*a, ballSprite1.getPosition().y);
 
-   /* cout << clockA.getElapsedTime().asMilliseconds() << endl;
+    /* cout << clockA.getElapsedTime().asMilliseconds() << endl;
 
-    if(ballSprite1.getPosition().x==(platformSprite.getPosition().x+platformTexture.getSize().x)/2)
-    {
-        if(animationScale)
-            animationScale=false;
-        else
-            animationScale=true;
-    }
+     if(ballSprite1.getPosition().x==(platformSprite.getPosition().x+platformTexture.getSize().x)/2)
+     {
+         if(animationScale)
+             animationScale=false;
+         else
+             animationScale=true;
+     }
 
-    if(animationAux && animationScale){
+     if(animationAux && animationScale){
 
-    }
-    else if(animationAux && !animationScale){
-    }
-    else if(!animationAux && !animationScale){
-    }
-    else if(!animationAux && animationScale){
-    }
+     }
+     else if(animationAux && !animationScale){
+     }
+     else if(!animationAux && !animationScale){
+     }
+     else if(!animationAux && animationScale){
+     }
 
-    double sizex=0.0;
+     double sizex=0.0;
 
-    sizex=percentDone*4;
+     sizex=percentDone*4;
 
-    ballSprite1.setScale(sizex, sizex);
+     ballSprite1.setScale(sizex, sizex);
 
-*/
+    */
 }

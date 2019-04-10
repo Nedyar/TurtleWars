@@ -8,19 +8,19 @@
 
 class World
 {
-    public:
-        static World* Instance();
-        b2Body* CreateBody(b2BodyDef&);
-        //~World();
-    protected:
-        World();
-        World(const World & );
-        World &operator= (const World & );
+public:
+    static World* Instance();
+    b2Body* CreateBody(b2BodyDef&);
+    //~World();
+protected:
+    World();
+    World(const World & );
+    World &operator= (const World & );
 
-    private:
-        static World* instance;
-        b2World * world2D;
-        b2Body * body = nullptr;
+private:
+    static World* instance;
+    b2World * world2D;
+    b2Body * body = nullptr;
 
 };
 

@@ -57,7 +57,7 @@ bool Gun::shoot()
     }
     else
     {
-       return false;
+        return false;
     }
 }
 

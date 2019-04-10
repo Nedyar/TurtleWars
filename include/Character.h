@@ -9,53 +9,53 @@
 
 class Character
 {
-    public:
-        Character(int player);
-        virtual ~Character();
+public:
+    Character(int player);
+    virtual ~Character();
 
-        int getPlayer();
-        Weapon* getWeapon();
-        bool shoot();
-        bool hasWeapon();
+    int getPlayer();
+    Weapon* getWeapon();
+    bool shoot();
+    bool hasWeapon();
 
-        void walk(bool right);
-        bool jump();
-        bool crouch();
-        void standUp();
-        void die();
-        void fakeDie();
+    void walk(bool right);
+    bool jump();
+    bool crouch();
+    void standUp();
+    void die();
+    void fakeDie();
 
-        bool dropWeapon();
-        bool takeWeapon(Weapon* weapon);
+    bool dropWeapon();
+    bool takeWeapon(Weapon* weapon);
 
-        void draw(sf::RenderWindow &app);
-        void update();
+    void draw(sf::RenderWindow &app);
+    void update();
 
-    protected:
+protected:
 
-    private:
-        int player;
-        Weapon* weapon;
+private:
+    int player;
+    Weapon* weapon;
 
-        float posture;
+    float posture;
 
-        bool walking;
-        bool facingLeft;
-        bool jumping;
-        bool onGround;
-        bool crouching;
-        bool sliding;
-        bool dead;
-        bool fakingDead;
+    bool walking;
+    bool facingLeft;
+    bool jumping;
+    bool onGround;
+    bool crouching;
+    bool sliding;
+    bool dead;
+    bool fakingDead;
 
-        Body *body;
+    Body *body;
 
-        // Will deprecate
-        double yJumpedFrom;
-        sf::Sprite sprite;
-        sf::Texture texture;
-        sf::Sprite armSprite;
-        sf::Texture armTexture;
+    // Will deprecate
+    double yJumpedFrom;
+    sf::Sprite sprite;
+    sf::Texture texture;
+    sf::Sprite armSprite;
+    sf::Texture armTexture;
 };
 
 #endif // CHARACTER_H
