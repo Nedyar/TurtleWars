@@ -26,7 +26,7 @@ Level::Level(int nPlayers)
 
     for (int i = 0; i < sizeof(weaponSpawners); i++)
     {
-        weaponSpawners[i] = new WeaponSpawner(i%3+1,32*i,200);
+        weaponSpawners[i] = new WeaponSpawner(i%3+1,32*i,213);
     }
 }
 
@@ -114,6 +114,11 @@ void Level::handleEvents()
         player->shoot();
     }
 
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+    {
+        player->fakeDie();
+    }
+
 }
 
 void Level::update()
@@ -138,6 +143,7 @@ void Level::update()
     {
         bullets.at(i)->update();
 
+        // Esta comprobacion debe hacerse en el update de la clase bullet
         if(sqrt(pow(bullets.at(i)->bulletSprite.getPosition().x-bullets.at(i)->posiniX, 2)+pow(bullets.at(i)->bulletSprite.getPosition().y-bullets.at(i)->posiniY, 2))>=bullets.at(i)->maxLength)
         {
             delete bullets[i];
@@ -148,12 +154,6 @@ void Level::update()
 
 void Level::draw(sf::RenderWindow &app)
 {
-    for (int i = 0; i < sizeof(players)/sizeof(int); i++)
-    {
-        Character* player = players[i];
-        player->draw(app);
-    }
-
     for (int i = 0; i < sizeof(weaponSpawners); i++)
     {
         weaponSpawners[i]->draw(app);
@@ -167,6 +167,12 @@ void Level::draw(sf::RenderWindow &app)
     for (int i = 0; i < bullets.size(); i++)
     {
         bullets.at(i)->draw(app);
+    }
+
+    for (int i = 0; i < sizeof(players)/sizeof(int); i++)
+    {
+        Character* player = players[i];
+        player->draw(app);
     }
 }
 

@@ -48,9 +48,9 @@
 			<Add library="/usr/lib/x86_64-linux-gnu/libBox2D.a" />
 		</Linker>
 		<Unit filename="Game.cpp" />
-		<Unit filename="cb.bmp" />
+		<Unit filename="img/arm.png" />
 		<Unit filename="img/ground.png" />
-		<Unit filename="img/quackduck.png" />
+		<Unit filename="img/move.png" />
 		<Unit filename="include/Body.h" />
 		<Unit filename="include/Bullet.h" />
 		<Unit filename="include/Character.h" />

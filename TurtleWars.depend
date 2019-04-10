@@ -40,7 +40,7 @@
 	<Weapon.h>
 	<vector>
 
-1554843473 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
+1554889848 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
 	<Weapon.h>
 	<Gun.h>
 	<SFML/Graphics.hpp>
@@ -56,7 +56,7 @@
 	<math.h>
 	<iostream>
 
-1554887776 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Gun.h
+1554888002 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Gun.h
 	<Weapon.h>
 
 1554843473 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/WeaponSpawner.h
@@ -66,20 +66,20 @@
 	<Grenade.h>
 	<ShotGun.h>
 
-1554887692 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Grenade.h
+1554888002 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Grenade.h
 	<Weapon.h>
 
-1554887710 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/ShotGun.h
+1554888002 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/ShotGun.h
 	<Weapon.h>
 
 1554849652 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Bullet.cpp
 	"Bullet.h"
 
-1554850068 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
+1554888652 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
 	"Character.h"
 	<Level.h>
 
-1554851107 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Grenade.cpp
+1554888002 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Grenade.cpp
 	"Grenade.h"
 	<Level.h>
 
@@ -90,15 +90,15 @@
 	"WeaponSpawner.h"
 	<Level.h>
 
-1554844894 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Gun.cpp
+1554888002 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Gun.cpp
 	"Gun.h"
 	<Level.h>
 
-1554845101 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/ShotGun.cpp
+1554888002 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/ShotGun.cpp
 	"ShotGun.h"
 	<Level.h>
 
-1554850933 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
+1554889094 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
 	"Level.h"
 	<SFML/Graphics.hpp>
 

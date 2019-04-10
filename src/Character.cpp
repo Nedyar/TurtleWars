@@ -14,18 +14,26 @@ Character::Character(int n)
     jumping = false;
     onGround = true;
     dead = false;
+    fakingDead = false;
 
     // will deprecate
-    texture.loadFromFile("img/quackduck.png");
+    texture.loadFromFile("img/move.png");
+    armTexture.loadFromFile("img/arm.png");
 
     sprite = sf::Sprite(texture);
+    armSprite = sf::Sprite(armTexture);
 
     sf::IntRect rect = sf::IntRect(0,0,32,32);
+
     sprite.setTextureRect(rect);
     sprite.setOrigin(sprite.getLocalBounds().width/2,sprite.getLocalBounds().height/2);
     sprite.setPosition(XINIT*n,YINIT);
 
-    body = Physics2D::Instance()->createRectangleBody(sprite,32);
+    armSprite.setTextureRect(rect);
+    armSprite.setOrigin(armSprite.getLocalBounds().width/2,armSprite.getLocalBounds().height/2);
+    armSprite.setPosition(XINIT*n,YINIT);
+
+    //body = Physics2D::Instance()->createRectangleBody(sprite,32);
 }
 
 Character::~Character()
@@ -59,8 +67,10 @@ bool Character::hasWeapon()
     return weapon != nullptr;
 }
 
-bool Character::dropWeapon() {
-    if (weapon != nullptr) {
+bool Character::dropWeapon()
+{
+    if (weapon != nullptr)
+    {
         Level* level = Level::instance(0);
         level->addWeapon(weapon);
 
@@ -70,8 +80,10 @@ bool Character::dropWeapon() {
     return false;
 }
 
-bool Character::takeWeapon(Weapon* weapon) {
-    if (weapon == nullptr) {
+bool Character::takeWeapon(Weapon* weapon)
+{
+    if (weapon == nullptr)
+    {
         this->weapon = weapon;
         return true;
     }
@@ -80,10 +92,12 @@ bool Character::takeWeapon(Weapon* weapon) {
 
 void Character::walk(bool right)
 {
-    if (!dead) {
-        this->walking = true;
+    if (!dead)
+    {
+        fakingDead = false;
+        walking = true;
         if (walking && !sliding)
-            this->facingLeft = !right;
+            facingLeft = !right;
     }
 }
 
@@ -91,7 +105,9 @@ bool Character::jump()
 {
     if (!dead && onGround && !jumping)
     {
+        posture = 0;
         standUp();
+        fakingDead = false;
         jumping = true;
         yJumpedFrom = sprite.getPosition().y;
         onGround = false;
@@ -102,6 +118,7 @@ bool Character::crouch()
 {
     if (!dead && !crouching && !jumping && onGround)
     {
+        fakingDead = false;
         crouching = true;
         if (walking)
             sliding = true;
@@ -114,15 +131,27 @@ bool Character::crouch()
 
 void Character::standUp()
 {
-    if (!dead) {
+    if (!dead)
+    {
         crouching = false;
         sliding = false;
     }
 }
 
-void Character::die() {
+void Character::die()
+{
+    fakingDead = false;
     dropWeapon();
     dead = true;
+}
+
+void Character::fakeDie()
+{
+    if (!dead)
+    {
+        dropWeapon();
+        fakingDead = true;
+    }
 }
 
 void Character::draw(sf::RenderWindow &app)
@@ -135,35 +164,125 @@ void Character::draw(sf::RenderWindow &app)
 
 void Character::update()
 {
-    // TODO: Dead sprite
 
-    // will deprecate
+    /*
+        // will deprecate
+        sf::IntRect rect;
+        int ypos = 0;
+        if (sliding)
+        {
+            ypos = 32*2;
+            posture = 0;
+            if (!facingLeft)
+            {
+                sprite.setScale(1,1);
+                sprite.move(3,0);
+            }
+            else
+            {
+                sprite.setScale(-1,1);
+                sprite.move(-3,0);
+            }
+        }
+        else if (dead || fakingDead) {
+            ypos = 32*2;
+            posture = 0;
+            if (!facingLeft)
+            {
+                sprite.setScale(1,1);
+            }
+            else
+            {
+                sprite.setScale(-1,1);
+            }
+        }
+        else if (crouching)
+        {
+            posture = 5;
+            ypos = 32;
+        }
+        else if (walking)
+        {
+            posture+=0.2;
+            if (posture >= 8)
+                posture = 0;
+
+            if (!facingLeft)
+            {
+                sprite.setScale(1,1);
+                sprite.move(3,0);
+            }
+            else
+            {
+                sprite.setScale(-1,1);
+                sprite.move(-3,0);
+            }
+
+        }
+        else
+            posture = 0;
+
+        rect = sf::IntRect(32*((int)posture),ypos,32,32);
+
+
+        if (jumping)
+        {
+            if (yJumpedFrom-75 < sprite.getPosition().y)
+            {
+                sprite.move(0,-5);
+                rect = sf::IntRect(32,32,32,32);
+            }
+            else
+            {
+                jumping = false;
+                rect = sf::IntRect(32*2,32,32,32);
+            }
+        }
+        else if (!onGround)
+        {
+            if (sprite.getPosition().y < YINIT)
+            {
+                sprite.move(0,5);
+                rect = sf::IntRect(32*3,32,32,32);
+            }
+
+            else
+            {
+                onGround = true;
+                rect = sf::IntRect(32*4,32,32,32);
+            }
+
+        }
+    */
     sf::IntRect rect;
-    int ypos = 0;
+    int yPos;
+
     if (sliding)
     {
-        ypos = 32*2;
         posture = 0;
+        yPos = 2;
+
         if (!facingLeft)
         {
             sprite.setScale(1,1);
-            sprite.move(3,0);
+            sprite.move(3.5,0);
         }
         else
         {
             sprite.setScale(-1,1);
-            sprite.move(-3,0);
+            sprite.move(-3.5,0);
         }
     }
     else if (crouching)
     {
-        posture = 5;
-        ypos = 32;
+        posture = 2;
+        yPos = 0;
     }
     else if (walking)
     {
+        yPos = 0;
         posture+=0.2;
-        if (posture >= 6)
+        if (posture >= 8)
             posture = 0;
 
         if (!facingLeft)
@@ -176,51 +295,70 @@ void Character::update()
             sprite.setScale(-1,1);
             sprite.move(-3,0);
         }
-
+    }
+    else if (dead || fakingDead)
+    {
+        yPos = 3;
+        posture = 0;
     }
     else
+    {
+        yPos = 0;
         posture = 0;
-
-    rect = sf::IntRect(32*((int)posture),ypos,32,32);
-
+    }
 
     if (jumping)
     {
+        yPos = 1;
+
         if (yJumpedFrom-75 < sprite.getPosition().y)
         {
+            if (yJumpedFrom-19 < sprite.getPosition().y)
+                posture = 0;
+            else if (yJumpedFrom-38 < sprite.getPosition().y)
+                posture = 1;
+            else if (yJumpedFrom-56 < sprite.getPosition().y)
+                posture = 2;
+            else
+                posture = 3;
             sprite.move(0,-5);
-            rect = sf::IntRect(32,32,32,32);
         }
         else
         {
             jumping = false;
-            rect = sf::IntRect(32*2,32,32,32);
         }
-
-
     }
     else if (!onGround)
     {
+        yPos = 1;
+
         if (sprite.getPosition().y < YINIT)
         {
+            if (sprite.getPosition().y < YINIT-56)
+                posture = 4;
+            else if (sprite.getPosition().y < YINIT-38)
+                posture = 5;
+            else if (sprite.getPosition().y < YINIT-19)
+                posture = 6;
+            else if (sprite.getPosition().y < YINIT)
+                posture = 7;
             sprite.move(0,5);
-            rect = sf::IntRect(32*3,32,32,32);
         }
 
         else
         {
             onGround = true;
-            rect = sf::IntRect(32*4,32,32,32);
         }
-
     }
 
-    if (weapon != nullptr) {
+    rect = sf::IntRect(32*((int)posture),yPos*32,32,32);
+    sprite.setTextureRect(rect);
+    walking = false;
+
+    if (weapon != nullptr)
+    {
         weapon->setPos(sprite.getPosition().x,sprite.getPosition().y);
         weapon->update();
     }
-
-    walking = false;
     //sprite.setPosition(body->getPositionX(),body->getPositionY());
-    sprite.setTextureRect(rect);
 }

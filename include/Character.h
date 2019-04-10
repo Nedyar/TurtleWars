@@ -23,6 +23,7 @@ class Character
         bool crouch();
         void standUp();
         void die();
+        void fakeDie();
 
         bool dropWeapon();
         bool takeWeapon(Weapon* weapon);
@@ -37,6 +38,7 @@ class Character
         Weapon* weapon;
 
         float posture;
+
         bool walking;
         bool facingLeft;
         bool jumping;
@@ -44,6 +46,7 @@ class Character
         bool crouching;
         bool sliding;
         bool dead;
+        bool fakingDead;
 
         Body *body;
 
@@ -51,6 +54,8 @@ class Character
         double yJumpedFrom;
         sf::Sprite sprite;
         sf::Texture texture;
+        sf::Sprite armSprite;
+        sf::Texture armTexture;
 };
 
 #endif // CHARACTER_H
