@@ -276,7 +276,7 @@ void Character::update()
     else if (crouching)
     {
         posture = 2;
-        yPos = 0;
+        yPos = 1;
     }
     else if (walking)
     {
