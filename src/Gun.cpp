@@ -49,7 +49,6 @@ bool Gun::shoot()
             Level* level = Level::instance(0);
             level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 7 + -3,200));
 
-            cout << "Piu" << endl;
             clockAnimation.restart();
             return true;
         }

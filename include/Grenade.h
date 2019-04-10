@@ -4,10 +4,6 @@
 #define GRENADETIME 5
 
 #include <Weapon.h>
-#include <iostream>
-
-using namespace std;
-
 
 class Grenade : public Weapon
 {

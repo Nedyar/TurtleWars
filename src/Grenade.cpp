@@ -23,7 +23,6 @@ bool Grenade::activate()
     {
         activated = true;
         grenadeTimer.restart();
-        cout << "Sin anilla" << endl;
         sprite.setTextureRect(sf::IntRect(16,0,16,16));
         return true;
     }
@@ -53,7 +52,6 @@ bool Grenade::explode()
     level->addBullet(new Bullet(sprite.getPosition().x+XSUM,sprite.getPosition().y+YSUM,rand() % 45 + 45*4+22.5,75));
     level->addBullet(new Bullet(sprite.getPosition().x+XSUM,sprite.getPosition().y+YSUM,rand() % 45 + 45*5+22.5,75));
     level->addBullet(new Bullet(sprite.getPosition().x+XSUM,sprite.getPosition().y+YSUM,rand() % 45 + 45*6+22.5,75));
-    cout << "Booooooom" << endl;
 
     return true; //aqui debemos de crear las balas y llamar a destrir esta granada
 }

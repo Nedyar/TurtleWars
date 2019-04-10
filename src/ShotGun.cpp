@@ -29,7 +29,6 @@ bool ShotGun::reload()
     if (ammo > 0 && shooted)
     {
         shooted = false;
-        cout << "Recarga" << endl;
         clockAnimation.restart();
         shootAnim = true;
         shootAnimBack = true;
@@ -59,14 +58,13 @@ bool ShotGun::shoot()
             level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x,sprite.getPosition().y+10,rand() % 6 + (-3),100));
             level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x,sprite.getPosition().y+10,rand() % 6 + (-9),100));
             level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x,sprite.getPosition().y+10,rand() % 6 + (-15),100));
-            cout << "Pam" << endl;
             return true;
         }
     }
-    else
+    /*else
     {
         cout << "Sin municion" << endl;
-    }
+    }*/
     return false;
 
 }
