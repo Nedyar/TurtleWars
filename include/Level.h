@@ -9,6 +9,9 @@
 #include <vector>
 #include <Physics2D.h>
 #include <Body.h>
+#include <motorSFML.h>
+#include <LevelFactory.h>
+#include <Mapa.h>
 
 
 class Level : public State
@@ -37,6 +40,7 @@ protected:
 private:
     static Level* pinstance;
 
+    Mapa* mapa;
     Character **players;
     WeaponSpawner **weaponSpawners;
     std::vector<Bullet*> bullets;

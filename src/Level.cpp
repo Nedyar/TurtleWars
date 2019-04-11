@@ -5,6 +5,11 @@ Level* Level::pinstance = 0;
 
 Level::Level(int nPlayers)
 {
+    motorSFML* motor = motorSFML::Instance();
+    LevelFactory* factory = LevelFactory::Instance();
+    mapa = factory->mapLoader(1);
+
+
     groundTexture.loadFromFile("img/ground.png");
     groundSprite = sf::Sprite(groundTexture);
     groundSprite.setOrigin(groundSprite.getLocalBounds().width/2,groundSprite.getLocalBounds().height/2);
@@ -177,6 +182,7 @@ void Level::draw(sf::RenderWindow &app)
 
     app.draw(groundSprite);
     app.draw(groundBody->dameRect());
+    //mapa->drawSpriteMatrix(app);
 }
 
 void Level::addWeapon(Weapon* weapon)
