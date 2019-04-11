@@ -13,9 +13,9 @@
 class Mapa
 {
     public:
-        Mapa(TiXmlElement* map);
+        Mapa(TiXmlElement* Map);
         ~Mapa();
-        void setGidMatrix(TiXmlElement* map);
+        void setGidMatrix(TiXmlElement* Map);
         void setSpriteMatrix();
         void setBodyMap(TiXmlElement* objLayer);
         void drawSpriteMatrix(sf::RenderWindow &window);

@@ -3,6 +3,7 @@
 Sprite::Sprite(sf::Texture &tex)
 {
     sprite = new sf::Sprite(tex);
+    swapState = false;
 }
 
 Sprite::~Sprite()
@@ -30,8 +31,20 @@ void Sprite::setScale(int x, int y)
     sprite->setScale(x,y);
 }
 
+void Sprite::Swap()
+{
+    swapState = !swapState;
+    sprite->setScale(-1, 1);
+}
+
+bool Sprite::isSwap()
+{
+    return swapState;
+}
 
 sf::Sprite *Sprite::getSprite()
 {
     return sprite;
 }
+
+

@@ -27,7 +27,7 @@ Character::Character(int n)
 
     sprite.setTextureRect(rect);
     sprite.setOrigin(sprite.getLocalBounds().width/2,sprite.getLocalBounds().height/2);
-    sprite.setPosition(XINIT*n,YINIT);
+    sprite.setPosition(XINIT*n+3,YINIT);
 
     armSprite.setTextureRect(rect);
     armSprite.setOrigin(armSprite.getLocalBounds().width/2,armSprite.getLocalBounds().height/2);

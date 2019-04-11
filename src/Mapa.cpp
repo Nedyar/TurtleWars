@@ -1,14 +1,14 @@
 #include "Mapa.h"
 
-Mapa::Mapa(TiXmlElement* map)
+Mapa::Mapa(TiXmlElement* Map)
 {
 
 /*  CARGAR LOS PARAMETROS PARA LA MATRIX Y SPRITES  */
-    map->QueryIntAttribute("width", &cols);
-    map->QueryIntAttribute("height", &rows);
-	map->QueryIntAttribute("tilewidth", &tileWidth);
-	map->QueryIntAttribute("tileheight", &tileHeight);
-    source = map->FirstChildElement("tileset")->Attribute("source");
+    Map->QueryIntAttribute("width", &cols);
+    Map->QueryIntAttribute("height", &rows);
+	Map->QueryIntAttribute("tilewidth", &tileWidth);
+	Map->QueryIntAttribute("tileheight", &tileHeight);
+    source = Map->FirstChildElement("tileset")->Attribute("source");
 
     mGid = new int*[rows];
     for(int i=0; i<rows; ++i)
@@ -20,7 +20,7 @@ Mapa::Mapa(TiXmlElement* map)
         mTilemapSprite[i] = new Sprite*[cols];
 
 
-    TiXmlElement* obj = map->FirstChildElement("objectgroup")->FirstChildElement("object");
+    TiXmlElement* obj = Map->FirstChildElement("objectgroup")->FirstChildElement("object");
     int conta = 0;
 
     do
@@ -38,10 +38,10 @@ Mapa::~Mapa()
     //dtor
 }
 
-void Mapa::setGidMatrix(TiXmlElement* map)
+void Mapa::setGidMatrix(TiXmlElement* Map)
 {
 
-    TiXmlElement* tile = map->FirstChildElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
+    TiXmlElement* tile = Map->FirstChildElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
     int posY = 0, posX = 0, contador = 0, valor = 0;
 
     do
@@ -73,7 +73,7 @@ void Mapa::setBodyMap(TiXmlElement* objLayer)
         obj->QueryFloatAttribute("width", &width);
         obj->QueryFloatAttribute("height", &height);
 
-        bodyMap[conta] = Physics2D::Instance()->createRectangleBody(posX, posY, width, height, 0);
+        bodyMap[conta] = Physics2D::Instance()->createRectangleBody(posX+width/2, posY+height/2, width, height, 0);
         std::cout << "YE QUE PASA" << std::endl;
         conta++;
         obj = obj->NextSiblingElement("object");

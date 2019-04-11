@@ -45,7 +45,7 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape)
 sf::RectangleShape Body::dameRect(){
     sf::RectangleShape Polygon(sf::Vector2f((collideShape.GetVertex(2).x-collideShape.GetVertex(0).x)*MULTIPLIER,(collideShape.GetVertex(2).y-collideShape.GetVertex(0).y)*MULTIPLIER));
     Polygon.setFillColor(sf::Color::Transparent);
-    Polygon.setOutlineThickness(1);
+    Polygon.setOutlineThickness(-1);
     Polygon.setOrigin(Polygon.getSize().x/2,Polygon.getSize().y/2);
     Polygon.setPosition(getPositionX(),getPositionY());
 

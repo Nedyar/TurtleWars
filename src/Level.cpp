@@ -14,7 +14,7 @@ Level::Level(int nPlayers)
     groundSprite = sf::Sprite(groundTexture);
     groundSprite.setOrigin(groundSprite.getLocalBounds().width/2,groundSprite.getLocalBounds().height/2);
     groundSprite.setPosition(groundSprite.getLocalBounds().width/2,600-groundSprite.getLocalBounds().height/2);
-    groundBody = Physics2D::Instance()->createRectangleBody(groundSprite.getPosition().x,groundSprite.getPosition().y,groundSprite.getGlobalBounds().width,groundSprite.getGlobalBounds().height,0);
+    //groundBody = Physics2D::Instance()->createRectangleBody(groundSprite.getPosition().x,groundSprite.getPosition().y,groundSprite.getGlobalBounds().width,groundSprite.getGlobalBounds().height,0);
 
     players = new Character*[nPlayers];
     for (int i = 0; i < nPlayers; i++)
@@ -179,12 +179,12 @@ void Level::draw(sf::RenderWindow &app)
     {
         Character* player = players[i];
         player->draw(app);
-        app.draw(player->getBody()->dameRect());
+        //app.draw(player->getBody()->dameRect());
     }
 
     //app.draw(groundSprite);
     //app.draw(groundBody->dameRect());
-    mapa->drawBodyMap(app);
+    //mapa->drawBodyMap(app);
 }
 
 void Level::addWeapon(Weapon* weapon)

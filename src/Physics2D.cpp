@@ -40,7 +40,8 @@ Body* Physics2D::createRectangleBody(float positionX, float positionY, float wid
         type = b2BodyType::b2_kinematicBody;
 
 
-
+    width-=0.5;
+    height -=0.5;
     shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 

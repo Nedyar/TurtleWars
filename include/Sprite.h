@@ -12,12 +12,15 @@ class Sprite
         void setPosition(int x, int y);
         void setOrigin(int x, int y);
         void setScale(int x, int y);
+        void Swap();
+        bool isSwap();
         sf::Sprite *getSprite();
 
     protected:
 
     private:
         sf::Sprite *sprite;
+        bool swapState;
 };
 
 #endif // SPRITE_H
