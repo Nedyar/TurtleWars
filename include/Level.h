@@ -1,14 +1,16 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
+#include <vector>
 #include <State.h>
 #include <Character.h>
 #include <Bullet.h>
 #include <WeaponSpawner.h>
 #include <Weapon.h>
-#include <vector>
+
 #include <Physics2D.h>
 #include <Body.h>
+
 #include <motorSFML.h>
 #include <LevelFactory.h>
 #include <Mapa.h>

@@ -1,7 +1,7 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#define VEL 15
+const int VEL = 15;
 
 #include <SFML/Graphics.hpp>
 #include <math.h>

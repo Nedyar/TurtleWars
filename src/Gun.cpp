@@ -3,11 +3,14 @@
 
 Gun::Gun(double posx, double posy)
 {
+    facingLeft = false;
+
     texture.loadFromFile("img/pistol.png");
     sprite.setTexture(texture);
+    sprite.setOrigin(texture.getSize().x/8,texture.getSize().y/2);
     sprite.setTextureRect(sf::IntRect(0,0,18,10)); //las medidas de la imagen son 72x10
 
-    setpos(posx, posy);
+    sprite.setPosition(posx,posy);
 
     ammo=7;
 
@@ -26,6 +29,12 @@ Gun::~Gun()
 
 void Gun::update()
 {
+    int xDir = 1;
+    if (facingLeft)
+        xDir = -1;
+
+    sprite.setScale(xDir,1);
+
     if(shootAnim)
     {
         shootAnimation();
@@ -43,11 +52,15 @@ bool Gun::shoot()
     {
         if(!shootAnim) //para que dispare al finalizar la animación de la pistola (hay colddown)
         {
+            int xDir = 0;
+            if (facingLeft)
+                xDir = 180;
+
             ammo--;
             shootAnim=true;
 
             Level* level = Level::instance(0);
-            level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 7 + -3,200));
+            level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 7 + -3 + xDir,200));
 
             clockAnimation.restart();
             return true;

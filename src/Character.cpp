@@ -1,14 +1,10 @@
 #include "Character.h"
 #include <Level.h>
 
-// Will deprecate
-#define XINIT 100
-#define YINIT 200
-
-Character::Character(int n)
+Character::Character(int n, int posx, int posy)
 {
     player = n;
-    weapon = new ShotGun(0,0);
+    weapon = new Gun(0,0);
     posture = 0;
     facingLeft = false;
     jumping = false;
@@ -24,14 +20,14 @@ Character::Character(int n)
     armSprite = sf::Sprite(armTexture);
 
     sf::IntRect rect = sf::IntRect(0,0,32,32);
-
     sprite.setTextureRect(rect);
     sprite.setOrigin(sprite.getLocalBounds().width/2,sprite.getLocalBounds().height/2);
-    sprite.setPosition(XINIT*n,YINIT);
+    sprite.setPosition(posx,posy);
 
+    rect = sf::IntRect(0,0,9,8);
     armSprite.setTextureRect(rect);
     armSprite.setOrigin(armSprite.getLocalBounds().width/2,armSprite.getLocalBounds().height/2);
-    armSprite.setPosition(XINIT*n,YINIT);
+    armSprite.setPosition(posx,posy);
 
     body = Physics2D::Instance()->createRectangleBody(sprite.getPosition().x,sprite.getPosition().y,sprite.getGlobalBounds().width,sprite.getGlobalBounds().height,1);
     body->setFriction(1);
@@ -61,8 +57,7 @@ bool Character::shoot()
 {
     if (weapon != nullptr)
     {
-        weapon->shoot();
-        return true;
+        return weapon->shoot();
     }
     else
         return false;
@@ -111,13 +106,13 @@ bool Character::jump()
 {
     if (!dead && onGround && !jumping)
     {
+        body->getBody()->SetLinearVelocity((b2Vec2(body->getBody()->GetLinearVelocity().x,-JUMP_FORCE)));
         posture = 0;
         standUp();
         fakingDead = false;
         jumping = true;
         yJumpedFrom = body->getPositionY();
         onGround = false;
-        body->getBody()->SetLinearVelocity((b2Vec2(body->getBody()->GetLinearVelocity().x,10)));
     }
 }
 
@@ -173,7 +168,8 @@ void Character::draw(sf::RenderWindow &app)
     app.draw(sprite);
     if (weapon != nullptr)
         weapon->draw(app);
-    app.draw(armSprite);
+    if (!dead && !fakingDead)
+        app.draw(armSprite);
 }
 
 void Character::update()
@@ -207,9 +203,12 @@ void Character::update()
         float str = 1.5;
         int xDir = 1;
         yPos = 0;
-        posture+=0.2;
+        posture += .2;
+
         if (posture >= 8)
+        {
             posture = 0;
+        }
 
         if (facingLeft)
         {
@@ -219,11 +218,6 @@ void Character::update()
         sprite.setScale(xDir,1);
         armSprite.setScale(xDir,1);
         body->getBody()->SetLinearVelocity(b2Vec2(str,body->getBody()->GetLinearVelocity().y));
-    }
-    else if (dead || fakingDead)
-    {
-        yPos = 3;
-        posture = 0;
     }
     else
     {
@@ -235,13 +229,13 @@ void Character::update()
     {
         yPos = 1;
 
-        if (yJumpedFrom-75 < sprite.getPosition().y)
+        if (body->getBody()->GetLinearVelocity().y < 0)
         {
-            if (yJumpedFrom-19 < sprite.getPosition().y)
+            if (body->getBody()->GetLinearVelocity().y < -2.25)
                 posture = 0;
-            else if (yJumpedFrom-38 < sprite.getPosition().y)
+            else if (body->getBody()->GetLinearVelocity().y < -1.5)
                 posture = 1;
-            else if (yJumpedFrom-56 < sprite.getPosition().y)
+            else if (body->getBody()->GetLinearVelocity().y < -0.75)
                 posture = 2;
             else
                 posture = 3;
@@ -255,15 +249,15 @@ void Character::update()
     {
         yPos = 1;
 
-        if (sprite.getPosition().y < yJumpedFrom)
+        if (body->getBody()->GetLinearVelocity().y > 0)
         {
-            if (sprite.getPosition().y < yJumpedFrom-56)
+            if (body->getBody()->GetLinearVelocity().y < 0.75)
                 posture = 4;
-            else if (sprite.getPosition().y < yJumpedFrom-38)
+            else if (body->getBody()->GetLinearVelocity().y < 1.5)
                 posture = 5;
-            else if (sprite.getPosition().y < yJumpedFrom-19)
+            else if (body->getBody()->GetLinearVelocity().y < 2.25)
                 posture = 6;
-            else if (sprite.getPosition().y < yJumpedFrom)
+            else
                 posture = 7;
         }
 
@@ -273,20 +267,72 @@ void Character::update()
         }
     }
 
+    if (dead || fakingDead)
+    {
+        yPos = 3;
+        posture = 0;
+    }
+
     rect = sf::IntRect(32*((int)posture),yPos*32,32,32);
 
     sprite.setTextureRect(rect);
     walking = false;
 
     sprite.setPosition(body->getPositionX(),body->getPositionY());
-    armSprite.setPosition(body->getPositionX(),body->getPositionY());
+
+    int xDir = 1;
+    if (facingLeft)
+    {
+        xDir *= -1;
+    }
+
+    int armPosY = body->getPositionY()+yDifArm;
+    if (crouching)
+        armPosY += 3;
+
+    armSprite.setPosition(body->getPositionX()-xDifArm*xDir,armPosY);
+
+    rect = sf::IntRect(0,0,9,8);
 
     if (weapon != nullptr)
     {
-        if (sliding || crouching)
-            weapon->setPos(sprite.getPosition().x,sprite.getPosition().y+3);
+        rect = sf::IntRect(9,0,9,8);
+
+        //std::cout << typeid(Grenade*).name()  << std::endl;
+        //std::cout << typeid(weapon).name()  << std::endl;
+        int modx = 0;
+        int mody = 0;
+        if (dynamic_cast<ShotGun*>(weapon) != nullptr)
+        {
+            modx = 3;
+            mody = 4.2;
+        }
+        else if (dynamic_cast<Grenade*>(weapon) != nullptr)
+        {
+            modx = 2.5;
+            mody = 4;
+        }
         else
-            weapon->setPos(sprite.getPosition().x,sprite.getPosition().y);
+        {
+            modx = 4;
+            mody = 5;
+        }
+
+        if (facingLeft)
+        {
+            weapon->setFacingLeft(true);
+            modx *= -1;
+        }
+        else
+            weapon->setFacingLeft(false);
+
+        if (crouching)
+            weapon->setPos(sprite.getPosition().x+modx,sprite.getPosition().y+3+mody);
+        else
+            weapon->setPos(sprite.getPosition().x+modx,sprite.getPosition().y+mody);
+
         weapon->update();
     }
+
+    armSprite.setTextureRect(rect);
 }

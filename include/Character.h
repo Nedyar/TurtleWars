@@ -1,6 +1,10 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
+const double JUMP_FORCE = 5;
+const float xDifArm = 3;
+const float yDifArm = 5.5;
+
 #include <Weapon.h>
 #include <Gun.h>
 #include <SFML/Graphics.hpp>
@@ -11,7 +15,7 @@
 class Character
 {
 public:
-    Character(int player);
+    Character(int player, int posx, int posy);
     virtual ~Character();
 
     int getPlayer();

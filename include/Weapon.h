@@ -1,5 +1,6 @@
 #ifndef WEAPON_H
 #define WEAPON_H
+
 #include <SFML/Graphics.hpp>
 #include <Bullet.h>
 #include <vector>
@@ -13,8 +14,10 @@ public:
     virtual void update() = 0;
     virtual void draw(sf::RenderWindow &app) = 0;
     void setPos(int x, int y);
+    void setFacingLeft(bool facing);
 
 protected:
+    bool facingLeft;
     sf::Sprite sprite;
     sf::Texture texture;
 };

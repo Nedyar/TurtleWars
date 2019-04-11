@@ -3,11 +3,15 @@
 
 ShotGun::ShotGun(double posx, double posy)
 {
+    facingLeft = false;
+
     texture.loadFromFile("img/shotgun.png");
     sprite.setTexture(texture);
+    sprite.setOrigin(texture.getSize().x/2,texture.getSize().y/2);
 
     shotGunLoaderTexture.loadFromFile("img/shotgunLoader.png");
     shotGunLoaderSprite.setTexture(shotGunLoaderTexture);
+    shotGunLoaderSprite.setOrigin(shotGunLoaderTexture.getSize().x/4,shotGunLoaderTexture.getSize().y/2);
     shotGunLoaderSprite.setTextureRect(sf::IntRect(0,0,8,8));
 
     ammo=3;
@@ -16,7 +20,7 @@ ShotGun::ShotGun(double posx, double posy)
     shootAnimBack = false;
 
     sprite.setPosition(posx,posy);
-    shotGunLoaderSprite.setPosition(posx+20,posy+14);
+    shotGunLoaderSprite.setPosition(posx+2,posy);
 }
 
 ShotGun::~ShotGun()
@@ -38,39 +42,40 @@ bool ShotGun::reload()
         return false;
 }
 
-void ShotGun::setpos(double posx, double posy)
-{
-    shotGunLoaderSprite.setPosition(posx, posy);
-}
-
 bool ShotGun::shoot()
 {
-
     if (ammo > 0)
     {
         if (!reload()&&!shootAnimBack&&!shootAnim)
         {
+            int xDir = 0;
+            if (facingLeft)
+                xDir = 180;
+
             shooted = true;
             ammo--;
             Level* level = Level::instance(0);
-            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x,sprite.getPosition().y+10,rand() % 6 + 9,100));
-            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x,sprite.getPosition().y+10,rand() % 6 + 3,100));
-            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x,sprite.getPosition().y+10,rand() % 6 + (-3),100));
-            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x,sprite.getPosition().y+10,rand() % 6 + (-9),100));
-            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x,sprite.getPosition().y+10,rand() % 6 + (-15),100));
+            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x/2,sprite.getPosition().y-5.5,(rand() % 6 + 9)+xDir,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x/2,sprite.getPosition().y-5.5,(rand() % 6 + 3)+xDir,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x/2,sprite.getPosition().y-5.5,(rand() % 6 + (-3))+xDir,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x/2,sprite.getPosition().y-5.5,(rand() % 6 + (-9))+xDir,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x/2,sprite.getPosition().y-5.5,(rand() % 6 + (-15))+xDir,100));
             return true;
         }
     }
-    /*else
-    {
-        cout << "Sin municion" << endl;
-    }*/
     return false;
-
 }
 
 void ShotGun::update()
 {
+    int xDir = 1;
+    if (facingLeft)
+        xDir = -1;
+
+    sprite.setScale(xDir,1);
+    shotGunLoaderSprite.setScale(xDir,1);
+
+    shotGunLoaderSprite.setPosition(sprite.getPosition().x+1.8*xDir,sprite.getPosition().y+1.2);
     if(shootAnim)
     {
         shootAnimation();
@@ -85,16 +90,20 @@ void ShotGun::draw(sf::RenderWindow &app)
 
 void ShotGun::shootAnimation()
 {
+    int xDir = 1;
+    if (facingLeft)
+        xDir = -1;
+
     if(clockAnimation.getElapsedTime().asSeconds()<0.25 && shootAnimBack)
     {
         shotGunLoaderSprite.setTextureRect(sf::IntRect(8,0,8,8));
-        setpos(shotGunLoaderSprite.getPosition().x-3, shotGunLoaderSprite.getPosition().y);
+        shotGunLoaderSprite.setPosition(shotGunLoaderSprite.getPosition().x-3*xDir, shotGunLoaderSprite.getPosition().y);
         shootAnimBack=false;
     }
     else if(clockAnimation.getElapsedTime().asSeconds()<0.5 && clockAnimation.getElapsedTime().asSeconds()>0.25 && !shootAnimBack)
     {
         shotGunLoaderSprite.setTextureRect(sf::IntRect(0,0,8,8));
-        setpos(shotGunLoaderSprite.getPosition().x+3, shotGunLoaderSprite.getPosition().y);
+        shotGunLoaderSprite.setPosition(shotGunLoaderSprite.getPosition().x+3*xDir, shotGunLoaderSprite.getPosition().y);
         shootAnim=false;
     }
 }

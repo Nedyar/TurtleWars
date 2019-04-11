@@ -3,9 +3,12 @@
 
 Grenade::Grenade(double posx, double posy)
 {
+    facingLeft = false;
+
     texture.loadFromFile("img/grenade.png");
     sprite.setTexture(texture);
-    sprite.setTextureRect(sf::IntRect(0,0,16,16)); //las medidas de la imagen son 32x16
+    sprite.setOrigin(5,5);
+    sprite.setTextureRect(sf::IntRect(0,0,10,11)); //las medidas de la imagen son 32x16
 
     activated = false;
 
@@ -23,7 +26,7 @@ bool Grenade::activate()
     {
         activated = true;
         grenadeTimer.restart();
-        sprite.setTextureRect(sf::IntRect(16,0,16,16));
+        sprite.setTextureRect(sf::IntRect(10,0,10,11));
         return true;
     }
     else
@@ -32,7 +35,6 @@ bool Grenade::activate()
 
 bool Grenade::shoot()
 {
-
     if (activate())
         return true;
     else
@@ -42,28 +44,33 @@ bool Grenade::shoot()
 bool Grenade::explode()
 {
     Level* level = Level::instance(0);
-    int XSUM = 4;
-    int YSUM = 6;
-    level->addBullet(new Bullet(sprite.getPosition().x+XSUM,sprite.getPosition().y+YSUM,rand() % 45 + (-22.5),75));
-    level->addBullet(new Bullet(sprite.getPosition().x+XSUM,sprite.getPosition().y+YSUM,rand() % 45 + 22.5,75));
-    level->addBullet(new Bullet(sprite.getPosition().x+XSUM,sprite.getPosition().y+YSUM,rand() % 45 + 45+22.5,75));
-    level->addBullet(new Bullet(sprite.getPosition().x+XSUM,sprite.getPosition().y+YSUM,rand() % 45 + 45*2+22.5,75));
-    level->addBullet(new Bullet(sprite.getPosition().x+XSUM,sprite.getPosition().y+YSUM,rand() % 45 + 45*3+22.5,75));
-    level->addBullet(new Bullet(sprite.getPosition().x+XSUM,sprite.getPosition().y+YSUM,rand() % 45 + 45*4+22.5,75));
-    level->addBullet(new Bullet(sprite.getPosition().x+XSUM,sprite.getPosition().y+YSUM,rand() % 45 + 45*5+22.5,75));
-    level->addBullet(new Bullet(sprite.getPosition().x+XSUM,sprite.getPosition().y+YSUM,rand() % 45 + 45*6+22.5,75));
+    level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 45 + (-22.5),75));
+    level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 45 + 22.5,75));
+    level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 45 + 45+22.5,75));
+    level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 45 + 45*2+22.5,75));
+    level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 45 + 45*3+22.5,75));
+    level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 45 + 45*4+22.5,75));
+    level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 45 + 45*5+22.5,75));
+    level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 45 + 45*6+22.5,75));
 
-    return true; //aqui debemos de crear las balas y llamar a destrir esta granada
+    return true;
 }
 
 void Grenade::update()
 {
+    int xDir = 1;
+    if (facingLeft)
+        xDir = -1;
+
+    sprite.setScale(xDir,1);
+
     if (activated && grenadeTimer.getElapsedTime().asSeconds() >= GRENADETIME)
     {
         explode();
         Level* level = Level::instance(0);
         level->removeWeapon(this);
         activated = false;
+        delete this;
     }
 }
 

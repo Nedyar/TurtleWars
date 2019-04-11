@@ -31,7 +31,8 @@ WeaponSpawner::~WeaponSpawner()
     //dtor
 }
 
-Body* WeaponSpawner::getBody() {
+Body* WeaponSpawner::getBody()
+{
     return body;
 }
 
@@ -69,15 +70,15 @@ bool WeaponSpawner::spawnWeapon()
     switch (type)
     {
     case 1: // Gun
-        weaponSpawned = new Gun(platformSprite.getPosition().x, platformSprite.getPosition().y);
+        weaponSpawned = new Gun(platformSprite.getPosition().x, platformSprite.getPosition().y-10);
         return true;
 
     case 2: // Grenade
-        weaponSpawned = new Grenade(platformSprite.getPosition().x, platformSprite.getPosition().y-15);
+        weaponSpawned = new Grenade(platformSprite.getPosition().x, platformSprite.getPosition().y-10);
         return true;
 
     case 3: // Shotgun
-        weaponSpawned = new ShotGun(platformSprite.getPosition().x, platformSprite.getPosition().y-25);
+        weaponSpawned = new ShotGun(platformSprite.getPosition().x, platformSprite.getPosition().y-10);
         return true;
     }
     return false;

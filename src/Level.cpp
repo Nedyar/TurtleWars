@@ -19,7 +19,7 @@ Level::Level(int nPlayers)
     players = new Character*[nPlayers];
     for (int i = 0; i < nPlayers; i++)
     {
-        Character* player = new Character(i+1);
+        Character* player = new Character(i+1, 100*(i+1), 200);
         players[i] = player;
     }
 
@@ -160,7 +160,7 @@ void Level::draw(sf::RenderWindow &app)
     for (int i = 0; i < 3; i++)
     {
         weaponSpawners[i]->draw(app);
-        app.draw(weaponSpawners[i]->getBody()->dameRect());
+        //app.draw(weaponSpawners[i]->getBody()->dameRect());
     }
 
     for (int i = 0; i < weapons.size(); i++)
@@ -177,11 +177,11 @@ void Level::draw(sf::RenderWindow &app)
     {
         Character* player = players[i];
         player->draw(app);
-        app.draw(player->getBody()->dameRect());
+        //app.draw(player->getBody()->dameRect());
     }
 
     app.draw(groundSprite);
-    app.draw(groundBody->dameRect());
+    //app.draw(groundBody->dameRect());
     //mapa->drawSpriteMatrix(app);
 }
 

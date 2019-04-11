@@ -16,7 +16,6 @@ public:
     void draw(sf::RenderWindow &app) override;
 
     void shootAnimation();
-    void setpos(double posx, double posy);
 
     sf::Sprite shotGunLoaderSprite;
     sf::Texture shotGunLoaderTexture;
