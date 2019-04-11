@@ -15,9 +15,21 @@ Mapa::Mapa(TiXmlElement* map)
         mGid[i] = new int[cols];
 
 
-    mTilemapSprite = new sf::Sprite**[rows];
+    mTilemapSprite = new Sprite**[rows];
     for(int i=0; i<rows; ++i)
-        mTilemapSprite[i] = new sf::Sprite*[cols];
+        mTilemapSprite[i] = new Sprite*[cols];
+
+
+    TiXmlElement* obj = map->FirstChildElement("objectgroup")->FirstChildElement("object");
+    int conta = 0;
+
+    do
+    {
+        conta++;
+        obj = obj->NextSiblingElement("object");
+    }while(obj);
+
+    bodyMap = new Body*[conta];
 
 }
 
@@ -25,7 +37,6 @@ Mapa::~Mapa()
 {
     //dtor
 }
-
 
 void Mapa::setGidMatrix(TiXmlElement* map)
 {
@@ -48,14 +59,33 @@ void Mapa::setGidMatrix(TiXmlElement* map)
 
 }
 
+void Mapa::setBodyMap(TiXmlElement* objLayer)
+{
+    TiXmlElement* obj = objLayer->FirstChildElement("object");
+    float posY = 0.0, posX = 0.0, height = 0.0, width = 0.0;
+    int conta = 0;
+
+    do
+    {
+
+        obj->QueryFloatAttribute("x", &posX);
+        obj->QueryFloatAttribute("y", &posY);
+        obj->QueryFloatAttribute("width", &width);
+        obj->QueryFloatAttribute("height", &height);
+
+        bodyMap[conta] = Physics2D::Instance()->createRectangleBody(posX, posY, width, height, 0);
+        std::cout << "YE QUE PASA" << std::endl;
+        conta++;
+        obj = obj->NextSiblingElement("object");
+    }while(obj);
+
+
+}
+
 void Mapa::setSpriteMatrix()
 {
 
-    sf::Texture *tex = new sf::Texture();
-    std::cout << source << std::endl;
-    if (!tex->loadFromFile(source)){exit(0);}
-    std::cout << "juju" << std::endl;
-
+    Texture *tex = new Texture(source);
 
     for(int i=0; i<rows; ++i)
     {
@@ -69,8 +99,8 @@ void Mapa::setSpriteMatrix()
 
             if(gid > 0)
             {
-                mTilemapSprite[i][j] = new sf::Sprite(*tex);
-                mTilemapSprite[i][j]->setTextureRect(sf::IntRect(col*tileWidth, row*tileHeight, tileWidth, tileHeight));
+                mTilemapSprite[i][j] = new Sprite(*tex->getTexture());
+                mTilemapSprite[i][j]->setTextureRect(col*tileWidth, row*tileHeight, tileWidth, tileHeight);
                 mTilemapSprite[i][j]->setPosition(j*32, i*32);
             }
             else
@@ -89,11 +119,23 @@ void Mapa::drawSpriteMatrix(sf::RenderWindow &window)
         for(int j=0; j<cols; ++j)
         {
             if(mTilemapSprite[i][j] != NULL)
-                motor->draw(window, mTilemapSprite[i][j]);
+                motor->draw(window, mTilemapSprite[i][j]->getSprite());
                 //window.draw( *mTilemapSprite[i][j] );
         }
     }
 }
+
+void Mapa::drawBodyMap(sf::RenderWindow &window)
+{
+    //motorSFML* motor = motorSFML::Instance();
+
+    for(int i=0; i<2; ++i)
+    {
+                //motor->draw(window, bodyMap[i]->dameRect());
+                window.draw( bodyMap[i]->dameRect() );
+    }
+}
+
 
 /** GETERS **/
 
@@ -112,7 +154,7 @@ int **Mapa::getmGid()
     return mGid;
 }
 
-sf::Sprite ***Mapa::getmTilemapSprite()
+Sprite ***Mapa::getmTilemapSprite()
 {
     return mTilemapSprite;
 }

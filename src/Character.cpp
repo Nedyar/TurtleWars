@@ -2,8 +2,8 @@
 #include <Level.h>
 
 // Will deprecate
-#define XINIT 100
-#define YINIT 200
+#define XINIT 480
+#define YINIT 100
 
 Character::Character(int n)
 {

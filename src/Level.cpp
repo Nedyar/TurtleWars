@@ -157,6 +157,8 @@ void Level::update()
 
 void Level::draw(sf::RenderWindow &app)
 {
+    mapa->drawSpriteMatrix(app);
+
     for (int i = 0; i < 3; i++)
     {
         weaponSpawners[i]->draw(app);
@@ -180,9 +182,9 @@ void Level::draw(sf::RenderWindow &app)
         app.draw(player->getBody()->dameRect());
     }
 
-    app.draw(groundSprite);
-    app.draw(groundBody->dameRect());
-    //mapa->drawSpriteMatrix(app);
+    //app.draw(groundSprite);
+    //app.draw(groundBody->dameRect());
+    mapa->drawBodyMap(app);
 }
 
 void Level::addWeapon(Weapon* weapon)
