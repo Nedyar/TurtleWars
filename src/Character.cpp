@@ -8,7 +8,7 @@
 Character::Character(int n)
 {
     player = n;
-    weapon = new Grenade(0,0);
+    weapon = new ShotGun(0,0);
     posture = 0;
     facingLeft = false;
     jumping = false;
@@ -126,8 +126,12 @@ bool Character::crouch()
     {
         fakingDead = false;
         crouching = true;
-        if (walking)
+        double vel = body->getBody()->GetLinearVelocity().x;
+        if (vel != 0)
         {
+            int str = vel*2;
+
+            body->getBody()->ApplyForce(b2Vec2(str,0),body->getBody()->GetPosition(),true);
             sliding = true;
             posture = 1;
         }
@@ -189,7 +193,6 @@ void Character::update()
         }
         sprite.setScale(xDir,1);
         posture = 0;
-        body->getBody()->ApplyForce(b2Vec2(str,0),body->getBody()->GetPosition(),true);
     }
     else if (crouching)
     {
@@ -198,7 +201,7 @@ void Character::update()
     }
     else if (walking)
     {
-        float str = 0.5;
+        float str = 1.5;
         int xDir = 1;
         yPos = 0;
         posture+=0.2;
@@ -211,7 +214,7 @@ void Character::update()
             str *= -1;
         }
         sprite.setScale(xDir,1);
-        body->getBody()->ApplyForce(b2Vec2(str,0),body->getBody()->GetPosition(),true);
+        body->getBody()->SetLinearVelocity(b2Vec2(str,body->getBody()->GetLinearVelocity().y));
     }
     else if (dead || fakingDead)
     {

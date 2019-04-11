@@ -5,7 +5,10 @@ Bullet::Bullet(double posx, double posy, double ang, double maxLen)
 
     bulletTexture.loadFromFile("img/bullet.png");
     bulletSprite.setTexture(bulletTexture);
+    sf::IntRect rect = sf::IntRect(46,0,50,32);
+    bulletSprite.setTextureRect(rect);
     bulletSprite.setPosition(posx, posy);
+    bulletSprite.setRotation(ang);
 
     posiniX=posx;
     posiniY=posy;
