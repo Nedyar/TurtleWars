@@ -109,15 +109,16 @@ void Character::walk(bool right)
 
 bool Character::jump()
 {
-    /*if (!dead && onGround && !jumping)
+    if (!dead && onGround && !jumping)
     {
         posture = 0;
         standUp();
         fakingDead = false;
         jumping = true;
-        yJumpedFrom = sprite.getPosition().y;
+        yJumpedFrom = body->getPositionY();
         onGround = false;
-    }*/
+        body->getBody()->SetLinearVelocity((b2Vec2(body->getBody()->GetLinearVelocity().x,10)));
+    }
 }
 
 bool Character::crouch()
@@ -192,6 +193,8 @@ void Character::update()
             str *= -1;
         }
         sprite.setScale(xDir,1);
+        armSprite.setScale(xDir,1);
+
         posture = 0;
     }
     else if (crouching)
@@ -214,6 +217,7 @@ void Character::update()
             str *= -1;
         }
         sprite.setScale(xDir,1);
+        armSprite.setScale(xDir,1);
         body->getBody()->SetLinearVelocity(b2Vec2(str,body->getBody()->GetLinearVelocity().y));
     }
     else if (dead || fakingDead)
@@ -251,17 +255,16 @@ void Character::update()
     {
         yPos = 1;
 
-        if (sprite.getPosition().y < YINIT)
+        if (sprite.getPosition().y < yJumpedFrom)
         {
-            if (sprite.getPosition().y < YINIT-56)
+            if (sprite.getPosition().y < yJumpedFrom-56)
                 posture = 4;
-            else if (sprite.getPosition().y < YINIT-38)
+            else if (sprite.getPosition().y < yJumpedFrom-38)
                 posture = 5;
-            else if (sprite.getPosition().y < YINIT-19)
+            else if (sprite.getPosition().y < yJumpedFrom-19)
                 posture = 6;
-            else if (sprite.getPosition().y < YINIT)
+            else if (sprite.getPosition().y < yJumpedFrom)
                 posture = 7;
-            //sprite.move(0,5);
         }
 
         else

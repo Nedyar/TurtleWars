@@ -57,24 +57,41 @@
 		<Unit filename="include/Grenade.h" />
 		<Unit filename="include/Gun.h" />
 		<Unit filename="include/Level.h" />
+		<Unit filename="include/LevelFactory.h" />
+		<Unit filename="include/Mapa.h" />
 		<Unit filename="include/Physics2D.h" />
 		<Unit filename="include/ShotGun.h" />
 		<Unit filename="include/State.h" />
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="include/WeaponSpawner.h" />
 		<Unit filename="include/World.h" />
+		<Unit filename="include/motorSFML.h" />
+		<Unit filename="mapa/Test1.tsx" />
+		<Unit filename="mapa/levelFactory.xml" />
+		<Unit filename="mapa/preview.png" />
+		<Unit filename="mapa/test2.tmx" />
+		<Unit filename="mapa/test3.tmx" />
 		<Unit filename="src/Body.cpp" />
 		<Unit filename="src/Bullet.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/Grenade.cpp" />
 		<Unit filename="src/Gun.cpp" />
 		<Unit filename="src/Level.cpp" />
+		<Unit filename="src/LevelFactory.cpp" />
+		<Unit filename="src/Mapa.cpp" />
 		<Unit filename="src/Physics2D.cpp" />
 		<Unit filename="src/ShotGun.cpp" />
 		<Unit filename="src/State.cpp" />
 		<Unit filename="src/Weapon.cpp" />
 		<Unit filename="src/WeaponSpawner.cpp" />
 		<Unit filename="src/World.cpp" />
+		<Unit filename="src/motorSFML.cpp" />
+		<Unit filename="xml/tinystr.cpp" />
+		<Unit filename="xml/tinystr.h" />
+		<Unit filename="xml/tinyxml.cpp" />
+		<Unit filename="xml/tinyxml.h" />
+		<Unit filename="xml/tinyxmlerror.cpp" />
+		<Unit filename="xml/tinyxmlparser.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
