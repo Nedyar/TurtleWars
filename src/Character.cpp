@@ -4,7 +4,7 @@
 Character::Character(int n, int posx, int posy)
 {
     player = n;
-    weapon = new Grenade(0,0);
+    takeWeapon(new Grenade(0,0));
     xPosture = 0;
     facingLeft = false;
     jumping = false;
@@ -74,7 +74,7 @@ bool Character::dropWeapon()
     {
         Level* level = Level::instance(0);
         level->addWeapon(weapon);
-
+        weapon->setOwner(nullptr);
         weapon = nullptr;
         return true;
     }
@@ -83,8 +83,9 @@ bool Character::dropWeapon()
 
 bool Character::takeWeapon(Weapon* weapon)
 {
-    if (weapon == nullptr)
+    if (this->weapon == nullptr)
     {
+        weapon->setOwner(this);
         this->weapon = weapon;
         return true;
     }
