@@ -4,8 +4,8 @@
 #include <State.h>
 #include <Level.h>
 
-#define WIDTH 900
-#define HEIGHT 600
+#define WIDTH 960
+#define HEIGHT 640
 
 State* currentState;
 
@@ -23,8 +23,9 @@ void handleEvents(sf::RenderWindow &app)
         // Close window : exit
         if (event.type == sf::Event::Closed)
             app.close();
+
+        currentState->handleEvents();
     }
-    currentState->handleEvents();
 }
 
 void update()
@@ -47,6 +48,7 @@ int main()
     // Create the main window
     sf::RenderWindow app(sf::VideoMode(WIDTH, HEIGHT), "TurtleWars");
     app.setFramerateLimit(60);
+    app.setKeyRepeatEnabled(false);
 
     setState(Level::instance(1));
 

@@ -4,11 +4,11 @@
 Character::Character(int n, int posx, int posy)
 {
     player = n;
-    weapon = new Gun(0,0);
-    posture = 0;
+    weapon = new Grenade(0,0);
+    xPosture = 0;
     facingLeft = false;
     jumping = false;
-    onGround = true;
+    onGround = false;
     dead = false;
     fakingDead = false;
 
@@ -91,15 +91,20 @@ bool Character::takeWeapon(Weapon* weapon)
     return false;
 }
 
-void Character::walk(bool right)
+void Character::startWalking(bool left)
 {
     if (!dead)
     {
         fakingDead = false;
         walking = true;
-        if (walking && !sliding)
-            facingLeft = !right;
+
+        facingLeft = left;
     }
+}
+
+void Character::stopWalking()
+{
+    walking = false;
 }
 
 bool Character::jump()
@@ -107,29 +112,26 @@ bool Character::jump()
     if (!dead && onGround && !jumping)
     {
         body->getBody()->SetLinearVelocity((b2Vec2(body->getBody()->GetLinearVelocity().x,-JUMP_FORCE)));
-        posture = 0;
+        xPosture = 0;
         standUp();
         fakingDead = false;
         jumping = true;
-        yJumpedFrom = body->getPositionY();
         onGround = false;
     }
 }
 
 bool Character::crouch()
 {
-    if (!dead && !crouching && !jumping && onGround)
+    if (!dead && !crouching)
     {
         fakingDead = false;
         crouching = true;
+
         double vel = body->getBody()->GetLinearVelocity().x;
         if (vel != 0)
         {
-            int str = vel*2;
-
-            body->getBody()->ApplyForce(b2Vec2(str,0),body->getBody()->GetPosition(),true);
             sliding = true;
-            posture = 1;
+            xPosture = 1;
         }
 
         return true;
@@ -174,41 +176,41 @@ void Character::draw(sf::RenderWindow &app)
 
 void Character::update()
 {
-    sf::IntRect rect;
-    int yPos;
+    if (body->getBody()->GetLinearVelocity().y != 0)
+        onGround = false;
+    else
+        onGround = true;
 
     if (sliding)
     {
-        float str = 1;
-        int xDir = 1;
-        yPos = 2;
-
-        if (facingLeft)
-        {
-            xDir *= -1;
-            str *= -1;
-        }
-        sprite.setScale(xDir,1);
-        armSprite.setScale(xDir,1);
-
-        posture = 0;
+        xPosture = 0;
+        yPosture = 2;
     }
     else if (crouching)
     {
-        posture = 1;
-        yPos = 2;
+        xPosture = 1;
+        yPosture = 2;
+
+        int xDir = 1;
+        if (facingLeft)
+        {
+            xDir *= -1;
+        }
+        sprite.setScale(xDir,1);
+        armSprite.setScale(xDir,1);
     }
     else if (walking)
     {
-        float str = 1.5;
-        int xDir = 1;
-        yPos = 0;
-        posture += .2;
+        yPosture = 0;
+        xPosture += .2;
 
-        if (posture >= 8)
+        if (xPosture >= 8)
         {
-            posture = 0;
+            xPosture = 0;
         }
+
+        int xDir = 1;
+        float str = 1.5;
 
         if (facingLeft)
         {
@@ -217,71 +219,60 @@ void Character::update()
         }
         sprite.setScale(xDir,1);
         armSprite.setScale(xDir,1);
+
         body->getBody()->SetLinearVelocity(b2Vec2(str,body->getBody()->GetLinearVelocity().y));
     }
     else
     {
-        yPos = 0;
-        posture = 0;
+        yPosture = 0;
+        xPosture = 0;
     }
 
-    if (jumping)
+    if (jumping && !crouching)
     {
-        yPos = 1;
+        yPosture = 1;
 
         if (body->getBody()->GetLinearVelocity().y < 0)
         {
             if (body->getBody()->GetLinearVelocity().y < -2.25)
-                posture = 0;
+                xPosture = 0;
             else if (body->getBody()->GetLinearVelocity().y < -1.5)
-                posture = 1;
+                xPosture = 1;
             else if (body->getBody()->GetLinearVelocity().y < -0.75)
-                posture = 2;
+                xPosture = 2;
             else
-                posture = 3;
+                xPosture = 3;
         }
         else
         {
             jumping = false;
         }
     }
-    else if (!onGround)
+    else if (!onGround && !crouching)
     {
-        yPos = 1;
+        yPosture = 1;
 
         if (body->getBody()->GetLinearVelocity().y > 0)
         {
             if (body->getBody()->GetLinearVelocity().y < 0.75)
-                posture = 4;
+                xPosture = 4;
             else if (body->getBody()->GetLinearVelocity().y < 1.5)
-                posture = 5;
+                xPosture = 5;
             else if (body->getBody()->GetLinearVelocity().y < 2.25)
-                posture = 6;
+                xPosture = 6;
             else
-                posture = 7;
-        }
-
-        else
-        {
-            onGround = true;
+                xPosture = 7;
         }
     }
 
     if (dead || fakingDead)
     {
-        yPos = 3;
-        posture = 0;
+        yPosture = 3;
+        xPosture = 0;
     }
 
-    rect = sf::IntRect(32*((int)posture),yPos*32,32,32);
-
-    sprite.setTextureRect(rect);
-    walking = false;
-    //actualiza posicion del sprite conforme al body
-    sprite.setPosition(body->getPositionX(),body->getPositionY());
-
     int xDir = 1;
-    if (facingLeft)
+    if (facingLeft && !sliding)
     {
         xDir *= -1;
     }
@@ -290,15 +281,10 @@ void Character::update()
     if (crouching)
         armPosY += 3;
 
-    armSprite.setPosition(body->getPositionX()-xDifArm*xDir,armPosY);
-
-    rect = sf::IntRect(0,0,9,8);
-
-    sprite.setRotation(body->getAngle());
-
+    int intX = 0;
     if (weapon != nullptr)
     {
-        rect = sf::IntRect(9,0,9,8);
+        intX = 9;
 
         //std::cout << typeid(Grenade*).name()  << std::endl;
         //std::cout << typeid(weapon).name()  << std::endl;
@@ -320,7 +306,7 @@ void Character::update()
             mody = 5;
         }
 
-        if (facingLeft)
+        if (facingLeft && !sliding)
         {
             weapon->setFacingLeft(true);
             modx *= -1;
@@ -336,5 +322,13 @@ void Character::update()
         weapon->update();
     }
 
-    armSprite.setTextureRect(rect);
+    sf::IntRect bodyRect = sf::IntRect(32*((int)xPosture),yPosture*32,32,32);
+    sprite.setTextureRect(bodyRect);
+    sprite.setPosition(body->getPositionX(),body->getPositionY());
+    sprite.setRotation(body->getAngle());
+
+    sf::IntRect armRect = sf::IntRect(intX,0,9,8);
+    armSprite.setTextureRect(armRect);
+    armSprite.setPosition(body->getPositionX()-xDifArm*xDir,armPosY);
+    armSprite.setRotation(body->getAngle());
 }

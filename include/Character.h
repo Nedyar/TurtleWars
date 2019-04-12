@@ -23,7 +23,8 @@ public:
     bool shoot();
     bool hasWeapon();
 
-    void walk(bool right);
+    void stopWalking();
+    void startWalking(bool right);
     bool jump();
     bool crouch();
     void standUp();
@@ -44,7 +45,8 @@ private:
     int player;
     Weapon* weapon;
 
-    float posture;
+    float xPosture;
+    int yPosture;
 
     bool walking;
     bool facingLeft;
@@ -57,7 +59,6 @@ private:
 
     Body* body;
 
-    double yJumpedFrom;
     sf::Sprite sprite;
     sf::Texture texture;
     sf::Sprite armSprite;

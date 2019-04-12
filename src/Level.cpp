@@ -19,7 +19,7 @@ Level::Level(int nPlayers)
     players = new Character*[nPlayers];
     for (int i = 0; i < nPlayers; i++)
     {
-        Character* player = new Character(i+1, 100*(i+1), 200);
+        Character* player = new Character(i+1, 100*(i+1)+30, 0);
         players[i] = player;
     }
 
@@ -27,7 +27,7 @@ Level::Level(int nPlayers)
 
     for (int i = 0; i < 3; i++)
     {
-        weaponSpawners[i] = new WeaponSpawner(i%3+1,32*(i+2),600-groundSprite.getLocalBounds().height);
+        weaponSpawners[i] = new WeaponSpawner(i%3+1,32*(i+2),386);
     }
 }
 
@@ -51,9 +51,13 @@ void Level::handleEvents()
 
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        player->walk(true);
+        player->startWalking(false);
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        player->walk(false);
+        player->startWalking(true);
+    else
+        player->stopWalking();
+
+
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         player->jump();

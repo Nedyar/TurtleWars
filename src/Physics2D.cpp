@@ -21,9 +21,6 @@ Physics2D::Physics2D()
     //bod = new Body();
 }
 
-
-
-
 Body* Physics2D::createRectangleBody(float positionX, float positionY, float width, float height, int pType)
 {
 
@@ -33,7 +30,7 @@ Body* Physics2D::createRectangleBody(float positionX, float positionY, float wid
 
 
 
-        type = b2BodyType::b2_staticBody;
+    type = b2BodyType::b2_staticBody;
     if(pType == 1)
         type = b2BodyType::b2_dynamicBody;
     if(pType == 2)
@@ -50,7 +47,8 @@ Body* Physics2D::createRectangleBody(float positionX, float positionY, float wid
     return body;
 }
 
-Body* Physics2D::createCharacterBody(float positionX, float positionY){
+Body* Physics2D::createCharacterBody(float positionX, float positionY)
+{
     b2BodyType type;
     b2Vec2  spawn;
     b2PolygonShape shape;
@@ -71,7 +69,8 @@ Body* Physics2D::createCharacterBody(float positionX, float positionY){
     return body;
 }
 
- Body* Physics2D::createSpawnBody(float positionX, float positionY){
+Body* Physics2D::createSpawnBody(float positionX, float positionY)
+{
     b2BodyType type;
     b2Vec2  spawn;
     b2PolygonShape shape;
@@ -93,9 +92,10 @@ Body* Physics2D::createCharacterBody(float positionX, float positionY){
 
     Body *body = new Body(type, spawn, shape, density, friction, restitution, group, avoidRotate);
     return body;
- }
+}
 
-  Body* Physics2D::createGunBody(float positionX, float positionY){
+Body* Physics2D::createGunBody(float positionX, float positionY)
+{
     b2BodyType type;
     b2Vec2  spawn;
     b2PolygonShape shape;
@@ -114,10 +114,7 @@ Body* Physics2D::createCharacterBody(float positionX, float positionY){
 
     Body *body = new Body(type, spawn, shape, density, friction, restitution, group, avoidRotate);
     return body;
- }
-
-
-
+}
 
 void Physics2D::updateWorld()
 {
