@@ -33,7 +33,7 @@ class Mapa
         int rows;
         int tileWidth;
         int tileHeight;
-        const char* source;
+        Texture* tex;
         int **mGid;
         Sprite ***mTilemapSprite;
         Body** bodyMap;

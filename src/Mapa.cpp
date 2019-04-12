@@ -8,7 +8,8 @@ Mapa::Mapa(TiXmlElement* Map)
     Map->QueryIntAttribute("height", &rows);
 	Map->QueryIntAttribute("tilewidth", &tileWidth);
 	Map->QueryIntAttribute("tileheight", &tileHeight);
-    source = Map->FirstChildElement("tileset")->Attribute("source");
+
+    tex = new Texture(Map->FirstChildElement("tileset")->Attribute("source"));
 
     mGid = new int*[rows];
     for(int i=0; i<rows; ++i)
@@ -49,7 +50,7 @@ void Mapa::setGidMatrix(TiXmlElement* Map)
         posY = contador/cols;
         posX = contador - (posY * cols);
         if( tile->QueryIntAttribute("gid", &valor) == TIXML_NO_ATTRIBUTE)
-            valor = 0;
+            valor = -1;
 
         mGid[posY][posX] = valor;
         ++contador;
@@ -74,7 +75,6 @@ void Mapa::setBodyMap(TiXmlElement* objLayer)
         obj->QueryFloatAttribute("height", &height);
 
         bodyMap[conta] = Physics2D::Instance()->createRectangleBody(posX+width/2, posY+height/2, width, height, 0);
-        std::cout << "YE QUE PASA" << std::endl;
         conta++;
         obj = obj->NextSiblingElement("object");
     }while(obj);
@@ -85,19 +85,15 @@ void Mapa::setBodyMap(TiXmlElement* objLayer)
 void Mapa::setSpriteMatrix()
 {
 
-    Texture *tex = new Texture(source);
-
     for(int i=0; i<rows; ++i)
     {
         for(int j=0; j<cols; ++j)
         {
             int gid = mGid[i][j] - 1;
-            if(gid < 1)
-                gid = 1;
             int row = gid/tileWidth;
             int col = gid - (row * tileHeight);
 
-            if(gid > 0)
+            if(gid > -1)
             {
                 mTilemapSprite[i][j] = new Sprite(*tex->getTexture());
                 mTilemapSprite[i][j]->setTextureRect(col*tileWidth, row*tileHeight, tileWidth, tileHeight);
