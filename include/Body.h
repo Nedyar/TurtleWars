@@ -12,16 +12,20 @@ class Body
 {
     public:
         Body(b2BodyType type,b2Vec2 spawn, b2CircleShape shape);
-        Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape);
+        Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density = 1.f, float friction = 0.1f, float restitution = 0.f, int group = 1 , bool avoidRotate = false);
         ~Body();
 
         //FUNCTIONS
         b2Body* getBody();//will deprecate
         void setDensity(float density);
-        void setFriction(float friction);
+
+        b2Body* setFriction(b2Body* body, float friction);
+
         void setRestitution(float restitution);
         float getPositionX();
         float getPositionY();
+        float getAngle();
+        void avoidRotate();
 
         void drawCollider();//Will deprecated
 
@@ -33,6 +37,7 @@ class Body
     protected:
 
     private:
+        float rad2deg(float rad);
          //VARIABLES
         World *world = World::Instance();
         b2Body * bod = nullptr;

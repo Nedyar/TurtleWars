@@ -23,7 +23,8 @@ WeaponSpawner::WeaponSpawner(int t, double x, double y)
 
     weaponSpawned = nullptr;
 
-    body = Physics2D::Instance()->createRectangleBody(x,y,platformTexture.getSize().x,platformTexture.getSize().y,-1);
+    //body = Physics2D::Instance()->createRectangleBody(x,y,platformTexture.getSize().x,platformTexture.getSize().y,2);
+    body = Physics2D::Instance()->createSpawnBody(x,y);
 }
 
 WeaponSpawner::~WeaponSpawner()
