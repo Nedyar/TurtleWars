@@ -51,8 +51,11 @@ Mapa* LevelFactory::mapLoader(int seleccion)
     Mapa* miMapa = new Mapa(mapElement);
     miMapa->setGidMatrix(mapElement);
 
-    /**  AHORA CREMAOS LOS SPRITES (Por un motivo curioso no puedo pasarlo al constr.)  **/
+    /**  AHORA CREMAOS LOS SPRITES **/
     miMapa->setSpriteMatrix();
+
+    /**  AHORA LOS BODYMAPS  **/
+    miMapa->setBodyMap(mapElement->FirstChildElement("objectgroup"));
 
     return miMapa;
 

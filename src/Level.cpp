@@ -10,11 +10,11 @@ Level::Level(int nPlayers)
     mapa = factory->mapLoader(1);
 
 
-    groundTexture.loadFromFile("img/ground.png");
-    groundSprite = sf::Sprite(groundTexture);
-    groundSprite.setOrigin(groundSprite.getLocalBounds().width/2,groundSprite.getLocalBounds().height/2);
-    groundSprite.setPosition(groundSprite.getLocalBounds().width/2,600-groundSprite.getLocalBounds().height/2);
-    groundBody = Physics2D::Instance()->createRectangleBody(groundSprite.getPosition().x,groundSprite.getPosition().y,groundSprite.getGlobalBounds().width,groundSprite.getGlobalBounds().height,0);
+    //groundTexture.loadFromFile("img/ground.png");
+    //groundSprite = sf::Sprite(groundTexture);
+    //groundSprite.setOrigin(groundSprite.getLocalBounds().width/2,groundSprite.getLocalBounds().height/2);
+    //groundSprite.setPosition(groundSprite.getLocalBounds().width/2,600-groundSprite.getLocalBounds().height/2);
+    //groundBody = Physics2D::Instance()->createRectangleBody(groundSprite.getPosition().x,groundSprite.getPosition().y,groundSprite.getGlobalBounds().width,groundSprite.getGlobalBounds().height,0);
 
     players = new Character*[nPlayers];
     for (int i = 0; i < nPlayers; i++)
@@ -157,6 +157,8 @@ void Level::update()
 
 void Level::draw(sf::RenderWindow &app)
 {
+    mapa->drawSpriteMatrix(app);
+
     for (int i = 0; i < 3; i++)
     {
         weaponSpawners[i]->draw(app);
@@ -180,9 +182,6 @@ void Level::draw(sf::RenderWindow &app)
         //app.draw(player->getBody()->dameRect());
     }
 
-    app.draw(groundSprite);
-    //app.draw(groundBody->dameRect());
-    //mapa->drawSpriteMatrix(app);
 }
 
 void Level::addWeapon(Weapon* weapon)
