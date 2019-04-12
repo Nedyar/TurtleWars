@@ -4,7 +4,7 @@
 Character::Character(int n, int posx, int posy)
 {
     player = n;
-    takeWeapon(new Gun(0,0));
+    takeWeapon(new Grenade(0,0));
     xPosture = 0;
     facingLeft = false;
     jumping = false;
