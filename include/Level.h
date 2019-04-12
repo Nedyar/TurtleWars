@@ -43,7 +43,9 @@ private:
     static Level* pinstance;
 
     Mapa* mapa;
+    int nCharacters;
     Character **players;
+    int nWeaponSpawners;
     WeaponSpawner **weaponSpawners;
     std::vector<Bullet*> bullets;
     std::vector<Weapon*> weapons;

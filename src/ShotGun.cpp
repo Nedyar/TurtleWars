@@ -48,18 +48,21 @@ bool ShotGun::shoot()
     {
         if (!reload()&&!shootAnimBack&&!shootAnim)
         {
-            int xDir = 0;
-            if (facingLeft)
-                xDir = 180;
+            int xOrientation = 0;
+            int xDirection = 1;
+            if (facingLeft) {
+                xOrientation = 180;
+                xDirection = -1;
+            }
 
             shooted = true;
             ammo--;
             Level* level = Level::instance(0);
-            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x/2,sprite.getPosition().y-5.5,(rand() % 6 + 9)+xDir,100));
-            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x/2,sprite.getPosition().y-5.5,(rand() % 6 + 3)+xDir,100));
-            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x/2,sprite.getPosition().y-5.5,(rand() % 6 + (-3))+xDir,100));
-            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x/2,sprite.getPosition().y-5.5,(rand() % 6 + (-9))+xDir,100));
-            level->addBullet(new Bullet(sprite.getPosition().x+texture.getSize().x/2,sprite.getPosition().y-5.5,(rand() % 6 + (-15))+xDir,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+(sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + 9)+xOrientation,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+(sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + 3)+xOrientation,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+(sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + (-3))+xOrientation,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+(sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + (-9))+xOrientation,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+(sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + (-15))+xOrientation,100));
             return true;
         }
     }
