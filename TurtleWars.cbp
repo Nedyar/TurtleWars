@@ -61,7 +61,9 @@
 		<Unit filename="include/Mapa.h" />
 		<Unit filename="include/Physics2D.h" />
 		<Unit filename="include/ShotGun.h" />
+		<Unit filename="include/Sprite.h" />
 		<Unit filename="include/State.h" />
+		<Unit filename="include/Texture.h" />
 		<Unit filename="include/Weapon.h" />
 		<Unit filename="include/WeaponSpawner.h" />
 		<Unit filename="include/World.h" />
@@ -81,7 +83,9 @@
 		<Unit filename="src/Mapa.cpp" />
 		<Unit filename="src/Physics2D.cpp" />
 		<Unit filename="src/ShotGun.cpp" />
+		<Unit filename="src/Sprite.cpp" />
 		<Unit filename="src/State.cpp" />
+		<Unit filename="src/Texture.cpp" />
 		<Unit filename="src/Weapon.cpp" />
 		<Unit filename="src/WeaponSpawner.cpp" />
 		<Unit filename="src/World.cpp" />

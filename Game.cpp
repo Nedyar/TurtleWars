@@ -37,7 +37,6 @@ void draw(sf::RenderWindow &app)
     // Clear screen
     app.clear(sf::Color(200,200,200,255));
     // Draw the sprite
-    //player->draw(app);
     currentState->draw(app);
     // Update the window
     app.display();
