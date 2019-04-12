@@ -25,7 +25,7 @@ class Body
         float getPositionX();
         float getPositionY();
         float getAngle();
-        void avoidRotate();
+        void avoidRotate(); // esto creo que no funcionaria
 
         void drawCollider();//Will deprecated
 

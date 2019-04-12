@@ -67,6 +67,8 @@ void Grenade::update()
     if (activated && grenadeTimer.getElapsedTime().asSeconds() >= GRENADETIME)
     {
         explode();
+        if (owner != nullptr)
+            owner->dropWeapon();
         Level* level = Level::instance(0);
         level->removeWeapon(this);
         activated = false;
