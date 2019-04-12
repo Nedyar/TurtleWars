@@ -23,6 +23,10 @@ b2Body* World::CreateBody(b2BodyDef &bodDef){//COmprobar que esta funcion devulv
 
 }
 
+void World::destroyBody(b2Body* body){
+   // world2D.DestroyBody(body);
+}
+
 void World::update(){
     world2D->Step((1.f/60.f), 8, 8);//8, 8 is the iterations (change to 12 fro test)
     world2D->ClearForces();

@@ -32,28 +32,92 @@ Body* Physics2D::createRectangleBody(float positionX, float positionY, float wid
     b2PolygonShape shape;
 
 
+
+        type = b2BodyType::b2_staticBody;
     if(pType == 1)
         type = b2BodyType::b2_dynamicBody;
-    if(pType == 0)
-        type = b2BodyType::b2_staticBody;
-    if(pType == -1)
+    if(pType == 2)
         type = b2BodyType::b2_kinematicBody;
 
 
-
+    //Create a shape whith arguments dimension/2/100
     shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
-        std::cout <<"Width: " << width << std::endl;
-    std::cout << "Height: " << height << std::endl;
-    std::cout << "X: " << positionX << std::endl;
-    std::cout << "Y: " << positionY << std::endl;
     /* shape.SetAsBox(sprite.getGlobalBounds().width/DIVIDER/2,sprite.getGlobalBounds().height/DIVIDER/2);
     spawn = b2Vec2({sprite.getPosition().x/DIVIDER,(sprite.getPosition().y/DIVIDER)});*/
 
     Body *body = new Body(type, spawn, shape);
     return body;
 }
+
+Body* Physics2D::createCharacterBody(float positionX, float positionY){
+    b2BodyType type;
+    b2Vec2  spawn;
+    b2PolygonShape shape;
+
+    float width = 10.f;
+    float height = 30.f;
+    float density = 1.f;
+    float friction = 0.1f;
+    float restitution = 0.f;
+    int group = -1;
+    bool avoidRotate = true;
+
+    type = b2BodyType::b2_dynamicBody;
+    shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
+    spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
+
+    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, avoidRotate);
+    return body;
+}
+
+ Body* Physics2D::createSpawnBody(float positionX, float positionY){
+    b2BodyType type;
+    b2Vec2  spawn;
+    b2PolygonShape shape;
+
+    float width = 30.f;
+    float height = 20.f;
+    float density = 1.f;
+    float friction = 0.1f;
+    float restitution = 0.f;
+    int group = -1;
+    bool avoidRotate = false;
+
+
+    type = b2BodyType::b2_kinematicBody;
+    shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
+    //ajuste en posY porque el centro del spawn esta en la mitd de la base
+    spawn = b2Vec2({positionX/DIVIDER,((positionY-(height/2.f+2))/DIVIDER)});
+
+
+    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, avoidRotate);
+    return body;
+ }
+
+  Body* Physics2D::createGunBody(float positionX, float positionY){
+    b2BodyType type;
+    b2Vec2  spawn;
+    b2PolygonShape shape;
+
+    float width = 10.f;
+    float height = 10.f;
+    float density = 1.f;
+    float friction = 0.1f;
+    float restitution = 0.f;
+    int group = -1;
+    bool avoidRotate = false;
+
+    type = b2BodyType::b2_dynamicBody;
+    shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
+    spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
+
+    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, avoidRotate);
+    return body;
+ }
+
+
 
 
 void Physics2D::updateWorld()

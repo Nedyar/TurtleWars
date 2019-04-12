@@ -12,7 +12,11 @@ class Physics2D
 {
     public:
         static Physics2D* Instance();
-        Body* createRectangleBody(float positionX, float positionY, float width, float height, int pType = 1);
+        Body* createRectangleBody(float positionX, float positionY, float width, float height, int pType = 0);
+
+        Body* createCharacterBody(float positionX, float positionY);
+        Body* createSpawnBody(float positionX, float positionY);
+        Body* createGunBody(float positionX, float positionY);
         void updateWorld();
 
         //~Physics2D();

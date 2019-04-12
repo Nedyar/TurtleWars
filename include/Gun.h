@@ -4,6 +4,8 @@
 #include <Weapon.h>
 
 
+
+
 class Gun : public Weapon
 {
 public:
@@ -23,6 +25,8 @@ private:
     int ammo;
     sf::Clock clockAnimation;
     bool shootAnim;
+
+
 };
 
 #endif // GUN_H

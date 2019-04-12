@@ -7,6 +7,8 @@ Gun::Gun(double posx, double posy)
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0,0,18,10)); //las medidas de la imagen son 72x10
 
+
+
     setpos(posx, posy);
 
     ammo=7;
@@ -35,6 +37,7 @@ void Gun::update()
 void Gun::draw(sf::RenderWindow &app)
 {
     app.draw(sprite);
+//    app.draw(body.dameRec());
 }
 
 bool Gun::shoot()

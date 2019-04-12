@@ -33,8 +33,8 @@ Character::Character(int n)
     armSprite.setOrigin(armSprite.getLocalBounds().width/2,armSprite.getLocalBounds().height/2);
     armSprite.setPosition(XINIT*n,YINIT);
 
-    body = Physics2D::Instance()->createRectangleBody(sprite.getPosition().x,sprite.getPosition().y,sprite.getGlobalBounds().width,sprite.getGlobalBounds().height,1);
-    body->setFriction(1);
+    //body = Physics2D::Instance()->createRectangleBody(sprite.getPosition().x,sprite.getPosition().y,sprite.getGlobalBounds().width,sprite.getGlobalBounds().height,1);
+    body = Physics2D::Instance()->createCharacterBody(sprite.getPosition().x, sprite.getPosition().y);
 }
 
 Character::~Character()
@@ -277,8 +277,11 @@ void Character::update()
 
     sprite.setTextureRect(rect);
     walking = false;
-
+    //actualiza posicion del sprite conforme al body
     sprite.setPosition(body->getPositionX(),body->getPositionY());
+    sprite.setRotation(body->getAngle());
+
+
     armSprite.setPosition(body->getPositionX(),body->getPositionY());
 
     if (weapon != nullptr)

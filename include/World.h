@@ -8,6 +8,7 @@ class World
     public:
         static World* Instance();
         b2Body* CreateBody(b2BodyDef&);
+        void destroyBody(b2Body* body);
         void update();
         //~World();
     protected:
