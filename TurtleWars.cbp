@@ -49,8 +49,15 @@
 		</Linker>
 		<Unit filename="Game.cpp" />
 		<Unit filename="img/arm.png" />
+		<Unit filename="img/bullet.png" />
+		<Unit filename="img/grenade.png" />
 		<Unit filename="img/ground.png" />
 		<Unit filename="img/move.png" />
+		<Unit filename="img/pistol.png" />
+		<Unit filename="img/popupPad.png" />
+		<Unit filename="img/shotgun.png" />
+		<Unit filename="img/shotgunLoader.png" />
+		<Unit filename="img/spawnerBall.png" />
 		<Unit filename="include/Body.h" />
 		<Unit filename="include/Bullet.h" />
 		<Unit filename="include/Character.h" />

@@ -5,6 +5,9 @@ Level* Level::pinstance = 0;
 
 Level::Level(int nPlayers)
 {
+    nCharacters = nPlayers;
+    nWeaponSpawners = 3;
+
     motorSFML* motor = motorSFML::Instance();
     LevelFactory* factory = LevelFactory::Instance();
     mapa = factory->mapLoader(1);
@@ -23,11 +26,11 @@ Level::Level(int nPlayers)
         players[i] = player;
     }
 
-    weaponSpawners = new WeaponSpawner*[3];
+    weaponSpawners = new WeaponSpawner*[nWeaponSpawners];
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < nWeaponSpawners; i++)
     {
-        weaponSpawners[i] = new WeaponSpawner(i%3+1,32*(i+2),386);
+        weaponSpawners[i] = new WeaponSpawner(i%3+1,32*(i+2),384);
     }
 }
 
@@ -128,13 +131,13 @@ void Level::handleEvents()
 
 void Level::update()
 {
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < nCharacters; i++)
     {
         Character* player = players[i];
         player->update();
     }
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < nWeaponSpawners; i++)
     {
         weaponSpawners[i]->update();
     }
@@ -163,7 +166,7 @@ void Level::draw(sf::RenderWindow &app)
 {
     mapa->drawSpriteMatrix(app);
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < nWeaponSpawners; i++)
     {
         weaponSpawners[i]->draw(app);
         //app.draw(weaponSpawners[i]->getBody()->dameRect());
@@ -179,7 +182,7 @@ void Level::draw(sf::RenderWindow &app)
         bullets.at(i)->draw(app);
     }
 
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < nCharacters; i++)
     {
         Character* player = players[i];
         player->draw(app);

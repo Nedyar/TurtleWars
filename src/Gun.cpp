@@ -52,15 +52,18 @@ bool Gun::shoot()
     {
         if(!shootAnim) //para que dispare al finalizar la animación de la pistola (hay colddown)
         {
-            int xDir = 0;
-            if (facingLeft)
-                xDir = 180;
+            int xOrientation = 0;
+            int xDirection = 1;
+            if (facingLeft) {
+                xOrientation = 180;
+                xDirection = -1;
+            }
 
             ammo--;
             shootAnim=true;
 
             Level* level = Level::instance(0);
-            level->addBullet(new Bullet(sprite.getPosition().x,sprite.getPosition().y,rand() % 7 + -3 + xDir,200));
+            level->addBullet(new Bullet(sprite.getPosition().x+(sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-3.1,rand() % 7 + -3 + xOrientation,200));
 
             clockAnimation.restart();
             return true;
