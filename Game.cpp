@@ -4,8 +4,8 @@
 #include <State.h>
 #include <Level.h>
 
-#define WIDTH 900
-#define HEIGHT 600
+#define WIDTH 960
+#define HEIGHT 640
 
 State* currentState;
 
@@ -48,7 +48,7 @@ int main()
     sf::RenderWindow app(sf::VideoMode(WIDTH, HEIGHT), "TurtleWars");
     app.setFramerateLimit(60);
 
-    setState(Level::instance(1));
+    setState(Level::instance(4));
 
     // Start the game loop
     while (app.isOpen())

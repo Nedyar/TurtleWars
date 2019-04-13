@@ -5,3 +5,6 @@
 <level id="2">
 	<mapa maptmx="./mapa/test3.tmx"/>
 </level>
+<level id="3">
+	<mapa maptmx="./mapa/albaMap.tmx"/>
+</level>

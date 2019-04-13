@@ -7,8 +7,8 @@ Level::Level(int nPlayers)
 {
     motorSFML* motor = motorSFML::Instance();
     LevelFactory* factory = LevelFactory::Instance();
-    mapa = factory->mapLoader(1);
-
+    mapa = factory->mapLoader(3);
+    players = factory->characterLoader(3, nPlayers);
 
     //groundTexture.loadFromFile("img/ground.png");
     //groundSprite = sf::Sprite(groundTexture);
@@ -16,12 +16,6 @@ Level::Level(int nPlayers)
     //groundSprite.setPosition(groundSprite.getLocalBounds().width/2,600-groundSprite.getLocalBounds().height/2);
     //groundBody = Physics2D::Instance()->createRectangleBody(groundSprite.getPosition().x,groundSprite.getPosition().y,groundSprite.getGlobalBounds().width,groundSprite.getGlobalBounds().height,0);
 
-    players = new Character*[nPlayers];
-    for (int i = 0; i < nPlayers; i++)
-    {
-        Character* player = new Character(i+1, 100*(i+1), 200);
-        players[i] = player;
-    }
 
     weaponSpawners = new WeaponSpawner*[3];
 
@@ -175,7 +169,7 @@ void Level::draw(sf::RenderWindow &app)
         bullets.at(i)->draw(app);
     }
 
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 4; i++)
     {
         Character* player = players[i];
         player->draw(app);
