@@ -10,8 +10,9 @@
 
 #include <Physics2D.h>
 #include <Body.h>
+#include <Collidable.h>
 
-class WeaponSpawner : public Collitionable
+class WeaponSpawner : public Collidable
 {
 public:
     WeaponSpawner(int type, double x, double y);
@@ -23,6 +24,8 @@ public:
     bool spawnWeapon();
 
     Body* getBody();
+
+    int getId() override;
 
 private:
 

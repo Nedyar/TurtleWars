@@ -3,7 +3,7 @@
 
 WeaponSpawner::WeaponSpawner(int t, double x, double y)
 {
-
+    id = 2;
     if (t < 1 || t > 3)
         t = 1;
     type=t;
@@ -85,4 +85,8 @@ bool WeaponSpawner::spawnWeapon()
         return true;
     }
     return false;
+}
+
+int WeaponSpawner::getId() {
+    return id;
 }

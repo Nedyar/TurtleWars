@@ -2,18 +2,18 @@
 
 class Weapon;
 
-#include <Collitionable.h>
 #include <Gun.h>
 #include <SFML/Graphics.hpp>
 #include <Physics2D.h>
 #include <Box2D.h>
+#include <Collidable.h>
 
 const double JUMP_FORCE = 5;
 const float xDifArm = 3;
 const float yDifArm = 5.5;
 
 
-class Character
+class Character : public Collidable
 {
 public:
     Character(int player, int posx, int posy);
@@ -39,6 +39,8 @@ public:
     void update();
 
     Body* getBody();
+
+    int getId() override;
 
 protected:
 

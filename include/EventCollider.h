@@ -2,10 +2,9 @@
 #define EVENTCOLLIDER_H
 #include <Box2D/Box2D.h>
 
-#include <Collitionable.h>
 #include <Character.h>
 #include <WeaponSpawner.h>
-
+#include <Collidable.h>
 
 
 

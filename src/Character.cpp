@@ -6,7 +6,7 @@ using namespace std;
 
 Character::Character(int n, int posx, int posy)
 {
-
+    id = 1;
     player = n;
     takeWeapon(new Grenade(0,0));
     xPosture = 0;
@@ -340,4 +340,8 @@ void Character::update()
     armSprite.setTextureRect(armRect);
     armSprite.setPosition(body->getPositionX()-xDifArm*xDir,armPosY);
     //armSprite.setRotation(body->getAngle());
+}
+
+int Character::getId() {
+    return id;
 }
