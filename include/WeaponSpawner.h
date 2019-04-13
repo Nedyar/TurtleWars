@@ -1,9 +1,9 @@
-#pragma once
+#ifndef WEAPONSPAWNER_H
+#define WEAPONSPAWNER_H
 
 #include <SFML/Graphics.hpp>
 
-class Weapon;
-
+#include <Weapon.h>
 #include <Gun.h>
 #include <Grenade.h>
 #include <ShotGun.h>
@@ -30,9 +30,9 @@ public:
 
 private:
 
-    int type;
+    int type = 0;
 
-    Weapon* weaponSpawned;
+    Weapon* weaponSpawned = nullptr;
 
     Body* body;
 
@@ -44,4 +44,4 @@ private:
     sf::Sprite ballSprite2;
 };
 
-#include <Weapon.h>
+#endif // WEAPONSPAWNER_H

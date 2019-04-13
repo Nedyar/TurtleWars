@@ -6,7 +6,7 @@ class Collidable
     public:
         virtual int getId() = 0;
     protected:
-        int id;
+        int id = 0;
 };
 
 #endif // COLLIDABLE_H

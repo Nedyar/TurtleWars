@@ -19,8 +19,8 @@ public:
     Character* getOwner();
 
 protected:
-    Character* owner;
-    bool facingLeft;
+    Character* owner = nullptr;
+    bool facingLeft = false;
     sf::Sprite sprite;
     sf::Texture texture;
 };

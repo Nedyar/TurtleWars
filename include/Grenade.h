@@ -18,13 +18,13 @@ public:
     void update() override;
     void draw(sf::RenderWindow &app) override;
 
-    sf::Clock grenadeTimer;
-
 protected:
 
 private:
-    double grenadeTime;
-    bool activated;
+    double grenadeTime = 0;
+    bool activated = false;
+
+    sf::Clock grenadeTimer;
 };
 
 #endif // GRENADE_H

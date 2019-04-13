@@ -34,13 +34,41 @@ void EventCollider::BeginContact(b2Contact* contact)
             {
             case 2: // WeaponSpawner
                 player->setWeaponSpawnerOver((WeaponSpawner*)objB);
+                //player->setWeaponSpawnerOver(nullptr);
                 break;
             case 3: // Weapon
                 break;
             case 4: // Bullet
                 break;
-            default:
+            }
+        }
+    if (objB)
+        switch (objB->getId())
+        {
+
+        }
+}
+
+void EventCollider::EndContact(b2Contact* contact)
+{
+
+    Collidable * objA = (Collidable*)contact->GetFixtureA()->GetBody()->GetUserData();
+    Collidable * objB = (Collidable*)contact->GetFixtureB()->GetBody()->GetUserData();
+
+    if (objA)
+        if (objA->getId() == 1)
+        //cout << "juju" << endl;
+        {
+            Character* player = (Character*) objA;
+            switch (objB->getId())
+            {
+            case 2: // WeaponSpawner
                 player->setWeaponSpawnerOver(nullptr);
+                //player->setWeaponSpawnerOver(nullptr);
+                break;
+            case 3: // Weapon
+                break;
+            case 4: // Bullet
                 break;
             }
         }

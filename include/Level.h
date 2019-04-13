@@ -42,11 +42,11 @@ protected:
 private:
     static Level* pinstance;
 
-    Mapa* mapa;
-    int nCharacters;
-    Character **players;
-    int nWeaponSpawners;
-    WeaponSpawner **weaponSpawners;
+    Mapa* mapa = nullptr;
+    int nCharacters = 0;
+    Character **players = nullptr;
+    int nWeaponSpawners = 0;
+    WeaponSpawner **weaponSpawners = nullptr;
     std::vector<Bullet*> bullets;
     std::vector<Weapon*> weapons;
 

@@ -13,6 +13,8 @@ class EventCollider : public b2ContactListener
     public:
         static EventCollider* Instance();
         void BeginContact(b2Contact* contact);
+        void EndContact(b2Contact* contact);
+
 
     private:
         static EventCollider* instance;

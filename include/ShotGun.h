@@ -16,18 +16,17 @@ public:
     void draw(sf::RenderWindow &app) override;
 
     void shootAnimation();
+protected:
+
+private:
+    int ammo = 0;
+    bool shooted = false;
 
     sf::Sprite shotGunLoaderSprite;
     sf::Texture shotGunLoaderTexture;
     sf::Clock clockAnimation;
-    bool shootAnim;
-    bool shootAnimBack;
-
-protected:
-
-private:
-    int ammo;
-    bool shooted;
+    bool shootAnim = false;
+    bool shootAnimBack = false;
 };
 
 #endif // SHOTGUN_H

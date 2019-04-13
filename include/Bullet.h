@@ -15,18 +15,16 @@ public:
     void update();
     void draw(sf::RenderWindow &app);
 
-    double maxLength;
-    double posiniX;
-    double posiniY;
-    sf::Sprite bulletSprite;
-    sf::Texture bulletTexture;
 protected:
 
 private:
-
-    double angle;
-
-    double vel;
+    double maxLength = 0;
+    double posiniX = 0;
+    double posiniY = 0;
+    sf::Sprite bulletSprite;
+    sf::Texture bulletTexture;
+    double angle = 0;
+    double vel = 0;
 };
 
 #endif // BULLET_H

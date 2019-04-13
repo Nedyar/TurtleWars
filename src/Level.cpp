@@ -12,6 +12,7 @@ Level::Level(int nPlayers)
     LevelFactory* factory = LevelFactory::Instance();
 
     mapa = factory->mapLoader(3);
+
     players = factory->characterLoader(3, nPlayers);
 
     weaponSpawners = new WeaponSpawner*[nWeaponSpawners];
@@ -42,7 +43,6 @@ Level::~Level()
 Level* Level::instance(int nPlayers = 1)
 {
     if (pinstance == 0) {
-        pinstance = (Level*)malloc(sizeof(Level));
         pinstance = new Level(nPlayers);
     }
     return pinstance;
@@ -114,8 +114,10 @@ void Level::update()
 {
     for (int i = 0; i < nCharacters; i++)
     {
+        cout << "Empezamos update de personaje: " << i+1 << endl;
         Character* player = players[i];
         player->update();
+        cout << "Teminamos update de personaje: " << i+1 << endl;
     }
 
     for (int i = 0; i < nWeaponSpawners; i++)

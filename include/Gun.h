@@ -19,9 +19,9 @@ public:
 protected:
 
 private:
-    int ammo;
+    int ammo = 0;
     sf::Clock clockAnimation;
-    bool shootAnim;
+    bool shootAnim = false;
 };
 
 #endif // GUN_H

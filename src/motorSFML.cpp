@@ -15,7 +15,7 @@ motorSFML::~motorSFML()
 motorSFML* motorSFML::Instance()
 {
     if(pInstance == 0) {
-        pInstance = (motorSFML*)malloc(sizeof(motorSFML));
+//        pInstance = (motorSFML*)malloc(sizeof(motorSFML));
         pInstance = new motorSFML();
     }
 

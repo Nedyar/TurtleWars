@@ -16,7 +16,6 @@ LevelFactory::~LevelFactory()
 LevelFactory* LevelFactory::Instance()
 {
     if(pInstance == 0) {
-        pInstance = (LevelFactory*)malloc(sizeof(LevelFactory));
         pInstance = new LevelFactory();
     }
     return pInstance;
@@ -46,8 +45,7 @@ Mapa* LevelFactory::mapLoader(int seleccion)
     }while(level);
 
     /**  CREAMOS EL OBJ MAPA Y METEMOS LOS GIDs  **/
-    Mapa* miMapa = (Mapa*)malloc(sizeof(Mapa));
-    miMapa = new Mapa(mapElement);
+    Mapa* miMapa = new Mapa(mapElement);
     miMapa->setGidMatrix(mapElement);
 
     /**  AHORA CREMAOS LOS SPRITES **/
@@ -86,6 +84,7 @@ Character** LevelFactory::characterLoader(int seleccion, int nPlayers)
     {
         characterElement->QueryFloatAttribute("x", &posX);
         characterElement->QueryFloatAttribute("y", &posY);
+
         players[i] = (Character*)malloc(sizeof(Character));
         players[i] = new Character(i+1, posX, posY);
 

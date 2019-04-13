@@ -8,11 +8,16 @@ Character::Character(int n, int posx, int posy)
 {
     id = 1;
     player = n;
-    takeWeapon();
     xPosture = 0;
+    yPosture = 0;
+    weapon = nullptr;
+    weaponSpawnerOver = nullptr;
+    walking = false;
     facingLeft = false;
     jumping = false;
     onGround = false;
+    crouching = false;
+    sliding = false;
     dead = false;
     fakingDead = false;
 
@@ -103,6 +108,8 @@ bool Character::takeWeapon()
 
 void Character::setWeaponSpawnerOver(WeaponSpawner* newWS) {
     weaponSpawnerOver = newWS;
+    if (weaponSpawnerOver == nullptr)
+        delete weaponSpawnerOver;
 }
 
 void Character::startWalking(bool left)
@@ -165,7 +172,6 @@ void Character::standUp()
 
 void Character::die()
 {
-    cout << dead << endl;
     fakingDead = false;
     dropWeapon();
     dead = true;
@@ -297,7 +303,6 @@ void Character::update()
         armPosY += 3;
 
     int intX = 0;
-
     if (weapon != nullptr)
     {
         intX = 9;

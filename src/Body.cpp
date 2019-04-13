@@ -29,7 +29,6 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
 
     bod->SetFixedRotation(avoidRotate);
 
-
 }
 
 
@@ -120,13 +119,6 @@ float Body::getAngle(){
     float pi = 3.14;
     return rad / pi * 180;
 }
-
-
-
-
-
-
-
 
 
 Body::~Body()

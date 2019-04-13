@@ -19,8 +19,6 @@ World::World()
 {
     world2D = new b2World(b2Vec2(0.f,9.8f));
     world2D->SetContactListener(EventCollider::Instance());
-
-
 }
 
 b2Body* World::CreateBody(b2BodyDef &bodDef){//COmprobar que esta funcion devulve un puntero

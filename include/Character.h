@@ -47,21 +47,21 @@ public:
 protected:
 
 private:
-    int player;
-    Weapon* weapon;
-    WeaponSpawner* weaponSpawnerOver;
+    int player = 0;
+    Weapon* weapon = nullptr;
+    WeaponSpawner* weaponSpawnerOver = nullptr;
 
-    float xPosture;
-    int yPosture;
+    float xPosture = 0;
+    int yPosture = 0;
 
-    bool walking;
-    bool facingLeft;
-    bool jumping;
-    bool onGround;
-    bool crouching;
-    bool sliding;
-    bool dead;
-    bool fakingDead;
+    bool walking = false;
+    bool facingLeft = false;
+    bool jumping = false;
+    bool onGround = false;
+    bool crouching = false;
+    bool sliding = false;
+    bool dead = false;
+    bool fakingDead = false;
 
     Body* body;
 
