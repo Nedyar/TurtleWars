@@ -65,6 +65,7 @@ void WeaponSpawner::draw(sf::RenderWindow &app)
     if (weaponSpawned != nullptr)
         weaponSpawned->draw(app);
     app.draw(ballSprite2);
+    cout << weaponSpawned << endl;
 }
 
 bool WeaponSpawner::spawnWeapon()
@@ -89,6 +90,7 @@ bool WeaponSpawner::spawnWeapon()
 Weapon* WeaponSpawner::takeWeapon() {
     Weapon* returned = weaponSpawned;
     weaponSpawned = nullptr;
+    clock.restart();
     return returned;
 }
 

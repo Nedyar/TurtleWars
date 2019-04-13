@@ -114,10 +114,8 @@ void Level::update()
 {
     for (int i = 0; i < nCharacters; i++)
     {
-        cout << "Empezamos update de personaje: " << i+1 << endl;
         Character* player = players[i];
         player->update();
-        cout << "Teminamos update de personaje: " << i+1 << endl;
     }
 
     for (int i = 0; i < nWeaponSpawners; i++)

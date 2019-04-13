@@ -93,20 +93,27 @@ bool Character::dropWeapon()
 
 bool Character::takeWeapon()
 {
-    if (weapon == nullptr && weaponSpawnerOver != nullptr)
+    if (weapon == nullptr)
     {
-        Weapon* newWeapon = weaponSpawnerOver->takeWeapon();
+        Weapon* newWeapon;
+        //if weapon_en_suelo != nullptr
+        if (weaponSpawnerOver != nullptr)
+        {
+            newWeapon = weaponSpawnerOver->takeWeapon();
+        }
 
-        if (newWeapon != nullptr) {
+        if (newWeapon != nullptr)
+        {
             newWeapon->setOwner(this);
             weapon = newWeapon;
-        return true;
+            return true;
         }
     }
     return false;
 }
 
-void Character::setWeaponSpawnerOver(WeaponSpawner* newWS) {
+void Character::setWeaponSpawnerOver(WeaponSpawner* newWS)
+{
     weaponSpawnerOver = newWS;
     if (weaponSpawnerOver == nullptr)
         delete weaponSpawnerOver;
@@ -354,6 +361,7 @@ void Character::update()
     //armSprite.setRotation(body->getAngle());
 }
 
-int Character::getId() {
+int Character::getId()
+{
     return id;
 }
