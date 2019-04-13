@@ -2,28 +2,10 @@
 
 #define MULTIPLIER 100.f
 
-///Create default body
-Body::Body(b2BodyType type,b2Vec2 spawn, b2CircleShape shape)
-{
 
-    b2BodyDef bodDef;
-    b2FixtureDef fixDef;
-    bodDef.type = type;
-    bodDef.position = spawn;
-    //Create body
-    bod = world->CreateBody(bodDef);
-
-    //Propertis of collider
-    fixDef.shape = &shape;
-    fixDef.density = 1.f;
-    fixDef.friction = 0.1f;
-    fixDef.restitution = 0.0f;
-    fix = bod->CreateFixture(&fixDef);
-
-}
 
 ///Create a body whith a properties
-Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction,float restitution, int group, bool avoidRotate)
+Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction,float restitution, int group, bool sensor,  bool avoidRotate)
 {
 
     collideShape = shape;//save a shape
@@ -36,11 +18,8 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     //Create body
     bod = world->CreateBody(bodDef);
 
-
-    //PHYSIS PROPERTIE
     fixDef.filter.groupIndex = group;
-
-
+    fixDef.isSensor = sensor;
 
     fixDef.shape = &shape;
     fixDef.density = density;
@@ -50,7 +29,10 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
 
     bod->SetFixedRotation(avoidRotate);
 
+
 }
+
+
 
 
 ///Return a SFML rectangle to graw collider in window
@@ -122,9 +104,12 @@ float Body::getPositionY(){
 
 }
 
-void Body::avoidRotate(){
-    bod->SetAngularVelocity(0.f);//aboid rotating
+
+void Body::setUserData(void* userData){
+    bod->SetUserData(userData);
 }
+
+
 
 float Body::getAngle(){
     return rad2deg(bod->GetAngle());

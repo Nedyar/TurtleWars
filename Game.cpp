@@ -52,7 +52,7 @@ int main()
     app.setFramerateLimit(60);
     app.setKeyRepeatEnabled(false);
 
-    setState(Level::instance(4));
+    setState(Level::instance(1));
 
     // Start the game loop
     while (app.isOpen())

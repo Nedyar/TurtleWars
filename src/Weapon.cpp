@@ -16,3 +16,4 @@ void Weapon::setOwner(Character* newOwner) {
 Character* Weapon::getOwner() {
     return owner;
 }
+

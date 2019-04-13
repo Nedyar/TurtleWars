@@ -6,6 +6,7 @@ using namespace std;
 
 Character::Character(int n, int posx, int posy)
 {
+
     player = n;
     takeWeapon(new Grenade(0,0));
     xPosture = 0;
@@ -33,6 +34,7 @@ Character::Character(int n, int posx, int posy)
     armSprite.setPosition(posx,posy);
 
     body = Physics2D::Instance()->createCharacterBody(sprite.getPosition().x, sprite.getPosition().y);
+    body->setUserData(this);
 }
 
 Character::~Character()
@@ -156,6 +158,7 @@ void Character::standUp()
 
 void Character::die()
 {
+    cout << dead << endl;
     fakingDead = false;
     dropWeapon();
     dead = true;

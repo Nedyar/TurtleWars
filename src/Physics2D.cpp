@@ -29,6 +29,13 @@ Body* Physics2D::createRectangleBody(float positionX, float positionY, float wid
     b2PolygonShape shape;
 
 
+    float density = 1.f;
+    float friction = 3.1f;
+    float restitution = 0.f;
+    int group = 0;
+    bool sensor = false;
+    bool avoidRotate = true;
+
 
     type = b2BodyType::b2_staticBody;
     if(pType == 1)
@@ -43,7 +50,9 @@ Body* Physics2D::createRectangleBody(float positionX, float positionY, float wid
     /* shape.SetAsBox(sprite.getGlobalBounds().width/DIVIDER/2,sprite.getGlobalBounds().height/DIVIDER/2);
     spawn = b2Vec2({sprite.getPosition().x/DIVIDER,(sprite.getPosition().y/DIVIDER)});*/
 
-    Body *body = new Body(type, spawn, shape);
+
+
+    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, sensor, avoidRotate);
     return body;
 }
 
@@ -59,13 +68,14 @@ Body* Physics2D::createCharacterBody(float positionX, float positionY)
     float friction = 0.1f;
     float restitution = 0.f;
     int group = -1;
+    bool sensor = false;
     bool avoidRotate = true;
 
     type = b2BodyType::b2_dynamicBody;
     shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
-    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, avoidRotate);
+    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, sensor, avoidRotate);
     return body;
 }
 
@@ -80,7 +90,8 @@ Body* Physics2D::createSpawnBody(float positionX, float positionY)
     float density = 1.f;
     float friction = 0.1f;
     float restitution = 0.f;
-    int group = -1;
+    int group = 0;
+    bool sensor = true;
     bool avoidRotate = false;
 
 
@@ -90,7 +101,8 @@ Body* Physics2D::createSpawnBody(float positionX, float positionY)
     spawn = b2Vec2({positionX/DIVIDER,((positionY-(height/2.f+2))/DIVIDER)});
 
 
-    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, avoidRotate);
+
+    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, sensor, avoidRotate);
     return body;
 }
 
@@ -105,14 +117,15 @@ Body* Physics2D::createGunBody(float positionX, float positionY)
     float density = 1.f;
     float friction = 0.1f;
     float restitution = 0.f;
-    int group = -1;
+    int group = 0;
+    bool sensor = false;
     bool avoidRotate = false;
 
     type = b2BodyType::b2_dynamicBody;
     shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
-    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, avoidRotate);
+    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, sensor, avoidRotate);
     return body;
 }
 

@@ -11,7 +11,7 @@
 #include <Physics2D.h>
 #include <Body.h>
 
-class WeaponSpawner
+class WeaponSpawner : public Collitionable
 {
 public:
     WeaponSpawner(int type, double x, double y);
