@@ -9,7 +9,7 @@ class Texture
     public:
         Texture(const char* rutaTex);
         ~Texture();
-        sf::Texture *getTexture();
+        sf::Texture* getTexture();
 
     protected:
 

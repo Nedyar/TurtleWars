@@ -71,6 +71,7 @@ bool ShotGun::shoot()
 
 void ShotGun::update()
 {
+    cout << "Empezamos update de shotgun" << endl;
     int xDir = 1;
     if (facingLeft)
         xDir = -1;

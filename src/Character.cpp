@@ -1,5 +1,8 @@
 #include "Character.h"
 #include <Level.h>
+#include <typeindex>
+#include <iostream>
+using namespace std;
 
 Character::Character(int n, int posx, int posy)
 {
@@ -29,7 +32,6 @@ Character::Character(int n, int posx, int posy)
     armSprite.setOrigin(armSprite.getLocalBounds().width/2,armSprite.getLocalBounds().height/2);
     armSprite.setPosition(posx,posy);
 
-    //body = Physics2D::Instance()->createRectangleBody(sprite.getPosition().x,sprite.getPosition().y,sprite.getGlobalBounds().width,sprite.getGlobalBounds().height,1);
     body = Physics2D::Instance()->createCharacterBody(sprite.getPosition().x, sprite.getPosition().y);
 }
 
@@ -76,17 +78,19 @@ bool Character::dropWeapon()
         level->addWeapon(weapon);
         weapon->setOwner(nullptr);
         weapon = nullptr;
+        free(weapon);
         return true;
     }
     return false;
 }
 
-bool Character::takeWeapon(Weapon* weapon)
+bool Character::takeWeapon(Weapon* weap)
 {
-    if (this->weapon == nullptr)
+    if (weapon == nullptr)
     {
-        weapon->setOwner(this);
-        this->weapon = weapon;
+        weap->setOwner(this);
+        weapon = (Weapon*)malloc(sizeof(Weapon));
+        weapon = weap;
         return true;
     }
     return false;
@@ -177,6 +181,15 @@ void Character::draw(sf::RenderWindow &app)
 
 void Character::update()
 {
+    cout << "Empezamos a updatear" << endl;
+    cout << player << endl;
+    cout << weapon << endl;
+    cout << xPosture << endl;
+    cout << facingLeft << endl;
+    cout << jumping  << endl;
+    cout << onGround << endl;
+    cout << dead << endl;
+    cout << fakingDead << endl;
     if (body->getBody()->GetLinearVelocity().y != 0)
         onGround = false;
     else
@@ -283,20 +296,20 @@ void Character::update()
         armPosY += 3;
 
     int intX = 0;
+
     if (weapon != nullptr)
     {
         intX = 9;
 
-        //std::cout << typeid(Grenade*).name()  << std::endl;
-        //std::cout << typeid(weapon).name()  << std::endl;
         int modx = 0;
         int mody = 0;
-        if (dynamic_cast<ShotGun*>(weapon) != nullptr)
+
+        if (typeid(dynamic_cast<Grenade*>(weapon)) == typeid(Gun*))
         {
             modx = 3;
             mody = 4.2;
         }
-        else if (dynamic_cast<Grenade*>(weapon) != nullptr)
+        else if (typeid(dynamic_cast<Grenade*>(weapon)) == typeid(Grenade*))
         {
             modx = 2.5;
             mody = 4;
@@ -321,15 +334,16 @@ void Character::update()
             weapon->setPos(sprite.getPosition().x+modx,sprite.getPosition().y+mody);
 
         weapon->update();
+
     }
 
     sf::IntRect bodyRect = sf::IntRect(32*((int)xPosture),yPosture*32,32,32);
     sprite.setTextureRect(bodyRect);
     sprite.setPosition(body->getPositionX(),body->getPositionY());
-    sprite.setRotation(body->getAngle());
+    //sprite.setRotation(body->getAngle());
 
     sf::IntRect armRect = sf::IntRect(intX,0,9,8);
     armSprite.setTextureRect(armRect);
     armSprite.setPosition(body->getPositionX()-xDifArm*xDir,armPosY);
-    armSprite.setRotation(body->getAngle());
+    //armSprite.setRotation(body->getAngle());
 }

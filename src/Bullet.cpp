@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include <Level.h>
 
 Bullet::Bullet(double posx, double posy, double ang, double maxLen)
 {
@@ -18,6 +19,12 @@ Bullet::Bullet(double posx, double posy, double ang, double maxLen)
 void Bullet::update()
 {
     bulletSprite.move(VEL*cos(angle), VEL*sin(angle));
+    if(sqrt(pow(bulletSprite.getPosition().x-posiniX, 2)+pow(bulletSprite.getPosition().y-posiniY, 2))>=maxLength)
+    {
+        Level* level = Level::instance(0);
+        level->removeBullet(this);
+        delete this;
+    }
 }
 
 void Bullet::draw(sf::RenderWindow &app)

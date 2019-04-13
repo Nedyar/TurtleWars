@@ -21,8 +21,10 @@ void handleEvents(sf::RenderWindow &app)
     while (app.pollEvent(event))
     {
         // Close window : exit
-        if (event.type == sf::Event::Closed)
+        if (event.type == sf::Event::Closed) {
             app.close();
+            delete currentState;
+        }
 
         currentState->handleEvents();
     }
@@ -50,7 +52,7 @@ int main()
     app.setFramerateLimit(60);
     app.setKeyRepeatEnabled(false);
 
-    setState(Level::instance(1));
+    setState(Level::instance(4));
 
     // Start the game loop
     while (app.isOpen())

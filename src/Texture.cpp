@@ -11,7 +11,6 @@ Texture::~Texture()
     //dtor
 }
 
-sf::Texture* Texture::getTexture()
-{
+sf::Texture* Texture::getTexture() {
     return tex;
 }

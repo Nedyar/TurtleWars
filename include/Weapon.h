@@ -1,5 +1,4 @@
-#ifndef WEAPON_H
-#define WEAPON_H
+#pragma once
 
 class Character;
 
@@ -26,4 +25,4 @@ protected:
     sf::Texture texture;
 };
 
-#endif // WEAPON_H
+#include <Character.h>

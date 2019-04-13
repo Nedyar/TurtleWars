@@ -6,23 +6,17 @@ Level* Level::pinstance = 0;
 Level::Level(int nPlayers)
 {
     nCharacters = nPlayers;
-    nWeaponSpawners = 3;
+    nWeaponSpawners = 5;
 
     motorSFML* motor = motorSFML::Instance();
     LevelFactory* factory = LevelFactory::Instance();
     mapa = factory->mapLoader(1);
 
-
-    //groundTexture.loadFromFile("img/ground.png");
-    //groundSprite = sf::Sprite(groundTexture);
-    //groundSprite.setOrigin(groundSprite.getLocalBounds().width/2,groundSprite.getLocalBounds().height/2);
-    //groundSprite.setPosition(groundSprite.getLocalBounds().width/2,600-groundSprite.getLocalBounds().height/2);
-    //groundBody = Physics2D::Instance()->createRectangleBody(groundSprite.getPosition().x,groundSprite.getPosition().y,groundSprite.getGlobalBounds().width,groundSprite.getGlobalBounds().height,0);
-
-    players = new Character*[nPlayers];
-    for (int i = 0; i < nPlayers; i++)
+    players = new Character*[nCharacters];
+    for (int i = 0; i < nCharacters; i++)
     {
-        Character* player = new Character(i+1, 100*(i+1)+30, 0);
+        Character* player = (Character*)malloc(sizeof(Character));
+        player = new Character(i+1, 100*(i+1)+30, 0);
         players[i] = player;
     }
 
@@ -30,13 +24,22 @@ Level::Level(int nPlayers)
 
     for (int i = 0; i < nWeaponSpawners; i++)
     {
+        weaponSpawners[i] = (WeaponSpawner*)malloc(sizeof(WeaponSpawner));
         weaponSpawners[i] = new WeaponSpawner(i%3+1,32*(i+2),384);
     }
 }
 
 Level::~Level()
 {
-    //dtor
+    for (int i = 0; i < nCharacters; i++)
+    {
+        free(players[i]);
+    }
+
+    for (int i = 0; i < nWeaponSpawners; i++)
+    {
+        free(weaponSpawners[i]);
+    }
 }
 
 Level* Level::instance(int nPlayers = 1)
@@ -68,28 +71,6 @@ void Level::handleEvents()
         player->crouch();
     else
         player->standUp();
-
-
-
-    /*if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) startGunShoot = true;
-    if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) finishGunShoot = true;
-
-    if(startGunShoot && finishGunShoot)
-    {
-
-        bulletAux=weapons[0]->shoot();
-
-        if(!bulletAux.empty()){
-
-            for(int i=0; i<bulletAux.size(); i++){
-
-                bullets.push_back(bulletAux.at(i));
-            }
-        }
-        bulletAux.clear();
-        finishGunShoot = false;
-    }*/
-
 
 
     /*
@@ -150,13 +131,6 @@ void Level::update()
     for(int i=0; i<bullets.size(); i++)
     {
         bullets.at(i)->update();
-
-        // Esta comprobacion debe hacerse en el update de la clase bullet
-        if(sqrt(pow(bullets.at(i)->bulletSprite.getPosition().x-bullets.at(i)->posiniX, 2)+pow(bullets.at(i)->bulletSprite.getPosition().y-bullets.at(i)->posiniY, 2))>=bullets.at(i)->maxLength)
-        {
-            delete bullets[i];
-            bullets.erase(bullets.begin()+i);
-        }
     }
 
     Physics2D::Instance()->updateWorld();
@@ -169,7 +143,6 @@ void Level::draw(sf::RenderWindow &app)
     for (int i = 0; i < nWeaponSpawners; i++)
     {
         weaponSpawners[i]->draw(app);
-        //app.draw(weaponSpawners[i]->getBody()->dameRect());
     }
 
     for (int i = 0; i < weapons.size(); i++)
@@ -186,7 +159,6 @@ void Level::draw(sf::RenderWindow &app)
     {
         Character* player = players[i];
         player->draw(app);
-        //app.draw(player->getBody()->dameRect());
     }
 
 }

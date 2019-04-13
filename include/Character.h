@@ -1,15 +1,15 @@
-#ifndef CHARACTER_H
-#define CHARACTER_H
+#pragma once
 
-const double JUMP_FORCE = 5;
-const float xDifArm = 3;
-const float yDifArm = 5.5;
+class Weapon;
 
-#include <Weapon.h>
 #include <Gun.h>
 #include <SFML/Graphics.hpp>
 #include <Physics2D.h>
 #include <Box2D.h>
+
+const double JUMP_FORCE = 5;
+const float xDifArm = 3;
+const float yDifArm = 5.5;
 
 
 class Character
@@ -65,4 +65,4 @@ private:
     sf::Texture armTexture;
 };
 
-#endif // CHARACTER_H
+#include <Weapon.h>

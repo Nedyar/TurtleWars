@@ -1,6 +1,9 @@
 #include "Grenade.h"
 #include <Level.h>
 
+#include <iostream>
+using namespace std;
+
 Grenade::Grenade(double posx, double posy)
 {
     facingLeft = false;
@@ -58,6 +61,7 @@ bool Grenade::explode()
 
 void Grenade::update()
 {
+    cout << "Empezamos update de granada" << endl;
     int xDir = 1;
     if (facingLeft)
         xDir = -1;
@@ -74,6 +78,7 @@ void Grenade::update()
         activated = false;
         delete this;
     }
+    cout << "Terminamos update de granada" << endl;
 }
 
 void Grenade::draw(sf::RenderWindow &app)

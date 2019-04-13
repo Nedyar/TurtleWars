@@ -28,6 +28,7 @@ Gun::~Gun()
 
 void Gun::update()
 {
+    cout << "Empezamos update de gun" << endl;
     int xDir = 1;
     if (facingLeft)
         xDir = -1;
