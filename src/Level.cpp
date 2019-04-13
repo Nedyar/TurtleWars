@@ -72,10 +72,22 @@ void Level::handleEvents()
     else
         player->standUp();
 
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+    {
+        player->dropWeapon();
+    }
 
-    /*
-    Character* player2 = players[1];
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    {
+        player->shoot();
+    }
 
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+    {
+        player->fakeDie();
+    }
+
+/*
     if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) > 10)
         player2->walk(true);
     else if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) < -10)
@@ -92,22 +104,6 @@ void Level::handleEvents()
     //std::cout << sf::Joystick::isButtonPressed(0, 1) << std::endl; // B
     //std::cout << sf::Joystick::isButtonPressed(0, 2) << std::endl; // X
     //std::cout << sf::Joystick::isButtonPressed(0, 3) << std::endl; // Y
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-    {
-        player->dropWeapon();
-    }
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    {
-        player->shoot();
-    }
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-    {
-        player->fakeDie();
-    }
-
 }
 
 void Level::update()
