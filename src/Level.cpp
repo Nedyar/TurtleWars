@@ -10,15 +10,9 @@ Level::Level(int nPlayers)
 
     motorSFML* motor = motorSFML::Instance();
     LevelFactory* factory = LevelFactory::Instance();
-    mapa = factory->mapLoader(1);
 
-    players = new Character*[nCharacters];
-    for (int i = 0; i < nCharacters; i++)
-    {
-        Character* player = (Character*)malloc(sizeof(Character));
-        player = new Character(i+1, 100*(i+1)+30, 0);
-        players[i] = player;
-    }
+    mapa = factory->mapLoader(3);
+    players = factory->characterLoader(3, nPlayers);
 
     weaponSpawners = new WeaponSpawner*[nWeaponSpawners];
 

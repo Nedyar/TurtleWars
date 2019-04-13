@@ -2,6 +2,8 @@
 #define LEVELFACTORY_H
 
 #include "Mapa.h"
+#include "Character.h"
+#include "WeaponSpawner.h"
 #include "../xml/tinyxml.h"
 #include <iostream>
 
@@ -13,6 +15,7 @@ class LevelFactory
         ~LevelFactory();
         static LevelFactory* Instance();
         Mapa* mapLoader(int seleccion);
+        Character** characterLoader(int seleccion, int players);
 
     protected:
         LevelFactory();

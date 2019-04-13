@@ -2,7 +2,6 @@
 
 Mapa::Mapa(TiXmlElement* Map)
 {
-
 /*  CARGAR LOS PARAMETROS PARA LA MATRIX Y SPRITES  */
     Map->QueryIntAttribute("width", &cols);
     Map->QueryIntAttribute("height", &rows);
@@ -41,7 +40,6 @@ Mapa::~Mapa()
 
 void Mapa::setGidMatrix(TiXmlElement* Map)
 {
-
     TiXmlElement* tile = Map->FirstChildElement("layer")->FirstChildElement("data")->FirstChildElement("tile");
     int posY = 0, posX = 0, contador = 0, valor = 0;
 
@@ -62,6 +60,7 @@ void Mapa::setGidMatrix(TiXmlElement* Map)
 
 void Mapa::setBodyMap(TiXmlElement* objLayer)
 {
+
     TiXmlElement* obj = objLayer->FirstChildElement("object");
     float posY = 0.0, posX = 0.0, height = 0.0, width = 0.0;
     int conta = 0;
@@ -90,8 +89,8 @@ void Mapa::setSpriteMatrix()
         for(int j=0; j<cols; ++j)
         {
             int gid = mGid[i][j] - 1;
-            int row = gid/tileWidth;
-            int col = gid - (row * tileHeight);
+            int row = gid/4;
+            int col = gid - (row * 4);
 
             if(gid > -1)
             {

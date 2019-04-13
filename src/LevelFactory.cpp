@@ -1,6 +1,5 @@
 #include "LevelFactory.h"
 
-
 LevelFactory* LevelFactory::pInstance = 0;
 
 LevelFactory::LevelFactory()
@@ -21,8 +20,6 @@ LevelFactory* LevelFactory::Instance()
 
     return pInstance;
 }
-
-/**----------------------------------------*/
 
 
 Mapa* LevelFactory::mapLoader(int seleccion)
@@ -59,4 +56,39 @@ Mapa* LevelFactory::mapLoader(int seleccion)
 
     return miMapa;
 
+}
+
+Character** LevelFactory::characterLoader(int seleccion, int nPlayers)
+{
+    TiXmlElement* level = doc.FirstChildElement("level");
+    TiXmlElement* characterElement = NULL;
+    TiXmlDocument* docMap = NULL;
+    Character** players = new Character*[nPlayers];
+    float posX = 0.0, posY = 0.0;
+
+    do
+    {
+        if(level->FirstAttribute()->IntValue() == seleccion)
+        {
+            const char* nameMap = level->FirstChildElement("mapa")->Attribute("maptmx");
+            docMap = new TiXmlDocument(nameMap);
+            docMap->LoadFile();
+            characterElement = docMap->FirstChildElement("map")->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
+            break;
+        }
+        level = level->NextSiblingElement("level");
+
+    }while(level);
+
+    for(int i=0; i<nPlayers; i++)
+    {
+        characterElement->QueryFloatAttribute("x", &posX);
+        characterElement->QueryFloatAttribute("y", &posY);
+        players[i] = (Character*)malloc(sizeof(Character));
+        players[i] = new Character(i+1, posX, posY);
+
+        characterElement = characterElement->NextSiblingElement("object");
+    }
+
+    return players;
 }
