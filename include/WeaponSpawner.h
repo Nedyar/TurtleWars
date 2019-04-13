@@ -1,9 +1,9 @@
-#ifndef WEAPONSPAWNER_H
-#define WEAPONSPAWNER_H
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
-#include <Weapon.h>
+class Weapon;
+
 #include <Gun.h>
 #include <Grenade.h>
 #include <ShotGun.h>
@@ -22,6 +22,7 @@ public:
     void draw(sf::RenderWindow &app);
 
     bool spawnWeapon();
+    Weapon* takeWeapon();
 
     Body* getBody();
 
@@ -43,4 +44,4 @@ private:
     sf::Sprite ballSprite2;
 };
 
-#endif // WEAPONSPAWNER_H
+#include <Weapon.h>

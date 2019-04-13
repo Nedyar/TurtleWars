@@ -10,14 +10,15 @@ LevelFactory::LevelFactory()
 
 LevelFactory::~LevelFactory()
 {
-    //dtor
+    delete pInstance;
 }
 
 LevelFactory* LevelFactory::Instance()
 {
-    if(pInstance == 0)
+    if(pInstance == 0) {
+        pInstance = (LevelFactory*)malloc(sizeof(LevelFactory));
         pInstance = new LevelFactory();
-
+    }
     return pInstance;
 }
 
@@ -25,8 +26,8 @@ LevelFactory* LevelFactory::Instance()
 Mapa* LevelFactory::mapLoader(int seleccion)
 {
     TiXmlElement* level = doc.FirstChildElement("level");
-    TiXmlElement* mapElement = NULL;
-    TiXmlDocument* docMap = NULL;
+    TiXmlElement* mapElement = nullptr;
+    TiXmlDocument* docMap = nullptr;
 
     do
     {
@@ -45,7 +46,8 @@ Mapa* LevelFactory::mapLoader(int seleccion)
     }while(level);
 
     /**  CREAMOS EL OBJ MAPA Y METEMOS LOS GIDs  **/
-    Mapa* miMapa = new Mapa(mapElement);
+    Mapa* miMapa = (Mapa*)malloc(sizeof(Mapa));
+    miMapa = new Mapa(mapElement);
     miMapa->setGidMatrix(mapElement);
 
     /**  AHORA CREMAOS LOS SPRITES **/

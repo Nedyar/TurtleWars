@@ -69,22 +69,30 @@ void WeaponSpawner::draw(sf::RenderWindow &app)
 
 bool WeaponSpawner::spawnWeapon()
 {
-
     switch (type)
     {
     case 1: // Gun
+        weaponSpawned = (Weapon*)malloc(sizeof(Gun));
         weaponSpawned = new Gun(platformSprite.getPosition().x, platformSprite.getPosition().y-10);
         return true;
 
     case 2: // Grenade
+        weaponSpawned = (Weapon*)malloc(sizeof(Grenade));
         weaponSpawned = new Grenade(platformSprite.getPosition().x, platformSprite.getPosition().y-10);
         return true;
 
     case 3: // Shotgun
+        weaponSpawned = (Weapon*)malloc(sizeof(ShotGun));
         weaponSpawned = new ShotGun(platformSprite.getPosition().x, platformSprite.getPosition().y-10);
         return true;
     }
     return false;
+}
+
+Weapon* WeaponSpawner::takeWeapon() {
+    Weapon* returned = weaponSpawned;
+    weaponSpawned = nullptr;
+    return returned;
 }
 
 int WeaponSpawner::getId() {

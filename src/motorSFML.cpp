@@ -9,13 +9,15 @@ motorSFML::motorSFML()
 
 motorSFML::~motorSFML()
 {
-    //dtor
+    delete pInstance;
 }
 
 motorSFML* motorSFML::Instance()
 {
-    if(pInstance == 0)
+    if(pInstance == 0) {
+        pInstance = (motorSFML*)malloc(sizeof(motorSFML));
         pInstance = new motorSFML();
+    }
 
     return pInstance;
 }

@@ -8,7 +8,7 @@ Character::Character(int n, int posx, int posy)
 {
     id = 1;
     player = n;
-    takeWeapon(new Grenade(0,0));
+    takeWeapon();
     xPosture = 0;
     facingLeft = false;
     jumping = false;
@@ -80,22 +80,29 @@ bool Character::dropWeapon()
         level->addWeapon(weapon);
         weapon->setOwner(nullptr);
         weapon = nullptr;
-        free(weapon);
+        delete weapon;
         return true;
     }
     return false;
 }
 
-bool Character::takeWeapon(Weapon* weap)
+bool Character::takeWeapon()
 {
-    if (weapon == nullptr)
+    if (weapon == nullptr && weaponSpawnerOver != nullptr)
     {
-        weap->setOwner(this);
-        weapon = (Weapon*)malloc(sizeof(Weapon));
-        weapon = weap;
+        Weapon* newWeapon = weaponSpawnerOver->takeWeapon();
+
+        if (newWeapon != nullptr) {
+            newWeapon->setOwner(this);
+            weapon = newWeapon;
         return true;
+        }
     }
     return false;
+}
+
+void Character::setWeaponSpawnerOver(WeaponSpawner* newWS) {
+    weaponSpawnerOver = newWS;
 }
 
 void Character::startWalking(bool left)

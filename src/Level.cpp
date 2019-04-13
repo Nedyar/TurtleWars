@@ -27,19 +27,24 @@ Level::~Level()
 {
     for (int i = 0; i < nCharacters; i++)
     {
-        free(players[i]);
+        delete players[i];
     }
 
     for (int i = 0; i < nWeaponSpawners; i++)
     {
-        free(weaponSpawners[i]);
+        delete weaponSpawners[i];
     }
+
+    delete mapa;
+    delete pinstance;
 }
 
 Level* Level::instance(int nPlayers = 1)
 {
-    if (pinstance == 0)
+    if (pinstance == 0) {
+        pinstance = (Level*)malloc(sizeof(Level));
         pinstance = new Level(nPlayers);
+    }
     return pinstance;
 }
 
@@ -79,6 +84,11 @@ void Level::handleEvents()
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
     {
         player->fakeDie();
+    }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+    {
+        player->takeWeapon();
     }
 
 /*

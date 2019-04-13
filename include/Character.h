@@ -1,6 +1,7 @@
 #pragma once
 
 class Weapon;
+class WeaponSpawner;
 
 #include <Gun.h>
 #include <SFML/Graphics.hpp>
@@ -33,7 +34,8 @@ public:
     void fakeDie();
 
     bool dropWeapon();
-    bool takeWeapon(Weapon* weapon);
+    bool takeWeapon();
+    void setWeaponSpawnerOver(WeaponSpawner* newWS);
 
     void draw(sf::RenderWindow &app);
     void update();
@@ -47,6 +49,7 @@ protected:
 private:
     int player;
     Weapon* weapon;
+    WeaponSpawner* weaponSpawnerOver;
 
     float xPosture;
     int yPosture;
@@ -69,3 +72,4 @@ private:
 };
 
 #include <Weapon.h>
+#include <WeaponSpawner.h>
