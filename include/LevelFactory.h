@@ -16,6 +16,8 @@ class LevelFactory
         static LevelFactory* Instance();
         Mapa* mapLoader(int seleccion);
         Character** characterLoader(int seleccion, int players);
+        WeaponSpawner** spawnerLoader(int seleccion);
+        int getSizeSpawner();
 
     protected:
         LevelFactory();
@@ -25,6 +27,7 @@ class LevelFactory
     private:
         static LevelFactory* pInstance;
         TiXmlDocument doc;
+        int sizeSpawner;
 
 };
 
