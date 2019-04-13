@@ -181,15 +181,6 @@ void Character::draw(sf::RenderWindow &app)
 
 void Character::update()
 {
-    cout << "Empezamos a updatear" << endl;
-    cout << player << endl;
-    cout << weapon << endl;
-    cout << xPosture << endl;
-    cout << facingLeft << endl;
-    cout << jumping  << endl;
-    cout << onGround << endl;
-    cout << dead << endl;
-    cout << fakingDead << endl;
     if (body->getBody()->GetLinearVelocity().y != 0)
         onGround = false;
     else

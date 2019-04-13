@@ -61,7 +61,6 @@ bool Grenade::explode()
 
 void Grenade::update()
 {
-    cout << "Empezamos update de granada" << endl;
     int xDir = 1;
     if (facingLeft)
         xDir = -1;
@@ -78,7 +77,6 @@ void Grenade::update()
         activated = false;
         delete this;
     }
-    cout << "Terminamos update de granada" << endl;
 }
 
 void Grenade::draw(sf::RenderWindow &app)
