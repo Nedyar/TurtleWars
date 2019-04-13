@@ -3,6 +3,7 @@
 
 WeaponSpawner::WeaponSpawner(int t, double x, double y)
 {
+
     if (t < 1 || t > 3)
         t = 1;
     type=t;
@@ -25,6 +26,7 @@ WeaponSpawner::WeaponSpawner(int t, double x, double y)
 
     //body = Physics2D::Instance()->createRectangleBody(x,y,platformTexture.getSize().x,platformTexture.getSize().y,2);
     body = Physics2D::Instance()->createSpawnBody(x,y);
+    body->setUserData(this);
 }
 
 WeaponSpawner::~WeaponSpawner()

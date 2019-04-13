@@ -1,0 +1,236 @@
+# depslib dependency file v1.0
+1555154548 source:/home/yupipi93/Escritorio/Git/TurtleWars/Game.cpp
+	<SFML/Graphics.hpp>
+	<State.h>
+	<Level.h>
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/include/State.h
+	<SFML/Graphics.hpp>
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/include/Level.h
+	<vector>
+	<State.h>
+	<Character.h>
+	<Bullet.h>
+	<WeaponSpawner.h>
+	<Weapon.h>
+	<Physics2D.h>
+	<Body.h>
+	<motorSFML.h>
+	<LevelFactory.h>
+	<Mapa.h>
+
+1555159969 /home/yupipi93/Escritorio/Git/TurtleWars/include/Character.h
+	<Collitionable.h>
+	<Gun.h>
+	<SFML/Graphics.hpp>
+	<Physics2D.h>
+	<Box2D.h>
+	<Weapon.h>
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/include/Gun.h
+	<Weapon.h>
+
+1555155088 /home/yupipi93/Escritorio/Git/TurtleWars/include/Weapon.h
+	<SFML/Graphics.hpp>
+	<Bullet.h>
+	<Character.h>
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/include/Bullet.h
+	<SFML/Graphics.hpp>
+	<math.h>
+	<iostream>
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/include/Physics2D.h
+	<iostream>
+	<Body.h>
+	<SFML/Graphics.hpp>
+
+1555164423 /home/yupipi93/Escritorio/Git/TurtleWars/include/Body.h
+	<Box2D/Box2D.h>
+	<SFML/Graphics.hpp>
+	<World.h>
+	<iostream>
+
+1555154329 /home/yupipi93/Escritorio/Git/TurtleWars/include/World.h
+	<Box2D/Box2D.h>
+
+1332138682 /usr/include/Box2D/Box2D.h
+	<Box2D/Common/b2Settings.h>
+	<Box2D/Common/b2Draw.h>
+	<Box2D/Common/b2Timer.h>
+	<Box2D/Collision/Shapes/b2CircleShape.h>
+	<Box2D/Collision/Shapes/b2EdgeShape.h>
+	<Box2D/Collision/Shapes/b2ChainShape.h>
+	<Box2D/Collision/Shapes/b2PolygonShape.h>
+	<Box2D/Collision/b2BroadPhase.h>
+	<Box2D/Collision/b2Distance.h>
+	<Box2D/Collision/b2DynamicTree.h>
+	<Box2D/Collision/b2TimeOfImpact.h>
+	<Box2D/Dynamics/b2Body.h>
+	<Box2D/Dynamics/b2Fixture.h>
+	<Box2D/Dynamics/b2WorldCallbacks.h>
+	<Box2D/Dynamics/b2TimeStep.h>
+	<Box2D/Dynamics/b2World.h>
+	<Box2D/Dynamics/Contacts/b2Contact.h>
+	<Box2D/Dynamics/Joints/b2DistanceJoint.h>
+	<Box2D/Dynamics/Joints/b2FrictionJoint.h>
+	<Box2D/Dynamics/Joints/b2GearJoint.h>
+	<Box2D/Dynamics/Joints/b2MotorJoint.h>
+	<Box2D/Dynamics/Joints/b2MouseJoint.h>
+	<Box2D/Dynamics/Joints/b2PrismaticJoint.h>
+	<Box2D/Dynamics/Joints/b2PulleyJoint.h>
+	<Box2D/Dynamics/Joints/b2RevoluteJoint.h>
+	<Box2D/Dynamics/Joints/b2RopeJoint.h>
+	<Box2D/Dynamics/Joints/b2WeldJoint.h>
+	<Box2D/Dynamics/Joints/b2WheelJoint.h>
+
+1555158768 /home/yupipi93/Escritorio/Git/TurtleWars/include/WeaponSpawner.h
+	<SFML/Graphics.hpp>
+	<Weapon.h>
+	<Gun.h>
+	<Grenade.h>
+	<ShotGun.h>
+	<Physics2D.h>
+	<Body.h>
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/include/Grenade.h
+	<Weapon.h>
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/include/ShotGun.h
+	<Weapon.h>
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/include/motorSFML.h
+	<SFML/Graphics.hpp>
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/include/LevelFactory.h
+	"Mapa.h"
+	"../xml/tinyxml.h"
+	<iostream>
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/include/Mapa.h
+	"../xml/tinyxml.h"
+	"Texture.h"
+	<SFML/Graphics.hpp>
+	"Sprite.h"
+	<iostream>
+	<Physics2D.h>
+	<Body.h>
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/xml/tinyxml.h
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<string>
+	<iostream>
+	<sstream>
+	"tinystr.h"
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/xml/tinystr.h
+	<assert.h>
+	<string.h>
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/include/Texture.h
+	"motorSFML.h"
+
+1555153953 /home/yupipi93/Escritorio/Git/TurtleWars/include/Sprite.h
+	"motorSFML.h"
+
+1555164422 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Body.cpp
+	"Body.h"
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Bullet.cpp
+	"Bullet.h"
+	<Level.h>
+
+1555159392 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Collitionable.cpp
+	"Collitionable.h"
+	<iostream>
+
+1555159157 /home/yupipi93/Escritorio/Git/TurtleWars/include/Collitionable.h
+
+1555161457 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/EventCollider.cpp
+	"EventCollider.h"
+	<iostream>
+
+1555158950 /home/yupipi93/Escritorio/Git/TurtleWars/include/EventCollider.h
+	<Box2D/Box2D.h>
+	<Collitionable.h>
+	<Character.h>
+	<WeaponSpawner.h>
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Grenade.cpp
+	"Grenade.h"
+	<Level.h>
+	<iostream>
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Gun.cpp
+	"Gun.h"
+	<Level.h>
+
+1555158789 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Level.cpp
+	"Level.h"
+	<SFML/Graphics.hpp>
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/LevelFactory.cpp
+	"LevelFactory.h"
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Mapa.cpp
+	"Mapa.h"
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/motorSFML.cpp
+	"motorSFML.h"
+
+1555164355 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Physics2D.cpp
+	"Physics2D.h"
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/ShotGun.cpp
+	"ShotGun.h"
+	<Level.h>
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Sprite.cpp
+	"Sprite.h"
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/State.cpp
+	"State.h"
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Texture.cpp
+	"Texture.h"
+
+1555155118 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Weapon.cpp
+	"Weapon.h"
+
+1555160120 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/WeaponSpawner.cpp
+	"WeaponSpawner.h"
+	<Level.h>
+
+1555154314 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/World.cpp
+	"World.h"
+	<EventCollider.h>
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/xml/tinystr.cpp
+	"tinystr.h"
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/xml/tinyxml.cpp
+	<ctype.h>
+	<sstream>
+	<iostream>
+	"tinyxml.h"
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/xml/tinyxmlerror.cpp
+	"tinyxml.h"
+
+1555153953 source:/home/yupipi93/Escritorio/Git/TurtleWars/xml/tinyxmlparser.cpp
+	<ctype.h>
+	<stddef.h>
+	"tinyxml.h"
+	<windows.h>
+
+1555160037 source:/home/yupipi93/Escritorio/Git/TurtleWars/src/Character.cpp
+	"Character.h"
+	<Level.h>
+	<typeindex>
+	<iostream>
+

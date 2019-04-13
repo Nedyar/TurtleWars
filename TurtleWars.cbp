@@ -61,6 +61,8 @@
 		<Unit filename="include/Body.h" />
 		<Unit filename="include/Bullet.h" />
 		<Unit filename="include/Character.h" />
+		<Unit filename="include/Collitionable.h" />
+		<Unit filename="include/EventCollider.h" />
 		<Unit filename="include/Grenade.h" />
 		<Unit filename="include/Gun.h" />
 		<Unit filename="include/Level.h" />
@@ -83,6 +85,8 @@
 		<Unit filename="src/Body.cpp" />
 		<Unit filename="src/Bullet.cpp" />
 		<Unit filename="src/Character.cpp" />
+		<Unit filename="src/Collitionable.cpp" />
+		<Unit filename="src/EventCollider.cpp" />
 		<Unit filename="src/Grenade.cpp" />
 		<Unit filename="src/Gun.cpp" />
 		<Unit filename="src/Level.cpp" />

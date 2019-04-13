@@ -2,6 +2,7 @@
 
 class Weapon;
 
+#include <Collitionable.h>
 #include <Gun.h>
 #include <SFML/Graphics.hpp>
 #include <Physics2D.h>
