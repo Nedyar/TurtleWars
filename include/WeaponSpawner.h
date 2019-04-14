@@ -34,7 +34,7 @@ private:
 
     Weapon* weaponSpawned = nullptr;
 
-    Body* body;
+    //Body* body;
 
     sf::Clock clock;
     sf::Sprite platformSprite;

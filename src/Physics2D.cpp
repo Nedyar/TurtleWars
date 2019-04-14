@@ -69,7 +69,8 @@ Body* Physics2D::createCharacterBody(float positionX, float positionY, float wid
     bool avoidRotate = true;
 
     type = b2BodyType::b2_dynamicBody;
-    height-=4;
+    //height-=4;
+    width-=8;
     shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
@@ -147,5 +148,5 @@ Body* Physics2D::createBulletBody(float positionX, float positionY, float width,
 
 void Physics2D::updateWorld()
 {
-    World::Instance()->update();
+    world->update();
 }

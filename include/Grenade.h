@@ -12,8 +12,6 @@ public:
     virtual ~Grenade();
 
     void createBody() override;
-    void deleteBody() override;
-    void setXVelocity(float velocity) override;
 
     bool shoot() override;
     bool activate();

@@ -29,17 +29,6 @@ void Grenade::createBody()
     body->setUserData(this);
 }
 
-void Grenade::deleteBody()
-{
-    delete body;
-    body = nullptr;
-}
-
-void Grenade::setXVelocity(float velocity)
-{
-    body->getBody()->SetLinearVelocity((b2Vec2(velocity,body->getBody()->GetLinearVelocity().y)));
-}
-
 Grenade::~Grenade()
 {
     Level* level = Level::instance(0);
@@ -62,10 +51,7 @@ bool Grenade::activate()
 
 bool Grenade::shoot()
 {
-    if (activate())
-        return true;
-    else
-        return false;
+    return activate();
 }
 
 bool Grenade::explode()

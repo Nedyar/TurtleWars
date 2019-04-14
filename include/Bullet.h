@@ -17,6 +17,7 @@ public:
     void update();
     void draw(sf::RenderWindow &app);
     int getId() override;
+    //Body* body = nullptr;
 
 protected:
 
@@ -28,7 +29,7 @@ private:
     sf::Texture bulletTexture;
     double angle = 0;
     double vel = 0;
-    Body* body = nullptr;
+    //Body* body = nullptr;
 };
 
 #endif // BULLET_H

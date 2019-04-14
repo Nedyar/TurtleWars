@@ -34,17 +34,6 @@ void ShotGun::createBody()
     body->setUserData(this);
 }
 
-void ShotGun::deleteBody()
-{
-    delete body;
-    body = nullptr;
-}
-
-void ShotGun::setXVelocity(float velocity)
-{
-    body->getBody()->SetLinearVelocity((b2Vec2(velocity,body->getBody()->GetLinearVelocity().y)));
-}
-
 ShotGun::~ShotGun()
 {
     Level* level = Level::instance(0);
@@ -77,7 +66,9 @@ bool ShotGun::shoot()
 
             shooted = true;
             ammo--;
-            float mod = 5.5;
+            float mod = 24;
+            if (owner->body->getBody()->GetLinearVelocity().x!=0)
+                mod += 5;
             Level* level = Level::instance(0);
             level->addBullet(new Bullet(sprite.getPosition().x+(mod+sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + 9)+xOrientation,100));
             level->addBullet(new Bullet(sprite.getPosition().x+(mod+sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + 3)+xOrientation,100));
@@ -92,9 +83,7 @@ bool ShotGun::shoot()
 
 void ShotGun::update()
 {
-    int xDir = 1;
-    if (facingLeft)
-        xDir = -1;
+    int xDir = 1 - facingLeft*2;
 
     sprite.setScale(xDir,1);
     shotGunLoaderSprite.setScale(xDir,1);

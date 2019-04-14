@@ -30,7 +30,6 @@ void Bullet::update()
     //bulletSprite.move(VEL*cos(angle), VEL*sin(angle));
     if(sqrt(pow(bulletSprite.getPosition().x-posiniX, 2)+pow(bulletSprite.getPosition().y-posiniY, 2))>=maxLength)
     {
-
         delete this;
     }
 }
@@ -43,8 +42,10 @@ void Bullet::draw(sf::RenderWindow &app)
 
 Bullet::~Bullet()
 {
+    cout << "voy a borrarme" << endl;
     Level* level = Level::instance(0);
         level->removeBullet(this);
+    cout << "borro mi body:" <<endl;
     delete body;
 }
 

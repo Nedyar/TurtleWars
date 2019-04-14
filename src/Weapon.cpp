@@ -17,3 +17,13 @@ Character* Weapon::getOwner() {
     return owner;
 }
 
+void Weapon::setXVelocity(float velocity)
+{
+    body->getBody()->SetLinearVelocity((b2Vec2(velocity,body->getBody()->GetLinearVelocity().y)));
+}
+
+void Weapon::deleteBody()
+{
+    delete body;
+    body = nullptr;
+}

@@ -33,7 +33,7 @@ class Body
 
 
         b2PolygonShape collideShape;
-        sf::RectangleShape dameRect();
+        void pintaRect(sf::RenderWindow &app);
 
 
     protected:

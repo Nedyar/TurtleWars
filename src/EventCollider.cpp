@@ -60,10 +60,28 @@ void EventCollider::BeginContact(b2Contact* contact)
                 break;
             case 4: // Bullet
                 player->die();
+                //delete (Bullet*)objA;
                 break;
             }
         }
-
+        // el objeto a es bala, hacer desaparecer
+        else if (objA->getId() == 4)
+        {
+            cout << "Bala choca"<< endl;;
+            if (objB->getId() < 1 || objB->getId() > 4)
+            {
+                //delete (Bullet*)objA;
+            }
+        }
+         // el objeto b es bala, hacer desaparecer
+        else if (objB->getId() == 4)
+        {
+            cout << "Bala choca"<< endl;;
+            if (objA->getId() < 1 || objA->getId() > 4)
+            {
+                //delete (Bullet*)objB;
+            }
+        }
 }
 
 void EventCollider::EndContact(b2Contact* contact)

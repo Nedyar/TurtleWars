@@ -34,12 +34,14 @@ b2Body* World::CreateBody(b2BodyDef &bodDef) //COmprobar que esta funcion devulv
 
 void World::destroyBody(b2Body* body)
 {
+    cout << "Borro body del mundo: " << endl;
     world2D->DestroyBody(body);
+    cout << "He borrao del mundo " << endl;
 }
 
 void World::update()
 {
-    cout << "Updateando world" << endl;
+    //cout << "Updateando world" << endl;
     world2D->Step((1.f/60.f), 8, 8);//8, 8 is the iterations (change to 12 fro test)
-    cout << "Updateando world" << endl;
+    //cout << "Updateando world" << endl;
 }

@@ -52,34 +52,35 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     //fixDef.filter.categoryBits = category;
     //fixDef.filter.maskBits = mask;
     fixDef.shape = &shape;
+    fixDef.density = density;
+    fixDef.friction = friction;
+    fixDef.restitution = restitution;
     fixDef.isSensor = true;
     fix = bod->CreateFixture(&fixDef);
 
     fixDef.filter.groupIndex = group;
 
-    fixDef.density = density;
-    fixDef.friction = friction;
-    fixDef.restitution = restitution;
     fixDef.isSensor = false;
     fix = bod->CreateFixture(&fixDef);
 }
 
 Body::~Body()
 {
+    cout << "borrando body:" << endl;
     World::Instance()->destroyBody(bod);
     //world->update();
 }
 
 
 ///Return a SFML rectangle to graw collider in window
-sf::RectangleShape Body::dameRect(){
+void Body::pintaRect(sf::RenderWindow &app){
     sf::RectangleShape Polygon(sf::Vector2f((collideShape.GetVertex(2).x-collideShape.GetVertex(0).x)*MULTIPLIER,(collideShape.GetVertex(2).y-collideShape.GetVertex(0).y)*MULTIPLIER));
     Polygon.setFillColor(sf::Color::Transparent);
     Polygon.setOutlineThickness(-1);
     Polygon.setOrigin(Polygon.getSize().x/2,Polygon.getSize().y/2);
     Polygon.setPosition(getPositionX(),getPositionY());
 
-    return Polygon;
+    app.draw(Polygon);
 }
 
 

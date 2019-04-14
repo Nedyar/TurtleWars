@@ -27,22 +27,6 @@ void Gun::createBody()
     body->setUserData(this);
 }
 
-void Gun::deleteBody()
-{
-    delete body;
-    body = nullptr;
-}
-
-void Gun::setXVelocity(float velocity)
-{
-    body->getBody()->SetLinearVelocity((b2Vec2(velocity,body->getBody()->GetLinearVelocity().y)));
-}
-
-void Gun::setpos(double posx, double posy)
-{
-    sprite.setPosition(posx, posy);
-}
-
 Gun::~Gun()
 {
     Level* level = Level::instance(0);
@@ -52,9 +36,7 @@ Gun::~Gun()
 
 void Gun::update()
 {
-    int xDir = 1;
-    if (facingLeft)
-        xDir = -1;
+    int xDir = 1 - facingLeft*2;
 
     sprite.setScale(xDir,1);
 
@@ -89,8 +71,10 @@ bool Gun::shoot()
             ammo--;
             shootAnim=true;
 
-
-            float posx = sprite.getPosition().x+(7+sprite.getLocalBounds().width/2)*xDirection;
+            int modX = 27;
+            if (owner->body->getBody()->GetLinearVelocity().x!=0)
+                modX += 5;
+            float posx = sprite.getPosition().x+(modX+sprite.getLocalBounds().width/2)*xDirection;
             float posy = sprite.getPosition().y-3.1;
             float ang = rand() % 7 + -3 + xOrientation;
             Level::instance(0)->addBullet(new Bullet(posx,posy,ang,200));

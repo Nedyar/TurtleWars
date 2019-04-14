@@ -28,6 +28,7 @@ class Physics2D
 
     private:
         static Physics2D* instance;
+        World* world = World::Instance();
 
 };
 

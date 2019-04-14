@@ -65,7 +65,7 @@ private:
     bool dead = false;
     bool fakingDead = false;
 
-    Body* body = nullptr;
+    //Body* body = nullptr;
 
     sf::Sprite sprite;
     sf::Texture texture;

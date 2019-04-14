@@ -228,58 +228,63 @@ void Level::handleEvents()
 
 void Level::update()
 {
-    cout << "Characters:" << endl;
+    //cout << "Characters:" << endl;
     for (int i = 0; i < nCharacters; i++)
     {
         //cout << players[i] << endl;
         players[i]->update();
     }
-    cout << "WeaponSpawners:" << endl;
+    //cout << "WeaponSpawners:" << endl;
     for (int i = 0; i < nWeaponSpawners; i++)
     {
-        cout << "\t"<<weaponSpawners[i] << endl;
+        //cout << "\t"<<weaponSpawners[i] << endl;
         weaponSpawners[i]->update();
     }
-    cout << "Weapons:" << endl;
+    //cout << "Weapons:" << endl;
     for (int i = 0; i < weapons.size(); i++)
     {
-        cout << "\t"<<weapons.at(i) << endl;
+        //cout << "\t"<<weapons.at(i) << endl;
         weapons.at(i)->update();
     }
-    cout << "Bullets:" << endl;
+    //cout << "Bullets:" << endl;
     for(int i=0; i<bullets.size(); i++)
     {
-        cout << "\t"<<bullets.at(i) << endl;
+        //cout << "\t"<<bullets.at(i) << endl;
         bullets.at(i)->update();
     }
-    cout << "Updateamos world" << endl;
+    //cout << "Updateamos world" << endl;
     Physics2D::Instance()->updateWorld();
-    cout << "terminamos update" << endl;
+    //cout << "terminamos update" << endl;
 }
 
 void Level::draw(sf::RenderWindow &app)
 {
     mapa->drawSpriteMatrix(app);
+    mapa->drawBodyMap(app);
 
     for (int i = 0; i < nWeaponSpawners; i++)
     {
         weaponSpawners[i]->draw(app);
+        weaponSpawners[i]->body->pintaRect(app);
     }
 
     for (int i = 0; i < weapons.size(); i++)
     {
         weapons.at(i)->draw(app);
+        weapons.at(i)->body->pintaRect(app);
+
     }
 
     for (int i = 0; i < bullets.size(); i++)
     {
         bullets.at(i)->draw(app);
+        bullets.at(i)->body->pintaRect(app);
     }
 
     for (int i = 0; i < nCharacters; i++)
     {
-        Character* player = players[i];
-        player->draw(app);
+        players[i]->draw(app);
+        players[i]->body->pintaRect(app);
     }
 }
 

@@ -16,8 +16,8 @@ public:
     virtual void update() = 0;
     virtual void draw(sf::RenderWindow &app) = 0;
     virtual void createBody() = 0;
-    virtual void deleteBody() = 0;
-    virtual void setXVelocity(float velocity) = 0;
+    void deleteBody();
+    void setXVelocity(float velocity);
 
     void setPos(int x, int y);
     void setFacingLeft(bool facing);
@@ -29,7 +29,7 @@ protected:
     bool facingLeft = false;
     sf::Sprite sprite;
     sf::Texture texture;
-    Body* body = nullptr;
+    //Body* body = nullptr;
 };
 
 #include <Character.h>

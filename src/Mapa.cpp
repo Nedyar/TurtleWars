@@ -1,4 +1,6 @@
 #include "Mapa.h"
+#include <iostream>
+using namespace std;
 
 Mapa::Mapa(TiXmlElement* Map)
 {
@@ -22,13 +24,12 @@ Mapa::Mapa(TiXmlElement* Map)
 
     TiXmlElement* obj = Map->FirstChildElement("objectgroup")->FirstChildElement("object");
     int conta = 0;
-
     do
     {
         conta++;
         obj = obj->NextSiblingElement("object");
     }while(obj);
-
+    cout << conta << endl;
     bodyMap = new Body*[conta];
 
 }
@@ -73,7 +74,7 @@ void Mapa::setBodyMap(TiXmlElement* objLayer)
         obj->QueryFloatAttribute("width", &width);
         obj->QueryFloatAttribute("height", &height);
 
-        bodyMap[conta] = Physics2D::Instance()->createRectangleBody(posX+width/2, posY+height/2, width, height, 0);
+        bodyMap[conta] = Physics2D::Instance()->createRectangleBody(posX+width/2, posY+height/2, width, height-4, 0);
         conta++;
         obj = obj->NextSiblingElement("object");
     }while(obj);
@@ -124,10 +125,10 @@ void Mapa::drawBodyMap(sf::RenderWindow &window)
 {
     //motorSFML* motor = motorSFML::Instance();
 
-    for(int i=0; i<2; ++i)
+    for(int i=0; i<7; ++i)
     {
                 //motor->draw(window, bodyMap[i]->dameRect());
-                window.draw( bodyMap[i]->dameRect() );
+                bodyMap[i]->pintaRect(window);
     }
 }
 
