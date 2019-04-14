@@ -4,7 +4,7 @@
 ShotGun::ShotGun(double posx, double posy)
 {
     facingLeft = false;
-
+    id = 3;
     texture.loadFromFile("img/shotgun.png");
     sprite.setTexture(texture);
     sprite.setOrigin(texture.getSize().x/2,texture.getSize().y/2);
@@ -23,9 +23,33 @@ ShotGun::ShotGun(double posx, double posy)
     shotGunLoaderSprite.setPosition(posx+2,posy);
 }
 
+void ShotGun::createBody()
+{
+    id = 3;
+    float posx = sprite.getPosition().x;
+    float posy = sprite.getPosition().y;
+    float width = sprite.getLocalBounds().width;
+    float height = sprite.getLocalBounds().height;
+    body = Physics2D::Instance()->createWeaponBody(posx,posy,width,height);;
+    body->setUserData(this);
+}
+
+void ShotGun::deleteBody()
+{
+    delete body;
+    body = nullptr;
+}
+
+void ShotGun::setXVelocity(float velocity)
+{
+    body->getBody()->SetLinearVelocity((b2Vec2(velocity,body->getBody()->GetLinearVelocity().y)));
+}
+
 ShotGun::~ShotGun()
 {
-    //dtor
+    Level* level = Level::instance(0);
+    level->removeWeapon(this);
+    delete body;
 }
 
 bool ShotGun::reload()
@@ -48,21 +72,18 @@ bool ShotGun::shoot()
     {
         if (!reload()&&!shootAnimBack&&!shootAnim)
         {
-            int xOrientation = 0;
-            int xDirection = 1;
-            if (facingLeft) {
-                xOrientation = 180;
-                xDirection = -1;
-            }
+            int xOrientation = 0 + facingLeft*180;
+            int xDirection = 1 - facingLeft*2;
 
             shooted = true;
             ammo--;
+            float mod = 5.5;
             Level* level = Level::instance(0);
-            level->addBullet(new Bullet(sprite.getPosition().x+(sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + 9)+xOrientation,100));
-            level->addBullet(new Bullet(sprite.getPosition().x+(sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + 3)+xOrientation,100));
-            level->addBullet(new Bullet(sprite.getPosition().x+(sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + (-3))+xOrientation,100));
-            level->addBullet(new Bullet(sprite.getPosition().x+(sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + (-9))+xOrientation,100));
-            level->addBullet(new Bullet(sprite.getPosition().x+(sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + (-15))+xOrientation,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+(mod+sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + 9)+xOrientation,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+(mod+sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + 3)+xOrientation,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+(mod+sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + (-3))+xOrientation,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+(mod+sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + (-9))+xOrientation,100));
+            level->addBullet(new Bullet(sprite.getPosition().x+(mod+sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + (-15))+xOrientation,100));
             return true;
         }
     }
@@ -71,7 +92,6 @@ bool ShotGun::shoot()
 
 void ShotGun::update()
 {
-    cout << "Empezamos update de shotgun" << endl;
     int xDir = 1;
     if (facingLeft)
         xDir = -1;
@@ -84,6 +104,13 @@ void ShotGun::update()
     {
         shootAnimation();
     }
+
+    if (body != nullptr)
+        sprite.setPosition(body->getPositionX(),body->getPositionY());
+
+    /* Crear metodo para realizar esto al tocar el suelo o al pasar un tiempo
+    if (ammo == 0 && owner == nullptr)
+        delete this;*/
 }
 
 void ShotGun::draw(sf::RenderWindow &app)
@@ -110,4 +137,9 @@ void ShotGun::shootAnimation()
         shotGunLoaderSprite.setPosition(shotGunLoaderSprite.getPosition().x+3*xDir, shotGunLoaderSprite.getPosition().y);
         shootAnim=false;
     }
+}
+
+int ShotGun::getId()
+{
+    return id;
 }

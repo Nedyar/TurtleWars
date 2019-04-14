@@ -37,8 +37,9 @@ Character::Character(int n, int posx, int posy)
     armSprite.setTextureRect(rect);
     armSprite.setOrigin(armSprite.getLocalBounds().width/2,armSprite.getLocalBounds().height/2);
     armSprite.setPosition(posx,posy);
-
-    body = Physics2D::Instance()->createCharacterBody(sprite.getPosition().x, sprite.getPosition().y);
+    float width = sprite.getLocalBounds().width;
+    float height = sprite.getLocalBounds().height;
+    body = Physics2D::Instance()->createCharacterBody(posx,posy,width,height);
     body->setUserData(this);
 }
 
@@ -83,9 +84,15 @@ bool Character::dropWeapon()
     {
         Level* level = Level::instance(0);
         level->addWeapon(weapon);
+
+        int xDir = 1 - facingLeft*2;
+
         weapon->setOwner(nullptr);
+        weapon->createBody();
+        weapon->setXVelocity(body->getBody()->GetLinearVelocity().x+4*xDir);
         weapon = nullptr;
-        delete weapon;
+
+        //delete weapon;
         return true;
     }
     return false;
@@ -93,12 +100,21 @@ bool Character::dropWeapon()
 
 bool Character::takeWeapon()
 {
+    cout << "entramos en takeWeapon" << endl;
     if (weapon == nullptr)
     {
-        Weapon* newWeapon;
-        //if weapon_en_suelo != nullptr
-        if (weaponSpawnerOver != nullptr)
+        cout << "no tengo arma" << endl;
+        Weapon* newWeapon = nullptr;
+
+        if (weaponOver != nullptr) {
+            cout << "estoy sobre arma" << endl;
+            Level::instance(0)->removeWeapon(weaponOver);
+            newWeapon = weaponOver;
+            weaponOver = nullptr;
+        }
+        else if (weaponSpawnerOver != nullptr)
         {
+            cout << "estoy sobre spawn" << endl;
             newWeapon = weaponSpawnerOver->takeWeapon();
         }
 
@@ -106,17 +122,25 @@ bool Character::takeWeapon()
         {
             newWeapon->setOwner(this);
             weapon = newWeapon;
+            weapon->deleteBody();
+            cout << "Arma equipada" << endl;
             return true;
         }
     }
+
+    cout << "Arma no equipada" << endl;;
+
     return false;
 }
 
 void Character::setWeaponSpawnerOver(WeaponSpawner* newWS)
 {
     weaponSpawnerOver = newWS;
-    if (weaponSpawnerOver == nullptr)
-        delete weaponSpawnerOver;
+}
+
+void Character::setWeaponOver(Weapon* newWeapon)
+{
+    weaponOver = newWeapon;
 }
 
 void Character::startWalking(bool left)
@@ -126,7 +150,8 @@ void Character::startWalking(bool left)
         fakingDead = false;
         walking = true;
 
-        facingLeft = left;
+        if (!sliding)
+            facingLeft = left;
     }
 }
 
@@ -219,11 +244,7 @@ void Character::update()
         xPosture = 1;
         yPosture = 2;
 
-        int xDir = 1;
-        if (facingLeft)
-        {
-            xDir *= -1;
-        }
+        int xDir = 1 - facingLeft*2;
         sprite.setScale(xDir,1);
         armSprite.setScale(xDir,1);
     }
@@ -237,14 +258,9 @@ void Character::update()
             xPosture = 0;
         }
 
-        int xDir = 1;
-        float str = 1.5;
+        int xDir = 1 - facingLeft*2;
+        float str = 1.5 - facingLeft*3;
 
-        if (facingLeft)
-        {
-            xDir *= -1;
-            str *= -1;
-        }
         sprite.setScale(xDir,1);
         armSprite.setScale(xDir,1);
 
@@ -299,12 +315,6 @@ void Character::update()
         xPosture = 0;
     }
 
-    int xDir = 1;
-    if (facingLeft && !sliding)
-    {
-        xDir *= -1;
-    }
-
     int armPosY = body->getPositionY()+yDifArm;
     if (crouching)
         armPosY += 3;
@@ -333,7 +343,8 @@ void Character::update()
             mody = 5;
         }
 
-        if (facingLeft && !sliding)
+
+        if (facingLeft)
         {
             weapon->setFacingLeft(true);
             modx *= -1;
@@ -346,7 +357,9 @@ void Character::update()
         else
             weapon->setPos(sprite.getPosition().x+modx,sprite.getPosition().y+mody);
 
+        //cout << "Updateamos weapon" << endl;
         weapon->update();
+        //cout << "Weapon updateada" << endl;
 
     }
 
@@ -354,6 +367,8 @@ void Character::update()
     sprite.setTextureRect(bodyRect);
     sprite.setPosition(body->getPositionX(),body->getPositionY());
     //sprite.setRotation(body->getAngle());
+
+    int xDir = 1- facingLeft*2;
 
     sf::IntRect armRect = sf::IntRect(intX,0,9,8);
     armSprite.setTextureRect(armRect);

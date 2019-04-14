@@ -25,8 +25,12 @@ WeaponSpawner::WeaponSpawner(int t, double x, double y)
     weaponSpawned = nullptr;
 
     //body = Physics2D::Instance()->createRectangleBody(x,y,platformTexture.getSize().x,platformTexture.getSize().y,2);
-    body = Physics2D::Instance()->createSpawnBody(x,y);
+    float width = platformSprite.getLocalBounds().width;
+    float height = platformSprite.getLocalBounds().height+5;
+    body = Physics2D::Instance()->createSpawnBody(x,y-height/2,width,height);
     body->setUserData(this);
+
+    spawnWeapon();
 }
 
 WeaponSpawner::~WeaponSpawner()
@@ -65,7 +69,6 @@ void WeaponSpawner::draw(sf::RenderWindow &app)
     if (weaponSpawned != nullptr)
         weaponSpawned->draw(app);
     app.draw(ballSprite2);
-    cout << weaponSpawned << endl;
 }
 
 bool WeaponSpawner::spawnWeapon()
@@ -90,7 +93,10 @@ bool WeaponSpawner::spawnWeapon()
 Weapon* WeaponSpawner::takeWeapon() {
     Weapon* returned = weaponSpawned;
     weaponSpawned = nullptr;
-    clock.restart();
+
+    if(returned != nullptr)
+        clock.restart();
+
     return returned;
 }
 

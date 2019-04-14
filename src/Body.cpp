@@ -1,4 +1,6 @@
 #include "Body.h"
+#include <iostream>
+using namespace std;
 
 #define MULTIPLIER 100.f
 
@@ -16,9 +18,11 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     bodDef.type = type;
     bodDef.position = spawn;
     //Create body
-    bod = world->CreateBody(bodDef);
+    bod = World::Instance()->CreateBody(bodDef);
 
     fixDef.filter.groupIndex = group;
+    //fixDef.filter.categoryBits = category;
+    //fixDef.filter.maskBits = mask;
     fixDef.isSensor = sensor;
 
     fixDef.shape = &shape;
@@ -28,10 +32,43 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     fix = bod->CreateFixture(&fixDef);
 
     bod->SetFixedRotation(avoidRotate);
-
+    //cout << mask << endl << category << endl;
 }
 
+Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction,float restitution, int group,  bool avoidRotate)
+{
 
+    collideShape = shape;//save a shape
+    b2BodyDef bodDef;
+    b2FixtureDef fixDef;
+
+
+    bodDef.type = type;
+    bodDef.position = spawn;
+    //Create body
+    bod = World::Instance()->CreateBody(bodDef);
+    bod->SetFixedRotation(avoidRotate);
+
+    //fixDef.filter.categoryBits = category;
+    //fixDef.filter.maskBits = mask;
+    fixDef.shape = &shape;
+    fixDef.isSensor = true;
+    fix = bod->CreateFixture(&fixDef);
+
+    fixDef.filter.groupIndex = group;
+
+    fixDef.density = density;
+    fixDef.friction = friction;
+    fixDef.restitution = restitution;
+    fixDef.isSensor = false;
+    fix = bod->CreateFixture(&fixDef);
+}
+
+Body::~Body()
+{
+    World::Instance()->destroyBody(bod);
+    //world->update();
+}
 
 
 ///Return a SFML rectangle to graw collider in window
@@ -118,10 +155,4 @@ float Body::getAngle(){
  float Body::rad2deg(float rad){
     float pi = 3.14;
     return rad / pi * 180;
-}
-
-
-Body::~Body()
-{
-
 }

@@ -4,6 +4,7 @@
 
 #include <Character.h>
 #include <WeaponSpawner.h>
+#include <Bullet.h>
 #include <Collidable.h>
 
 

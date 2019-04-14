@@ -36,6 +36,7 @@ public:
     bool dropWeapon();
     bool takeWeapon();
     void setWeaponSpawnerOver(WeaponSpawner* newWS);
+    void setWeaponOver(Weapon* newWeapon);
 
     void draw(sf::RenderWindow &app);
     void update();
@@ -50,6 +51,7 @@ private:
     int player = 0;
     Weapon* weapon = nullptr;
     WeaponSpawner* weaponSpawnerOver = nullptr;
+    Weapon* weaponOver = nullptr;
 
     float xPosture = 0;
     int yPosture = 0;
@@ -63,7 +65,7 @@ private:
     bool dead = false;
     bool fakingDead = false;
 
-    Body* body;
+    Body* body = nullptr;
 
     sf::Sprite sprite;
     sf::Texture texture;

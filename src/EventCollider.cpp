@@ -25,28 +25,45 @@ void EventCollider::BeginContact(b2Contact* contact)
     Collidable * objA = (Collidable*)contact->GetFixtureA()->GetBody()->GetUserData();
     Collidable * objB = (Collidable*)contact->GetFixtureB()->GetBody()->GetUserData();
 
-    if (objA)
+    if (objA && objB)
         if (objA->getId() == 1)
-        //cout << "juju" << endl;
         {
             Character* player = (Character*) objA;
             switch (objB->getId())
             {
             case 2: // WeaponSpawner
                 player->setWeaponSpawnerOver((WeaponSpawner*)objB);
-                //player->setWeaponSpawnerOver(nullptr);
+                cout << "Un ws"<< endl;
                 break;
             case 3: // Weapon
+                player->setWeaponOver((Weapon*)objB);
+                cout << "Un arma"<< endl;
                 break;
             case 4: // Bullet
+                player->die();
+                //delete (Bullet*)objB;
                 break;
             }
         }
-    if (objB)
-        switch (objB->getId())
+        else if (objB->getId() == 1)
         {
-
+            Character* player = (Character*) objB;
+            switch (objA->getId())
+            {
+            case 2: // WeaponSpawner
+                player->setWeaponSpawnerOver((WeaponSpawner*)objA);
+                cout << "Un ws"<< endl;
+                break;
+            case 3: // Weapon
+                player->setWeaponOver((Weapon*)objA);
+                cout << "Un arma"<< endl;
+                break;
+            case 4: // Bullet
+                player->die();
+                break;
+            }
         }
+
 }
 
 void EventCollider::EndContact(b2Contact* contact)
@@ -55,26 +72,23 @@ void EventCollider::EndContact(b2Contact* contact)
     Collidable * objA = (Collidable*)contact->GetFixtureA()->GetBody()->GetUserData();
     Collidable * objB = (Collidable*)contact->GetFixtureB()->GetBody()->GetUserData();
 
-    if (objA)
+    if (objA && objB)
         if (objA->getId() == 1)
-        //cout << "juju" << endl;
+            //cout << "juju" << endl;
         {
             Character* player = (Character*) objA;
             switch (objB->getId())
             {
             case 2: // WeaponSpawner
                 player->setWeaponSpawnerOver(nullptr);
-                //player->setWeaponSpawnerOver(nullptr);
+                cout << "salgo" <<endl;
                 break;
             case 3: // Weapon
+                player->setWeaponOver(nullptr);
+                cout << "me separo del arma" <<endl;
                 break;
             case 4: // Bullet
                 break;
             }
-        }
-    if (objB)
-        switch (objB->getId())
-        {
-
         }
 }

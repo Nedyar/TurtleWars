@@ -15,7 +15,12 @@ public:
     void update() override;
     void draw(sf::RenderWindow &app) override;
 
+    void createBody() override;
+    void deleteBody() override;
+    void setXVelocity(float velocity) override;
+
     void shootAnimation();
+    int getId() override;
 protected:
 
 private:

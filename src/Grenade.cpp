@@ -7,7 +7,7 @@ using namespace std;
 Grenade::Grenade(double posx, double posy)
 {
     facingLeft = false;
-
+    id = 3;
     texture.loadFromFile("img/grenade.png");
     sprite.setTexture(texture);
     sprite.setOrigin(5,5);
@@ -18,9 +18,33 @@ Grenade::Grenade(double posx, double posy)
     sprite.setPosition(posx,posy);
 }
 
+void Grenade::createBody()
+{
+    id = 3;
+    float posx = sprite.getPosition().x;
+    float posy = sprite.getPosition().y;
+    float width = sprite.getLocalBounds().width;
+    float height = sprite.getLocalBounds().height;
+    body = Physics2D::Instance()->createWeaponBody(posx,posy,width,height);
+    body->setUserData(this);
+}
+
+void Grenade::deleteBody()
+{
+    delete body;
+    body = nullptr;
+}
+
+void Grenade::setXVelocity(float velocity)
+{
+    body->getBody()->SetLinearVelocity((b2Vec2(velocity,body->getBody()->GetLinearVelocity().y)));
+}
+
 Grenade::~Grenade()
 {
-    //dtor
+    Level* level = Level::instance(0);
+    level->removeWeapon(this);
+    delete body;
 }
 
 bool Grenade::activate()
@@ -67,13 +91,15 @@ void Grenade::update()
 
     sprite.setScale(xDir,1);
 
+    if (body != nullptr)
+        sprite.setPosition(body->getPositionX(),body->getPositionY());
+
     if (activated && grenadeTimer.getElapsedTime().asSeconds() >= GRENADETIME)
     {
         explode();
         if (owner != nullptr)
             owner->dropWeapon();
-        Level* level = Level::instance(0);
-        level->removeWeapon(this);
+
         activated = false;
         delete this;
     }
@@ -82,4 +108,9 @@ void Grenade::update()
 void Grenade::draw(sf::RenderWindow &app)
 {
     app.draw(sprite);
+}
+
+int Grenade::getId()
+{
+    return id;
 }

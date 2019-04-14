@@ -11,13 +11,17 @@ public:
     Grenade(double posx, double posy);
     virtual ~Grenade();
 
+    void createBody() override;
+    void deleteBody() override;
+    void setXVelocity(float velocity) override;
+
     bool shoot() override;
     bool activate();
     bool explode();
 
     void update() override;
     void draw(sf::RenderWindow &app) override;
-
+    int getId() override;
 protected:
 
 private:

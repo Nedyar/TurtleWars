@@ -12,9 +12,14 @@ public:
     void update() override;
     void draw(sf::RenderWindow &app) override;
 
+    void createBody() override;
+    void deleteBody() override;
+    void setXVelocity(float velocity) override;
+
     bool shoot() override;
     void setpos(double posx, double posy);
     void shootAnimation();
+    int getId() override;
 
 protected:
 

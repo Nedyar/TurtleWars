@@ -12,6 +12,7 @@ class Body
 {
     public:
         Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction, float restitutio, int group, bool sensor, bool avoidRotate);
+        Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction,float restitution, int group, bool avoidRotate);
         ~Body();
 
         //FUNCTIONS
@@ -40,7 +41,6 @@ class Body
     private:
         float rad2deg(float rad);
          //VARIABLES
-        World *world = World::Instance();
         b2Body * bod = nullptr;
         b2Fixture * fix = nullptr;
 

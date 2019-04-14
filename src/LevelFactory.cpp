@@ -93,3 +93,47 @@ Character** LevelFactory::characterLoader(int seleccion, int nPlayers)
 
     return players;
 }
+
+WeaponSpawner** LevelFactory::spawnerLoader(int seleccion)
+{
+    TiXmlElement* level = doc.FirstChildElement("level");
+    TiXmlElement* spawerElement = NULL;
+    TiXmlDocument* docMap = NULL;
+    WeaponSpawner** spawners = NULL;
+    float posX = 0.0, posY = 0.0;
+
+    do
+    {
+        if(level->FirstAttribute()->IntValue() == seleccion)
+        {
+            const char* nameMap = level->FirstChildElement("mapa")->Attribute("maptmx");
+            docMap = new TiXmlDocument(nameMap);
+            docMap->LoadFile();
+            spawerElement = docMap->FirstChildElement("map")->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->NextSiblingElement("objectgroup");
+            spawerElement->QueryIntAttribute("size", &sizeSpawner);
+            spawerElement = spawerElement->FirstChildElement("object");
+            break;
+        }
+        level = level->NextSiblingElement("level");
+
+    }while(level);
+
+    spawners = new WeaponSpawner*[sizeSpawner];
+
+    for(int i=0; i<sizeSpawner; i++)
+    {
+        spawerElement->QueryFloatAttribute("x", &posX);
+        spawerElement->QueryFloatAttribute("y", &posY);
+        spawners[i] = (WeaponSpawner*)malloc(sizeof(WeaponSpawner));
+        spawners[i] = new WeaponSpawner(i%3+1, posX, posY);
+
+        spawerElement = spawerElement->NextSiblingElement("object");
+    }
+
+    return spawners;
+}
+
+int LevelFactory::getSizeSpawner()
+{
+    return sizeSpawner;
+}

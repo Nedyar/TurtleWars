@@ -1,19 +1,22 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-const int VEL = 15;
+const int VEL = 10;
 
 #include <SFML/Graphics.hpp>
 #include <math.h>
 #include <iostream>
+#include <Body.h>
+#include <Collidable.h>
 
-class Bullet
+class Bullet : public Collidable
 {
 public:
     Bullet(double posx, double posy, double ang, double maxLen);
     virtual ~Bullet();
     void update();
     void draw(sf::RenderWindow &app);
+    int getId() override;
 
 protected:
 
@@ -25,6 +28,7 @@ private:
     sf::Texture bulletTexture;
     double angle = 0;
     double vel = 0;
+    Body* body = nullptr;
 };
 
 #endif // BULLET_H

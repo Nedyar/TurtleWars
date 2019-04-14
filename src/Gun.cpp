@@ -4,7 +4,7 @@
 Gun::Gun(double posx, double posy)
 {
     facingLeft = false;
-
+    id = 3;
     texture.loadFromFile("img/pistol.png");
     sprite.setTexture(texture);
     sprite.setOrigin(texture.getSize().x/8,texture.getSize().y/2);
@@ -16,6 +16,28 @@ Gun::Gun(double posx, double posy)
     shootAnim=false;
 }
 
+void Gun::createBody()
+{
+    id = 3;
+    float posx = sprite.getPosition().x;
+    float posy = sprite.getPosition().y;
+    float width = sprite.getLocalBounds().width;
+    float height = sprite.getLocalBounds().height;
+    body = Physics2D::Instance()->createWeaponBody(posx,posy,width,height);
+    body->setUserData(this);
+}
+
+void Gun::deleteBody()
+{
+    delete body;
+    body = nullptr;
+}
+
+void Gun::setXVelocity(float velocity)
+{
+    body->getBody()->SetLinearVelocity((b2Vec2(velocity,body->getBody()->GetLinearVelocity().y)));
+}
+
 void Gun::setpos(double posx, double posy)
 {
     sprite.setPosition(posx, posy);
@@ -23,12 +45,13 @@ void Gun::setpos(double posx, double posy)
 
 Gun::~Gun()
 {
-    //dtor
+    Level* level = Level::instance(0);
+    level->removeWeapon(this);
+    delete body;
 }
 
 void Gun::update()
 {
-    cout << "Empezamos update de gun" << endl;
     int xDir = 1;
     if (facingLeft)
         xDir = -1;
@@ -39,6 +62,13 @@ void Gun::update()
     {
         shootAnimation();
     }
+
+    if (body != nullptr)
+        sprite.setPosition(body->getPositionX(),body->getPositionY());
+
+    /* Crear metodo para realizar esto al tocar el suelo o al pasar un tiempo
+    if (ammo == 0 && owner == nullptr)
+        delete this;*/
 }
 
 void Gun::draw(sf::RenderWindow &app)
@@ -53,18 +83,17 @@ bool Gun::shoot()
     {
         if(!shootAnim) //para que dispare al finalizar la animación de la pistola (hay colddown)
         {
-            int xOrientation = 0;
-            int xDirection = 1;
-            if (facingLeft) {
-                xOrientation = 180;
-                xDirection = -1;
-            }
+            int xOrientation = 0 + facingLeft*180;
+            int xDirection = 1 - facingLeft*2;
 
             ammo--;
             shootAnim=true;
 
-            Level* level = Level::instance(0);
-            level->addBullet(new Bullet(sprite.getPosition().x+(sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-3.1,rand() % 7 + -3 + xOrientation,200));
+
+            float posx = sprite.getPosition().x+(7+sprite.getLocalBounds().width/2)*xDirection;
+            float posy = sprite.getPosition().y-3.1;
+            float ang = rand() % 7 + -3 + xOrientation;
+            Level::instance(0)->addBullet(new Bullet(posx,posy,ang,200));
 
             clockAnimation.restart();
             return true;
@@ -99,4 +128,9 @@ void Gun::shootAnimation()
     }
 
 
+}
+
+int Gun::getId()
+{
+    return id;
 }
