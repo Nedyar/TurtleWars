@@ -66,9 +66,9 @@ bool ShotGun::shoot()
 
             shooted = true;
             ammo--;
-            float mod = 24;
+            float mod = 25;
             if (owner->body->getBody()->GetLinearVelocity().x!=0)
-                mod += 5;
+                mod += 6;
             Level* level = Level::instance(0);
             level->addBullet(new Bullet(sprite.getPosition().x+(mod+sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + 9)+xOrientation,100));
             level->addBullet(new Bullet(sprite.getPosition().x+(mod+sprite.getLocalBounds().width/2)*xDirection,sprite.getPosition().y-2.8,(rand() % 6 + 3)+xOrientation,100));

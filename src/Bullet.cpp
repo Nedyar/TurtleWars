@@ -6,7 +6,7 @@ Bullet::Bullet(double posx, double posy, double ang, double maxLen)
     id = 4;
     bulletTexture.loadFromFile("img/bullet.png");
     bulletSprite.setTexture(bulletTexture);
-    bulletSprite.setOrigin(0,bulletTexture.getSize().y/2);
+    bulletSprite.setOrigin(bulletTexture.getSize().x/2,bulletTexture.getSize().y/2);
     bulletSprite.setPosition(posx, posy);
     bulletSprite.setRotation(ang);
 
@@ -28,7 +28,7 @@ void Bullet::update()
 {
     body->getBody()->SetLinearVelocity(b2Vec2(VEL*cos(angle), VEL*sin(angle)));
     bulletSprite.setPosition(body->getPositionX(), body->getPositionY());
-    //bulletSprite.move(VEL*cos(angle), VEL*sin(angle));
+
     if(sqrt(pow(bulletSprite.getPosition().x-posiniX, 2)+pow(bulletSprite.getPosition().y-posiniY, 2))>=maxLength)
     {
         mustDelete = true;

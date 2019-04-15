@@ -25,6 +25,7 @@ void EventCollider::BeginContact(b2Contact* contact)
     Collidable * objB = (Collidable*)contact->GetFixtureB()->GetBody()->GetUserData();
 
     if (objA && objB)
+    {
         if (objA->getId() == 1)
         {
             Character* player = (Character*) objA;
@@ -39,10 +40,8 @@ void EventCollider::BeginContact(b2Contact* contact)
                 //cout << "Un arma"<< endl;
                 break;
             case 4: // Bullet
-                //delete (Bullet*)objA;
-                cout << "Te mato" << endl;
                 player->kill();
-                //delete (Bullet*)objB;
+                ((Bullet*) objB)->deleteMe();
                 break;
             }
         }
@@ -60,31 +59,26 @@ void EventCollider::BeginContact(b2Contact* contact)
                 //cout << "Un arma"<< endl;
                 break;
             case 4: // Bullet
-                //delete (Bullet*)objA;
-                cout << "Te mato" << endl;
                 player->kill();
-
+                ((Bullet*) objA)->deleteMe();
                 break;
             }
         }
-        // el objeto a es bala, hacer desaparecer
-        else if (objA->getId() == 4)
+    }
+    else if (objA)
+    {
+        if (objA->getId() == 4)
         {
-            cout << "Bala choca"<< endl;;
-            if (objB->getId() > 0 && objB->getId() < 5)
-            {
-                ((Bullet*) objA)->deleteMe();
-            }
+            ((Bullet*) objA)->deleteMe();
         }
-         // el objeto b es bala, hacer desaparecer
-        else if (objB->getId() == 4)
+    }
+    else if (objB)
+    {
+        if (objB->getId() == 4)
         {
-            cout << "Bala choca"<< endl;;
-            if (objA->getId() > 0 && objA->getId() < 5)
-            {
-                ((Bullet*) objB)->deleteMe();
-            }
+            ((Bullet*) objB)->deleteMe();
         }
+    }
 }
 
 void EventCollider::EndContact(b2Contact* contact)

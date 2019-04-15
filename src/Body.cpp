@@ -18,9 +18,7 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     bodDef.type = type;
     bodDef.position = spawn;
     //Create body
-    cout<<"aqui4"<<endl;
     bod = World::Instance()->CreateBody(bodDef);
-    cout<<"aqui4"<<endl;
 
     fixDef.filter.groupIndex = group;
     //fixDef.filter.categoryBits = category;
@@ -61,7 +59,6 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     fix = bod->CreateFixture(&fixDef);
 
     fixDef.filter.groupIndex = group;
-
     fixDef.isSensor = false;
     fix = bod->CreateFixture(&fixDef);
 }

@@ -18,6 +18,7 @@ public:
     virtual void createBody() = 0;
     void deleteBody();
     void setXVelocity(float velocity);
+    void setYVelocity(float velocity);
 
     void setPos(int x, int y);
     void setFacingLeft(bool facing);

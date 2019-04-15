@@ -22,6 +22,11 @@ void Weapon::setXVelocity(float velocity)
     body->getBody()->SetLinearVelocity((b2Vec2(velocity,body->getBody()->GetLinearVelocity().y)));
 }
 
+void Weapon::setYVelocity(float velocity)
+{
+    body->getBody()->SetLinearVelocity((b2Vec2(0,velocity)));
+}
+
 void Weapon::deleteBody()
 {
     delete body;

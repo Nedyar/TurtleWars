@@ -33,6 +33,7 @@ public:
     void die();
     void kill();
     void fakeDie();
+    void lookUp();
 
     bool dropWeapon();
     bool takeWeapon();
@@ -67,6 +68,7 @@ private:
     bool dead = false;
     bool mustDie = false;
     bool fakingDead = false;
+    bool lookingUp = false;
 
     //Body* body = nullptr;
 

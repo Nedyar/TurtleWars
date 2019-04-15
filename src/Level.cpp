@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 Level* Level::pinstance = 0;
-bool drawBodies = false;
+bool drawBodies = true;
 
 
 Level::Level(int nPlayers, int nMap)
@@ -57,9 +57,10 @@ void Level::handleEvents()
         player->stopWalking();
 
 
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         player->jump();
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        player->lookUp();
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         player->crouch();
     else

@@ -20,6 +20,8 @@ Character::Character(int n, int posx, int posy)
     sliding = false;
     dead = false;
     fakingDead = false;
+    mustDie = false;
+    lookingUp = false;
 
     // will deprecate
     switch (player)
@@ -107,13 +109,16 @@ bool Character::dropWeapon()
         Level* level = Level::instance(0);
         level->addWeapon(weapon);
 
-        int xDir = 1 - facingLeft*2;
+
 
         weapon->setOwner(nullptr);
-        cout << "aqui" <<endl;
         weapon->createBody();
-        cout << "aqui" <<endl;
-        weapon->setXVelocity(body->getBody()->GetLinearVelocity().x+4*xDir);
+        if (lookingUp)
+            weapon->setYVelocity(-JUMP_FORCE);
+        else {
+        int xDir = 1 - facingLeft*2;
+            weapon->setXVelocity(body->getBody()->GetLinearVelocity().x+4*xDir);
+            }
         weapon = nullptr;
 
         //delete weapon;
@@ -166,6 +171,10 @@ void Character::setWeaponSpawnerOver(WeaponSpawner* newWS)
 void Character::setWeaponOver(Weapon* newWeapon)
 {
     weaponOver = newWeapon;
+}
+
+void Character::lookUp() {
+    lookingUp = true;
 }
 
 void Character::startWalking(bool left)
@@ -406,6 +415,7 @@ void Character::update()
     armSprite.setTextureRect(armRect);
     armSprite.setPosition(body->getPositionX()-xDifArm*xDir,armPosY);
     //armSprite.setRotation(body->getAngle());
+    lookingUp = false;
 }
 
 int Character::getId()

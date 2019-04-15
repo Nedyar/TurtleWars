@@ -28,9 +28,7 @@ World::World()
 
 b2Body* World::CreateBody(b2BodyDef bodDef) //COmprobar que esta funcion devulve un puntero
 {
-    cout<<"aqui5"<<endl;
     b2Body* body = world2D->CreateBody(&bodDef);
-    cout<<"aqui5"<<endl;
     return body;
 
 }
