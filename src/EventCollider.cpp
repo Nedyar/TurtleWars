@@ -36,7 +36,7 @@ void EventCollider::BeginContact(b2Contact* contact)
                 //cout << "Un ws"<< endl;
                 break;
             case 3: // Weapon
-                player->setWeaponOver((Weapon*)objB);
+                player->addWeaponOver((Weapon*)objB);
                 //cout << "Un arma"<< endl;
                 break;
             case 4: // Bullet
@@ -55,7 +55,7 @@ void EventCollider::BeginContact(b2Contact* contact)
                 //cout << "Un ws"<< endl;
                 break;
             case 3: // Weapon
-                player->setWeaponOver((Weapon*)objA);
+                player->addWeaponOver((Weapon*)objA);
                 //cout << "Un arma"<< endl;
                 break;
             case 4: // Bullet
@@ -99,7 +99,7 @@ void EventCollider::EndContact(b2Contact* contact)
                 //cout << "salgo" <<endl;
                 break;
             case 3: // Weapon
-                player->setWeaponOver(nullptr);
+                player->removeWeaponOver((Weapon*)objB);
                 //cout << "me separo del arma" <<endl;
                 break;
             case 4: // Bullet

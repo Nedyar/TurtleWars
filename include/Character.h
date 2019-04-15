@@ -8,6 +8,7 @@ class WeaponSpawner;
 #include <Physics2D.h>
 #include <Box2D.h>
 #include <Collidable.h>
+#include <vector>
 
 const double JUMP_FORCE = 5;
 const float xDifArm = 3;
@@ -39,7 +40,8 @@ public:
     bool takeWeapon();
     void swapWeapon();
     void setWeaponSpawnerOver(WeaponSpawner* newWS);
-    void setWeaponOver(Weapon* newWeapon);
+    void addWeaponOver(Weapon* newWeapon);
+    void removeWeaponOver(Weapon* newWeapon);
 
     void draw(sf::RenderWindow &app);
     void update();
@@ -54,7 +56,7 @@ private:
     int player = 0;
     Weapon* weapon = nullptr;
     WeaponSpawner* weaponSpawnerOver = nullptr;
-    Weapon* weaponOver = nullptr;
+    std::vector<Weapon*> weaponsOver;
 
     float xPosture = 0;
     int yPosture = 0;

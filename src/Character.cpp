@@ -136,9 +136,11 @@ bool Character::takeWeapon()
         //cout << "no tengo arma" << endl;
         Weapon* newWeapon = nullptr;
 
-        if (weaponOver != nullptr)
+        if (!weaponsOver.empty())
         {
             //cout << "estoy sobre arma" << endl;
+            Weapon* weaponOver = weaponsOver.front();
+            weaponsOver.erase(weaponsOver.begin());
             Level::instance(0)->removeWeapon(weaponOver);
             newWeapon = weaponOver;
             weaponOver = nullptr;
@@ -169,9 +171,21 @@ void Character::setWeaponSpawnerOver(WeaponSpawner* newWS)
     weaponSpawnerOver = newWS;
 }
 
-void Character::setWeaponOver(Weapon* newWeapon)
+void Character::addWeaponOver(Weapon* newWeapon)
 {
-    weaponOver = newWeapon;
+    weaponsOver.push_back(newWeapon);
+}
+
+void Character::removeWeaponOver(Weapon* newWeapon)
+{
+    for (int i = 0; i < weaponsOver.size(); i++)
+    {
+        if (weaponsOver.at(i) == newWeapon)
+        {
+            weaponsOver.erase(weaponsOver.begin()+i);
+            break;
+        }
+    }
 }
 
 void Character::lookUp()
