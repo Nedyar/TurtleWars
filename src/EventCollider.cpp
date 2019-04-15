@@ -73,7 +73,7 @@ void EventCollider::BeginContact(b2Contact* contact)
             cout << "Bala choca"<< endl;;
             if (objB->getId() > 0 && objB->getId() < 5)
             {
-                //delete objA;
+                ((Bullet*) objA)->deleteMe();
             }
         }
          // el objeto b es bala, hacer desaparecer
@@ -82,7 +82,7 @@ void EventCollider::BeginContact(b2Contact* contact)
             cout << "Bala choca"<< endl;;
             if (objA->getId() > 0 && objA->getId() < 5)
             {
-
+                ((Bullet*) objB)->deleteMe();
             }
         }
 }

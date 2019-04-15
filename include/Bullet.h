@@ -17,6 +17,7 @@ public:
     void update();
     void draw(sf::RenderWindow &app);
     int getId() override;
+    void deleteMe();
     //Body* body = nullptr;
 
 protected:
@@ -29,6 +30,7 @@ private:
     sf::Texture bulletTexture;
     double angle = 0;
     double vel = 0;
+    bool mustDelete = false;
     //Body* body = nullptr;
 };
 

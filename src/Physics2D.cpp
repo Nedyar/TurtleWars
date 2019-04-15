@@ -137,8 +137,8 @@ Body* Physics2D::createBulletBody(float positionX, float positionY, float width,
     float density = 0.f;
     float friction = 0.1f;
     float restitution = 0.f;
-    int group = 0;
-    bool sensor = true;
+    int group = -2;
+    bool sensor = false;
     bool avoidRotate = false;
 
     type = b2BodyType::b2_dynamicBody;

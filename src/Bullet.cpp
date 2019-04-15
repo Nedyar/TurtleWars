@@ -31,8 +31,15 @@ void Bullet::update()
     //bulletSprite.move(VEL*cos(angle), VEL*sin(angle));
     if(sqrt(pow(bulletSprite.getPosition().x-posiniX, 2)+pow(bulletSprite.getPosition().y-posiniY, 2))>=maxLength)
     {
-        delete this;
+        mustDelete = true;
     }
+
+    if (mustDelete)
+        delete this;
+}
+
+void Bullet::deleteMe() {
+    mustDelete = true;
 }
 
 void Bullet::draw(sf::RenderWindow &app)
