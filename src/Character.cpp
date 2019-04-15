@@ -115,10 +115,11 @@ bool Character::dropWeapon()
         weapon->createBody();
         if (lookingUp)
             weapon->setYVelocity(-JUMP_FORCE);
-        else {
-        int xDir = 1 - facingLeft*2;
+        else
+        {
+            int xDir = 1 - facingLeft*2;
             weapon->setXVelocity(body->getBody()->GetLinearVelocity().x+4*xDir);
-            }
+        }
         weapon = nullptr;
 
         //delete weapon;
@@ -173,7 +174,8 @@ void Character::setWeaponOver(Weapon* newWeapon)
     weaponOver = newWeapon;
 }
 
-void Character::lookUp() {
+void Character::lookUp()
+{
     lookingUp = true;
 }
 
@@ -236,7 +238,8 @@ void Character::standUp()
     }
 }
 
-void Character::kill(){
+void Character::kill()
+{
     mustDie = true;
 }
 

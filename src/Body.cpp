@@ -14,15 +14,13 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     b2BodyDef bodDef;
     b2FixtureDef fixDef;
 
-
     bodDef.type = type;
     bodDef.position = spawn;
+    bodDef.fixedRotation = avoidRotate;
     //Create body
     bod = World::Instance()->CreateBody(bodDef);
 
     fixDef.filter.groupIndex = group;
-    //fixDef.filter.categoryBits = category;
-    //fixDef.filter.maskBits = mask;
     fixDef.isSensor = sensor;
 
     fixDef.shape = &shape;
@@ -30,9 +28,6 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     fixDef.friction = friction;
     fixDef.restitution = restitution;
     fix = bod->CreateFixture(&fixDef);
-
-    bod->SetFixedRotation(avoidRotate);
-    //cout << mask << endl << category << endl;
 }
 
 Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction,float restitution, int group,  bool avoidRotate)
@@ -42,15 +37,12 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     b2BodyDef bodDef;
     b2FixtureDef fixDef;
 
-
     bodDef.type = type;
     bodDef.position = spawn;
+    bodDef.fixedRotation = avoidRotate;
     //Create body
     bod = World::Instance()->CreateBody(bodDef);
-    bod->SetFixedRotation(avoidRotate);
 
-    //fixDef.filter.categoryBits = category;
-    //fixDef.filter.maskBits = mask;
     fixDef.shape = &shape;
     fixDef.density = density;
     fixDef.friction = friction;

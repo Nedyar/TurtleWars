@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 Level* Level::pinstance = 0;
-bool drawBodies = true;
+bool drawBodies = false;
 
 
 Level::Level(int nPlayers, int nMap)
@@ -35,7 +35,8 @@ Level::~Level()
 
 Level* Level::instance(int nPlayers, int nMap)
 {
-    if (pinstance == 0) {
+    if (pinstance == 0)
+    {
         pinstance = new Level(nPlayers, nMap);
     }
     return pinstance;
@@ -53,6 +54,11 @@ void Level::handleEvents()
         player->startWalking(false);
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         player->startWalking(true);
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+    {
+        //cout << "Pulso: Q" << endl;
+        player->fakeDie();
+    }
     else
         player->stopWalking();
 
@@ -77,12 +83,6 @@ void Level::handleEvents()
         //cout << "Pulso: Space" << endl;
         //player2->jump();
         player->shoot();
-    }
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-    {
-        //cout << "Pulso: Q" << endl;
-        player->fakeDie();
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::X))
@@ -130,152 +130,152 @@ void Level::handleEvents()
     {
         player2->takeWeapon();
     }
-/*
-    Character* player3 = players[2];
+    /*
+        Character* player3 = players[2];
 
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        player3->startWalking(true);
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        player3->startWalking(false);
-    else
-        player3->stopWalking();
-
-
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        player3->jump();
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        player3->crouch();
-    else
-        player3->standUp();
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-    {
-        player3->dropWeapon();
-    }
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    {
-        player3->shoot();
-    }
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-    {
-        player3->fakeDie();
-    }
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
-    {
-        player3->takeWeapon();
-    }
-
-    Character* player4 = players[3];
-
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        player4->startWalking(false);
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        player4->startWalking(true);
-    else
-        player4->stopWalking();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+            player3->startWalking(true);
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+            player3->startWalking(false);
+        else
+            player3->stopWalking();
 
 
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        player4->jump();
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        player4->crouch();
-    else
-        player4->standUp();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            player3->jump();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+            player3->crouch();
+        else
+            player3->standUp();
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-    {
-        player4->dropWeapon();
-    }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+        {
+            player3->dropWeapon();
+        }
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    {
-        player4->shoot();
-    }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        {
+            player3->shoot();
+        }
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-    {
-        player4->fakeDie();
-    }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+        {
+            player3->fakeDie();
+        }
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
-    {
-        player4->takeWeapon();
-    }
-    */
-/*
-    if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) > 10)
-        player2->startWalking(false);
-    else if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) < -10)
-        player2->startWalking(true);
-    else
-        player2->stopWalking();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+        {
+            player3->takeWeapon();
+        }
 
-    if(sf::Joystick::isButtonPressed(0, 0))
-        player2->jump();
-    if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y) > 30)
-        player2->crouch();
-    else
-        player2->standUp();
+        Character* player4 = players[3];
 
-     if(sf::Joystick::isButtonPressed(0, 1))
-    {
-        //cout << "Pulso: E" << endl;
-        player2->dropWeapon();
-    }
 
-    if(sf::Joystick::isButtonPressed(0, 2))
-    {
-        //cout << "Pulso: Space" << endl;
-        //player2->jump();
-        player2->shoot();
-    }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+            player4->startWalking(false);
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+            player4->startWalking(true);
+        else
+            player4->stopWalking();
 
-    if(sf::Joystick::isButtonPressed(0, 5))
-    {
-        //cout << "Pulso: Q" << endl;
-        player2->fakeDie();
-    }
 
-    if(sf::Joystick::isButtonPressed(0, 3))
-    {
-        //cout << "Pulso: F" << endl;
-        player2->takeWeapon();
-    }
 
-    // Is joystick #0 connected?
-bool connected = sf::Joystick::isConnected(0);
-// How many buttons does joystick #0 support?
-unsigned int buttons = sf::Joystick::getButtonCount(0);
-// Does joystick #0 define a X axis?
-bool hasX = sf::Joystick::hasAxis(0, sf::Joystick::X);
-// Is button #2 pressed on joystick #0?
-bool pressed = sf::Joystick::isButtonPressed(0, 2);
-// What's the current position of the Y axis on joystick #0?
-float position = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            player4->jump();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+            player4->crouch();
+        else
+            player4->standUp();
 
-    std::cout << sf::Joystick::isButtonPressed(0, 0) << std::endl; // A
-    std::cout << sf::Joystick::isButtonPressed(0, 1) << std::endl; // B
-    std::cout << sf::Joystick::isButtonPressed(0, 2) << std::endl; // X
-    std::cout << sf::Joystick::isButtonPressed(0, 3) << std::endl; // Y
-    std::cout << sf::Joystick::isButtonPressed(0, 4) << std::endl; // L1
-    std::cout << sf::Joystick::isButtonPressed(0, 5) << std::endl; // R1
-    std::cout << sf::Joystick::isButtonPressed(0, 6) << std::endl; // SELECT
-    std::cout << sf::Joystick::isButtonPressed(0, 7) << std::endl; // START
-    std::cout << sf::Joystick::isButtonPressed(0, 8) << std::endl; // ANALOG
-    std::cout << sf::Joystick::isButtonPressed(0, 9) << std::endl; //
-    std::cout << sf::Joystick::isButtonPressed(0, 10) << std::endl; //
-    std::cout << sf::Joystick::isButtonPressed(1, 3) << std::endl; //
-    std::cout << sf::Joystick::isButtonPressed(1, 0) << std::endl; //
-    std::cout << sf::Joystick::isButtonPressed(1, 1) << std::endl; //
-    std::cout << sf::Joystick::isButtonPressed(1, 2) << std::endl; //
-    std::cout << sf::Joystick::isButtonPressed(1, 3) << std::endl << std::endl; */
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+        {
+            player4->dropWeapon();
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        {
+            player4->shoot();
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+        {
+            player4->fakeDie();
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+        {
+            player4->takeWeapon();
+        }
+        */
+    /*
+        if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) > 10)
+            player2->startWalking(false);
+        else if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) < -10)
+            player2->startWalking(true);
+        else
+            player2->stopWalking();
+
+        if(sf::Joystick::isButtonPressed(0, 0))
+            player2->jump();
+        if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y) > 30)
+            player2->crouch();
+        else
+            player2->standUp();
+
+         if(sf::Joystick::isButtonPressed(0, 1))
+        {
+            //cout << "Pulso: E" << endl;
+            player2->dropWeapon();
+        }
+
+        if(sf::Joystick::isButtonPressed(0, 2))
+        {
+            //cout << "Pulso: Space" << endl;
+            //player2->jump();
+            player2->shoot();
+        }
+
+        if(sf::Joystick::isButtonPressed(0, 5))
+        {
+            //cout << "Pulso: Q" << endl;
+            player2->fakeDie();
+        }
+
+        if(sf::Joystick::isButtonPressed(0, 3))
+        {
+            //cout << "Pulso: F" << endl;
+            player2->takeWeapon();
+        }
+
+        // Is joystick #0 connected?
+    bool connected = sf::Joystick::isConnected(0);
+    // How many buttons does joystick #0 support?
+    unsigned int buttons = sf::Joystick::getButtonCount(0);
+    // Does joystick #0 define a X axis?
+    bool hasX = sf::Joystick::hasAxis(0, sf::Joystick::X);
+    // Is button #2 pressed on joystick #0?
+    bool pressed = sf::Joystick::isButtonPressed(0, 2);
+    // What's the current position of the Y axis on joystick #0?
+    float position = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+
+        std::cout << sf::Joystick::isButtonPressed(0, 0) << std::endl; // A
+        std::cout << sf::Joystick::isButtonPressed(0, 1) << std::endl; // B
+        std::cout << sf::Joystick::isButtonPressed(0, 2) << std::endl; // X
+        std::cout << sf::Joystick::isButtonPressed(0, 3) << std::endl; // Y
+        std::cout << sf::Joystick::isButtonPressed(0, 4) << std::endl; // L1
+        std::cout << sf::Joystick::isButtonPressed(0, 5) << std::endl; // R1
+        std::cout << sf::Joystick::isButtonPressed(0, 6) << std::endl; // SELECT
+        std::cout << sf::Joystick::isButtonPressed(0, 7) << std::endl; // START
+        std::cout << sf::Joystick::isButtonPressed(0, 8) << std::endl; // ANALOG
+        std::cout << sf::Joystick::isButtonPressed(0, 9) << std::endl; //
+        std::cout << sf::Joystick::isButtonPressed(0, 10) << std::endl; //
+        std::cout << sf::Joystick::isButtonPressed(1, 3) << std::endl; //
+        std::cout << sf::Joystick::isButtonPressed(1, 0) << std::endl; //
+        std::cout << sf::Joystick::isButtonPressed(1, 1) << std::endl; //
+        std::cout << sf::Joystick::isButtonPressed(1, 2) << std::endl; //
+        std::cout << sf::Joystick::isButtonPressed(1, 3) << std::endl << std::endl; */
 }
 
 void Level::update()
