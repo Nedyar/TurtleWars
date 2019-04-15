@@ -10,6 +10,7 @@ class Texture
         Texture(const char* rutaTex);
         ~Texture();
         sf::Texture* getTexture();
+        sf::Vector2u getSize();
 
     protected:
 

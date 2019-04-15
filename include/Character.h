@@ -70,10 +70,10 @@ private:
 
     //Body* body = nullptr;
 
-    sf::Sprite sprite;
-    sf::Texture texture;
-    sf::Sprite armSprite;
-    sf::Texture armTexture;
+    Sprite* sprite;
+    Texture* texture;
+    Sprite* armSprite;
+    Texture* armTexture;
 };
 
 #include <Weapon.h>

@@ -8,9 +8,14 @@ Texture::Texture(const char* rutaTex)
 
 Texture::~Texture()
 {
-    //dtor
+    delete tex;
 }
 
 sf::Texture* Texture::getTexture() {
     return tex;
+}
+
+sf::Vector2u Texture::getSize()
+{
+    return tex->getSize();
 }
