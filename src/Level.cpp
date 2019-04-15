@@ -1,10 +1,22 @@
 #include "Level.h"
 #include <SFML/Graphics.hpp>
 
+#include "PlayState.h"
+#include "MenuState.h"
+#include <iostream>
+
+#include "GameState.h"
+#include "PauseState.h"
+
 Level* Level::pinstance = 0;
 bool drawBodies = false;
 
+Level::Level(Game* game)
+{
 
+    this->game = game;
+    Level(2,3);
+}
 Level::Level(int nPlayers, int nMap)
 {
     motorSFML* motor = motorSFML::Instance();
@@ -41,7 +53,7 @@ Level* Level::instance(int nPlayers, int nMap)
     return pinstance;
 }
 
-void Level::handleEvents()
+void Level::handleInput()
 {
 
     // TODO: Making the event handler control the current number of players
@@ -277,7 +289,8 @@ float position = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
     std::cout << sf::Joystick::isButtonPressed(1, 3) << std::endl << std::endl; */
 }
 
-void Level::update()
+     void Level::update(const float dt)
+
 {
     //cout << "Characters:" << endl;
     for (int i = 0; i < nCharacters; i++)
@@ -308,39 +321,39 @@ void Level::update()
     //cout << "terminamos update" << endl;
 }
 
-void Level::draw(sf::RenderWindow &app)
+void Level::draw(const float dt)
 {
-    mapa->drawSpriteMatrix(app);
+    mapa->drawSpriteMatrix(game->window);
     if (drawBodies)
-        mapa->drawBodyMap(app);
+        mapa->drawBodyMap(game->window);
 
     for (int i = 0; i < nWeaponSpawners; i++)
     {
-        weaponSpawners[i]->draw(app);
+        weaponSpawners[i]->draw(game->window);
         if (drawBodies)
-            weaponSpawners[i]->body->pintaRect(app);
+            weaponSpawners[i]->body->pintaRect(game->window);
     }
 
     for (int i = 0; i < weapons.size(); i++)
     {
-        weapons.at(i)->draw(app);
+        weapons.at(i)->draw(game->window);
         if (drawBodies)
-            weapons.at(i)->body->pintaRect(app);
+            weapons.at(i)->body->pintaRect(game->window);
 
     }
 
     for (int i = 0; i < bullets.size(); i++)
     {
-        bullets.at(i)->draw(app);
+        bullets.at(i)->draw(game->window);
         if (drawBodies)
-            bullets.at(i)->body->pintaRect(app);
+            bullets.at(i)->body->pintaRect(game->window);
     }
 
     for (int i = 0; i < nCharacters; i++)
     {
-        players[i]->draw(app);
+        players[i]->draw(game->window);
         if (drawBodies)
-            players[i]->body->pintaRect(app);
+            players[i]->body->pintaRect(game->window);
     }
 }
 

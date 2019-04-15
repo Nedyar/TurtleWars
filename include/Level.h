@@ -15,15 +15,19 @@
 #include <LevelFactory.h>
 #include <Mapa.h>
 
+#include "GameState.h"
 
-class Level : public State
+
+class Level : public GameState
 {
 public:
+Level(Game* game);
+
     static Level* instance(int nPlayers = 2, int nMap = 3);
 
-    void handleEvents() override;
-    void update() override;
-    void draw(sf::RenderWindow &app) override;
+     void draw(const float dt);
+     void update(const float dt);
+     void handleInput();
 
     void addWeapon(Weapon* weapon);
     void addBullet(Bullet* bullet);
