@@ -25,10 +25,12 @@ void Grenade::createBody()
     float posy = sprite.getPosition().y;
     float width = sprite.getLocalBounds().width;
     float height = sprite.getLocalBounds().height;
-    cout << "aqui2" << endl;
-    body = Physics2D::Instance()->createWeaponBody(posx,posy,width,height);
-    cout << "aqui2" << endl;
+    cout << "Antes de crear el body Granada" << endl;
+    body = Physics2D::Instance()->createGrenadeBody(posx,posy,width);
+
+
     body->setUserData(this);
+    cout << "Despues de createGrenadeBody" << endl;
 }
 
 Grenade::~Grenade()
@@ -79,8 +81,10 @@ void Grenade::update()
 
     sprite.setScale(xDir,1);
 
-    if (body != nullptr)
+    if (body != nullptr){
         sprite.setPosition(body->getPositionX(),body->getPositionY());
+        sprite.setRotation(body->getAngle());
+        }
 
     if (activated && grenadeTimer.getElapsedTime().asSeconds() >= GRENADETIME)
     {

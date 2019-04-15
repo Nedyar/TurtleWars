@@ -65,8 +65,8 @@ bool Gun::shoot()
     {
         if(!shootAnim) //para que dispare al finalizar la animación de la pistola (hay colddown)
         {
-            int xOrientation = 0 + facingLeft*180;
-            int xDirection = 1 - facingLeft*2;
+            int xOrientation = 0 + facingLeft*180;//Calcular el angulo de la bala
+            int xDirection = 1 - facingLeft*2;//Calcular direccion del sprite 1 = derecha; -1 = izquierda
 
             ammo--;
             shootAnim=true;
@@ -77,7 +77,7 @@ bool Gun::shoot()
             float posx = sprite.getPosition().x+(modX+sprite.getLocalBounds().width/2)*xDirection;
             float posy = sprite.getPosition().y-3.1;
             float ang = rand() % 7 + -3 + xOrientation;
-            Level::instance(0)->addBullet(new Bullet(posx,posy,ang,200));
+            Level::instance(0)->addBullet(new Bullet(posx,posy,ang,200));//debe pasar la direccion del arma
 
             clockAnimation.restart();
             return true;

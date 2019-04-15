@@ -20,7 +20,7 @@ Physics2D* Physics2D::Instance()
 
 Physics2D::Physics2D()
 {
-    //bod = new Body();
+
 }
 
 Body* Physics2D::createRectangleBody(float positionX, float positionY, float width, float height, int pType)
@@ -49,10 +49,6 @@ Body* Physics2D::createRectangleBody(float positionX, float positionY, float wid
     shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
-    /* shape.SetAsBox(sprite.getGlobalBounds().width/DIVIDER/2,sprite.getGlobalBounds().height/DIVIDER/2);
-    spawn = b2Vec2({sprite.getPosition().x/DIVIDER,(sprite.getPosition().y/DIVIDER)});*/
-
-
 
     Body *body = new Body(type, spawn, shape, density, friction, restitution, group, sensor, avoidRotate);
     return body;
@@ -73,6 +69,7 @@ Body* Physics2D::createCharacterBody(float positionX, float positionY, float wid
     type = b2BodyType::b2_dynamicBody;
     //height-=4;
     width-=8;
+    height-=3;
     shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
@@ -122,13 +119,36 @@ Body* Physics2D::createWeaponBody(float positionX, float positionY, float width,
     shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
-    cout<<"aqui3"<<endl;
     Body *body = new Body(type, spawn, shape, density, friction, restitution, group, sensor, avoidRotate);
-    cout<<"aqui3"<<endl;
+
     return body;
 }
 
-Body* Physics2D::createBulletBody(float positionX, float positionY, float width, float height)
+Body* Physics2D::createGrenadeBody(float positionX, float positionY, float width)
+{
+    cout << "width: " << width << endl;
+    b2BodyType type;
+    b2Vec2  spawn;
+    b2CircleShape shape;
+
+    float density = 1.f;
+    float friction = 9.5f;
+    float restitution = 0.9f;
+    int group = -1;
+    bool sensor = false;
+    bool avoidRotate = false;
+
+    type = b2BodyType::b2_dynamicBody;
+    shape.m_radius = width/DIVIDER/2;
+    spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
+
+    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, sensor, avoidRotate);
+
+    return body;
+}
+
+
+Body* Physics2D::createBulletBody(float positionX, float positionY, float width, float height, double angle)
 {
     b2BodyType type;
     b2Vec2  spawn;
@@ -138,6 +158,8 @@ Body* Physics2D::createBulletBody(float positionX, float positionY, float width,
     float friction = 0.1f;
     float restitution = 0.f;
     int group = -2;
+    //width -= (width-2);
+
     bool sensor = false;
     bool avoidRotate = false;
 
@@ -145,7 +167,7 @@ Body* Physics2D::createBulletBody(float positionX, float positionY, float width,
     shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
-    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, sensor, avoidRotate);
+    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, sensor, avoidRotate, angle);
     return body;
 }
 

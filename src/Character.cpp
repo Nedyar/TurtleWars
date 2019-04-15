@@ -110,9 +110,7 @@ bool Character::dropWeapon()
         int xDir = 1 - facingLeft*2;
 
         weapon->setOwner(nullptr);
-        cout << "aqui" <<endl;
         weapon->createBody();
-        cout << "aqui" <<endl;
         weapon->setXVelocity(body->getBody()->GetLinearVelocity().x+4*xDir);
         weapon = nullptr;
 
@@ -124,22 +122,22 @@ bool Character::dropWeapon()
 
 bool Character::takeWeapon()
 {
-    //cout << "entramos en takeWeapon" << endl;
+
     if (weapon == nullptr)
     {
-        //cout << "no tengo arma" << endl;
+
         Weapon* newWeapon = nullptr;
 
         if (weaponOver != nullptr)
         {
-            //cout << "estoy sobre arma" << endl;
+
             Level::instance(0)->removeWeapon(weaponOver);
             newWeapon = weaponOver;
             weaponOver = nullptr;
         }
         else if (weaponSpawnerOver != nullptr)
         {
-            //cout << "estoy sobre spawn" << endl;
+
             newWeapon = weaponSpawnerOver->takeWeapon();
         }
 
@@ -389,9 +387,9 @@ void Character::update()
         else
             weapon->setPos(sprite.getPosition().x+modx,sprite.getPosition().y+mody);
 
-        //cout << "Updateamos weapon" << endl;
+
         weapon->update();
-        //cout << "Weapon updateada" << endl;
+
 
     }
 

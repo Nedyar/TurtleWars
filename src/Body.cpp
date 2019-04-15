@@ -7,7 +7,7 @@ using namespace std;
 
 
 ///Create a body whith a properties
-Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction,float restitution, int group, bool sensor,  bool avoidRotate)
+Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction,float restitution, int group, bool sensor,  bool avoidRotate, double angle)
 {
 
     collideShape = shape;//save a shape
@@ -17,10 +17,11 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
 
     bodDef.type = type;
     bodDef.position = spawn;
+    bodDef.angle = angle;
+    bodDef.fixedRotation = avoidRotate;
     //Create body
-    cout<<"aqui4"<<endl;
     bod = World::Instance()->CreateBody(bodDef);
-    cout<<"aqui4"<<endl;
+
 
     fixDef.filter.groupIndex = group;
     //fixDef.filter.categoryBits = category;
@@ -33,8 +34,9 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     fixDef.restitution = restitution;
     fix = bod->CreateFixture(&fixDef);
 
-    bod->SetFixedRotation(avoidRotate);
-    //cout << mask << endl << category << endl;
+    //bod->SetFixedRotation(avoidRotate);
+    //bod->SetTransform(spawn, angle);
+
 }
 
 Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction,float restitution, int group,  bool avoidRotate)
@@ -64,6 +66,37 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
 
     fixDef.isSensor = false;
     fix = bod->CreateFixture(&fixDef);
+
+}
+
+Body::Body(b2BodyType type, b2Vec2 spawn, b2CircleShape shape, float density, float friction,float restitution, int group, bool sensor,  bool avoidRotate)
+{
+    collideShape.SetAsBox(0.05,0.05);//cuadrado de mentira
+
+    b2BodyDef bodDef;
+    b2FixtureDef fixDef;
+
+    bodDef.type = type;
+    bodDef.position = spawn;
+    //bodDef.fixedRotation = avoidRotate;
+    bod = World::Instance()->CreateBody(bodDef);
+
+    fixDef.filter.groupIndex = group;
+    //fixDef.isSensor = sensor;
+    fixDef.shape = &shape;
+    fixDef.density = density;
+    fixDef.friction = friction;
+    fixDef.restitution = restitution;
+    fix = bod->CreateFixture(&fixDef);
+
+
+    cout << "Granada creada" << endl;
+    cout << "Angulo de la granada: "<<bod->GetAngle() << endl;
+    cout << "Pos x: " << spawn.x << endl;
+
+
+
+
 }
 
 Body::~Body()
@@ -76,6 +109,7 @@ Body::~Body()
 
 ///Return a SFML rectangle to graw collider in window
 void Body::pintaRect(sf::RenderWindow &app){
+
     sf::RectangleShape Polygon(sf::Vector2f((collideShape.GetVertex(2).x-collideShape.GetVertex(0).x)*MULTIPLIER,(collideShape.GetVertex(2).y-collideShape.GetVertex(0).y)*MULTIPLIER));
     Polygon.setFillColor(sf::Color::Transparent);
     Polygon.setOutlineThickness(1);
@@ -83,6 +117,7 @@ void Body::pintaRect(sf::RenderWindow &app){
     Polygon.setPosition(getPositionX(),getPositionY());
 
     app.draw(Polygon);
+
 }
 
 
@@ -148,10 +183,15 @@ void Body::setUserData(void* userData){
 }
 
 float Body::getAngle(){
+    if(bod==nullptr){
+        cout << "el puto body es null" << endl;
+    }
     return rad2deg(bod->GetAngle());
+
 }
 
 float Body::rad2deg(float rad){
+    cout << "entra en el metodo de conversion" << endl;
     float pi = 3.14;
     return rad / pi * 180;
 }
