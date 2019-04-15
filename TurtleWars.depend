@@ -1,0 +1,368 @@
+# depslib dependency file v1.0
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/Body.cpp
+	"Body.h"
+	<iostream>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/Body.h
+	<Box2D/Box2D.h>
+	<SFML/Graphics.hpp>
+	<World.h>
+	<iostream>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/World.h
+	<Box2D/Box2D.h>
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/Bullet.cpp
+	"Bullet.h"
+	<Level.h>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/Bullet.h
+	<SFML/Graphics.hpp>
+	<math.h>
+	<iostream>
+	<Body.h>
+	<Collidable.h>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/Collidable.h
+
+1555348920 /home/nano/Escritorio/TurtleWars/include/Level.h
+	<vector>
+	<State.h>
+	<Character.h>
+	<Bullet.h>
+	<WeaponSpawner.h>
+	<Weapon.h>
+	<Physics2D.h>
+	<Body.h>
+	<motorSFML.h>
+	<LevelFactory.h>
+	<Mapa.h>
+	"GameState.h"
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/State.h
+	<SFML/Graphics.hpp>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/Character.h
+	<Gun.h>
+	<SFML/Graphics.hpp>
+	<Physics2D.h>
+	<Box2D.h>
+	<Collidable.h>
+	<Weapon.h>
+	<WeaponSpawner.h>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/Gun.h
+	<Weapon.h>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/Weapon.h
+	<SFML/Graphics.hpp>
+	<Bullet.h>
+	<Collidable.h>
+	<Body.h>
+	<Character.h>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/Physics2D.h
+	<iostream>
+	<Body.h>
+	<SFML/Graphics.hpp>
+
+1332138682 /usr/include/Box2D/Box2D.h
+	<Box2D/Common/b2Settings.h>
+	<Box2D/Common/b2Draw.h>
+	<Box2D/Common/b2Timer.h>
+	<Box2D/Collision/Shapes/b2CircleShape.h>
+	<Box2D/Collision/Shapes/b2EdgeShape.h>
+	<Box2D/Collision/Shapes/b2ChainShape.h>
+	<Box2D/Collision/Shapes/b2PolygonShape.h>
+	<Box2D/Collision/b2BroadPhase.h>
+	<Box2D/Collision/b2Distance.h>
+	<Box2D/Collision/b2DynamicTree.h>
+	<Box2D/Collision/b2TimeOfImpact.h>
+	<Box2D/Dynamics/b2Body.h>
+	<Box2D/Dynamics/b2Fixture.h>
+	<Box2D/Dynamics/b2WorldCallbacks.h>
+	<Box2D/Dynamics/b2TimeStep.h>
+	<Box2D/Dynamics/b2World.h>
+	<Box2D/Dynamics/Contacts/b2Contact.h>
+	<Box2D/Dynamics/Joints/b2DistanceJoint.h>
+	<Box2D/Dynamics/Joints/b2FrictionJoint.h>
+	<Box2D/Dynamics/Joints/b2GearJoint.h>
+	<Box2D/Dynamics/Joints/b2MotorJoint.h>
+	<Box2D/Dynamics/Joints/b2MouseJoint.h>
+	<Box2D/Dynamics/Joints/b2PrismaticJoint.h>
+	<Box2D/Dynamics/Joints/b2PulleyJoint.h>
+	<Box2D/Dynamics/Joints/b2RevoluteJoint.h>
+	<Box2D/Dynamics/Joints/b2RopeJoint.h>
+	<Box2D/Dynamics/Joints/b2WeldJoint.h>
+	<Box2D/Dynamics/Joints/b2WheelJoint.h>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/WeaponSpawner.h
+	<SFML/Graphics.hpp>
+	<Weapon.h>
+	<Gun.h>
+	<Grenade.h>
+	<ShotGun.h>
+	<Physics2D.h>
+	<Body.h>
+	<Collidable.h>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/Grenade.h
+	<Weapon.h>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/ShotGun.h
+	<Weapon.h>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/motorSFML.h
+	<SFML/Graphics.hpp>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/LevelFactory.h
+	"Mapa.h"
+	"Character.h"
+	"WeaponSpawner.h"
+	"../xml/tinyxml.h"
+	<iostream>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/Mapa.h
+	"../xml/tinyxml.h"
+	"Texture.h"
+	<SFML/Graphics.hpp>
+	"Sprite.h"
+	<iostream>
+	<Physics2D.h>
+	<Body.h>
+
+1555341751 /home/nano/Escritorio/TurtleWars/xml/tinyxml.h
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<string>
+	<iostream>
+	<sstream>
+	"tinystr.h"
+
+1555341751 /home/nano/Escritorio/TurtleWars/xml/tinystr.h
+	<assert.h>
+	<string.h>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/Texture.h
+	"motorSFML.h"
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/Sprite.h
+	"motorSFML.h"
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/Character.cpp
+	"Character.h"
+	<Level.h>
+	<typeindex>
+	<iostream>
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/EventCollider.cpp
+	"EventCollider.h"
+	<iostream>
+
+1555341751 /home/nano/Escritorio/TurtleWars/include/EventCollider.h
+	<Box2D/Box2D.h>
+	<Character.h>
+	<WeaponSpawner.h>
+	<Bullet.h>
+	<Collidable.h>
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/Grenade.cpp
+	"Grenade.h"
+	<Level.h>
+	<iostream>
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/Gun.cpp
+	"Gun.h"
+	<Level.h>
+
+1555348918 source:/home/nano/Escritorio/TurtleWars/src/Level.cpp
+	"Level.h"
+	<SFML/Graphics.hpp>
+	"PlayState.h"
+	"MenuState.h"
+	<iostream>
+	"GameState.h"
+	"PauseState.h"
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/LevelFactory.cpp
+	"LevelFactory.h"
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/Mapa.cpp
+	"Mapa.h"
+	<iostream>
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/motorSFML.cpp
+	"motorSFML.h"
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/Physics2D.cpp
+	"Physics2D.h"
+	<iostream>
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/ShotGun.cpp
+	"ShotGun.h"
+	<Level.h>
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/Sprite.cpp
+	"Sprite.h"
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/State.cpp
+	"State.h"
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/Texture.cpp
+	"Texture.h"
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/Weapon.cpp
+	"Weapon.h"
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/WeaponSpawner.cpp
+	"WeaponSpawner.h"
+	<Level.h>
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/src/World.cpp
+	"World.h"
+	<EventCollider.h>
+	<iostream>
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/xml/tinystr.cpp
+	"tinystr.h"
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/xml/tinyxml.cpp
+	<ctype.h>
+	<sstream>
+	<iostream>
+	"tinyxml.h"
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/xml/tinyxmlerror.cpp
+	"tinyxml.h"
+
+1555341751 source:/home/nano/Escritorio/TurtleWars/xml/tinyxmlparser.cpp
+	<ctype.h>
+	<stddef.h>
+	"tinyxml.h"
+	<windows.h>
+
+1555349118 source:/home/nano/Escritorio/TurtleWars/Main.cpp
+	<SFML/Graphics.hpp>
+	<State.h>
+	<Level.h>
+	<SFML/Graphics.hpp>
+	<State.h>
+	<Level.h>
+	"Game.h"
+	"MenuState.h"
+	"SplashState.h"
+	"IntroState.h"
+	"PlayState.h"
+
+1555342535 /home/nano/Escritorio/TurtleWars/include/Game.h
+	<stack>
+	"SFML/Graphics.hpp"
+
+1555342491 /home/nano/Escritorio/TurtleWars/include/MenuState.h
+	<SFML/Graphics.hpp>
+	"GameState.h"
+	"menu.h"
+
+1555342529 /home/nano/Escritorio/TurtleWars/include/GameState.h
+	"Game.h"
+
+1555342428 /home/nano/Escritorio/TurtleWars/include/menu.h
+	"SFML/Graphics.hpp"
+
+1555342457 /home/nano/Escritorio/TurtleWars/include/SplashState.h
+	<SFML/Graphics.hpp>
+	"GameState.h"
+	"SplashState.h"
+
+1555342468 /home/nano/Escritorio/TurtleWars/include/IntroState.h
+	<SFML/Graphics.hpp>
+	"GameState.h"
+	"SplashState.h"
+
+1555348328 /home/nano/Escritorio/TurtleWars/include/PlayState.h
+	<vector>
+	<State.h>
+	<Character.h>
+	<Bullet.h>
+	<WeaponSpawner.h>
+	<Weapon.h>
+	<Physics2D.h>
+	<Body.h>
+	<motorSFML.h>
+	<LevelFactory.h>
+	<Mapa.h>
+	<Level.h>
+	<SFML/Graphics.hpp>
+	"GameState.h"
+
+1555342305 source:/home/nano/Escritorio/TurtleWars/src/ControlsState.cpp
+	"ControlsState.h"
+
+1555342503 /home/nano/Escritorio/TurtleWars/include/ControlsState.h
+	"GameState.h"
+
+1555342216 source:/home/nano/Escritorio/TurtleWars/src/Game.cpp
+	"SFML/Graphics.hpp"
+	"Game.h"
+	"GameState.h"
+	<iostream>
+
+1555342233 source:/home/nano/Escritorio/TurtleWars/src/GameState.cpp
+	"Game.h"
+
+1555342165 source:/home/nano/Escritorio/TurtleWars/src/IntroState.cpp
+	"IntroState.h"
+	"GameState.h"
+	"SplashState.h"
+	"Game.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1555342419 source:/home/nano/Escritorio/TurtleWars/src/menu.cpp
+	"menu.h"
+	<SFML/Graphics.hpp>
+	"Game.h"
+	"GameState.h"
+	<cstring>
+
+1555348449 source:/home/nano/Escritorio/TurtleWars/src/MenuState.cpp
+	"SFML/Graphics.hpp"
+	<iostream>
+	"MenuState.h"
+	"ControlsState.h"
+	"GameState.h"
+	"PlayState.h"
+	"menu.h"
+
+1555349187 source:/home/nano/Escritorio/TurtleWars/src/PauseState.cpp
+	"PauseState.h"
+	"ControlsState.h"
+	"PlayState.h"
+	"MenuState.h"
+	<iostream>
+	"menu.h"
+	<SFML/Graphics.hpp>
+	"GameState.h"
+
+1555342478 /home/nano/Escritorio/TurtleWars/include/PauseState.h
+	"GameState.h"
+
+1555342180 source:/home/nano/Escritorio/TurtleWars/src/SplashState.cpp
+	<SFML/Graphics.hpp>
+	"GameState.h"
+	"SplashState.h"
+	"MenuState.h"
+	"IntroState.h"
+
+1555348673 source:/home/nano/Escritorio/TurtleWars/src/PlayState.cpp
+	"PlayState.h"
+	"MenuState.h"
+	<iostream>
+	"Level.h"
+	<SFML/Graphics.hpp>
+	"GameState.h"
+	"PauseState.h"
+
