@@ -8,6 +8,8 @@ const int VEL = 7;
 #include <iostream>
 #include <Body.h>
 #include <Collidable.h>
+#include <Sprite.h>
+#include <Texture.h>
 
 class Bullet : public Collidable
 {
@@ -26,8 +28,8 @@ private:
     double maxLength = 0;
     double posiniX = 0;
     double posiniY = 0;
-    sf::Sprite bulletSprite;
-    sf::Texture bulletTexture;
+    Sprite* bulletSprite;
+    Texture* bulletTexture;
     double angle = 0;
     double vel = 0;
     bool mustDelete = false;

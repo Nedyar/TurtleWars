@@ -11,6 +11,8 @@
 #include <Physics2D.h>
 #include <Body.h>
 #include <Collidable.h>
+#include <Texture.h>
+#include <Sprite.h>
 
 class WeaponSpawner : public Collidable
 {
@@ -37,11 +39,12 @@ private:
     //Body* body;
 
     sf::Clock clock;
-    sf::Sprite platformSprite;
-    sf::Texture platformTexture;
-    sf::Sprite ballSprite1;
-    sf::Texture ballTexture1;
-    sf::Sprite ballSprite2;
+    Sprite* platformSprite = nullptr;
+    Texture* platformTexture = nullptr;
+    Sprite* ballSprite1 = nullptr;
+    Texture* ballTexture1 = nullptr;
+    Texture* ballTexture2 = nullptr;
+    Sprite* ballSprite2 = nullptr;
 };
 
 #endif // WEAPONSPAWNER_H

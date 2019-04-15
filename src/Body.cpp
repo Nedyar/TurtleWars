@@ -173,15 +173,11 @@ void Body::setUserData(void* userData){
 }
 
 float Body::getAngle(){
-    if(bod==nullptr){
-        cout << "el puto body es null" << endl;
-    }
     return rad2deg(bod->GetAngle());
 
 }
 
 float Body::rad2deg(float rad){
-    cout << "entra en el metodo de conversion" << endl;
     float pi = 3.14;
     return rad / pi * 180;
 }

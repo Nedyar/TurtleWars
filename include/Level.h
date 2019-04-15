@@ -30,11 +30,6 @@ public:
     void removeWeapon(Weapon* weapon);
     void removeBullet(Bullet* bullet);
 
-    //Will deprecate
-    sf::Sprite groundSprite;
-    sf::Texture groundTexture;
-    Body* groundBody;
-
 protected:
     Level(int nPlayers, int nMap);
     virtual ~Level();

@@ -5,7 +5,6 @@
 #include "Character.h"
 #include "WeaponSpawner.h"
 #include "../xml/tinyxml.h"
-#include <iostream>
 
 
 class LevelFactory

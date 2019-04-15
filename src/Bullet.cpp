@@ -1,14 +1,16 @@
 #include "Bullet.h"
 #include <Level.h>
+#include <motorSFML.h>
 
 Bullet::Bullet(double posx, double posy, double ang, double maxLen)
 {
     id = 4;
-    bulletTexture.loadFromFile("img/bullet.png");
-    bulletSprite.setTexture(bulletTexture);
-    bulletSprite.setOrigin(bulletTexture.getSize().x/2,bulletTexture.getSize().y/2);
-    bulletSprite.setPosition(posx, posy);
-    bulletSprite.setRotation(ang);
+
+    bulletTexture = new Texture("img/bullet.png");
+    bulletSprite = new Sprite(*bulletTexture->getTexture());
+    bulletSprite->setOrigin(0,bulletTexture->getTexture()->getSize().y/2);
+    bulletSprite->setPosition(posx, posy);
+    bulletSprite->setRotation(ang);
 
     posiniX=posx;
     posiniY=posy;
@@ -16,8 +18,8 @@ Bullet::Bullet(double posx, double posy, double ang, double maxLen)
     angle = ang*M_PI/180;
     maxLength = maxLen;
 
-    float width = bulletSprite.getLocalBounds().width;
-    float height = bulletSprite.getLocalBounds().height;
+    float width = bulletSprite->getLocalBounds().width;
+    float height = bulletSprite->getLocalBounds().height;
 
     body = Physics2D::Instance()->createBulletBody(posx, posy, width, height, (ang*2)*3.14/180.0);
     //body->getBody()->SetBullet(true);
@@ -27,9 +29,10 @@ Bullet::Bullet(double posx, double posy, double ang, double maxLen)
 void Bullet::update()
 {
     body->getBody()->SetLinearVelocity(b2Vec2(VEL*cos(angle), VEL*sin(angle)));
-    bulletSprite.setPosition(body->getPositionX(), body->getPositionY());
 
-    if(sqrt(pow(bulletSprite.getPosition().x-posiniX, 2)+pow(bulletSprite.getPosition().y-posiniY, 2))>=maxLength)
+    bulletSprite->setPosition(body->getPositionX(), body->getPositionY());
+    //bulletSprite.move(VEL*cos(angle), VEL*sin(angle));
+    if(sqrt(pow(bulletSprite->getPosition().x-posiniX, 2)+pow(bulletSprite->getPosition().y-posiniY, 2))>=maxLength)
     {
         mustDelete = true;
     }
@@ -44,7 +47,7 @@ void Bullet::deleteMe() {
 
 void Bullet::draw(sf::RenderWindow &app)
 {
-    app.draw(bulletSprite);
+    motorSFML::Instance()->draw(app, bulletSprite->getSprite()); //app.draw(bulletSprite);
 }
 
 
@@ -55,6 +58,8 @@ Bullet::~Bullet()
         level->removeBullet(this);
     //cout << "borro mi body:" <<endl;
     delete body;
+    delete bulletSprite;
+    delete bulletTexture;
 }
 
 int Bullet::getId()

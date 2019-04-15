@@ -5,11 +5,11 @@ Gun::Gun(double posx, double posy)
 {
     facingLeft = false;
     id = 3;
-    texture.loadFromFile("img/pistol.png");
-    sprite.setTexture(texture);
-    sprite.setOrigin(texture.getSize().x/8,texture.getSize().y/2);
-    sprite.setTextureRect(sf::IntRect(0,0,18,10)); //las medidas de la imagen son 72x10
-    sprite.setPosition(posx,posy);
+    texture = new Texture("img/pistol.png");
+    sprite = new Sprite(*texture->getTexture());
+    sprite->setOrigin(texture->getSize().x/8,texture->getSize().y/2);
+    sprite->setTextureRect(0,0,18,10); //las medidas de la imagen son 72x10
+    sprite->setPosition(posx,posy);
 
     ammo=7;
 
@@ -19,10 +19,10 @@ Gun::Gun(double posx, double posy)
 void Gun::createBody()
 {
     id = 3;
-    float posx = sprite.getPosition().x;
-    float posy = sprite.getPosition().y;
-    float width = sprite.getLocalBounds().width;
-    float height = sprite.getLocalBounds().height;
+    float posx = sprite->getPosition().x;
+    float posy = sprite->getPosition().y;
+    float width = sprite->getLocalBounds().width;
+    float height = sprite->getLocalBounds().height;
     body = Physics2D::Instance()->createWeaponBody(posx,posy,width,height);
     body->setUserData(this);
 }
@@ -32,13 +32,15 @@ Gun::~Gun()
     Level* level = Level::instance(0);
     level->removeWeapon(this);
     delete body;
+    delete sprite;
+    delete texture;
 }
 
 void Gun::update()
 {
     int xDir = 1 - facingLeft*2;
 
-    sprite.setScale(xDir,1);
+    sprite->setScale(xDir,1);
 
     if(shootAnim)
     {
@@ -46,7 +48,7 @@ void Gun::update()
     }
 
     if (body != nullptr)
-        sprite.setPosition(body->getPositionX(),body->getPositionY());
+        sprite->setPosition(body->getPositionX(),body->getPositionY());
 
     if (ammo == 0 && owner == nullptr && clock.getElapsedTime().asSeconds() > 2)
         delete this;
@@ -54,8 +56,7 @@ void Gun::update()
 
 void Gun::draw(sf::RenderWindow &app)
 {
-    app.draw(sprite);
-//    app.draw(body.dameRec());
+    motorSFML::Instance()->draw(app, sprite->getSprite());
 }
 
 bool Gun::shoot()
@@ -73,8 +74,8 @@ bool Gun::shoot()
             int modX = 27;
             if (owner->body->getBody()->GetLinearVelocity().x!=0)
                 modX += 5;
-            float posx = sprite.getPosition().x+(modX+sprite.getLocalBounds().width/2)*xDirection;
-            float posy = sprite.getPosition().y-3.1;
+            float posx = sprite->getPosition().x+(modX+sprite->getLocalBounds().width/2)*xDirection;
+            float posy = sprite->getPosition().y-3.1;
             float ang = rand() % 7 + -3 + xOrientation;
             Level::instance(0)->addBullet(new Bullet(posx,posy,ang,200));//debe pasar la direccion del arma
 
@@ -94,19 +95,19 @@ void Gun::shootAnimation()
 {
     if(clockAnimation.getElapsedTime().asSeconds()<0.05)
     {
-        sprite.setTextureRect(sf::IntRect(18,0,18,10)); //las medidas de la imagen son 72x10
+        sprite->setTextureRect(18,0,18,10); //las medidas de la imagen son 72x10
     }
     else if(clockAnimation.getElapsedTime().asSeconds()<0.1)
     {
-        sprite.setTextureRect(sf::IntRect(36,0,18,10));
+        sprite->setTextureRect(36,0,18,10);
     }
     else if(clockAnimation.getElapsedTime().asSeconds()<0.15)
     {
-        sprite.setTextureRect(sf::IntRect(54,0,18,10));
+        sprite->setTextureRect(54,0,18,10);
     }
     else if(clockAnimation.getElapsedTime().asSeconds()<0.2)
     {
-        sprite.setTextureRect(sf::IntRect(0,0,18,10));
+        sprite->setTextureRect(0,0,18,10);
         shootAnim=false;
     }
 

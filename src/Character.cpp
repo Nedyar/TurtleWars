@@ -2,6 +2,8 @@
 #include <Level.h>
 #include <typeindex>
 #include <iostream>
+#include <motorSFML.h>
+
 using namespace std;
 
 Character::Character(int n, int posx, int posy)
@@ -27,34 +29,34 @@ Character::Character(int n, int posx, int posy)
     switch (player)
     {
     case 1:
-        texture.loadFromFile("img/move.png");
+        texture = new Texture("img/move.png"); //texture.loadFromFile("img/move.png");
         break;
     case 2:
-        texture.loadFromFile("img/move_red.png");
+        texture = new Texture("img/move_red.png");
         break;
     case 3:
-        texture.loadFromFile("img/move_blue.png");
+        texture = new Texture("img/move_blue.png");
         break;
     default:
-        texture.loadFromFile("img/move_yellow.png");
+        texture = new Texture("img/move_yellow.png");
         break;
     }
-    armTexture.loadFromFile("img/arm.png");
+    armTexture = new Texture("img/arm.png");
 
-    sprite = sf::Sprite(texture);
-    armSprite = sf::Sprite(armTexture);
+    sprite = new Sprite(*texture->getTexture());
+    armSprite = new Sprite(*armTexture->getTexture());
 
-    sf::IntRect rect = sf::IntRect(0,0,32,32);
-    sprite.setTextureRect(rect);
-    sprite.setOrigin(sprite.getLocalBounds().width/2,sprite.getLocalBounds().height/2);
-    sprite.setPosition(posx,posy);
+    //sf::IntRect rect = sf::IntRect(0,0,32,32);
+    sprite->setTextureRect(0,0,32,32);
+    sprite->setOrigin(sprite->getLocalBounds().width/2,sprite->getLocalBounds().height/2);
+    sprite->setPosition(posx,posy);
 
-    rect = sf::IntRect(0,0,9,8);
-    armSprite.setTextureRect(rect);
-    armSprite.setOrigin(armSprite.getLocalBounds().width/2,armSprite.getLocalBounds().height/2);
-    armSprite.setPosition(posx,posy);
-    float width = sprite.getLocalBounds().width;
-    float height = sprite.getLocalBounds().height;
+    //rect = sf::IntRect(0,0,9,8);
+    armSprite->setTextureRect(0,0,9,8);
+    armSprite->setOrigin(armSprite->getLocalBounds().width/2,armSprite->getLocalBounds().height/2);
+    armSprite->setPosition(posx,posy);
+    float width = sprite->getLocalBounds().width;
+    float height = sprite->getLocalBounds().height;
     body = Physics2D::Instance()->createCharacterBody(posx,posy,width,height);
     body->setUserData(this);
 }
@@ -278,11 +280,13 @@ void Character::fakeDie()
 
 void Character::draw(sf::RenderWindow &app)
 {
-    app.draw(sprite);
+    motorSFML *motor = motorSFML::Instance();
+    //app.draw(sprite);
+    motor->draw(app, sprite->getSprite());
     if (weapon != nullptr)
         weapon->draw(app);
     if (!dead && !fakingDead)
-        app.draw(armSprite);
+        motor->draw(app, armSprite->getSprite()); //app.draw(armSprite);
 }
 
 void Character::update()
@@ -306,8 +310,8 @@ void Character::update()
         yPosture = 2;
 
         int xDir = 1 - facingLeft*2;
-        sprite.setScale(xDir,1);
-        armSprite.setScale(xDir,1);
+        sprite->setScale(xDir,1);
+        armSprite->setScale(xDir,1);
     }
     else if (walking)
     {
@@ -322,8 +326,8 @@ void Character::update()
         int xDir = 1 - facingLeft*2;
         float str = 1.5 - facingLeft*3;
 
-        sprite.setScale(xDir,1);
-        armSprite.setScale(xDir,1);
+        sprite->setScale(xDir,1);
+        armSprite->setScale(xDir,1);
 
         body->getBody()->SetLinearVelocity(b2Vec2(str,body->getBody()->GetLinearVelocity().y));
     }
@@ -414,9 +418,9 @@ void Character::update()
             weapon->setFacingLeft(false);
 
         if (crouching)
-            weapon->setPos(sprite.getPosition().x+modx,sprite.getPosition().y+3+mody);
+            weapon->setPos(sprite->getPosition().x+modx,sprite->getPosition().y+3+mody);
         else
-            weapon->setPos(sprite.getPosition().x+modx,sprite.getPosition().y+mody);
+            weapon->setPos(sprite->getPosition().x+modx,sprite->getPosition().y+mody);
 
 
         weapon->update();
@@ -424,16 +428,16 @@ void Character::update()
 
     }
 
-    sf::IntRect bodyRect = sf::IntRect(32*((int)xPosture),yPosture*32,32,32);
-    sprite.setTextureRect(bodyRect);
-    sprite.setPosition(body->getPositionX(),body->getPositionY());
+    //sf::IntRect bodyRect = sf::IntRect(32*((int)xPosture),yPosture*32,32,32);
+    sprite->setTextureRect(32*((int)xPosture),yPosture*32,32,32);
+    sprite->setPosition(body->getPositionX(),body->getPositionY());
     //sprite.setRotation(body->getAngle());
 
     int xDir = 1- facingLeft*2;
 
-    sf::IntRect armRect = sf::IntRect(intX,0,9,8);
-    armSprite.setTextureRect(armRect);
-    armSprite.setPosition(body->getPositionX()-xDifArm*xDir,armPosY);
+    //sf::IntRect armRect = sf::IntRect(intX,0,9,8);
+    armSprite->setTextureRect(intX,0,9,8);
+    armSprite->setPosition(body->getPositionX()-xDifArm*xDir,armPosY);
     //armSprite.setRotation(body->getAngle());
     lookingUp = false;
 }

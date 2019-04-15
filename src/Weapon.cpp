@@ -2,7 +2,7 @@
 
 void Weapon::setPos(int x, int y)
 {
-    sprite.setPosition(x,y);
+    sprite->setPosition(x,y);
 }
 
 void Weapon::setFacingLeft(bool facing) {

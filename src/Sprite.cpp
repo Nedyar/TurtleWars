@@ -8,7 +8,7 @@ Sprite::Sprite(sf::Texture &tex)
 
 Sprite::~Sprite()
 {
-    //dtor
+    delete sprite;
 }
 
 void Sprite::setTextureRect(int x, int y, int width, int height)
@@ -16,19 +16,25 @@ void Sprite::setTextureRect(int x, int y, int width, int height)
     sprite->setTextureRect(sf::IntRect(x, y, width, height));
 }
 
-void Sprite::setPosition(int x, int y)
+void Sprite::setPosition(double x, double y)
 {
     sprite->setPosition(x,y);
 }
 
-void Sprite::setOrigin(int x, int y)
+void Sprite::setOrigin(double x, double y)
 {
     sprite->setOrigin(x,y);
 }
 
-void Sprite::setScale(int x, int y)
+
+void Sprite::setScale(double x, double y)
 {
     sprite->setScale(x,y);
+}
+
+void Sprite::setRotation(double ang)
+{
+    sprite->setRotation(ang);
 }
 
 void Sprite::Swap()
@@ -45,6 +51,16 @@ bool Sprite::isSwap()
 sf::Sprite *Sprite::getSprite()
 {
     return sprite;
+}
+
+sf::FloatRect Sprite::getLocalBounds()
+{
+    return sprite->getLocalBounds();
+}
+
+const sf::Vector2f& Sprite::getPosition()
+{
+    sprite->getPosition();
 }
 
 

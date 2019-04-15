@@ -9,12 +9,15 @@ class Sprite
         Sprite(sf::Texture &tex);
         ~Sprite();
         void setTextureRect(int x, int y, int width, int height);
-        void setPosition(int x, int y);
-        void setOrigin(int x, int y);
-        void setScale(int x, int y);
+        void setPosition(double x, double y);
+        void setOrigin(double x, double y);
+        void setScale(double x, double y);
+        void setRotation(double ang);
         void Swap();
         bool isSwap();
         sf::Sprite *getSprite();
+        sf::FloatRect getLocalBounds();
+        const sf::Vector2f& getPosition();
 
     protected:
 

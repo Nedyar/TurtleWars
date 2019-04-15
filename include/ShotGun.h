@@ -3,6 +3,7 @@
 
 #include <Weapon.h>
 
+
 class ShotGun : public Weapon
 {
 public:
@@ -25,8 +26,8 @@ private:
     int ammo = 0;
     bool shooted = false;
 
-    sf::Sprite shotGunLoaderSprite;
-    sf::Texture shotGunLoaderTexture;
+    Sprite* shotGunLoaderSprite;
+    Texture* shotGunLoaderTexture;
     sf::Clock clockAnimation;
     bool shootAnim = false;
     bool shootAnimBack = false;

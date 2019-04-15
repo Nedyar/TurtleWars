@@ -6,6 +6,8 @@ class Character;
 #include <Bullet.h>
 #include <Collidable.h>
 #include <Body.h>
+#include <Texture.h>
+#include <Sprite.h>
 
 using namespace std;
 
@@ -29,10 +31,11 @@ public:
 protected:
     Character* owner = nullptr;
     bool facingLeft = false;
-    sf::Sprite sprite;
-    sf::Texture texture;
+
     sf::Clock clock;
-    //Body* body = nullptr;
+    Sprite* sprite;
+    Texture* texture;
+
 };
 
 #include <Character.h>
