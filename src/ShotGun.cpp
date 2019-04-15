@@ -14,7 +14,7 @@ ShotGun::ShotGun(double posx, double posy)
     shotGunLoaderSprite.setOrigin(shotGunLoaderTexture.getSize().x/4,shotGunLoaderTexture.getSize().y/2);
     shotGunLoaderSprite.setTextureRect(sf::IntRect(0,0,8,8));
 
-    ammo=3;
+    ammo=2;
     shooted = false;
     shootAnim = false;
     shootAnimBack = false;
@@ -97,9 +97,8 @@ void ShotGun::update()
     if (body != nullptr)
         sprite.setPosition(body->getPositionX(),body->getPositionY());
 
-    /* Crear metodo para realizar esto al tocar el suelo o al pasar un tiempo
-    if (ammo == 0 && owner == nullptr)
-        delete this;*/
+    if (ammo == 0 && owner == nullptr && clock.getElapsedTime().asSeconds() > 2)
+        delete this;
 }
 
 void ShotGun::draw(sf::RenderWindow &app)

@@ -41,7 +41,7 @@ bool Grenade::activate()
     if (!activated)
     {
         activated = true;
-        grenadeTimer.restart();
+        grenadeClock.restart();
         sprite.setTextureRect(sf::IntRect(10,0,10,11));
         return true;
     }
@@ -80,7 +80,7 @@ void Grenade::update()
     if (body != nullptr)
         sprite.setPosition(body->getPositionX(),body->getPositionY());
 
-    if (activated && grenadeTimer.getElapsedTime().asSeconds() >= GRENADETIME)
+    if (activated && grenadeClock.getElapsedTime().asSeconds() >= GRENADETIME)
     {
         explode();
         if (owner != nullptr)

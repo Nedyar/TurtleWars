@@ -48,9 +48,8 @@ void Gun::update()
     if (body != nullptr)
         sprite.setPosition(body->getPositionX(),body->getPositionY());
 
-    /* Crear metodo para realizar esto al tocar el suelo o al pasar un tiempo
-    if (ammo == 0 && owner == nullptr)
-        delete this;*/
+    if (ammo == 0 && owner == nullptr && clock.getElapsedTime().asSeconds() > 2)
+        delete this;
 }
 
 void Gun::draw(sf::RenderWindow &app)

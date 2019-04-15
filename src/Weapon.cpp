@@ -27,6 +27,10 @@ void Weapon::setYVelocity(float velocity)
     body->getBody()->SetLinearVelocity((b2Vec2(0,velocity)));
 }
 
+void Weapon::resetClock() {
+    clock.restart();
+}
+
 void Weapon::deleteBody()
 {
     delete body;

@@ -110,7 +110,7 @@ bool Character::dropWeapon()
         level->addWeapon(weapon);
 
 
-
+        weapon->resetClock();
         weapon->setOwner(nullptr);
         weapon->createBody();
         if (lookingUp)

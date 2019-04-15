@@ -1,0 +1,245 @@
+# depslib dependency file v1.0
+1555242811 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/Game.cpp
+	<SFML/Graphics.hpp>
+	<State.h>
+	<Level.h>
+
+1555240822 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/State.h
+	<SFML/Graphics.hpp>
+
+1555242842 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Level.h
+	<vector>
+	<State.h>
+	<Character.h>
+	<Bullet.h>
+	<WeaponSpawner.h>
+	<Weapon.h>
+	<Physics2D.h>
+	<Body.h>
+	<motorSFML.h>
+	<LevelFactory.h>
+	<Mapa.h>
+
+1555344769 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Character.h
+	<Gun.h>
+	<SFML/Graphics.hpp>
+	<Physics2D.h>
+	<Box2D.h>
+	<Collidable.h>
+	<Weapon.h>
+	<WeaponSpawner.h>
+
+1555240822 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Gun.h
+	<Weapon.h>
+
+1555349394 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Weapon.h
+	<SFML/Graphics.hpp>
+	<Bullet.h>
+	<Collidable.h>
+	<Body.h>
+	<Character.h>
+
+1555336434 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Bullet.h
+	<SFML/Graphics.hpp>
+	<math.h>
+	<iostream>
+	<Body.h>
+	<Collidable.h>
+
+1555241639 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Body.h
+	<Box2D/Box2D.h>
+	<SFML/Graphics.hpp>
+	<World.h>
+	<iostream>
+
+1555335684 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/World.h
+	<Box2D/Box2D.h>
+
+1555240822 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Collidable.h
+
+1555344377 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Physics2D.h
+	<iostream>
+	<Body.h>
+	<SFML/Graphics.hpp>
+
+1332138682 /usr/include/Box2D/Box2D.h
+	<Box2D/Common/b2Settings.h>
+	<Box2D/Common/b2Draw.h>
+	<Box2D/Common/b2Timer.h>
+	<Box2D/Collision/Shapes/b2CircleShape.h>
+	<Box2D/Collision/Shapes/b2EdgeShape.h>
+	<Box2D/Collision/Shapes/b2ChainShape.h>
+	<Box2D/Collision/Shapes/b2PolygonShape.h>
+	<Box2D/Collision/b2BroadPhase.h>
+	<Box2D/Collision/b2Distance.h>
+	<Box2D/Collision/b2DynamicTree.h>
+	<Box2D/Collision/b2TimeOfImpact.h>
+	<Box2D/Dynamics/b2Body.h>
+	<Box2D/Dynamics/b2Fixture.h>
+	<Box2D/Dynamics/b2WorldCallbacks.h>
+	<Box2D/Dynamics/b2TimeStep.h>
+	<Box2D/Dynamics/b2World.h>
+	<Box2D/Dynamics/Contacts/b2Contact.h>
+	<Box2D/Dynamics/Joints/b2DistanceJoint.h>
+	<Box2D/Dynamics/Joints/b2FrictionJoint.h>
+	<Box2D/Dynamics/Joints/b2GearJoint.h>
+	<Box2D/Dynamics/Joints/b2MotorJoint.h>
+	<Box2D/Dynamics/Joints/b2MouseJoint.h>
+	<Box2D/Dynamics/Joints/b2PrismaticJoint.h>
+	<Box2D/Dynamics/Joints/b2PulleyJoint.h>
+	<Box2D/Dynamics/Joints/b2RevoluteJoint.h>
+	<Box2D/Dynamics/Joints/b2RopeJoint.h>
+	<Box2D/Dynamics/Joints/b2WeldJoint.h>
+	<Box2D/Dynamics/Joints/b2WheelJoint.h>
+
+1555240822 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/WeaponSpawner.h
+	<SFML/Graphics.hpp>
+	<Weapon.h>
+	<Gun.h>
+	<Grenade.h>
+	<ShotGun.h>
+	<Physics2D.h>
+	<Body.h>
+	<Collidable.h>
+
+1555349519 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Grenade.h
+	<Weapon.h>
+
+1555240822 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/ShotGun.h
+	<Weapon.h>
+
+1555240822 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/motorSFML.h
+	<SFML/Graphics.hpp>
+
+1555243158 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/LevelFactory.h
+	"Mapa.h"
+	"Character.h"
+	"WeaponSpawner.h"
+	"../xml/tinyxml.h"
+	<iostream>
+
+1555240822 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Mapa.h
+	"../xml/tinyxml.h"
+	"Texture.h"
+	<SFML/Graphics.hpp>
+	"Sprite.h"
+	<iostream>
+	<Physics2D.h>
+	<Body.h>
+
+1555240822 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/xml/tinyxml.h
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<string>
+	<iostream>
+	<sstream>
+	"tinystr.h"
+
+1555240822 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/xml/tinystr.h
+	<assert.h>
+	<string.h>
+
+1555240822 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Texture.h
+	"motorSFML.h"
+
+1555240822 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Sprite.h
+	"motorSFML.h"
+
+1555348149 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Body.cpp
+	"Body.h"
+	<iostream>
+
+1555339858 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Bullet.cpp
+	"Bullet.h"
+	<Level.h>
+
+1555349574 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
+	"Character.h"
+	<Level.h>
+	<typeindex>
+	<iostream>
+
+1555340473 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/EventCollider.cpp
+	"EventCollider.h"
+	<iostream>
+
+1555240822 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/EventCollider.h
+	<Box2D/Box2D.h>
+	<Character.h>
+	<WeaponSpawner.h>
+	<Bullet.h>
+	<Collidable.h>
+
+1555349551 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Gun.cpp
+	"Gun.h"
+	<Level.h>
+
+1555348395 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
+	"Level.h"
+	<SFML/Graphics.hpp>
+
+1555259323 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/LevelFactory.cpp
+	"LevelFactory.h"
+
+1555259903 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Mapa.cpp
+	"Mapa.h"
+	<iostream>
+
+1555240822 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/motorSFML.cpp
+	"motorSFML.h"
+
+1555344374 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Physics2D.cpp
+	"Physics2D.h"
+	<iostream>
+
+1555349248 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/ShotGun.cpp
+	"ShotGun.h"
+	<Level.h>
+
+1555240822 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Sprite.cpp
+	"Sprite.h"
+
+1555240822 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/State.cpp
+	"State.h"
+
+1555240822 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Texture.cpp
+	"Texture.h"
+
+1555349385 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Weapon.cpp
+	"Weapon.h"
+
+1555260223 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/WeaponSpawner.cpp
+	"WeaponSpawner.h"
+	<Level.h>
+
+1555339352 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/World.cpp
+	"World.h"
+	<EventCollider.h>
+	<iostream>
+
+1555240822 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/xml/tinystr.cpp
+	"tinystr.h"
+
+1555240822 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/xml/tinyxml.cpp
+	<ctype.h>
+	<sstream>
+	<iostream>
+	"tinyxml.h"
+
+1555240822 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/xml/tinyxmlerror.cpp
+	"tinyxml.h"
+
+1555240822 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/xml/tinyxmlparser.cpp
+	<ctype.h>
+	<stddef.h>
+	"tinyxml.h"
+	<windows.h>
+
+1555349529 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Grenade.cpp
+	"Grenade.h"
+	<Level.h>
+	<iostream>
+

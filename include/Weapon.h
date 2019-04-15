@@ -19,6 +19,7 @@ public:
     void deleteBody();
     void setXVelocity(float velocity);
     void setYVelocity(float velocity);
+    void resetClock();
 
     void setPos(int x, int y);
     void setFacingLeft(bool facing);
@@ -30,6 +31,7 @@ protected:
     bool facingLeft = false;
     sf::Sprite sprite;
     sf::Texture texture;
+    sf::Clock clock;
     //Body* body = nullptr;
 };
 

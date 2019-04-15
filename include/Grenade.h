@@ -25,8 +25,7 @@ protected:
 private:
     double grenadeTime = 0;
     bool activated = false;
-
-    sf::Clock grenadeTimer;
+    sf::Clock grenadeClock;
 };
 
 #endif // GRENADE_H
