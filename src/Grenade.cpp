@@ -25,7 +25,9 @@ void Grenade::createBody()
     float posy = sprite.getPosition().y;
     float width = sprite.getLocalBounds().width;
     float height = sprite.getLocalBounds().height;
+    cout << "aqui2" << endl;
     body = Physics2D::Instance()->createWeaponBody(posx,posy,width,height);
+    cout << "aqui2" << endl;
     body->setUserData(this);
 }
 

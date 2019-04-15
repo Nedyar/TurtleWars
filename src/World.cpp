@@ -1,6 +1,9 @@
 #include "World.h"
 #include <EventCollider.h>
 
+#include <iostream>
+using namespace std;
+
 
 World* World::instance = 0;
 World* World::Instance()
@@ -23,18 +26,18 @@ World::World()
     world2D->SetContactListener(EventCollider::Instance());
 }
 
-b2Body* World::CreateBody(b2BodyDef &bodDef) //COmprobar que esta funcion devulve un puntero
+b2Body* World::CreateBody(b2BodyDef bodDef) //COmprobar que esta funcion devulve un puntero
 {
-
-    b2Body* body = (b2Body*)malloc(sizeof(b2Body));
-    body = world2D->CreateBody(&bodDef);
+    cout<<"aqui5"<<endl;
+    b2Body* body = world2D->CreateBody(&bodDef);
+    cout<<"aqui5"<<endl;
     return body;
 
 }
 
 void World::destroyBody(b2Body* body)
 {
-    cout << "Borro body del mundo: " << endl;
+    //cout << "Intento borrar body del mundo: " << body << end;
     world2D->DestroyBody(body);
     cout << "He borrao del mundo " << endl;
 }

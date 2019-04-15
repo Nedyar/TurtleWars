@@ -29,7 +29,7 @@ Mapa::Mapa(TiXmlElement* Map)
         conta++;
         obj = obj->NextSiblingElement("object");
     }while(obj);
-    cout << conta << endl;
+    //cout << conta << endl;
     bodyMap = new Body*[conta];
 
 }
@@ -74,7 +74,7 @@ void Mapa::setBodyMap(TiXmlElement* objLayer)
         obj->QueryFloatAttribute("width", &width);
         obj->QueryFloatAttribute("height", &height);
 
-        bodyMap[conta] = Physics2D::Instance()->createRectangleBody(posX+width/2, posY+height/2, width, height-4, 0);
+        bodyMap[conta] = Physics2D::Instance()->createRectangleBody(posX+width/2, posY+height/2, width, height, 0);
         conta++;
         obj = obj->NextSiblingElement("object");
     }while(obj);

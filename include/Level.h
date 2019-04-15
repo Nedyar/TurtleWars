@@ -19,7 +19,7 @@
 class Level : public State
 {
 public:
-    static Level* instance(int nPlayers);
+    static Level* instance(int nPlayers = 2, int nMap = 3);
 
     void handleEvents() override;
     void update() override;
@@ -36,7 +36,7 @@ public:
     Body* groundBody;
 
 protected:
-    Level(int nPlayers = 1);
+    Level(int nPlayers, int nMap);
     virtual ~Level();
 
 private:

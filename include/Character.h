@@ -31,10 +31,12 @@ public:
     bool crouch();
     void standUp();
     void die();
+    void kill();
     void fakeDie();
 
     bool dropWeapon();
     bool takeWeapon();
+    void swapWeapon();
     void setWeaponSpawnerOver(WeaponSpawner* newWS);
     void setWeaponOver(Weapon* newWeapon);
 
@@ -63,6 +65,7 @@ private:
     bool crouching = false;
     bool sliding = false;
     bool dead = false;
+    bool mustDie = false;
     bool fakingDead = false;
 
     //Body* body = nullptr;

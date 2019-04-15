@@ -22,7 +22,21 @@ Character::Character(int n, int posx, int posy)
     fakingDead = false;
 
     // will deprecate
-    texture.loadFromFile("img/move.png");
+    switch (player)
+    {
+    case 1:
+        texture.loadFromFile("img/move.png");
+        break;
+    case 2:
+        texture.loadFromFile("img/move_red.png");
+        break;
+    case 3:
+        texture.loadFromFile("img/move_blue.png");
+        break;
+    default:
+        texture.loadFromFile("img/move_yellow.png");
+        break;
+    }
     armTexture.loadFromFile("img/arm.png");
 
     sprite = sf::Sprite(texture);
@@ -78,6 +92,14 @@ bool Character::hasWeapon()
     return weapon != nullptr;
 }
 
+void Character::swapWeapon()
+{
+    if (weapon == nullptr)
+        takeWeapon();
+    else
+        dropWeapon();
+}
+
 bool Character::dropWeapon()
 {
     if (weapon != nullptr)
@@ -88,7 +110,9 @@ bool Character::dropWeapon()
         int xDir = 1 - facingLeft*2;
 
         weapon->setOwner(nullptr);
+        cout << "aqui" <<endl;
         weapon->createBody();
+        cout << "aqui" <<endl;
         weapon->setXVelocity(body->getBody()->GetLinearVelocity().x+4*xDir);
         weapon = nullptr;
 
@@ -100,21 +124,22 @@ bool Character::dropWeapon()
 
 bool Character::takeWeapon()
 {
-    cout << "entramos en takeWeapon" << endl;
+    //cout << "entramos en takeWeapon" << endl;
     if (weapon == nullptr)
     {
-        cout << "no tengo arma" << endl;
+        //cout << "no tengo arma" << endl;
         Weapon* newWeapon = nullptr;
 
-        if (weaponOver != nullptr) {
-            cout << "estoy sobre arma" << endl;
+        if (weaponOver != nullptr)
+        {
+            //cout << "estoy sobre arma" << endl;
             Level::instance(0)->removeWeapon(weaponOver);
             newWeapon = weaponOver;
             weaponOver = nullptr;
         }
         else if (weaponSpawnerOver != nullptr)
         {
-            cout << "estoy sobre spawn" << endl;
+            //cout << "estoy sobre spawn" << endl;
             newWeapon = weaponSpawnerOver->takeWeapon();
         }
 
@@ -123,12 +148,12 @@ bool Character::takeWeapon()
             newWeapon->setOwner(this);
             weapon = newWeapon;
             weapon->deleteBody();
-            cout << "Arma equipada" << endl;
+            //cout << "Arma equipada" << endl;
             return true;
         }
     }
 
-    cout << "Arma no equipada" << endl;;
+    //cout << "Arma no equipada" << endl;;
 
     return false;
 }
@@ -202,6 +227,10 @@ void Character::standUp()
     }
 }
 
+void Character::kill(){
+    mustDie = true;
+}
+
 void Character::die()
 {
     fakingDead = false;
@@ -229,6 +258,9 @@ void Character::draw(sf::RenderWindow &app)
 
 void Character::update()
 {
+    if (mustDie)
+        die();
+
     if (body->getBody()->GetLinearVelocity().y != 0)
         onGround = false;
     else

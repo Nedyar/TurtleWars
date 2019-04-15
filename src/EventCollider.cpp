@@ -21,7 +21,6 @@ EventCollider::EventCollider()
 
 void EventCollider::BeginContact(b2Contact* contact)
 {
-
     Collidable * objA = (Collidable*)contact->GetFixtureA()->GetBody()->GetUserData();
     Collidable * objB = (Collidable*)contact->GetFixtureB()->GetBody()->GetUserData();
 
@@ -33,14 +32,16 @@ void EventCollider::BeginContact(b2Contact* contact)
             {
             case 2: // WeaponSpawner
                 player->setWeaponSpawnerOver((WeaponSpawner*)objB);
-                cout << "Un ws"<< endl;
+                //cout << "Un ws"<< endl;
                 break;
             case 3: // Weapon
                 player->setWeaponOver((Weapon*)objB);
-                cout << "Un arma"<< endl;
+                //cout << "Un arma"<< endl;
                 break;
             case 4: // Bullet
-                player->die();
+                //delete (Bullet*)objA;
+                cout << "Te mato" << endl;
+                player->kill();
                 //delete (Bullet*)objB;
                 break;
             }
@@ -52,15 +53,17 @@ void EventCollider::BeginContact(b2Contact* contact)
             {
             case 2: // WeaponSpawner
                 player->setWeaponSpawnerOver((WeaponSpawner*)objA);
-                cout << "Un ws"<< endl;
+                //cout << "Un ws"<< endl;
                 break;
             case 3: // Weapon
                 player->setWeaponOver((Weapon*)objA);
-                cout << "Un arma"<< endl;
+                //cout << "Un arma"<< endl;
                 break;
             case 4: // Bullet
-                player->die();
                 //delete (Bullet*)objA;
+                cout << "Te mato" << endl;
+                player->kill();
+
                 break;
             }
         }
@@ -68,18 +71,18 @@ void EventCollider::BeginContact(b2Contact* contact)
         else if (objA->getId() == 4)
         {
             cout << "Bala choca"<< endl;;
-            if (objB->getId() < 1 || objB->getId() > 4)
+            if (objB->getId() > 0 && objB->getId() < 5)
             {
-                //delete (Bullet*)objA;
+                //delete objA;
             }
         }
          // el objeto b es bala, hacer desaparecer
         else if (objB->getId() == 4)
         {
             cout << "Bala choca"<< endl;;
-            if (objA->getId() < 1 || objA->getId() > 4)
+            if (objA->getId() > 0 && objA->getId() < 5)
             {
-                //delete (Bullet*)objB;
+
             }
         }
 }
@@ -99,11 +102,11 @@ void EventCollider::EndContact(b2Contact* contact)
             {
             case 2: // WeaponSpawner
                 player->setWeaponSpawnerOver(nullptr);
-                cout << "salgo" <<endl;
+                //cout << "salgo" <<endl;
                 break;
             case 3: // Weapon
                 player->setWeaponOver(nullptr);
-                cout << "me separo del arma" <<endl;
+                //cout << "me separo del arma" <<endl;
                 break;
             case 4: // Bullet
                 break;

@@ -26,7 +26,7 @@ WeaponSpawner::WeaponSpawner(int t, double x, double y)
 
     //body = Physics2D::Instance()->createRectangleBody(x,y,platformTexture.getSize().x,platformTexture.getSize().y,2);
     float width = platformSprite.getLocalBounds().width;
-    float height = platformSprite.getLocalBounds().height+5;
+    float height = platformSprite.getLocalBounds().height+7+ballSprite2.getLocalBounds().height/2;
     body = Physics2D::Instance()->createSpawnBody(x,y-height/2,width,height);
     body->setUserData(this);
 

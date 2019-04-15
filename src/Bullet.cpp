@@ -20,6 +20,7 @@ Bullet::Bullet(double posx, double posy, double ang, double maxLen)
     float height = bulletSprite.getLocalBounds().height;
 
     body = Physics2D::Instance()->createBulletBody(posx, posy, width, height);
+    //body->getBody()->SetBullet(true);
     body->setUserData(this);
 }
 
@@ -42,10 +43,10 @@ void Bullet::draw(sf::RenderWindow &app)
 
 Bullet::~Bullet()
 {
-    cout << "voy a borrarme" << endl;
+    //cout << "voy a borrarme" << endl;
     Level* level = Level::instance(0);
         level->removeBullet(this);
-    cout << "borro mi body:" <<endl;
+    //cout << "borro mi body:" <<endl;
     delete body;
 }
 

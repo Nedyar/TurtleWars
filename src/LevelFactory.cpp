@@ -86,7 +86,7 @@ Character** LevelFactory::characterLoader(int seleccion, int nPlayers)
         characterElement->QueryFloatAttribute("y", &posY);
 
         players[i] = (Character*)malloc(sizeof(Character));
-        players[i] = new Character(i+1, posX, posY);
+        players[i] = new Character((i+1), posX, posY);
 
         characterElement = characterElement->NextSiblingElement("object");
     }
@@ -94,7 +94,7 @@ Character** LevelFactory::characterLoader(int seleccion, int nPlayers)
     return players;
 }
 
-WeaponSpawner** LevelFactory::spawnerLoader(int seleccion)
+WeaponSpawner** LevelFactory::spawnerLoader(int seleccion, int &nSpawners)
 {
     TiXmlElement* level = doc.FirstChildElement("level");
     TiXmlElement* spawerElement = NULL;
@@ -129,11 +129,8 @@ WeaponSpawner** LevelFactory::spawnerLoader(int seleccion)
 
         spawerElement = spawerElement->NextSiblingElement("object");
     }
+    nSpawners = sizeSpawner;
 
     return spawners;
 }
 
-int LevelFactory::getSizeSpawner()
-{
-    return sizeSpawner;
-}

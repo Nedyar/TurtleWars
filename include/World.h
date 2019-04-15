@@ -7,7 +7,7 @@ class World
 {
     public:
         static World* Instance();
-        b2Body* CreateBody(b2BodyDef&);
+        b2Body* CreateBody(b2BodyDef bodDef);
         void destroyBody(b2Body* body);
         void update();
         //~World();

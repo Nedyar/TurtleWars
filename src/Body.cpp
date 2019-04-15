@@ -18,7 +18,9 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     bodDef.type = type;
     bodDef.position = spawn;
     //Create body
+    cout<<"aqui4"<<endl;
     bod = World::Instance()->CreateBody(bodDef);
+    cout<<"aqui4"<<endl;
 
     fixDef.filter.groupIndex = group;
     //fixDef.filter.categoryBits = category;
@@ -66,7 +68,7 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
 
 Body::~Body()
 {
-    cout << "borrando body:" << endl;
+    cout << "borrando body:" << bod << endl;
     World::Instance()->destroyBody(bod);
     //world->update();
 }
@@ -76,7 +78,7 @@ Body::~Body()
 void Body::pintaRect(sf::RenderWindow &app){
     sf::RectangleShape Polygon(sf::Vector2f((collideShape.GetVertex(2).x-collideShape.GetVertex(0).x)*MULTIPLIER,(collideShape.GetVertex(2).y-collideShape.GetVertex(0).y)*MULTIPLIER));
     Polygon.setFillColor(sf::Color::Transparent);
-    Polygon.setOutlineThickness(-1);
+    Polygon.setOutlineThickness(1);
     Polygon.setOrigin(Polygon.getSize().x/2,Polygon.getSize().y/2);
     Polygon.setPosition(getPositionX(),getPositionY());
 
@@ -141,19 +143,15 @@ float Body::getPositionY(){
 
 }
 
-
 void Body::setUserData(void* userData){
     bod->SetUserData(userData);
 }
-
-
 
 float Body::getAngle(){
     return rad2deg(bod->GetAngle());
 }
 
-
- float Body::rad2deg(float rad){
+float Body::rad2deg(float rad){
     float pi = 3.14;
     return rad / pi * 180;
 }

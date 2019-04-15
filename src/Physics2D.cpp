@@ -1,6 +1,8 @@
 #include "Physics2D.h"
 
 #define DIVIDER 100.f
+#include <iostream>
+using namespace std;
 
 
 
@@ -93,9 +95,9 @@ Body* Physics2D::createSpawnBody(float positionX, float positionY, float width, 
 
 
     type = b2BodyType::b2_kinematicBody;
-    shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
+    shape.SetAsBox(width/DIVIDER/2,(height-2)/DIVIDER/2);
     //ajuste en posY porque el centro del spawn esta en la mitd de la base
-    spawn = b2Vec2({positionX/DIVIDER,((positionY-(height/2.f+2))/DIVIDER)});
+    spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
 
 
@@ -120,7 +122,9 @@ Body* Physics2D::createWeaponBody(float positionX, float positionY, float width,
     shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
+    cout<<"aqui3"<<endl;
     Body *body = new Body(type, spawn, shape, density, friction, restitution, group, sensor, avoidRotate);
+    cout<<"aqui3"<<endl;
     return body;
 }
 
@@ -134,10 +138,10 @@ Body* Physics2D::createBulletBody(float positionX, float positionY, float width,
     float friction = 0.1f;
     float restitution = 0.f;
     int group = 0;
-    bool sensor = false;
+    bool sensor = true;
     bool avoidRotate = false;
 
-    type = b2BodyType::b2_kinematicBody;
+    type = b2BodyType::b2_dynamicBody;
     shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
