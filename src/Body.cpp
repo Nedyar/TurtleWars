@@ -35,7 +35,7 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     fix = bod->CreateFixture(&fixDef);
 
     //bod->SetFixedRotation(avoidRotate);
-    //bod->SetTransform(spawn, angle);
+    bod->SetTransform(spawn, angle);
 
 }
 
@@ -78,11 +78,13 @@ Body::Body(b2BodyType type, b2Vec2 spawn, b2CircleShape shape, float density, fl
 
     bodDef.type = type;
     bodDef.position = spawn;
-    //bodDef.fixedRotation = avoidRotate;
+    bodDef.fixedRotation = avoidRotate;
+    bodDef.angularDamping = 9.1f;
     bod = World::Instance()->CreateBody(bodDef);
 
+
     fixDef.filter.groupIndex = group;
-    //fixDef.isSensor = sensor;
+    fixDef.isSensor = sensor;
     fixDef.shape = &shape;
     fixDef.density = density;
     fixDef.friction = friction;

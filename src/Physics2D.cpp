@@ -131,9 +131,9 @@ Body* Physics2D::createGrenadeBody(float positionX, float positionY, float width
     b2Vec2  spawn;
     b2CircleShape shape;
 
-    float density = 1.f;
-    float friction = 9.5f;
-    float restitution = 0.9f;
+    float density = 9.f;
+    float friction = 99.5f;
+    float restitution = 0.5f;
     int group = -1;
     bool sensor = false;
     bool avoidRotate = false;
