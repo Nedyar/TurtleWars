@@ -46,7 +46,7 @@
 		<Linker>
 			<Add library="/usr/lib/x86_64-linux-gnu/libBox2D.a" />
 		</Linker>
-		<Unit filename="Game.cpp" />
+		<Unit filename="Main.cpp" />
 		<Unit filename="img/arm.png" />
 		<Unit filename="img/bullet.png" />
 		<Unit filename="img/grenade.png" />
@@ -62,6 +62,7 @@
 		<Unit filename="include/Character.h" />
 		<Unit filename="include/Collidable.h" />
 		<Unit filename="include/EventCollider.h" />
+		<Unit filename="include/Game.h" />
 		<Unit filename="include/Grenade.h" />
 		<Unit filename="include/Gun.h" />
 		<Unit filename="include/Level.h" />
@@ -85,6 +86,7 @@
 		<Unit filename="src/Bullet.cpp" />
 		<Unit filename="src/Character.cpp" />
 		<Unit filename="src/EventCollider.cpp" />
+		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/Grenade.cpp" />
 		<Unit filename="src/Gun.cpp" />
 		<Unit filename="src/Level.cpp" />
@@ -93,7 +95,6 @@
 		<Unit filename="src/Physics2D.cpp" />
 		<Unit filename="src/ShotGun.cpp" />
 		<Unit filename="src/Sprite.cpp" />
-		<Unit filename="src/State.cpp" />
 		<Unit filename="src/Texture.cpp" />
 		<Unit filename="src/Weapon.cpp" />
 		<Unit filename="src/WeaponSpawner.cpp" />
