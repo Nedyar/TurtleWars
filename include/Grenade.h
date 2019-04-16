@@ -1,7 +1,7 @@
 #ifndef GRENADE_H
 #define GRENADE_H
 
-const int GRENADETIME = 4;
+const int GRENADETIME = 3;
 
 #include <Weapon.h>
 

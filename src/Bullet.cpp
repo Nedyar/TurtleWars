@@ -21,7 +21,7 @@ Bullet::Bullet(double posx, double posy, double ang, double maxLen)
     float width = bulletSprite->getLocalBounds().width;
     float height = bulletSprite->getLocalBounds().height;
 
-    body = Physics2D::Instance()->createBulletBody(posx, posy, width, height, (ang*2)*3.14/180.0);
+    body = Physics2D::Instance()->createBulletBody(posx, posy, width, height, (ang)*3.14/180.0);
     //body->getBody()->SetBullet(true);
     body->setUserData(this);
 }

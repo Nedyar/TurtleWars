@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 Level* Level::pinstance = 0;
-bool drawBodies = false;
+bool drawBodies = true;
 
 
 Level::Level(int nPlayers, int nMap)
@@ -54,17 +54,13 @@ void Level::handleEvents()
         player->startWalking(false);
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         player->startWalking(true);
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-    {
-        //cout << "Pulso: Q" << endl;
-        player->fakeDie();
-    }
     else
         player->stopWalking();
 
-
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         player->jump();
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+        player->fakeDie();
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         player->lookUp();
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
@@ -73,181 +69,153 @@ void Level::handleEvents()
         player->standUp();
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-    {
-        //cout << "Pulso: E" << endl;
         player->dropWeapon();
-    }
-
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
-    {
-        //cout << "Pulso: Space" << endl;
-        //player2->jump();
         player->shoot();
-    }
-
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::X))
-    {
-        //cout << "Pulso: F" << endl;
         player->takeWeapon();
-    }
 
 
 
-
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::K))
+    if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) > 10)
         player2->startWalking(false);
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::H))
+    else if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) < -10)
         player2->startWalking(true);
     else
         player2->stopWalking();
 
-
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::U))
+    if(sf::Joystick::isButtonPressed(0, 5))
+        player2->fakeDie();
+    if(sf::Joystick::isButtonPressed(0, 0))
         player2->jump();
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::J))
+    if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y) > 30)
         player2->crouch();
     else
         player2->standUp();
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::I))
-    {
+    if(sf::Joystick::isButtonPressed(0, 1))
         player2->dropWeapon();
-    }
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::L))
-    {
+    if(sf::Joystick::isButtonPressed(0, 2))
         player2->shoot();
-    }
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
-    {
-        player2->fakeDie();
-    }
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::M))
-    {
+    if(sf::Joystick::isButtonPressed(0, 3))
         player2->takeWeapon();
-    }
+
+
+    /* if(sf::Keyboard::isKeyPressed(sf::Keyboard::K))
+         player2->startWalking(false);
+     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::H))
+         player2->startWalking(true);
+     else
+         player2->stopWalking();
+
+
+
+     if(sf::Keyboard::isKeyPressed(sf::Keyboard::U))
+         player2->jump();
+     if(sf::Keyboard::isKeyPressed(sf::Keyboard::J))
+         player2->crouch();
+     else
+         player2->standUp();
+
+     if(sf::Keyboard::isKeyPressed(sf::Keyboard::I))
+     {
+         player2->dropWeapon();
+     }
+
+     if(sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+     {
+         player2->shoot();
+     }
+
+     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
+     {
+         player2->fakeDie();
+     }
+
+     if(sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+     {
+         player2->takeWeapon();
+     }
+     /*
+         Character* player3 = players[2];
+
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+             player3->startWalking(true);
+         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+             player3->startWalking(false);
+         else
+             player3->stopWalking();
+
+
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+             player3->jump();
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+             player3->crouch();
+         else
+             player3->standUp();
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+         {
+             player3->dropWeapon();
+         }
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+         {
+             player3->shoot();
+         }
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+         {
+             player3->fakeDie();
+         }
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+         {
+             player3->takeWeapon();
+         }
+
+         Character* player4 = players[3];
+
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+             player4->startWalking(false);
+         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+             player4->startWalking(true);
+         else
+             player4->stopWalking();
+
+
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+             player4->jump();
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+             player4->crouch();
+         else
+             player4->standUp();
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+         {
+             player4->dropWeapon();
+         }
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+         {
+             player4->shoot();
+         }
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+         {
+             player4->fakeDie();
+         }
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+         {
+             player4->takeWeapon();
+         }
+         */
     /*
-        Character* player3 = players[2];
-
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            player3->startWalking(true);
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            player3->startWalking(false);
-        else
-            player3->stopWalking();
-
-
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            player3->jump();
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            player3->crouch();
-        else
-            player3->standUp();
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-        {
-            player3->dropWeapon();
-        }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-        {
-            player3->shoot();
-        }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-        {
-            player3->fakeDie();
-        }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
-        {
-            player3->takeWeapon();
-        }
-
-        Character* player4 = players[3];
-
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            player4->startWalking(false);
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            player4->startWalking(true);
-        else
-            player4->stopWalking();
-
-
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            player4->jump();
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            player4->crouch();
-        else
-            player4->standUp();
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-        {
-            player4->dropWeapon();
-        }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-        {
-            player4->shoot();
-        }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-        {
-            player4->fakeDie();
-        }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
-        {
-            player4->takeWeapon();
-        }
-        */
-    /*
-        if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) > 10)
-            player2->startWalking(false);
-        else if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) < -10)
-            player2->startWalking(true);
-        else
-            player2->stopWalking();
-
-        if(sf::Joystick::isButtonPressed(0, 0))
-            player2->jump();
-        if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y) > 30)
-            player2->crouch();
-        else
-            player2->standUp();
-
-         if(sf::Joystick::isButtonPressed(0, 1))
-        {
-            //cout << "Pulso: E" << endl;
-            player2->dropWeapon();
-        }
-
-        if(sf::Joystick::isButtonPressed(0, 2))
-        {
-            //cout << "Pulso: Space" << endl;
-            //player2->jump();
-            player2->shoot();
-        }
-
-        if(sf::Joystick::isButtonPressed(0, 5))
-        {
-            //cout << "Pulso: Q" << endl;
-            player2->fakeDie();
-        }
-
-        if(sf::Joystick::isButtonPressed(0, 3))
-        {
-            //cout << "Pulso: F" << endl;
-            player2->takeWeapon();
-        }
 
         // Is joystick #0 connected?
     bool connected = sf::Joystick::isConnected(0);

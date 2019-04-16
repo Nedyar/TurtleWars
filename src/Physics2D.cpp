@@ -161,7 +161,7 @@ Body* Physics2D::createBulletBody(float positionX, float positionY, float width,
     bool avoidRotate = false;
 
     type = b2BodyType::b2_dynamicBody;
-    shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2);
+    shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2,spawn,angle);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
     Body *body = new Body(type, spawn, shape, density, friction, restitution, group, avoidRotate);

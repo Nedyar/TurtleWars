@@ -264,6 +264,7 @@ void Character::kill()
 
 void Character::die()
 {
+    stopWalking();
     fakingDead = false;
     dropWeapon();
     dead = true;
@@ -273,6 +274,7 @@ void Character::fakeDie()
 {
     if (!dead)
     {
+        stopWalking();
         dropWeapon();
         fakingDead = true;
     }
