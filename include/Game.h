@@ -3,7 +3,7 @@
 
 #include <State.h>
 #include <stack>
-#include "SFML/Graphics.hpp"
+#include <motorSFML.h>
 
 class Game
 {
@@ -21,9 +21,6 @@ public:
 
     //game loop function
     void gameLoop();
-    void handleEvents(sf::RenderWindow &app);
-    void update();
-    void draw(sf::RenderWindow &app);
 
     //sfml window
     sf::RenderWindow window;
@@ -34,7 +31,7 @@ protected:
 private:
     static Game* pinstance;
     std::stack<State*> states;
-
+    motorSFML *motor;
 
 };
 #endif // GAME_H

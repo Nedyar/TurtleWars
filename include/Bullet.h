@@ -5,7 +5,6 @@ const int VEL = 7;
 
 #include <SFML/Graphics.hpp>
 #include <math.h>
-#include <iostream>
 #include <Body.h>
 #include <Collidable.h>
 #include <Sprite.h>

@@ -67,11 +67,11 @@ void WeaponSpawner::update()
 void WeaponSpawner::draw(sf::RenderWindow &app)
 {
     motorSFML* motor = motorSFML::Instance();
-    motor->draw(app, platformSprite->getSprite());
-    motor->draw(app, ballSprite1->getSprite());
+    motor->draw(platformSprite->getSprite());
+    motor->draw(ballSprite1->getSprite());
     if (weaponSpawned != nullptr)
         weaponSpawned->draw(app);
-    motor->draw(app, ballSprite2->getSprite());
+    motor->draw(ballSprite2->getSprite());
 }
 
 bool WeaponSpawner::spawnWeapon()

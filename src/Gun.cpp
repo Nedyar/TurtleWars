@@ -56,7 +56,7 @@ void Gun::update()
 
 void Gun::draw(sf::RenderWindow &app)
 {
-    motorSFML::Instance()->draw(app, sprite->getSprite());
+    motorSFML::Instance()->draw(sprite->getSprite());
 }
 
 bool Gun::shoot()

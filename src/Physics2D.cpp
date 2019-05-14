@@ -1,8 +1,6 @@
 #include "Physics2D.h"
 
 #define DIVIDER 100.f
-#include <iostream>
-using namespace std;
 
 
 
@@ -126,7 +124,6 @@ Body* Physics2D::createWeaponBody(float positionX, float positionY, float width,
 
 Body* Physics2D::createGrenadeBody(float positionX, float positionY, float width)
 {
-    cout << "width: " << width << endl;
     b2BodyType type;
     b2Vec2  spawn;
     b2CircleShape shape;
@@ -157,14 +154,14 @@ Body* Physics2D::createBulletBody(float positionX, float positionY, float width,
     float density = 0.f;
     float friction = 0.1f;
     float restitution = 0.f;
-    int group = -2;
+    bool bullet = true;
     bool avoidRotate = false;
 
-    type = b2BodyType::b2_dynamicBody;
+    type = b2BodyType::b2_kinematicBody;
     shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2,spawn,angle);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
-    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, avoidRotate);
+    Body *body = new Body(type, spawn, shape, density, friction, restitution, bullet, avoidRotate);
     return body;
 }
 

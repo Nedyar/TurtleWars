@@ -107,8 +107,8 @@ void ShotGun::update()
 
 void ShotGun::draw(sf::RenderWindow &app)
 {
-    motorSFML::Instance()->draw(app, sprite->getSprite());
-    motorSFML::Instance()->draw(app, shotGunLoaderSprite->getSprite());
+    motorSFML::Instance()->draw(sprite->getSprite());
+    motorSFML::Instance()->draw(shotGunLoaderSprite->getSprite());
 }
 
 void ShotGun::shootAnimation()

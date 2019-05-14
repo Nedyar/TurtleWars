@@ -2,9 +2,6 @@
 #include <Level.h>
 #include <motorSFML.h>
 
-#include <iostream>
-using namespace std;
-
 Grenade::Grenade(double posx, double posy)
 {
     facingLeft = false;
@@ -28,7 +25,6 @@ void Grenade::createBody()
     float height = sprite->getLocalBounds().height;
     body = Physics2D::Instance()->createGrenadeBody(posx,posy,width);
     body->setUserData(this);
-    cout << "Despues de createGrenadeBody" << endl;
 }
 
 Grenade::~Grenade()
@@ -85,7 +81,7 @@ void Grenade::update()
         sprite->setPosition(body->getPositionX(),body->getPositionY());
         sprite->setRotation(body->getAngle());
     }
-        
+
 
     if (activated && grenadeClock.getElapsedTime().asSeconds() >= GRENADETIME)
     {
@@ -100,7 +96,7 @@ void Grenade::update()
 
 void Grenade::draw(sf::RenderWindow &app)
 {
-    motorSFML::Instance()->draw(app, sprite->getSprite());
+    motorSFML::Instance()->draw(sprite->getSprite());
 }
 
 int Grenade::getId()

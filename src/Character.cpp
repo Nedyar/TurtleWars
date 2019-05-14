@@ -1,10 +1,7 @@
 #include "Character.h"
 #include <Level.h>
 #include <typeindex>
-#include <iostream>
 #include <motorSFML.h>
-
-using namespace std;
 
 Character::Character(int n, int posx, int posy)
 {
@@ -284,11 +281,11 @@ void Character::draw(sf::RenderWindow &app)
 {
     motorSFML *motor = motorSFML::Instance();
     //app.draw(sprite);
-    motor->draw(app, sprite->getSprite());
+    motor->draw(sprite->getSprite());
     if (weapon != nullptr)
         weapon->draw(app);
     if (!dead && !fakingDead)
-        motor->draw(app, armSprite->getSprite()); //app.draw(armSprite);
+        motor->draw(armSprite->getSprite()); //app.draw(armSprite);
 }
 
 void Character::update()

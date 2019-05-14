@@ -4,7 +4,9 @@ motorSFML* motorSFML::pInstance = 0;
 
 motorSFML::motorSFML()
 {
-
+    window.create(sf::VideoMode(WIDTH, HEIGHT), "TurtleWars");
+    window.setFramerateLimit(60);
+    window.setKeyRepeatEnabled(false);
 }
 
 motorSFML::~motorSFML()
@@ -14,25 +16,22 @@ motorSFML::~motorSFML()
 
 motorSFML* motorSFML::Instance()
 {
-    if(pInstance == 0) {
-//        pInstance = (motorSFML*)malloc(sizeof(motorSFML));
+    if(pInstance == 0)
         pInstance = new motorSFML();
-    }
-
     return pInstance;
 }
 
-void motorSFML::clean(sf::RenderWindow &window)
+void motorSFML::clean()
 {
-    window.clear();
+    window.clear(sf::Color(200,200,200,255));
 }
 
-void motorSFML::draw(sf::RenderWindow &window, sf::Sprite *sprite)
+void motorSFML::draw(sf::Sprite *sprite)
 {
     window.draw(*sprite);
 }
 
-void motorSFML::display(sf::RenderWindow &window)
+void motorSFML::display()
 {
     window.display();
 }

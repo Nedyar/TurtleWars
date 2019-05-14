@@ -1,8 +1,6 @@
 #ifndef PHYSICS2D_H
 #define PHYSICS2D_H
 
-#include <iostream>
-
 #include <Body.h>
 #include <SFML/Graphics.hpp> // cuando me coma la polla esto se borra
 

@@ -1,10 +1,6 @@
 #include "World.h"
 #include <EventCollider.h>
 
-#include <iostream>
-using namespace std;
-
-
 World* World::instance = 0;
 World* World::Instance()
 {
@@ -37,7 +33,6 @@ void World::destroyBody(b2Body* body)
 {
     //cout << "Intento borrar body del mundo: " << body << end;
     world2D->DestroyBody(body);
-    cout << "He borrao del mundo " << endl;
 }
 
 void World::update()

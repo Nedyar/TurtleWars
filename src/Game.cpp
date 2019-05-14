@@ -1,10 +1,6 @@
 #include "Game.h"
 
-#include <State.h>
 #include <Level.h>
-
-#define WIDTH 960
-#define HEIGHT 640
 
 Game* Game::pinstance = nullptr;
 
@@ -18,6 +14,7 @@ Game* Game::instance()
 Game::Game()
 {
     pushState(Level::instance(2,3));
+    motor = motorSFML::Instance();
 }
 
 void Game::pushState(State* state)
@@ -46,52 +43,33 @@ State* Game::CurrentState()
         return states.top();
 }
 
-void Game::handleEvents(sf::RenderWindow &app)
+void Game::gameLoop()
 {
-    // Process events
+    // Start the game loop
+    while (motor->window.isOpen())
+    {
+        // Process events
     sf::Event event;
-    while (app.pollEvent(event))
+    while (motor->window.pollEvent(event))
     {
         // Close window : exit
         if (event.type == sf::Event::Closed)
         {
-            app.close();
+            motor->window.close();
             delete this;
         }
 
         CurrentState()->handleEvents();
     }
-}
 
-void Game::update()
-{
-    CurrentState()->update();
-}
+        CurrentState()->update();
 
-void Game::draw(sf::RenderWindow &app)
-{
-    // Clear screen
-    app.clear(sf::Color(200,200,200,255));
+        // Clear screen
+    motor->clean();
     // Draw the sprite
-    CurrentState()->draw(app);
+    CurrentState()->draw(motor->window);
     // Update the window
-    app.display();
-}
-
-void Game::gameLoop()
-{
-    // Create the main window
-    sf::RenderWindow app(sf::VideoMode(WIDTH, HEIGHT), "TurtleWars");
-    app.setFramerateLimit(60);
-    app.setKeyRepeatEnabled(false);
-
-    // Start the game loop
-    while (app.isOpen())
-    {
-        handleEvents(app);
-        update();
-
-        draw(app);
+    motor->display();
 
     }
 

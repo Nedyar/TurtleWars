@@ -1,6 +1,4 @@
 #include "Body.h"
-#include <iostream>
-using namespace std;
 
 #define MULTIPLIER 100.f
 
@@ -48,13 +46,39 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
     fixDef.density = density;
     fixDef.friction = friction;
     fixDef.restitution = restitution;
-    fixDef.isSensor = true;
-    fix = bod->CreateFixture(&fixDef);
-
-    fixDef.filter.groupIndex = group;
     fixDef.isSensor = false;
+    fixDef.filter.groupIndex = group;
     fix = bod->CreateFixture(&fixDef);
 
+    b2FixtureDef fixDef2;
+    fixDef2.shape = &shape;
+    fixDef2.isSensor = true;
+    fix = bod->CreateFixture(&fixDef2);
+
+}
+
+Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction,float restitution, bool bullet,  bool avoidRotate)
+{
+
+    collideShape = shape;//save a shape
+    b2BodyDef bodDef;
+    b2FixtureDef fixDef;
+
+    bodDef.type = type;
+    bodDef.position = spawn;
+    bodDef.fixedRotation = avoidRotate;
+    //Create body
+    bod = World::Instance()->CreateBody(bodDef);
+
+    fixDef.shape = &shape;
+    fixDef.density = density;
+    fixDef.friction = friction;
+    fixDef.restitution = restitution;
+    fixDef.isSensor = false;
+    fixDef.filter.groupIndex = -2;
+    fix = bod->CreateFixture(&fixDef);
+
+    bod->SetBullet(true);
 }
 
 Body::Body(b2BodyType type, b2Vec2 spawn, b2CircleShape shape, float density, float friction,float restitution, int group, bool sensor,  bool avoidRotate)
@@ -78,20 +102,10 @@ Body::Body(b2BodyType type, b2Vec2 spawn, b2CircleShape shape, float density, fl
     fixDef.friction = friction;
     fixDef.restitution = restitution;
     fix = bod->CreateFixture(&fixDef);
-
-
-    cout << "Granada creada" << endl;
-    cout << "Angulo de la granada: "<<bod->GetAngle() << endl;
-    cout << "Pos x: " << spawn.x << endl;
-
-
-
-
 }
 
 Body::~Body()
 {
-    cout << "borrando body:" << bod << endl;
     World::Instance()->destroyBody(bod);
     //world->update();
 }

@@ -5,7 +5,6 @@
 #include "Texture.h"
 #include <SFML/Graphics.hpp>
 #include "Sprite.h"
-#include <iostream>
 #include <Physics2D.h>
 #include <Body.h>
 

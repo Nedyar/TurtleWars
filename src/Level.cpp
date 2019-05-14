@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 Level* Level::pinstance = 0;
-bool drawBodies = true;
+bool drawBodies = false;
 
 
 Level::Level(int nPlayers, int nMap)

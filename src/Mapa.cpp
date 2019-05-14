@@ -1,6 +1,4 @@
 #include "Mapa.h"
-#include <iostream>
-using namespace std;
 
 Mapa::Mapa(TiXmlElement* Map)
 {
@@ -115,7 +113,7 @@ void Mapa::drawSpriteMatrix(sf::RenderWindow &window)
         for(int j=0; j<cols; ++j)
         {
             if(mTilemapSprite[i][j] != NULL)
-                motor->draw(window, mTilemapSprite[i][j]->getSprite());
+                motor->draw(mTilemapSprite[i][j]->getSprite());
                 //window.draw( *mTilemapSprite[i][j] );
         }
     }

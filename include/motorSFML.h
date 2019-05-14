@@ -6,20 +6,25 @@
 
 class motorSFML
 {
-    public:
-        static motorSFML* Instance();
-        ~motorSFML();
-        void draw(sf::RenderWindow &window, sf::Sprite *sprite);
-        void display(sf::RenderWindow &window);
-        void clean(sf::RenderWindow &window);
+public:
+    static motorSFML* Instance();
+    ~motorSFML();
+    void draw(sf::Sprite *sprite);
+    void display();
+    void clean();
 
-    protected:
-        motorSFML();
-        motorSFML(const motorSFML&);
-        motorSFML &operator= (const motorSFML&);
+    sf::RenderWindow window;
 
-    private:
-        static motorSFML* pInstance;
+protected:
+    motorSFML();
+    motorSFML(const motorSFML&);
+    motorSFML &operator= (const motorSFML&);
+
+private:
+    static motorSFML* pInstance;
+
+    const int WIDTH = 960;
+    const int HEIGHT = 640;
 };
 
 #endif // MOTORSFML_H

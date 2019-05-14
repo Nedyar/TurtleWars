@@ -9,8 +9,6 @@ class Character;
 #include <Texture.h>
 #include <Sprite.h>
 
-using namespace std;
-
 class Weapon : public Collidable
 {
 public:
