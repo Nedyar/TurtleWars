@@ -57,6 +57,30 @@ Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, fl
 
 }
 
+Body::Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction,float restitution, bool bullet,  bool avoidRotate)
+{
+
+    collideShape = shape;//save a shape
+    b2BodyDef bodDef;
+    b2FixtureDef fixDef;
+
+    bodDef.type = type;
+    bodDef.position = spawn;
+    bodDef.fixedRotation = avoidRotate;
+    //Create body
+    bod = World::Instance()->CreateBody(bodDef);
+
+    fixDef.shape = &shape;
+    fixDef.density = density;
+    fixDef.friction = friction;
+    fixDef.restitution = restitution;
+    fixDef.isSensor = false;
+    fixDef.filter.groupIndex = -2;
+    fix = bod->CreateFixture(&fixDef);
+
+    bod->SetBullet(true);
+}
+
 Body::Body(b2BodyType type, b2Vec2 spawn, b2CircleShape shape, float density, float friction,float restitution, int group, bool sensor,  bool avoidRotate)
 {
     collideShape.SetAsBox(0.05,0.05);//cuadrado de mentira

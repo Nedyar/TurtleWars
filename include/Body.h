@@ -12,6 +12,7 @@ class Body
     public:
         Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction, float restitutio, int group, bool sensor, bool avoidRotate);
         Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction,float restitution, int group, bool avoidRotate);
+        Body(b2BodyType type,b2Vec2 spawn, b2PolygonShape shape, float density, float friction,float restitution, bool bullet, bool avoidRotate);
         Body(b2BodyType type,b2Vec2 spawn, b2CircleShape shape, float density, float friction,float restitution, int group, bool sensor,  bool avoidRotate);
         ~Body();
 

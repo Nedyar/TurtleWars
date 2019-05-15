@@ -145,7 +145,7 @@ Body* Physics2D::createGrenadeBody(float positionX, float positionY, float width
 }
 
 
-Body* Physics2D::createBulletBody(float positionX, float positionY)
+Body* Physics2D::createBulletBody(float positionX, float positionY, float width, float height, double angle)
 {
     b2BodyType type;
     b2Vec2  spawn;
@@ -154,16 +154,14 @@ Body* Physics2D::createBulletBody(float positionX, float positionY)
     float density = 0.f;
     float friction = 0.1f;
     float restitution = 0.f;
-    int group = -2;
-    bool sensor = false;
+    bool bullet = true;
     bool avoidRotate = false;
 
-    type = b2BodyType::b2_dynamicBody;
-    shape.SetAsBox(.1/DIVIDER,.1/DIVIDER);
+    type = b2BodyType::b2_kinematicBody;
+    shape.SetAsBox(width/DIVIDER/2,height/DIVIDER/2,spawn,angle);
     spawn = b2Vec2({positionX/DIVIDER,(positionY/DIVIDER)});
 
-    Body *body = new Body(type, spawn, shape, density, friction, restitution, group, sensor, avoidRotate);
-    body->getBody()->SetGravityScale(0);
+    Body *body = new Body(type, spawn, shape, density, friction, restitution, bullet, avoidRotate);
     return body;
 }
 

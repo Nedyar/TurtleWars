@@ -11,7 +11,6 @@ Bullet::Bullet(double posx, double posy, double ang, double maxLen)
     bulletSprite->setOrigin(0,bulletTexture->getTexture()->getSize().y/2);
     bulletSprite->setPosition(posx, posy);
     bulletSprite->setRotation(ang);
-    bulletSprite->setOrigin(bulletTexture->getTexture()->getSize().x,bulletTexture->getTexture()->getSize().y/2);
 
     posiniX=posx;
     posiniY=posy;
@@ -22,7 +21,7 @@ Bullet::Bullet(double posx, double posy, double ang, double maxLen)
     float width = bulletSprite->getLocalBounds().width;
     float height = bulletSprite->getLocalBounds().height;
 
-    body = Physics2D::Instance()->createBulletBody(posx, posy);
+    body = Physics2D::Instance()->createBulletBody(posx, posy, width, height, (ang)*3.14/180.0);
     //body->getBody()->SetBullet(true);
     body->setUserData(this);
 }
