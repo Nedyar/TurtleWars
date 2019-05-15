@@ -22,9 +22,6 @@ public:
     //game loop function
     void gameLoop();
 
-    //sfml window
-    sf::RenderWindow window;
-
 protected:
     Game();
 
