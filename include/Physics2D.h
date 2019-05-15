@@ -16,7 +16,7 @@ class Physics2D
         Body* createSpawnBody(float positionX, float positionY, float width, float height);
         Body* createWeaponBody(float positionX, float positionY, float width, float height);
         Body* createGrenadeBody(float positionX, float positionY, float width);
-        Body* createBulletBody(float positionX, float positionY, float width, float height, double angle);
+        Body* createBulletBody(float positionX, float positionY);
         void updateWorld();
 
         //~Physics2D();
