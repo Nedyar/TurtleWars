@@ -14,7 +14,7 @@ class Weapon : public Collidable
 public:
     virtual bool shoot() = 0;
     virtual void update() = 0;
-    virtual void draw(sf::RenderWindow &app) = 0;
+    virtual void draw() = 0;
     virtual void createBody() = 0;
     void deleteBody();
     void setXVelocity(float velocity);

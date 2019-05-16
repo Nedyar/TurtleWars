@@ -54,7 +54,7 @@ void Gun::update()
         delete this;
 }
 
-void Gun::draw(sf::RenderWindow &app)
+void Gun::draw()
 {
     motorSFML::Instance()->draw(sprite->getSprite());
 }

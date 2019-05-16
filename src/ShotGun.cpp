@@ -105,7 +105,7 @@ void ShotGun::update()
         delete this;
 }
 
-void ShotGun::draw(sf::RenderWindow &app)
+void ShotGun::draw()
 {
     motorSFML::Instance()->draw(sprite->getSprite());
     motorSFML::Instance()->draw(shotGunLoaderSprite->getSprite());

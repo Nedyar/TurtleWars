@@ -21,7 +21,7 @@ public:
     virtual ~WeaponSpawner();
 
     void update();
-    void draw(sf::RenderWindow &app);
+    void draw();
 
     bool spawnWeapon();
     Weapon* takeWeapon();

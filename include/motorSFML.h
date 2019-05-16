@@ -11,6 +11,8 @@ public:
     ~motorSFML();
     void draw(sf::Sprite *sprite);
     void draw(sf::Text text);
+    //sf::RectangleShape Polygon
+    void draw(sf::RectangleShape polygon);
     void display();
     void clean();
 

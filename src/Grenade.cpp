@@ -94,7 +94,7 @@ void Grenade::update()
     }
 }
 
-void Grenade::draw(sf::RenderWindow &app)
+void Grenade::draw()
 {
     motorSFML::Instance()->draw(sprite->getSprite());
 }

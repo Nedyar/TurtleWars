@@ -8,7 +8,7 @@ class State
 public:
     virtual void handleEvents() = 0;
     virtual void update() = 0;
-    virtual void draw(sf::RenderWindow &app) = 0;
+    virtual void draw() = 0;
 };
 
 #endif // STATE_H

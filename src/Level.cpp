@@ -277,39 +277,39 @@ void Level::update()
     //cout << "terminamos update" << endl;
 }
 
-void Level::draw(sf::RenderWindow &app)
+void Level::draw()
 {
-    mapa->drawSpriteMatrix(app);
+    mapa->drawSpriteMatrix();
     if (drawBodies)
-        mapa->drawBodyMap(app);
+        mapa->drawBodyMap();
 
     for (int i = 0; i < nWeaponSpawners; i++)
     {
-        weaponSpawners[i]->draw(app);
+        weaponSpawners[i]->draw();
         if (drawBodies)
-            weaponSpawners[i]->body->pintaRect(app);
+            weaponSpawners[i]->body->pintaRect();
     }
 
     for (int i = 0; i < weapons.size(); i++)
     {
-        weapons.at(i)->draw(app);
+        weapons.at(i)->draw();
         if (drawBodies)
-            weapons.at(i)->body->pintaRect(app);
+            weapons.at(i)->body->pintaRect();
 
     }
 
     for (int i = 0; i < bullets.size(); i++)
     {
-        bullets.at(i)->draw(app);
+        bullets.at(i)->draw();
         if (drawBodies)
-            bullets.at(i)->body->pintaRect(app);
+            bullets.at(i)->body->pintaRect();
     }
 
     for (int i = 0; i < nCharacters; i++)
     {
-        players[i]->draw(app);
+        players[i]->draw();
         if (drawBodies)
-            players[i]->body->pintaRect(app);
+            players[i]->body->pintaRect();
     }
 }
 

@@ -16,7 +16,7 @@ public:
     Bullet(double posx, double posy, double ang, double maxLen);
     virtual ~Bullet();
     void update();
-    void draw(sf::RenderWindow &app);
+    void draw();
     int getId() override;
     void deleteMe();
     //Body* body = nullptr;

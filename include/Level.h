@@ -23,7 +23,7 @@ public:
 
     void handleEvents() override;
     void update() override;
-    void draw(sf::RenderWindow &app) override;
+    void draw() override;
 
     void addWeapon(Weapon* weapon);
     void addBullet(Bullet* bullet);

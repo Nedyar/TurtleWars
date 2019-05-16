@@ -36,6 +36,11 @@ void motorSFML::draw(sf::Text text)
     window.draw(text);
 }
 
+void motorSFML::draw(sf::RectangleShape polygon)
+{
+    window.draw(polygon);
+}
+
 void motorSFML::display()
 {
     window.display();

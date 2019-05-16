@@ -2,6 +2,7 @@
 
 #define MULTIPLIER 100.f
 
+#include <motorSFML.h>
 
 
 ///Create a body whith a properties
@@ -88,7 +89,7 @@ Body::~Body()
 
 
 ///Return a SFML rectangle to graw collider in window
-void Body::pintaRect(sf::RenderWindow &app){
+void Body::pintaRect(){
 
     sf::RectangleShape Polygon(sf::Vector2f((collideShape.GetVertex(2).x-collideShape.GetVertex(0).x)*MULTIPLIER,(collideShape.GetVertex(2).y-collideShape.GetVertex(0).y)*MULTIPLIER));
     Polygon.setFillColor(sf::Color::Transparent);
@@ -96,7 +97,7 @@ void Body::pintaRect(sf::RenderWindow &app){
     Polygon.setOrigin(Polygon.getSize().x/2,Polygon.getSize().y/2);
     Polygon.setPosition(getPositionX(),getPositionY());
 
-    app.draw(Polygon);
+    motorSFML::Instance()->draw(Polygon);
 
 }
 

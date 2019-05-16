@@ -43,7 +43,7 @@ public:
     void addWeaponOver(Weapon* newWeapon);
     void removeWeaponOver(Weapon* newWeapon);
 
-    void draw(sf::RenderWindow &app);
+    void draw();
     void update();
 
     Body* getBody();

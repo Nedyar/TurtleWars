@@ -68,7 +68,7 @@ void Game::gameLoop()
         // Clear screen
         motor->clean();
         // Draw the sprite
-        CurrentState()->draw(motor->window);
+        CurrentState()->draw();
         // Update the window
         motor->display();
 

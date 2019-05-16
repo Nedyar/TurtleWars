@@ -104,7 +104,7 @@ void Mapa::setSpriteMatrix()
 
 }
 
-void Mapa::drawSpriteMatrix(sf::RenderWindow &window)
+void Mapa::drawSpriteMatrix()
 {
     motorSFML* motor = motorSFML::Instance();
 
@@ -119,14 +119,14 @@ void Mapa::drawSpriteMatrix(sf::RenderWindow &window)
     }
 }
 
-void Mapa::drawBodyMap(sf::RenderWindow &window)
+void Mapa::drawBodyMap()
 {
     //motorSFML* motor = motorSFML::Instance();
 
     for(int i=0; i<7; ++i)
     {
                 //motor->draw(window, bodyMap[i]->dameRect());
-                bodyMap[i]->pintaRect(window);
+                bodyMap[i]->pintaRect();
     }
 }
 

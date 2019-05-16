@@ -18,7 +18,7 @@ public:
     bool explode();
 
     void update() override;
-    void draw(sf::RenderWindow &app) override;
+    void draw() override;
     int getId() override;
 protected:
 

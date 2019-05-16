@@ -46,7 +46,7 @@ void Bullet::deleteMe() {
     mustDelete = true;
 }
 
-void Bullet::draw(sf::RenderWindow &app)
+void Bullet::draw()
 {
     motorSFML::Instance()->draw(bulletSprite->getSprite()); //app.draw(bulletSprite);
 }

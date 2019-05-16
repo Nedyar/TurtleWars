@@ -64,13 +64,13 @@ void WeaponSpawner::update()
     ballSprite2->setPosition(ballSprite2->getPosition().x-.1, ballSprite2->getPosition().y);
 }
 
-void WeaponSpawner::draw(sf::RenderWindow &app)
+void WeaponSpawner::draw()
 {
     motorSFML* motor = motorSFML::Instance();
     motor->draw(platformSprite->getSprite());
     motor->draw(ballSprite1->getSprite());
     if (weaponSpawned != nullptr)
-        weaponSpawned->draw(app);
+        weaponSpawned->draw();
     motor->draw(ballSprite2->getSprite());
 }
 

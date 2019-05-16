@@ -17,8 +17,8 @@ class Mapa
         void setGidMatrix(TiXmlElement* Map);
         void setSpriteMatrix();
         void setBodyMap(TiXmlElement* objLayer);
-        void drawSpriteMatrix(sf::RenderWindow &window);
-        void drawBodyMap(sf::RenderWindow &window);
+        void drawSpriteMatrix();
+        void drawBodyMap();
         int getRows();
         int getCols();
         int **getmGid();

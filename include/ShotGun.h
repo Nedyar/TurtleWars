@@ -14,7 +14,7 @@ public:
     bool reload();
 
     void update() override;
-    void draw(sf::RenderWindow &app) override;
+    void draw() override;
 
     void createBody() override;
 

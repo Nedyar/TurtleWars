@@ -34,7 +34,7 @@ class Body
 
         b2PolygonShape collideShape;
 
-        void pintaRect(sf::RenderWindow &app);
+        void pintaRect();
 
 
     protected:

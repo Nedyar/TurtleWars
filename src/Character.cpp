@@ -277,13 +277,13 @@ void Character::fakeDie()
     }
 }
 
-void Character::draw(sf::RenderWindow &app)
+void Character::draw()
 {
     motorSFML *motor = motorSFML::Instance();
     //app.draw(sprite);
     motor->draw(sprite->getSprite());
     if (weapon != nullptr)
-        weapon->draw(app);
+        weapon->draw();
     if (!dead && !fakingDead)
         motor->draw(armSprite->getSprite()); //app.draw(armSprite);
 }
