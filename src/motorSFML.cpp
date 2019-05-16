@@ -23,7 +23,7 @@ motorSFML* motorSFML::Instance()
 
 void motorSFML::clean()
 {
-    window.clear(sf::Color(200,200,200,255));
+    window.clear();
 }
 
 void motorSFML::draw(sf::Sprite *sprite)

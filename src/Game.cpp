@@ -1,6 +1,6 @@
 #include "Game.h"
 
-#include <MainMenu.h>
+#include <IntroState.h>
 
 Game* Game::pinstance = nullptr;
 
@@ -13,7 +13,7 @@ Game* Game::instance()
 
 Game::Game()
 {
-    pushState(MainMenu::Instance());
+    pushState(new IntroState());
     motor = motorSFML::Instance();
 }
 
