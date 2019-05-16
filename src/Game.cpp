@@ -14,8 +14,8 @@ Game* Game::instance()
 
 Game::Game()
 {
-    //pushState(new IntroState());
-    pushState(Level::instance());
+    pushState(new IntroState());
+    //pushState(Level::instance());
 
     motor = motorSFML::Instance();
 }

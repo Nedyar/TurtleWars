@@ -179,9 +179,10 @@
 	<Bullet.h>
 	<Collidable.h>
 
-1558004868 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Game.cpp
+1558023588 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Game.cpp
 	"Game.h"
 	<IntroState.h>
+	<Level.h>
 
 1558003408 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Grenade.cpp
 	"Grenade.h"
@@ -192,9 +193,11 @@
 	"Gun.h"
 	<Level.h>
 
-1558003408 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
+1558024748 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
 	"Level.h"
 	<SFML/Graphics.hpp>
+	<PauseState.h>
+	<Game.h>
 
 1557951259 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/LevelFactory.cpp
 	"LevelFactory.h"
@@ -202,7 +205,7 @@
 1558003408 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Mapa.cpp
 	"Mapa.h"
 
-1558004904 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/motorSFML.cpp
+1558023481 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/motorSFML.cpp
 	"motorSFML.h"
 
 1557951259 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Physics2D.cpp
@@ -246,50 +249,51 @@
 	"tinyxml.h"
 	<windows.h>
 
-1558007870 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Menu.cpp
+1558023968 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Menu.cpp
 	"Menu.h"
 	<cstring>
 
-1558006258 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Menu.h
+1558023481 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Menu.h
 	<motorSFML.h>
 	<Texture.h>
 	<Sprite.h>
 
-1558023100 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/MainMenu.cpp
+1558023481 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/MainMenu.cpp
 	"MainMenu.h"
 	<Game.h>
 	<SplashState.h>
 
-1558022593 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/MainMenu.h
+1558023481 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/MainMenu.h
 	<State.h>
 	<Menu.h>
 
-1558022610 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/IntroState.cpp
+1558023481 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/IntroState.cpp
 	"IntroState.h"
 	"Texture.h"
 	"Sprite.h"
 	"motorSFML.h"
 	"Game.h"
 
-1558008327 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/IntroState.h
+1558023481 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/IntroState.h
 	<State.h>
 	<MainMenu.h>
 
-1558009298 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/SplashState.h
+1558023481 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/SplashState.h
 	<State.h>
 
-1558009620 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/SplashState.cpp
+1558023481 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/SplashState.cpp
 	"SplashState.h"
 	<Game.h>
 	<Level.h>
 	<motorSFML.h>
 
-1558023190 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/PauseState.cpp
+1558024734 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/PauseState.cpp
 	"PauseState.h"
 	"Game.h"
 	"MainMenu.h"
+	"Level.h"
 
-1558023270 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/PauseState.h
+1558023481 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/PauseState.h
 	<State.h>
 	<Menu.h>
 

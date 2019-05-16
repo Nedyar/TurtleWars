@@ -1,5 +1,7 @@
 #include "Level.h"
 #include <SFML/Graphics.hpp>
+#include <PauseState.h>
+#include <Game.h>
 
 Level* Level::pinstance = 0;
 bool drawBodies = false;
@@ -74,6 +76,9 @@ void Level::handleEvents()
         player->shoot();
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::X))
         player->takeWeapon();
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+        Game::instance()->pushState(new PauseState());
 
 
 

@@ -75,8 +75,12 @@ void Menu::draw(char name[])
     tittle.setPosition(960/2,125);
 
 
+    Texture* texture;
+    if (num != 0)
+        texture = new Texture("img/MenuPlay.png");
+    else
+        texture = new Texture("img/MenuPause.png");
 
-    Texture* texture = new Texture("img/MenuPlay.png");
     Sprite* sprite = new Sprite(*texture->getTexture());
 
     sprite->setOrigin(0,0);

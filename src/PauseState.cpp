@@ -1,6 +1,7 @@
 #include "PauseState.h"
 #include "Game.h"
 #include "MainMenu.h"
+#include "Level.h"
 
 PauseState::PauseState()
 {
@@ -34,8 +35,8 @@ void PauseState::update()
         switch (menu.GetPressedItem())
         {
         case 0:
-            if(this->clock.getElapsedTime().asSeconds()>1)
-                resumeGame();
+            if (clock.getElapsedTime().asMilliseconds()>10)
+            resumeGame();
             break;
         case 1:
             loadcontrols();
@@ -47,7 +48,10 @@ void PauseState::update()
     }
     action = 0;
 }
-void PauseState::draw() {}
+void PauseState::draw() {
+    Level::instance()->draw();
+    menu.draw("pause");
+}
 
 void PauseState::resumeGame()
 {
