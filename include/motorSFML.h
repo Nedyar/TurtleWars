@@ -10,6 +10,7 @@ public:
     static motorSFML* Instance();
     ~motorSFML();
     void draw(sf::Sprite *sprite);
+    void draw(sf::Text text);
     void display();
     void clean();
 

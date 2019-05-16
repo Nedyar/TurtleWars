@@ -1,6 +1,6 @@
 #include "Game.h"
 
-#include <Level.h>
+#include <MainMenu.h>
 
 Game* Game::pinstance = nullptr;
 
@@ -13,7 +13,7 @@ Game* Game::instance()
 
 Game::Game()
 {
-    pushState(Level::instance(2,3));
+    pushState(MainMenu::Instance());
     motor = motorSFML::Instance();
 }
 
@@ -30,7 +30,8 @@ void Game::popState()
 
 Game::~Game()
 {
-    while (!states.empty()) {
+    while (!states.empty())
+    {
         //delete CurrentState();
         popState();
     }
@@ -49,27 +50,27 @@ void Game::gameLoop()
     while (motor->window.isOpen())
     {
         // Process events
-    sf::Event event;
-    while (motor->window.pollEvent(event))
-    {
-        // Close window : exit
-        if (event.type == sf::Event::Closed)
+        sf::Event event;
+        while (motor->window.pollEvent(event))
         {
-            motor->window.close();
-            delete this;
-        }
+            // Close window : exit
+            if (event.type == sf::Event::Closed)
+            {
+                motor->window.close();
+                delete this;
+            }
 
-        CurrentState()->handleEvents();
-    }
+            CurrentState()->handleEvents();
+        }
 
         CurrentState()->update();
 
         // Clear screen
-    motor->clean();
-    // Draw the sprite
-    CurrentState()->draw(motor->window);
-    // Update the window
-    motor->display();
+        motor->clean();
+        // Draw the sprite
+        CurrentState()->draw(motor->window);
+        // Update the window
+        motor->display();
 
     }
 

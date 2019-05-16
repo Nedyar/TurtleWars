@@ -31,6 +31,11 @@ void motorSFML::draw(sf::Sprite *sprite)
     window.draw(*sprite);
 }
 
+void motorSFML::draw(sf::Text text)
+{
+    window.draw(text);
+}
+
 void motorSFML::display()
 {
     window.display();
