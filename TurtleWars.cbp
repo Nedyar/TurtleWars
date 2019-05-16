@@ -65,6 +65,7 @@
 		<Unit filename="include/Game.h" />
 		<Unit filename="include/Grenade.h" />
 		<Unit filename="include/Gun.h" />
+		<Unit filename="include/IntroState.h" />
 		<Unit filename="include/Level.h" />
 		<Unit filename="include/LevelFactory.h" />
 		<Unit filename="include/MainMenu.h" />
@@ -72,6 +73,7 @@
 		<Unit filename="include/Menu.h" />
 		<Unit filename="include/Physics2D.h" />
 		<Unit filename="include/ShotGun.h" />
+		<Unit filename="include/SplashState.h" />
 		<Unit filename="include/Sprite.h" />
 		<Unit filename="include/State.h" />
 		<Unit filename="include/Texture.h" />
@@ -91,6 +93,7 @@
 		<Unit filename="src/Game.cpp" />
 		<Unit filename="src/Grenade.cpp" />
 		<Unit filename="src/Gun.cpp" />
+		<Unit filename="src/IntroState.cpp" />
 		<Unit filename="src/Level.cpp" />
 		<Unit filename="src/LevelFactory.cpp" />
 		<Unit filename="src/MainMenu.cpp" />
@@ -98,6 +101,7 @@
 		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/Physics2D.cpp" />
 		<Unit filename="src/ShotGun.cpp" />
+		<Unit filename="src/SplashState.cpp" />
 		<Unit filename="src/Sprite.cpp" />
 		<Unit filename="src/Texture.cpp" />
 		<Unit filename="src/Weapon.cpp" />
