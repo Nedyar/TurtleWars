@@ -47,7 +47,7 @@ public:
     void update();
 
     Body* getBody();
-
+    bool isDead();
     int getId() override;
 
 protected:

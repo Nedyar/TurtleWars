@@ -7,6 +7,11 @@ motorSFML::motorSFML()
     window.create(sf::VideoMode(WIDTH, HEIGHT), "TurtleWars");
     window.setFramerateLimit(60);
     window.setKeyRepeatEnabled(false);
+
+    sf::View camara( sf::FloatRect(0, 0, WIDTH, HEIGHT) );
+    camara.setViewport( sf::FloatRect(0, 0, 1, 1) );
+    window.setView(camara);
+
 }
 
 motorSFML::~motorSFML()
@@ -44,4 +49,11 @@ void motorSFML::draw(sf::RectangleShape polygon)
 void motorSFML::display()
 {
     window.display();
+}
+
+void motorSFML::setCamara(double x, double y, double widthCam, double heightCam)
+{
+    camara.setCenter(x,y);
+    camara.setSize(widthCam, heightCam);
+    window.setView(camara);
 }
