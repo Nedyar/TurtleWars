@@ -29,6 +29,7 @@ public:
     void addBullet(Bullet* bullet);
     void removeWeapon(Weapon* weapon);
     void removeBullet(Bullet* bullet);
+    void setCamara();
 
 protected:
     Level(int nPlayers, int nMap);

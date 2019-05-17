@@ -15,8 +15,10 @@ public:
     void draw(sf::RectangleShape polygon);
     void display();
     void clean();
+    void setCamara(double x, double y, double widthCam, double heightCam);
 
     sf::RenderWindow window;
+    sf::View camara;
 
 protected:
     motorSFML();

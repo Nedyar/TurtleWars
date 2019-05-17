@@ -284,6 +284,8 @@ void Level::update()
 
 void Level::draw()
 {
+    setCamara();
+
     mapa->drawSpriteMatrix();
     if (drawBodies)
         mapa->drawBodyMap();
@@ -350,5 +352,49 @@ void Level::removeBullet(Bullet* bullet)
             bullets.erase(bullets.begin()+i);
             break;
         }
+    }
+}
+
+void Level::setCamara()
+{
+    motorSFML* motor = motorSFML::Instance();
+    double xMax = 0;
+    double yMax = 0;
+    double xCenter = 0;
+    double yCenter = 0;
+    double width = 0;
+    double height = 0;
+    double yMin = 1000;
+    double xMin = 1000;
+
+    for (int i = 0; i < nCharacters; i++)
+    {
+        if(!players[i]->isDead())
+        {
+            if(players[i]->getBody()->getPositionX() > xMax)
+                xMax = players[i]->getBody()->getPositionX();
+
+            if(players[i]->getBody()->getPositionX() < xMin)
+                xMin = players[i]->getBody()->getPositionX();
+
+            if(players[i]->getBody()->getPositionY() > yMax)
+                yMax = players[i]->getBody()->getPositionY();
+
+            if(players[i]->getBody()->getPositionY() < yMin)
+                yMin = players[i]->getBody()->getPositionY();
+
+        }
+
+    xCenter = (xMax + xMin)/2;
+    yCenter = (yMax + yMin)/2;
+    width = xMax - xMin + 100;
+
+    if(width < 500)
+        width = 500;
+
+    height = width / 1.5;
+
+
+    motor->setCamara(xCenter, yCenter, width, height);
     }
 }

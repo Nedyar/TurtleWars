@@ -451,3 +451,8 @@ int Character::getId()
 {
     return id;
 }
+
+bool Character::isDead()
+{
+    return dead;
+}
