@@ -290,6 +290,12 @@ void Character::draw()
 
 void Character::update()
 {
+    //para la muerte por caida al llegar al limite de abajo
+    if(sprite->getPosition().y>LINE_OF_DEATH)
+    {
+        mustDie=true;
+    }
+
     if (mustDie)
         die();
 

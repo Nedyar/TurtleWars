@@ -14,6 +14,8 @@ const double JUMP_FORCE = 5;
 const float xDifArm = 3;
 const float yDifArm = 5.5;
 
+const int LINE_OF_DEATH=750;
+
 
 class Character : public Collidable
 {
