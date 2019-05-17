@@ -71,6 +71,7 @@
 		<Unit filename="include/MainMenu.h" />
 		<Unit filename="include/Mapa.h" />
 		<Unit filename="include/Menu.h" />
+		<Unit filename="include/PauseState.h" />
 		<Unit filename="include/Physics2D.h" />
 		<Unit filename="include/ShotGun.h" />
 		<Unit filename="include/SplashState.h" />
@@ -99,6 +100,7 @@
 		<Unit filename="src/MainMenu.cpp" />
 		<Unit filename="src/Mapa.cpp" />
 		<Unit filename="src/Menu.cpp" />
+		<Unit filename="src/PauseState.cpp" />
 		<Unit filename="src/Physics2D.cpp" />
 		<Unit filename="src/ShotGun.cpp" />
 		<Unit filename="src/SplashState.cpp" />
