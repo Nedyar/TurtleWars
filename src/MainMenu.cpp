@@ -115,6 +115,7 @@ void MainMenu::update()
 
 void MainMenu::draw()
 {
+    motorSFML::Instance()->resetCamara();
     menu.draw("");
 }
 

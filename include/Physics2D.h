@@ -18,6 +18,7 @@ class Physics2D
         Body* createGrenadeBody(float positionX, float positionY, float width);
         Body* createBulletBody(float positionX, float positionY);
         void updateWorld();
+        void resetWorld();
 
         //~Physics2D();
     protected:

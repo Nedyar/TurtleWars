@@ -41,3 +41,25 @@ void World::update()
     world2D->Step((1.f/60.f), 8, 8);//8, 8 is the iterations (change to 12 fro test)
     //cout << "Updateando world" << endl;
 }
+
+void World::reset()
+{
+    b2Body* currentBody = world2D->GetBodyList();
+    //int nBodies = world2D->GetBodyCount();
+
+    while (currentBody != nullptr) {
+        world2D->DestroyBody(currentBody);
+        currentBody = currentBody->GetNext();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -28,6 +28,7 @@ void IntroState::update()
 
 void IntroState::draw()
 {
+    motorSFML::Instance()->resetCamara();
     Texture logo("img/logo.png");
     Texture presents("img/presents.png");
     Texture tittle("img/turtleroyal.png");

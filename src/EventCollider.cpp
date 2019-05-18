@@ -1,7 +1,7 @@
 #include "EventCollider.h"
 
-#include <iostream>
-using namespace std;
+/*#include <iostream>
+using namespace std;*/
 
 EventCollider* EventCollider::instance = 0;
 EventCollider* EventCollider::Instance()
@@ -21,7 +21,7 @@ EventCollider::EventCollider()
 
 void EventCollider::BeginContact(b2Contact* contact)
 {
-    cout << "contacto detectado" << endl;
+    //cout << "contacto detectado" << endl;
     Collidable * objA = (Collidable*)contact->GetFixtureA()->GetBody()->GetUserData();
     Collidable * objB = (Collidable*)contact->GetFixtureB()->GetBody()->GetUserData();
 
@@ -29,22 +29,22 @@ void EventCollider::BeginContact(b2Contact* contact)
     {
         if (objA->getId() == 1)
         {
-            cout << "Personaje es A" << endl;
+            //cout << "Personaje es A" << endl;
             Character* player = (Character*) objA;
             switch (objB->getId())
             {
             case 2: // WeaponSpawner
-                cout << "WaponSpawner es B" << endl;
+                //cout << "WaponSpawner es B" << endl;
                 player->setWeaponSpawnerOver((WeaponSpawner*)objB);
                 //cout << "Un ws"<< endl;
                 break;
             case 3: // Weapon
-                cout << "Weapon es B" << endl;
+                //cout << "Weapon es B" << endl;
                 player->addWeaponOver((Weapon*)objB);
                 //cout << "Un arma"<< endl;
                 break;
             case 4: // Bullet
-                cout << "Bullet es B" << endl;
+                //cout << "Bullet es B" << endl;
                 player->kill();
                 ((Bullet*) objB)->deleteMe();
                 break;
@@ -52,22 +52,22 @@ void EventCollider::BeginContact(b2Contact* contact)
         }
         else if (objB->getId() == 1)
         {
-            cout << "Personaje es B" << endl;
+            //cout << "Personaje es B" << endl;
             Character* player = (Character*) objB;
             switch (objA->getId())
             {
             case 2: // WeaponSpawner
-                cout << "WaponSpawner es A" << endl;
+                //cout << "WaponSpawner es A" << endl;
                 player->setWeaponSpawnerOver((WeaponSpawner*)objA);
                 //cout << "Un ws"<< endl;
                 break;
             case 3: // Weapon
-            cout << "Weapon es A" << endl;
+                //cout << "Weapon es A" << endl;
                 player->addWeaponOver((Weapon*)objA);
                 //cout << "Un arma"<< endl;
                 break;
             case 4: // Bullet
-            cout << "Bullet es A" << endl;
+                //cout << "Bullet es A" << endl;
                 player->kill();
                 ((Bullet*) objA)->deleteMe();
                 break;

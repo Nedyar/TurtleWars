@@ -16,6 +16,7 @@ public:
     void display();
     void clean();
     void setCamara(double x, double y, double widthCam, double heightCam);
+    void resetCamara();
 
     sf::RenderWindow window;
     sf::View camara;

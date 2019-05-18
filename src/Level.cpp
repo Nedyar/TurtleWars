@@ -4,6 +4,8 @@
 #include <Game.h>
 #include <ctime>
 
+#include <MainMenu.h>
+
 Level* Level::pinstance = 0;
 bool drawBodies = false;
 
@@ -37,6 +39,11 @@ Level::~Level()
 
     delete mapa;
     delete pinstance;
+}
+
+void Level::Restart() {
+    Physics2D::Instance()->resetWorld();
+    pinstance = new Level(nCharacters);
 }
 
 Level* Level::instance(int nPlayers)
@@ -258,11 +265,24 @@ void Level::handleEvents()
 void Level::update()
 {
     //cout << "Characters:" << endl;
+    int alivePlayers = 0;
     for (int i = 0; i < nCharacters; i++)
     {
         //cout << players[i] << endl;
         players[i]->update();
+        if (!players[i]->isDead())
+            alivePlayers++;
     }
+    if (!mustEnd && alivePlayers <= 1) {
+        mustEnd = true;
+        endClock.restart();
+    }
+    if (mustEnd && endClock.getElapsedTime().asSeconds() >= 5) {
+        Game::instance()->popState();
+        Restart();
+        Game::instance()->pushState(pinstance);
+    }
+
     //cout << "WeaponSpawners:" << endl;
     for (int i = 0; i < nWeaponSpawners; i++)
     {

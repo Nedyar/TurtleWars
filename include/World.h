@@ -10,6 +10,7 @@ class World
         b2Body* CreateBody(b2BodyDef bodDef);
         void destroyBody(b2Body* body);
         void update();
+        void reset();
         //~World();
     protected:
         World();

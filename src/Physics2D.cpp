@@ -172,3 +172,8 @@ void Physics2D::updateWorld()
 {
     world->update();
 }
+
+void Physics2D::resetWorld()
+{
+    world->reset();
+}

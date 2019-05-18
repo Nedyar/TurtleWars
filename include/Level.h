@@ -35,7 +35,9 @@ protected:
     Level(int nPlayers);
     virtual ~Level();
 
+
 private:
+    void Restart();
     static Level* pinstance;
 
     Mapa* mapa = nullptr;
@@ -45,6 +47,9 @@ private:
     WeaponSpawner **weaponSpawners = nullptr;
     std::vector<Bullet*> bullets;
     std::vector<Weapon*> weapons;
+
+    bool mustEnd = false;
+    sf::Clock endClock;
 
 };
 

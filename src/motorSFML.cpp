@@ -57,3 +57,9 @@ void motorSFML::setCamara(double x, double y, double widthCam, double heightCam)
     camara.setSize(widthCam, heightCam);
     window.setView(camara);
 }
+
+void motorSFML::resetCamara() {
+    camara.setCenter(WIDTH/2,HEIGHT/2);
+    camara.setSize(WIDTH,HEIGHT);
+    window.setView(camara);
+}

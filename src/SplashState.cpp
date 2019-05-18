@@ -47,7 +47,8 @@ void SplashState::update()
 
 void SplashState::draw()
 {
-Texture tittle("img/tittle.png");
+    motorSFML::Instance()->resetCamara();
+    Texture tittle("img/tittle.png");
     Sprite* sprite = new Sprite(*tittle.getTexture());
 
     sprite->setOrigin(635/2,345/2);

@@ -50,6 +50,7 @@ void PauseState::update()
 }
 void PauseState::draw() {
     Level::instance()->draw();
+    motorSFML::Instance()->resetCamara();
     menu.draw("pause");
 }
 
