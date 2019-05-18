@@ -74,6 +74,18 @@ private:
     bool fakingDead = false;
     bool lookingUp = false;
 
+
+    double xPositionLastOld = 0;
+    double xPositionOld = 0;
+    double xPositionLast = 0;
+    double xPositionNew = 0;
+
+    bool cancelForces = false;
+    bool first = true;
+    bool lastOldFacingLeft = false;
+    bool oldFacingLeft = false;
+    bool lastFacingLeft = false;
+
     //Body* body = nullptr;
 
     Sprite* sprite;
