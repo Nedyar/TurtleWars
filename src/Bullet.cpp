@@ -55,8 +55,8 @@ void Bullet::draw()
 Bullet::~Bullet()
 {
     //cout << "voy a borrarme" << endl;
-    Level* level = Level::instance(0);
-        level->removeBullet(this);
+    Level* level = Level::instance();
+    level->removeBullet(this);
     //cout << "borro mi body:" <<endl;
     delete body;
     delete bulletSprite;

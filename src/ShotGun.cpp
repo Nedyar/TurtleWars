@@ -36,7 +36,7 @@ void ShotGun::createBody()
 
 ShotGun::~ShotGun()
 {
-    Level* level = Level::instance(0);
+    Level* level = Level::instance();
     level->removeWeapon(this);
     delete body;
     delete shotGunLoaderSprite;
@@ -73,7 +73,7 @@ bool ShotGun::shoot()
             float mod = 25;
             if (owner->body->getBody()->GetLinearVelocity().x!=0)
                 mod += 6;
-            Level* level = Level::instance(0);
+            Level* level = Level::instance();
             level->addBullet(new Bullet(sprite->getPosition().x+(mod+sprite->getLocalBounds().width/2)*xDirection,sprite->getPosition().y-2.8,(rand() % 6 + 9)+xOrientation,100));
             level->addBullet(new Bullet(sprite->getPosition().x+(mod+sprite->getLocalBounds().width/2)*xDirection,sprite->getPosition().y-2.8,(rand() % 6 + 3)+xOrientation,100));
             level->addBullet(new Bullet(sprite->getPosition().x+(mod+sprite->getLocalBounds().width/2)*xDirection,sprite->getPosition().y-2.8,(rand() % 6 + (-3))+xOrientation,100));

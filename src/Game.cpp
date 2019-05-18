@@ -1,7 +1,7 @@
 #include "Game.h"
 
 #include <IntroState.h>
-#include <Level.h>
+#include <SplashState.h>
 
 Game* Game::pinstance = nullptr;
 
@@ -14,8 +14,10 @@ Game* Game::instance()
 
 Game::Game()
 {
+    resetPoints();
+
     //pushState(new IntroState());
-    pushState(Level::instance());
+    pushState(new SplashState());
 
     motor = motorSFML::Instance();
 }
@@ -78,3 +80,81 @@ void Game::gameLoop()
     }
 
 }
+
+void Game::resetPoints()
+{
+    for (int i = 0; i < nCharacters; i++)
+        points[i] = 0;
+}
+
+void Game::addPoint(int player)
+{
+    if (player >= 0 && player <= nCharacters)
+        points[player]++;
+}
+
+int* Game::getPoints()
+{
+    return points;
+}
+
+
+void Game::resetGames()
+{
+    games = 0;
+}
+
+void Game::addGame()
+{
+    games++;
+}
+
+int Game::getGames()
+{
+    return games;
+}
+
+void Game::setNPlayers(int n)
+{
+    nCharacters = n;
+}
+
+int Game::getNPlayers()
+{
+    return nCharacters;
+}
+
+int Game::winner()
+{
+    int greatestIndex = -1;
+    int greatest = 0;
+    bool tie = false;
+
+    for (int i = 0; i < nCharacters; i++)
+    {
+        if (points[i] >= 10) {
+            if (greatestIndex == -1 || (greatestIndex != -1 && greatest < points[greatestIndex]))
+            {
+                greatestIndex = i;
+                greatest = points[i];
+                tie = false;
+            } else if (points[i] == greatest) {
+                tie = true;
+            }
+        }
+    }
+
+    if (tie)
+        greatestIndex = -1;
+
+    return greatestIndex;
+
+}
+
+
+
+
+
+
+
+

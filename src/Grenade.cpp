@@ -29,7 +29,7 @@ void Grenade::createBody()
 
 Grenade::~Grenade()
 {
-    Level* level = Level::instance(0);
+    Level* level = Level::instance();
     level->removeWeapon(this);
     delete body;
     delete sprite;
@@ -56,7 +56,7 @@ bool Grenade::shoot()
 
 bool Grenade::explode()
 {
-    Level* level = Level::instance(0);
+    Level* level = Level::instance();
     level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + (-22.5),75));
     level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + 22.5,75));
     level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + 45+22.5,75));

@@ -32,7 +32,7 @@ void SplashState::handleEvents()
 
 void SplashState::loadLevel() {
     Game::instance()->popState();
-    Game::instance()->pushState(Level::instance(2));
+    Game::instance()->pushState(Level::instance());
 }
 
 void SplashState::update()

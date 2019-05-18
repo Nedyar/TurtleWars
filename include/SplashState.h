@@ -7,17 +7,17 @@
 
 class SplashState : public State
 {
-    public:
-        SplashState();
-        virtual ~SplashState();
+public:
+    SplashState();
+    virtual ~SplashState();
 
-        void handleEvents() override;
+    void handleEvents() override;
     void update() override;
     void draw() override;
 
-    protected:
+protected:
 
-    private:
+private:
     sf::Clock clock;
     sf::Font font;
     sf::Text presskey;

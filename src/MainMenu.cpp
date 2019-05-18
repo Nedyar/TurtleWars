@@ -2,10 +2,13 @@
 
 #include <Game.h>
 #include <SplashState.h>
+#include <Level.h>
 
 MainMenu::MainMenu()
 {
-
+    Game::instance()->resetPoints();
+    Game::instance()->resetGames();
+    Level::instance()->Restart();
 }
 
 MainMenu::~MainMenu()

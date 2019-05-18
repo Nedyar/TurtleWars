@@ -2,9 +2,7 @@
 
 int main()
 {
-    Game* game = Game::instance(); //create game object (so far this constructor just intiializes our window)
-
-    game->gameLoop();
+    Game::instance()->gameLoop();
 
     return 0;
 }

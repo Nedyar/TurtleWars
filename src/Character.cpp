@@ -106,7 +106,7 @@ bool Character::dropWeapon()
 {
     if (weapon != nullptr)
     {
-        Level* level = Level::instance(0);
+        Level* level = Level::instance();
         level->addWeapon(weapon);
 
 
@@ -144,7 +144,7 @@ bool Character::takeWeapon()
             Weapon* weaponOver = weaponsOver.front();
             weaponsOver.erase(weaponsOver.begin());
 
-            Level::instance(0)->removeWeapon(weaponOver);
+            Level::instance()->removeWeapon(weaponOver);
             newWeapon = weaponOver;
             weaponOver = nullptr;
         }

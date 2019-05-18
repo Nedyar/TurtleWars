@@ -29,7 +29,7 @@ void Gun::createBody()
 
 Gun::~Gun()
 {
-    Level* level = Level::instance(0);
+    Level* level = Level::instance();
     level->removeWeapon(this);
     delete body;
     delete sprite;
@@ -77,7 +77,7 @@ bool Gun::shoot()
             float posx = sprite->getPosition().x+(modX+sprite->getLocalBounds().width/2)*xDirection;
             float posy = sprite->getPosition().y-3.1;
             float ang = rand() % 7 + -3 + xOrientation;
-            Level::instance(0)->addBullet(new Bullet(posx,posy,ang,200));//debe pasar la direccion del arma
+            Level::instance()->addBullet(new Bullet(posx,posy,ang,200));//debe pasar la direccion del arma
 
             clockAnimation.restart();
             return true;

@@ -19,7 +19,8 @@
 class Level : public State
 {
 public:
-    static Level* instance(int nPlayers = 2);
+    static Level* instance();
+    void Restart();
 
     void handleEvents() override;
     void update() override;
@@ -32,12 +33,11 @@ public:
     void setCamara();
 
 protected:
-    Level(int nPlayers);
+    Level();
     virtual ~Level();
 
 
 private:
-    void Restart();
     static Level* pinstance;
 
     Mapa* mapa = nullptr;

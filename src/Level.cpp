@@ -4,24 +4,22 @@
 #include <Game.h>
 #include <ctime>
 
-#include <MainMenu.h>
+#include <ScoreState.h>
 
 Level* Level::pinstance = 0;
 bool drawBodies = false;
 
-
-
-Level::Level(int nPlayers)
+Level::Level()
 {
     motorSFML* motor = motorSFML::Instance();
     LevelFactory* factory = LevelFactory::Instance();
 
-    nCharacters = nPlayers;
+    nCharacters = Game::instance()->getNPlayers();
 
     srand(time(0));
     int nMap = rand() % 9 + 1;
     mapa = factory->mapLoader(nMap);
-    players = factory->characterLoader(nMap, nPlayers);
+    players = factory->characterLoader(nMap, nCharacters);
     weaponSpawners = factory->spawnerLoader(nMap, nWeaponSpawners);
 }
 
@@ -43,14 +41,14 @@ Level::~Level()
 
 void Level::Restart() {
     Physics2D::Instance()->resetWorld();
-    pinstance = new Level(nCharacters);
+    pinstance = new Level();
 }
 
-Level* Level::instance(int nPlayers)
+Level* Level::instance()
 {
     if (pinstance == 0)
     {
-        pinstance = new Level(nPlayers);
+        pinstance = new Level();
     }
     return pinstance;
 }
@@ -266,21 +264,35 @@ void Level::update()
 {
     //cout << "Characters:" << endl;
     int alivePlayers = 0;
+    int lastPlayer = -1;
     for (int i = 0; i < nCharacters; i++)
     {
         //cout << players[i] << endl;
         players[i]->update();
-        if (!players[i]->isDead())
+        if (!players[i]->isDead()) {
             alivePlayers++;
+            lastPlayer = i;
+        }
     }
+
     if (!mustEnd && alivePlayers <= 1) {
         mustEnd = true;
         endClock.restart();
     }
     if (mustEnd && endClock.getElapsedTime().asSeconds() >= 5) {
+        if (lastPlayer != -1)
+            Game::instance()->addPoint(lastPlayer);
+
+        Game::instance()->addGame();
+
         Game::instance()->popState();
         Restart();
-        Game::instance()->pushState(pinstance);
+        if (Game::instance()->getGames() < 10)
+            Game::instance()->pushState(pinstance);
+        else {
+            Game::instance()->pushState(new ScoreState());
+            Game::instance()->resetGames();
+        }
     }
 
     //cout << "WeaponSpawners:" << endl;
