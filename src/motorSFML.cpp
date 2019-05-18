@@ -1,4 +1,5 @@
 #include "motorSFML.h"
+#include <iostream>
 
 motorSFML* motorSFML::pInstance = 0;
 
@@ -53,7 +54,9 @@ void motorSFML::display()
 
 void motorSFML::setCamara(double x, double y, double widthCam, double heightCam)
 {
-    camara.setCenter(x,y);
+
+    //std::cout << camara.getCenter().x << "  " << camara.getCenter().y << std::endl;
     camara.setSize(widthCam, heightCam);
+    camara.setCenter(x,y);
     window.setView(camara);
 }
