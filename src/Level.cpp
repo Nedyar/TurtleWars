@@ -2,18 +2,22 @@
 #include <SFML/Graphics.hpp>
 #include <PauseState.h>
 #include <Game.h>
+#include <ctime>
 
 Level* Level::pinstance = 0;
 bool drawBodies = false;
 
 
-Level::Level(int nPlayers, int nMap)
+
+Level::Level(int nPlayers)
 {
     motorSFML* motor = motorSFML::Instance();
     LevelFactory* factory = LevelFactory::Instance();
 
     nCharacters = nPlayers;
 
+    srand(time(0));
+    int nMap = rand() % 9 + 1;
     mapa = factory->mapLoader(nMap);
     players = factory->characterLoader(nMap, nPlayers);
     weaponSpawners = factory->spawnerLoader(nMap, nWeaponSpawners);
@@ -35,11 +39,11 @@ Level::~Level()
     delete pinstance;
 }
 
-Level* Level::instance(int nPlayers, int nMap)
+Level* Level::instance(int nPlayers)
 {
     if (pinstance == 0)
     {
-        pinstance = new Level(nPlayers, nMap);
+        pinstance = new Level(nPlayers);
     }
     return pinstance;
 }

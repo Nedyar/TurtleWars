@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <level id="1">
-	<mapa maptmx="./mapa/test2.tmx"/>
+	<mapa maptmx="./mapa/mapa1.tmx"/>
 </level>
 <level id="2">
-	<mapa maptmx="./mapa/test3.tmx"/>
+	<mapa maptmx="./mapa/mapa2.tmx"/>
 </level>
 <level id="3">
-	<mapa maptmx="./mapa/albaMap.tmx"/>
+	<mapa maptmx="./mapa/mapa3.tmx"/>
+</level>
+<level id="4">
+	<mapa maptmx="./mapa/mapa4.tmx"/>
+</level>
+<level id="5">
+	<mapa maptmx="./mapa/mapa5.tmx"/>
+</level>
+<level id="6">
+	<mapa maptmx="./mapa/mapa6.tmx"/>
+</level>
+<level id="7">
+	<mapa maptmx="./mapa/mapa7.tmx"/>
+</level>
+<level id="8">
+	<mapa maptmx="./mapa/mapa8.tmx"/>
+</level>
+<level id="9">
+	<mapa maptmx="./mapa/mapa9.tmx"/>
+</level>
+<level id="10">
+	<mapa maptmx="./mapa/mapa10.tmx"/>
 </level>

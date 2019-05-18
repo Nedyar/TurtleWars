@@ -19,7 +19,7 @@
 class Level : public State
 {
 public:
-    static Level* instance(int nPlayers = 2, int nMap = 3);
+    static Level* instance(int nPlayers = 2);
 
     void handleEvents() override;
     void update() override;
@@ -32,7 +32,7 @@ public:
     void setCamara();
 
 protected:
-    Level(int nPlayers, int nMap);
+    Level(int nPlayers);
     virtual ~Level();
 
 private:
