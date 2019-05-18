@@ -13,6 +13,7 @@ Character::Character(int n, int posx, int posy)
     weaponSpawnerOver = nullptr;
     walking = false;
     facingLeft = false;
+    mustFace = false;
     jumping = false;
     onGround = false;
     crouching = false;
@@ -202,13 +203,13 @@ void Character::startWalking(bool left)
         fakingDead = false;
         walking = true;
 
-        if (!sliding)
-            facingLeft = left;
+        mustFace = left;
     }
 }
 
 void Character::stopWalking()
 {
+    //cout << "Me paro" << endl;
     walking = false;
 }
 
@@ -290,6 +291,9 @@ void Character::draw()
 
 void Character::update()
 {
+    if (!sliding)
+        facingLeft = mustFace;
+
     //para la muerte por caida al llegar al limite de abajo
     if(sprite->getPosition().y>LINE_OF_DEATH)
     {

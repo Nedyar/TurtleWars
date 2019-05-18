@@ -65,6 +65,7 @@ private:
 
     bool walking = false;
     bool facingLeft = false;
+    bool mustFace = false;
     bool jumping = false;
     bool onGround = false;
     bool crouching = false;
