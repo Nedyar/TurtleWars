@@ -56,6 +56,8 @@ Character::Character(int n, int posx, int posy)
     float height = sprite->getLocalBounds().height;
     body = Physics2D::Instance()->createCharacterBody(posx,posy,width,height);
     body->setUserData(this);
+
+    musicCharger();
 }
 
 Character::~Character()
@@ -202,6 +204,7 @@ void Character::startWalking(bool left)
         fakingDead = false;
         walking = true;
 
+        crouchplayed=false;
         if (!sliding)
             facingLeft = left;
     }
@@ -222,6 +225,8 @@ bool Character::jump()
         fakingDead = false;
         jumping = true;
         onGround = false;
+
+        jumpsound.play();
     }
 }
 
@@ -251,6 +256,7 @@ void Character::standUp()
     {
         crouching = false;
         sliding = false;
+
     }
 }
 
@@ -265,6 +271,11 @@ void Character::die()
     fakingDead = false;
     dropWeapon();
     dead = true;
+
+    if(deathplayed==false)
+    deathsound.play();
+
+    deathplayed=true;
 }
 
 void Character::fakeDie()
@@ -274,6 +285,12 @@ void Character::fakeDie()
         stopWalking();
         dropWeapon();
         fakingDead = true;
+
+
+        if(crouchplayed==false)
+        crouchsound.play();
+
+        crouchplayed=true;
     }
 }
 
@@ -455,4 +472,17 @@ int Character::getId()
 bool Character::isDead()
 {
     return dead;
+}
+
+void Character::musicCharger(){
+
+
+    motorSFML::Instance()->loadSound("./sounds/jump.wav",sbjump,jumpsound);
+    jumpsound.setVolume(70);
+    motorSFML::Instance()->loadSound("./sounds/death.wav",sbdeath,deathsound);
+    motorSFML::Instance()->loadSound("./sounds/cutOffQuack.wav",sbcrouch,crouchsound);
+    crouchsound.setVolume(50);
+
+
+
 }

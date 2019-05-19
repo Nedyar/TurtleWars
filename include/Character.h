@@ -45,6 +45,8 @@ public:
     void addWeaponOver(Weapon* newWeapon);
     void removeWeaponOver(Weapon* newWeapon);
 
+    void musicCharger();
+
     void draw();
     void update();
 
@@ -74,12 +76,25 @@ private:
     bool fakingDead = false;
     bool lookingUp = false;
 
+    bool deathplayed=false;
+    bool crouchplayed=false;
+
+
     //Body* body = nullptr;
 
     Sprite* sprite;
     Texture* texture;
     Sprite* armSprite;
     Texture* armTexture;
+
+
+    sf::Sound jumpsound;
+    sf::SoundBuffer sbjump;
+    sf::Sound deathsound;
+    sf::SoundBuffer sbdeath;
+    sf::Sound crouchsound;
+    sf::SoundBuffer sbcrouch;
+
 };
 
 #include <Weapon.h>

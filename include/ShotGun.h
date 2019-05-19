@@ -20,6 +20,9 @@ public:
 
     void shootAnimation();
     int getId() override;
+
+    void chargeSound();
+
 protected:
 
 private:
@@ -31,6 +34,9 @@ private:
     sf::Clock clockAnimation;
     bool shootAnim = false;
     bool shootAnimBack = false;
+
+    sf::Sound shotgunsound;
+    sf::SoundBuffer sbshotgun;
 };
 
 #endif // SHOTGUN_H

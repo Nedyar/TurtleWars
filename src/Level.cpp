@@ -21,6 +21,8 @@ Level::Level(int nPlayers)
     mapa = factory->mapLoader(nMap);
     players = factory->characterLoader(nMap, nPlayers);
     weaponSpawners = factory->spawnerLoader(nMap, nWeaponSpawners);
+
+    motorSFML::Instance()->setMusic("./sounds/arcade.wav",50);
 }
 
 Level::~Level()

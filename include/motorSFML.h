@@ -2,6 +2,7 @@
 #define MOTORSFML_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 
 class motorSFML
@@ -16,9 +17,14 @@ public:
     void display();
     void clean();
     void setCamara(double x, double y, double widthCam, double heightCam);
-
+    void setMusic(char music[], float x);
+    void loadSound(char sound[],sf::SoundBuffer &sb, sf::Sound &saux);
+    void loadSound(char sound[]);
     sf::RenderWindow window;
     sf::View camara;
+    sf::Music musica;
+    sf::Sound sonido;
+    sf::SoundBuffer buffer;
 
 protected:
     motorSFML();

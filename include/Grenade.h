@@ -20,12 +20,18 @@ public:
     void update() override;
     void draw() override;
     int getId() override;
+
+    void chargeSound();
+
 protected:
 
 private:
     double grenadeTime = 0;
     bool activated = false;
     sf::Clock grenadeClock;
+
+    sf::Sound grenadesound;
+    sf::SoundBuffer sbgrenade;
 };
 
 #endif // GRENADE_H
