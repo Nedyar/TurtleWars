@@ -3,6 +3,8 @@
 #include <PauseState.h>
 #include <Game.h>
 #include <ctime>
+#include <iostream>
+#include <math.h>
 
 #include <ScoreState.h>
 
@@ -13,14 +15,16 @@ Level::Level()
 {
     motorSFML* motor = motorSFML::Instance();
     LevelFactory* factory = LevelFactory::Instance();
-
     nCharacters = Game::instance()->getNPlayers();
+
 
     srand(time(0));
     int nMap = rand() % 9 + 1;
     mapa = factory->mapLoader(nMap);
     players = factory->characterLoader(nMap, nCharacters);
     weaponSpawners = factory->spawnerLoader(nMap, nWeaponSpawners);
+
+    motor->camara.setCenter(960/2, 640/2);
 }
 
 Level::~Level()
@@ -394,14 +398,15 @@ void Level::removeBullet(Bullet* bullet)
 void Level::setCamara()
 {
     motorSFML* motor = motorSFML::Instance();
-    double xMax = 0;
-    double yMax = 0;
-    double xCenter = 0;
-    double yCenter = 0;
-    double width = 0;
-    double height = 0;
-    double yMin = 1000;
-    double xMin = 1000;
+    double xMax = 0, yMax = 0, xCenter = 0, yCenter = 0, width = 0, height = 0;
+    double yMin = 1000, xMin = 1000;
+
+    double oldWidth = motor->camara.getSize().x;
+    double oldHeight = motor->camara.getSize().y;
+    double oldX = motor->camara.getCenter().x;
+    double oldY = motor->camara.getCenter().y;
+
+
 
     for (int i = 0; i < nCharacters; i++)
     {
@@ -421,15 +426,24 @@ void Level::setCamara()
 
         }
 
+    /** CALCULO DEL CENTRO DE LA CAMARA **/
+
     xCenter = (xMax + xMin)/2;
     yCenter = (yMax + yMin)/2;
-    width = xMax - xMin + 100;
 
-    if(width < 500)
-        width = 500;
+    xCenter = oldX * 0.8 + xCenter * 0.2;
+    yCenter = oldY * 0.8 + yCenter * 0.2;
+
+    /** CALCULO TAMANYO CAMARA **/
+
+    width = xMax - xMin + 300;
+
+    width = oldWidth * 0.95 + width * 0.05;
+
+    if(width < 800)
+        width = 800;
 
     height = width / 1.5;
-
 
     motor->setCamara(xCenter, yCenter, width, height);
     }

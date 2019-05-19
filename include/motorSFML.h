@@ -38,7 +38,7 @@ private:
     static motorSFML* pInstance;
 
     const int WIDTH = 960;
-    const int HEIGHT = 640; //640
+    const int HEIGHT = 640;
 };
 
 #endif // MOTORSFML_H
