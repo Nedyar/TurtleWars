@@ -19,12 +19,17 @@ public:
     void shootAnimation();
     int getId() override;
 
+    void chargeSound();
+
 protected:
 
 private:
     int ammo = 0;
     sf::Clock clockAnimation;
     bool shootAnim = false;
+
+    sf::Sound pistolsound;
+    sf::SoundBuffer sbpistol;
 };
 
 #endif // GUN_H

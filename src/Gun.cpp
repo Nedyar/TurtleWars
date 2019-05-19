@@ -14,6 +14,8 @@ Gun::Gun(double posx, double posy)
     ammo=7;
 
     shootAnim=false;
+
+    chargeSound();
 }
 
 void Gun::createBody()
@@ -80,6 +82,10 @@ bool Gun::shoot()
             Level::instance()->addBullet(new Bullet(posx,posy,ang,200));//debe pasar la direccion del arma
 
             clockAnimation.restart();
+
+            pistolsound.play();
+
+
             return true;
         }
         else
@@ -117,4 +123,10 @@ void Gun::shootAnimation()
 int Gun::getId()
 {
     return id;
+}
+
+void Gun::chargeSound(){
+
+    motorSFML::Instance()->loadSound("./sounds/pistol.wav",sbpistol,pistolsound);
+
 }

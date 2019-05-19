@@ -21,6 +21,8 @@ ShotGun::ShotGun(double posx, double posy)
 
     sprite->setPosition(posx,posy);
     shotGunLoaderSprite->setPosition(posx+2,posy);
+
+    chargeSound();
 }
 
 void ShotGun::createBody()
@@ -79,6 +81,9 @@ bool ShotGun::shoot()
             level->addBullet(new Bullet(sprite->getPosition().x+(mod+sprite->getLocalBounds().width/2)*xDirection,sprite->getPosition().y-2.8,(rand() % 6 + (-3))+xOrientation,100));
             level->addBullet(new Bullet(sprite->getPosition().x+(mod+sprite->getLocalBounds().width/2)*xDirection,sprite->getPosition().y-2.8,(rand() % 6 + (-9))+xOrientation,100));
             level->addBullet(new Bullet(sprite->getPosition().x+(mod+sprite->getLocalBounds().width/2)*xDirection,sprite->getPosition().y-2.8,(rand() % 6 + (-15))+xOrientation,100));
+
+            shotgunsound.play();
+
             return true;
         }
     }
@@ -134,4 +139,10 @@ void ShotGun::shootAnimation()
 int ShotGun::getId()
 {
     return id;
+}
+
+void ShotGun::chargeSound(){
+
+    motorSFML::Instance()->loadSound("./sounds/shotgunFire2.wav",sbshotgun,shotgunsound);
+
 }

@@ -62,7 +62,7 @@ void Menu::draw(char name[])
     }
     else
     {
-        tittle.setString("Turtle Royal");
+        tittle.setString("Turtle Royale");
     }
 
 

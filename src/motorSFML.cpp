@@ -51,6 +51,38 @@ void motorSFML::display()
     window.display();
 }
 
+void motorSFML::setMusic(char music[],float x)
+{
+
+    if (!musica.openFromFile(music))
+    {
+    //HANDLE ERROR
+    }
+    musica.setLoop(true);
+    musica.setVolume(x);
+    musica.play();
+}
+//ESTE METODO ESTA PARA EL CARGADOR DE SONIDOS DEL PERSONAJE, QUE NECESITA DIFERENTES BUFFERS
+void motorSFML::loadSound(char sound[],sf::SoundBuffer &sb, sf::Sound &saux)
+{
+    if (!sb.loadFromFile(sound))
+    {
+    //HANDLE ERROR
+    }
+    saux.setBuffer(sb);
+    //saux.play();
+}
+//ESTE ESTA SOLO PARA LOS DEL MENU, QUE ES EL MISMO SONIDO DE TRANSICION, Y NO REQUIERE DIFERENTES BUFFER
+ void motorSFML::loadSound(char sound[])
+{
+    if (!buffer.loadFromFile(sound))
+    {
+    //HANDLE ERROR
+    }
+    sonido.setBuffer(buffer);
+    sonido.play();
+}
+
 void motorSFML::setCamara(double x, double y, double widthCam, double heightCam)
 {
     camara.setCenter(x,y);
