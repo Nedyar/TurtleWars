@@ -15,7 +15,7 @@ Grenade::Grenade(double posx, double posy)
 
     sprite->setPosition(posx,posy);
 
-    chargeSound();
+    //chargeSound();
 
 }
 
@@ -69,7 +69,8 @@ bool Grenade::explode()
     level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + 45*5+22.5,75));
     level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + 45*6+22.5,75));
 
-    grenadesound.play();
+    motorSFML::Instance()->loadSound("./sounds/grenadeFire.wav");
+
 
     return true;
 }

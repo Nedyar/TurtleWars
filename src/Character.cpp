@@ -141,6 +141,7 @@ bool Character::takeWeapon()
 
         if (!weaponsOver.empty())
         {
+            pickupsound.play();
             //cout << "estoy sobre arma" << endl;
             Weapon* weaponOver = weaponsOver.front();
             weaponsOver.erase(weaponsOver.begin());
@@ -157,6 +158,8 @@ bool Character::takeWeapon()
 
         if (newWeapon != nullptr)
         {
+            pickupsound.play();
+
             newWeapon->setOwner(this);
             weapon = newWeapon;
             weapon->deleteBody();
@@ -478,11 +481,11 @@ void Character::musicCharger(){
 
 
     motorSFML::Instance()->loadSound("./sounds/jump.wav",sbjump,jumpsound);
-    jumpsound.setVolume(70);
+    jumpsound.setVolume(59);
     motorSFML::Instance()->loadSound("./sounds/death.wav",sbdeath,deathsound);
     motorSFML::Instance()->loadSound("./sounds/cutOffQuack.wav",sbcrouch,crouchsound);
     crouchsound.setVolume(50);
-
+    motorSFML::Instance()->loadSound("./sounds/hitBox.wav",sbpickup,pickupsound);
 
 
 }

@@ -94,6 +94,8 @@ private:
     sf::SoundBuffer sbdeath;
     sf::Sound crouchsound;
     sf::SoundBuffer sbcrouch;
+    sf::Sound pickupsound;
+    sf::SoundBuffer sbpickup;
 
 };
 

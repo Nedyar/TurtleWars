@@ -359,7 +359,7 @@
 	<LevelFactory.h>
 	<Mapa.h>
 
-1558255130 /home/nano/Documentos/TurtleWars/include/Character.h
+1558274509 /home/nano/Documentos/TurtleWars/include/Character.h
 	<Gun.h>
 	<SFML/Graphics.hpp>
 	<Physics2D.h>
@@ -432,7 +432,7 @@
 	<assert.h>
 	<string.h>
 
-1558257382 source:/home/nano/Documentos/TurtleWars/src/Character.cpp
+1558273863 source:/home/nano/Documentos/TurtleWars/src/Character.cpp
 	"Character.h"
 	<Level.h>
 	<typeindex>
@@ -467,7 +467,7 @@
 	<Texture.h>
 	<Sprite.h>
 
-1558257492 source:/home/nano/Documentos/TurtleWars/src/Grenade.cpp
+1558274352 source:/home/nano/Documentos/TurtleWars/src/Grenade.cpp
 	"Grenade.h"
 	<Level.h>
 	<motorSFML.h>
@@ -483,7 +483,7 @@
 	"motorSFML.h"
 	"Game.h"
 
-1558254312 source:/home/nano/Documentos/TurtleWars/src/Level.cpp
+1558274483 source:/home/nano/Documentos/TurtleWars/src/Level.cpp
 	"Level.h"
 	<SFML/Graphics.hpp>
 	<PauseState.h>
