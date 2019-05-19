@@ -4,7 +4,7 @@
 #include <Game.h>
 
 Level* Level::pinstance = 0;
-bool drawBodies = false;
+bool drawBodies = true;
 
 
 Level::Level(int nPlayers, int nMap)

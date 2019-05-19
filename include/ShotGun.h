@@ -19,6 +19,8 @@ public:
     void createBody() override;
 
     void shootAnimation();
+    void smokeAnimation();
+    void flashAnim();
     int getId() override;
 protected:
 
@@ -31,6 +33,16 @@ private:
     sf::Clock clockAnimation;
     bool shootAnim = false;
     bool shootAnimBack = false;
+
+    sf::Clock smokeClock;
+    bool smoking = false;
+    Sprite* smokeSprite;
+    Texture* smokeTexture;
+
+    sf::Clock flashClock;
+    bool flashing = false;
+    Sprite* flashSprite;
+    Texture* flashTexture;
 };
 
 #endif // SHOTGUN_H

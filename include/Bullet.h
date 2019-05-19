@@ -9,6 +9,7 @@ const int VEL = 7;
 #include <Collidable.h>
 #include <Sprite.h>
 #include <Texture.h>
+#include <math.h>
 
 class Bullet : public Collidable
 {

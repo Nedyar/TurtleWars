@@ -45,7 +45,7 @@ void EventCollider::BeginContact(b2Contact* contact)
                 break;
             case 4: // Bullet
                 cout << "Bullet es B" << endl;
-                player->kill();
+                //player->kill();
                 ((Bullet*) objB)->deleteMe();
                 break;
             }
@@ -68,7 +68,7 @@ void EventCollider::BeginContact(b2Contact* contact)
                 break;
             case 4: // Bullet
             cout << "Bullet es A" << endl;
-                player->kill();
+                //player->kill();
                 ((Bullet*) objA)->deleteMe();
                 break;
             }

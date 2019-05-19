@@ -20,7 +20,15 @@ ShotGun::ShotGun(double posx, double posy)
     shootAnimBack = false;
 
     sprite->setPosition(posx,posy);
-    shotGunLoaderSprite->setPosition(posx+2,posy);
+    shotGunLoaderSprite->setPosition(posx+2,posy+1);
+
+    flashTexture = new Texture("img/weaponSmoke.png");
+    flashSprite = new Sprite(*flashTexture->getTexture());
+    flashSprite->setOrigin(8,8);
+
+    smokeTexture = new Texture("img/barrelSmoke.png");
+    smokeSprite = new Sprite(*smokeTexture->getTexture());
+    smokeSprite->setOrigin(4,16);
 }
 
 void ShotGun::createBody()
@@ -70,7 +78,7 @@ bool ShotGun::shoot()
 
             shooted = true;
             ammo--;
-            float mod = 25;
+            float mod = 0;
             if (owner->body->getBody()->GetLinearVelocity().x!=0)
                 mod += 6;
             Level* level = Level::instance(0);
@@ -79,6 +87,12 @@ bool ShotGun::shoot()
             level->addBullet(new Bullet(sprite->getPosition().x+(mod+sprite->getLocalBounds().width/2)*xDirection,sprite->getPosition().y-2.8,(rand() % 6 + (-3))+xOrientation,100));
             level->addBullet(new Bullet(sprite->getPosition().x+(mod+sprite->getLocalBounds().width/2)*xDirection,sprite->getPosition().y-2.8,(rand() % 6 + (-9))+xOrientation,100));
             level->addBullet(new Bullet(sprite->getPosition().x+(mod+sprite->getLocalBounds().width/2)*xDirection,sprite->getPosition().y-2.8,(rand() % 6 + (-15))+xOrientation,100));
+
+            smoking=true;
+            smokeClock.restart();
+
+            flashing=true;
+            flashClock.restart();
             return true;
         }
     }
@@ -98,6 +112,16 @@ void ShotGun::update()
         shootAnimation();
     }
 
+    if(smoking)
+    {
+        smokeAnimation();
+    }
+
+    if(flashing)
+    {
+        flashAnim();
+    }
+
     if (body != nullptr)
         sprite->setPosition(body->getPositionX(),body->getPositionY());
 
@@ -109,10 +133,17 @@ void ShotGun::draw()
 {
     motorSFML::Instance()->draw(sprite->getSprite());
     motorSFML::Instance()->draw(shotGunLoaderSprite->getSprite());
+
+    if(smoking && smokeClock.getElapsedTime().asSeconds()>0.5)
+        motorSFML::Instance()->draw(smokeSprite->getSprite());
+
+    if(flashing)
+        motorSFML::Instance()->draw(flashSprite->getSprite());
 }
 
 void ShotGun::shootAnimation()
 {
+
     int xDir = 1;
     if (facingLeft)
         xDir = -1;
@@ -128,6 +159,60 @@ void ShotGun::shootAnimation()
         shotGunLoaderSprite->setTextureRect(0,0,8,8);
         shotGunLoaderSprite->setPosition(shotGunLoaderSprite->getPosition().x+3*xDir, shotGunLoaderSprite->getPosition().y);
         shootAnim=false;
+    }
+}
+
+void ShotGun::smokeAnimation()
+{
+    if(!facingLeft){
+        smokeSprite->setPosition(sprite->getPosition().x+13, sprite->getPosition().y-10);
+    }else{
+        smokeSprite->setPosition(sprite->getPosition().x-10, sprite->getPosition().y-10);
+    }
+
+    if(smokeClock.getElapsedTime().asSeconds()<0.5)
+    {
+        smokeSprite->setTextureRect(0,0,8,32);
+    }
+    else if(smokeClock.getElapsedTime().asSeconds()<0.8)
+    {
+        smokeSprite->setTextureRect(8,0,8,32);
+    }
+    else if(smokeClock.getElapsedTime().asSeconds()<1.1)
+    {
+        smokeSprite->setTextureRect(16,0,8,32);
+    }
+    else if(smokeClock.getElapsedTime().asSeconds()<1.4)
+    {
+        smokeSprite->setTextureRect(24,0,8,32);
+    }
+    else if(smokeClock.getElapsedTime().asSeconds()<1.7){
+        smoking=false;
+    }
+}
+
+void ShotGun::flashAnim()
+{
+    if(!facingLeft){
+        flashSprite->setPosition(sprite->getPosition().x+19, sprite->getPosition().y-3);
+        flashSprite->setRotation(0);
+    }else{
+        flashSprite->setPosition(sprite->getPosition().x-19, sprite->getPosition().y-2);
+        flashSprite->setRotation(180);
+        }
+
+    if(flashClock.getElapsedTime().asSeconds()<0.05)
+    {
+        flashSprite->setTextureRect(0,0,16,16);
+    }
+    else if(flashClock.getElapsedTime().asSeconds()<0.15)
+    {
+        flashSprite->setTextureRect(16,0,16,16);
+    }
+
+    else if(flashClock.getElapsedTime().asSeconds()<0.6)
+    {
+        flashing=false;
     }
 }
 
