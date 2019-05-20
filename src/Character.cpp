@@ -74,7 +74,17 @@ Character::Character(int n, int posx, int posy)
 
 Character::~Character()
 {
-    //dtor
+    delete weapon;
+    for (int i = 0; i < weaponsOver.size(); i++) {
+        delete weaponsOver.at(i);
+    }
+
+    delete weaponSpawnerOver;
+
+    delete sprite;
+    delete armSprite;
+    delete texture;
+    delete armTexture;
 }
 
 int Character::getPlayer()
