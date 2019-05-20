@@ -474,7 +474,11 @@
 	"motorSFML.h"
 	<iostream>
 
-1558349625 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/PauseState.cpp
+1558375205 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/PauseState.cpp
+	"PauseState.h"
+	"Game.h"
+	"MainMenu.h"
+	"Level.h"
 
 1558366877 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/Menu.cpp
 	"Menu.h"
