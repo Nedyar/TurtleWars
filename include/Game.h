@@ -45,7 +45,7 @@ private:
 
     int* points = new int[4];
     int games = 0;
-    int nCharacters = 4;
+    int nCharacters = 2;
 
 };
 #endif // GAME_H

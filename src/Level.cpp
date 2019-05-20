@@ -257,6 +257,27 @@ void Level::update()
         }
     }
 
+    //cout << "WeaponSpawners:" << endl;
+    for (int i = 0; i < nWeaponSpawners; i++)
+    {
+        //cout << "\t"<<weaponSpawners[i] << endl;
+        weaponSpawners[i]->update();
+    }
+    //cout << "Weapons:" << endl;
+    for (int i = 0; i < weapons.size(); i++)
+    {
+        //cout << "\t"<<weapons.at(i) << endl;
+        weapons.at(i)->update();
+    }
+    //cout << "Bullets:" << endl;
+    for(int i=0; i<bullets.size(); i++)
+    {
+        //cout << "\t"<<bullets.at(i) << endl;
+        bullets.at(i)->update();
+    }
+    //cout << "Updateamos world" << endl;
+    Physics2D::Instance()->updateWorld();
+    //cout << "terminamos update" << endl;
 
     if (!mustEnd && alivePlayers <= 1)
     {
@@ -288,28 +309,6 @@ void Level::update()
         }
         cout << "States de game atualizados" << endl;
     }
-
-    //cout << "WeaponSpawners:" << endl;
-    for (int i = 0; i < nWeaponSpawners; i++)
-    {
-        //cout << "\t"<<weaponSpawners[i] << endl;
-        weaponSpawners[i]->update();
-    }
-    //cout << "Weapons:" << endl;
-    for (int i = 0; i < weapons.size(); i++)
-    {
-        //cout << "\t"<<weapons.at(i) << endl;
-        weapons.at(i)->update();
-    }
-    //cout << "Bullets:" << endl;
-    for(int i=0; i<bullets.size(); i++)
-    {
-        //cout << "\t"<<bullets.at(i) << endl;
-        bullets.at(i)->update();
-    }
-    //cout << "Updateamos world" << endl;
-    Physics2D::Instance()->updateWorld();
-    //cout << "terminamos update" << endl;
 }
 
 void Level::draw()
