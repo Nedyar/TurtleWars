@@ -40,30 +40,48 @@ Level::~Level()
 {
 
     cout << "Destructor of level" << endl;
+    cout << "Destroying characters" << endl;
     for (int i = 0; i < nCharacters; i++)
     {
         delete players[i];
     }
+    cout << "Characters destroyed" << endl;
     delete players;
+    cout << "players destroyed" << endl;
 
+
+    cout << "Destroying weaponSpawners" << endl;
     for (int i = 0; i < nWeaponSpawners; i++)
     {
         delete weaponSpawners[i];
     }
+    cout << "WeaponSpawners destroyed" << endl;
     delete weaponSpawners;
+    cout << "players destroyed" << endl;
 
+    cout << "Destroying weapons" << endl;
     for (int i = 0; i < weapons.size(); i++)
         delete weapons.at(i);
+    cout << "Weapons destroyed" << endl;
     weapons.clear();
+    cout << "weapons destroyed" << endl;
 
+    cout << "Destroying bullets" << endl;
     for (int i = 0; i < bullets.size(); i++)
         delete bullets.at(i);
+    cout << "Bullets destroyed" << endl;
     bullets.clear();
+    cout << "bullets destroyed" << endl;
 
+    cout << "Destroying mapa" << endl;
     delete mapa;
+    cout << "mapa destroyed" << endl;
 
+    cout << "Destroying texture" << endl;
     delete texture;
+    cout << "Destroying sprite" << endl;
     delete sprite;
+    cout << "all destroyed" << endl;
     //delete pinstance;
 }
 

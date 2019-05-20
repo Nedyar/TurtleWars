@@ -119,7 +119,7 @@
 1558349625 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Texture.h
 	"motorSFML.h"
 
-1558369711 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Level.h
+1558372983 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Level.h
 	<vector>
 	<State.h>
 	<Character.h>
@@ -290,7 +290,7 @@
 	<assert.h>
 	<string.h>
 
-1558372456 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
+1558372689 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
 	"Character.h"
 	"Character.h"
 	<Level.h>
