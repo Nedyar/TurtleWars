@@ -22,7 +22,7 @@ Level::Level()
 
 
     srand(time(0));
-    int nMap = rand() % 9 + 1;
+    int nMap = rand() % 10 + 1;
     mapa = factory->mapLoader(nMap);
     players = factory->characterLoader(nMap, nCharacters);
     weaponSpawners = factory->spawnerLoader(nMap, nWeaponSpawners);

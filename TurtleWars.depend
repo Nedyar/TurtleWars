@@ -4,7 +4,7 @@
 1558349625 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/Main.cpp
 	<Game.h>
 
-1558375854 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Game.h
+1558375944 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Game.h
 	<State.h>
 	<stack>
 	<motorSFML.h>
@@ -433,7 +433,7 @@
 
 1558366877 source:/home/dani/Escritorio/Practica-TurtleWars/TurtleWars/src/IntroState.cpp
 
-1558375017 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
+1558375854 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
 	"Level.h"
 	<SFML/Graphics.hpp>
 	<PauseState.h>
