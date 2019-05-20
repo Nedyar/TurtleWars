@@ -52,10 +52,18 @@ Level::~Level()
     }
     delete weaponSpawners;
 
+    for (int i = 0; i < weapons.size(); i++)
+        delete weapons.at(i);
     weapons.clear();
+
+    for (int i = 0; i < bullets.size(); i++)
+        delete bullets.at(i);
     bullets.clear();
 
     delete mapa;
+
+    delete texture;
+    delete sprite;
     //delete pinstance;
 }
 
