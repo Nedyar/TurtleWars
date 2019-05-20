@@ -1,7 +1,11 @@
 #include "Character.h"
+#include "Character.h"
 #include <Level.h>
 #include <typeindex>
 #include <motorSFML.h>
+
+#include <iostream>
+using namespace std;
 
 Character::Character(int n, int posx, int posy)
 {
@@ -53,8 +57,10 @@ Character::Character(int n, int posx, int posy)
     armSprite->setTextureRect(0,0,9,8);
     armSprite->setOrigin(armSprite->getLocalBounds().width/2,armSprite->getLocalBounds().height/2);
     armSprite->setPosition(posx,posy);
-    float width = sprite->getLocalBounds().width;
-    float height = sprite->getLocalBounds().height;
+    width = sprite->getLocalBounds().width;
+    height = sprite->getLocalBounds().height;
+
+    //optencion del body
     body = Physics2D::Instance()->createCharacterBody(posx,posy,width,height);
     body->setUserData(this);
 
@@ -310,6 +316,32 @@ void Character::draw()
 
 void Character::update()
 {
+//Cambiar body cuando se agacha
+    if((crouching || dead || fakingDead) && bigBody){
+        //hacer pequeño
+        b2Vec2 velo = body->getBody()->GetLinearVelocity();
+        World::Instance()->destroyBody(body->getBody());
+        body = Physics2D::Instance()->createCharacterBody(body->getPositionX(),body->getPositionY()+(height/4),width,height/2, 0.005);
+        body->getBody()->SetLinearVelocity(velo);
+        body->setUserData(this);
+
+        bigBody = false;
+        cout << "Me agacho una vez" << endl;
+
+    }
+    if(!crouching && !fakingDead && !dead && !bigBody){
+        //hacer grande
+        b2Vec2 velo = body->getBody()->GetLinearVelocity();
+        World::Instance()->destroyBody(body->getBody());
+        body = Physics2D::Instance()->createCharacterBody(body->getPositionX(),body->getPositionY(),width,height);
+        body->getBody()->SetLinearVelocity(velo);
+        body->setUserData(this);
+        bigBody = true;
+        cout << "Me levanto una vez" << endl;
+    }
+
+
+
     if (!sliding)
         facingLeft = mustFace;
 
@@ -492,6 +524,11 @@ void Character::update()
     //sf::IntRect bodyRect = sf::IntRect(32*((int)xPosture),yPosture*32,32,32);
     sprite->setTextureRect(32*((int)xPosture),yPosture*32,32,32);
     sprite->setPosition(body->getPositionX(),body->getPositionY());
+    if(crouching || fakingDead || dead){
+    //correccion del sprite cuando esta agachado, muerto, fakedead
+        sprite->setPosition(body->getPositionX(),body->getPositionY()-height/4);
+    }
+
     //sprite.setRotation(body->getAngle());
 
     int xDir = 1- facingLeft*2;

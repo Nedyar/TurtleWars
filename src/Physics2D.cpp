@@ -52,14 +52,14 @@ Body* Physics2D::createRectangleBody(float positionX, float positionY, float wid
     return body;
 }
 
-Body* Physics2D::createCharacterBody(float positionX, float positionY, float width, float height)
+Body* Physics2D::createCharacterBody(float positionX, float positionY, float width, float height, float pfriction)
 {
     b2BodyType type;
     b2Vec2  spawn;
     b2PolygonShape shape;
 
     float density = 1.f;
-    float friction = 0.1f;
+    float friction = pfriction;
     float restitution = 0.f;
     int group = -1;
     bool avoidRotate = true;
@@ -75,6 +75,9 @@ Body* Physics2D::createCharacterBody(float positionX, float positionY, float wid
     return body;
 }
 
+
+
+
 Body* Physics2D::createSpawnBody(float positionX, float positionY, float width, float height)
 {
     b2BodyType type;
@@ -82,7 +85,7 @@ Body* Physics2D::createSpawnBody(float positionX, float positionY, float width, 
     b2PolygonShape shape;
 
     float density = 1.f;
-    float friction = 0.1f;
+    float friction = 0.1;
     float restitution = 0.f;
     int group = -1;
     bool sensor = true;

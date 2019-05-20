@@ -12,7 +12,7 @@ class Physics2D
         static Physics2D* Instance();
         Body* createRectangleBody(float positionX, float positionY, float width, float height, int pType = 0);
 
-        Body* createCharacterBody(float positionX, float positionY, float width, float height);
+        Body* createCharacterBody(float positionX, float positionY, float width, float height, float pfriction = 0.1);
         Body* createSpawnBody(float positionX, float positionY, float width, float height);
         Body* createWeaponBody(float positionX, float positionY, float width, float height);
         Body* createGrenadeBody(float positionX, float positionY, float width);
