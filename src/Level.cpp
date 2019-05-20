@@ -290,10 +290,15 @@ void Level::update()
         mustEnd = true;
         endClock.restart();
     }
-    if (mustEnd && endClock.getElapsedTime().asSeconds() >= 5) {
-        if (lastPlayer != -1)
+    if (mustEnd && endClock.getElapsedTime().asSeconds() >= 3.7)
+    {
+        if (lastPlayer != -1){
+            players[lastPlayer]->isWinner();
             Game::instance()->addPoint(lastPlayer);
+        }
+    }
 
+    if (mustEnd && endClock.getElapsedTime().asSeconds() >= 5) {
         Game::instance()->addGame();
 
         Game::instance()->popState();

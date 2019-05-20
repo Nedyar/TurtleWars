@@ -45,6 +45,8 @@ public:
     void addWeaponOver(Weapon* newWeapon);
     void removeWeaponOver(Weapon* newWeapon);
 
+    void isWinner();
+
     void musicCharger();
 
     void draw();
@@ -90,6 +92,7 @@ private:
     bool lastOldFacingLeft = false;
     bool oldFacingLeft = false;
     bool lastFacingLeft = false;
+    bool winner = false;
 
     //Body* body = nullptr;
 
@@ -107,6 +110,9 @@ private:
     sf::SoundBuffer sbcrouch;
     sf::Sound pickupsound;
     sf::SoundBuffer sbpickup;
+
+    sf::Font font;
+    sf::Text textWinner;
 
 };
 
