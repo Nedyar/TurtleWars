@@ -52,6 +52,7 @@ private:
     Sprite* sprite;
 
     bool mustEnd = false;
+    bool givedPoint = false;
     sf::Clock endClock;
 
 };

@@ -289,7 +289,10 @@ void Level::update()
     {
         if (lastPlayer != -1){
             players[lastPlayer]->isWinner();
-            Game::instance()->addPoint(lastPlayer);
+            if (!givedPoint) {
+                Game::instance()->addPoint(lastPlayer);
+                givedPoint = true;
+            }
         }
     }
 
