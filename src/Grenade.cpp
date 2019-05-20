@@ -95,6 +95,7 @@ bool Grenade::explode()
 
     grenadesound.play();
 
+
     animationClock.restart();
     exploded = true;
     randomAnimation1 = (rand() % 3)/10;
