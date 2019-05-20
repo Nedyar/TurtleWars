@@ -4,7 +4,7 @@
 #include <Level.h>
 #include <motorSFML.h>
 #include <string>
-#include <MainMenu.h>
+#include <IntroState.h>
 
 ScoreState::ScoreState()
 {
@@ -44,7 +44,7 @@ void ScoreState::loadLevel()
 void ScoreState::loadMainMenu()
 {
     Game::instance()->popState();
-    Game::instance()->pushState(new MainMenu());
+    Game::instance()->pushState(new IntroState());
 }
 
 void ScoreState::update()

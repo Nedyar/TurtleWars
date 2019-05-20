@@ -65,6 +65,10 @@ private:
     float xPosture = 0;
     int yPosture = 0;
 
+    float width = 0.f;
+    float height = 0.f;
+    bool bigBody = true;
+
     bool walking = false;
     bool facingLeft = false;
     bool mustFace = false;

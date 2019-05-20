@@ -28,8 +28,6 @@ Level::Level()
     weaponSpawners = factory->spawnerLoader(nMap, nWeaponSpawners);
 
     motor->camara.setCenter(960/2, 640/2);
-
-    motorSFML::Instance()->setMusic("./sounds/arcade.wav",50);
 }
 
 Level::~Level()

@@ -33,6 +33,7 @@ void SplashState::handleEvents()
 void SplashState::loadLevel() {
     Game::instance()->popState();
     Game::instance()->pushState(Level::instance());
+    motorSFML::Instance()->setMusic("./sounds/arcade.wav",50);
 }
 
 void SplashState::update()

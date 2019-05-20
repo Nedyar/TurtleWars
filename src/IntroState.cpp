@@ -7,7 +7,7 @@
 
 IntroState::IntroState()
 {
-    //ctor
+    motorSFML::Instance()->setMusic("./sounds/title.wav",50);
 }
 
 IntroState::~IntroState()
