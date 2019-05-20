@@ -3,6 +3,9 @@
 #include <typeindex>
 #include <motorSFML.h>
 
+#include <iostream>
+using namespace std;
+
 Character::Character(int n, int posx, int posy)
 {
     id = 1;
@@ -362,7 +365,14 @@ void Character::update()
     }
     else if (crouching)
     {
-        xPosture = 1;
+        if (xPosture < 1 || (int)xPosture > 2)
+            xPosture = 1;
+        else if (xPosture < 2)
+            xPosture += .5;
+
+        cout << xPosture << endl;
+
+
         yPosture = 2;
 
         int xDir = 1 - facingLeft*2;

@@ -101,7 +101,7 @@ void Level::handleEvents()
         Game::instance()->pushState(new PauseState());
 
 
-/*
+
     if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) > 10)
         player2->startWalking(false);
     else if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) < -10)
