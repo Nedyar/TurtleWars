@@ -34,6 +34,8 @@ Level::Level()
 
 Level::~Level()
 {
+
+    cout << "Destructor of level" << endl;
     for (int i = 0; i < nCharacters; i++)
     {
         delete players[i];
@@ -50,12 +52,20 @@ Level::~Level()
     bullets.clear();
 
     delete mapa;
-    delete pinstance;
+    //delete pinstance;
 }
 
-void Level::Restart() {
+void Level::Restart()
+{
+    cout << "Reseting world..." << endl;
     Physics2D::Instance()->resetWorld();
+    cout << "World reseted" << endl;
+    cout << "Reseting instance..." << endl;
+    delete pinstance;
+    cout << "Deleted old instance..." << endl;
     pinstance = new Level();
+    cout << "Instance reseted" << endl;
+
 }
 
 Level* Level::instance()
@@ -100,33 +110,34 @@ void Level::handleEvents()
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::X))
         player->takeWeapon();
 
+    //START XBOX: 7 OTRO: 9
 
-    if(sf::Joystick::isButtonPressed(1, 0))
-        cout << "0, 0" << endl;
-        if(sf::Joystick::isButtonPressed(1, 1))
-        cout << "0, 1" << endl;
-        if(sf::Joystick::isButtonPressed(1, 2))
-        cout << "0, 2" << endl;
-        if(sf::Joystick::isButtonPressed(1, 3))
-        cout << "0, 3" << endl;
-        if(sf::Joystick::isButtonPressed(1, 4))
-        cout << "0, 4" << endl;
-        if(sf::Joystick::isButtonPressed(1, 5))
-        cout << "0, 5" << endl;
-        if(sf::Joystick::isButtonPressed(1, 6))
-        cout << "0, 6" << endl;
-        if(sf::Joystick::isButtonPressed(1, 7))
-        cout << "0, 7" << endl;
-        if(sf::Joystick::isButtonPressed(1, 8))
-        cout << "0, 8" << endl;
-        if(sf::Joystick::isButtonPressed(1, 9))
-        cout << "0, 9" << endl;
-        if(sf::Joystick::isButtonPressed(1, 10))
-        cout << "0, 10" << endl;
-        if(sf::Joystick::isButtonPressed(1, 11))
-        cout << "0, 11" << endl;
-        if(sf::Joystick::isButtonPressed(1, 12))
-        cout << "0, 12" << endl;
+    /* if(sf::Joystick::isButtonPressed(2, 0))
+         cout << "0, 0" << endl;
+         if(sf::Joystick::isButtonPressed(2, 1))
+         cout << "0, 1" << endl;
+         if(sf::Joystick::isButtonPressed(2, 2))
+         cout << "0, 2" << endl;
+         if(sf::Joystick::isButtonPressed(2, 3))
+         cout << "0, 3" << endl;
+         if(sf::Joystick::isButtonPressed(2, 4))
+         cout << "0, 4" << endl;
+         if(sf::Joystick::isButtonPressed(2, 5))
+         cout << "0, 5" << endl;
+         if(sf::Joystick::isButtonPressed(2, 6))
+         cout << "0, 6" << endl;
+         if(sf::Joystick::isButtonPressed(2, 7))
+         cout << "0, 7" << endl;
+         if(sf::Joystick::isButtonPressed(2, 8))
+         cout << "0, 8" << endl;
+         if(sf::Joystick::isButtonPressed(2, 9))
+         cout << "0, 9" << endl;
+         if(sf::Joystick::isButtonPressed(2, 10))
+         cout << "0, 10" << endl;
+         if(sf::Joystick::isButtonPressed(2, 11))
+         cout << "0, 11" << endl;
+         if(sf::Joystick::isButtonPressed(2, 12))
+         cout << "0, 12" << endl;*/
 
     Character* player2 = players[1];
 
@@ -141,7 +152,7 @@ void Level::handleEvents()
         player2->jump();
     if(sf::Joystick::isButtonPressed(0, 5))
         player2->fakeDie();
-        if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y) < -10)
+    if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y) < -10)
         player2->lookUp();
     if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y) > 40)
         player2->crouch();
@@ -156,7 +167,8 @@ void Level::handleEvents()
         player2->takeWeapon();
 
 
-    if (Game::instance()->getNPlayers() > 2) {
+    if (Game::instance()->getNPlayers() > 2)
+    {
         Character* player3 = players[2];
 
         if(sf::Joystick::getAxisPosition(1, sf::Joystick::X) > 15)
@@ -170,7 +182,7 @@ void Level::handleEvents()
             player3->jump();
         if(sf::Joystick::isButtonPressed(1, 6))
             player3->fakeDie();
-            if(sf::Joystick::getAxisPosition(1, sf::Joystick::Y) < -10)
+        if(sf::Joystick::getAxisPosition(1, sf::Joystick::Y) < -10)
             player3->lookUp();
         if(sf::Joystick::getAxisPosition(1, sf::Joystick::Y) > 30)
             player3->crouch();
@@ -183,10 +195,39 @@ void Level::handleEvents()
             player3->shoot();
         if(sf::Joystick::isButtonPressed(1, 1))
             player3->takeWeapon();
+
+
+        /*
+        if(sf::Joystick::getAxisPosition(1, sf::Joystick::X) > 15)
+            player3->startWalking(false);
+        else if(sf::Joystick::getAxisPosition(1, sf::Joystick::X) < -15)
+            player3->startWalking(true);
+        else
+            player3->stopWalking();
+
+        if(sf::Joystick::isButtonPressed(1, 2))
+            player3->jump();
+        if(sf::Joystick::isButtonPressed(1, 5))
+            player3->fakeDie();
+        if(sf::Joystick::getAxisPosition(1, sf::Joystick::Y) < -10)
+            player3->lookUp();
+        if(sf::Joystick::getAxisPosition(1, sf::Joystick::Y) > 40)
+            player3->crouch();
+        else
+            player3->standUp();Stablishing new level
+
+        if(sf::Joystick::isButtonPressed(1, 1))
+            player3->dropWeapon();
+        if(sf::Joystick::isButtonPressed(1, 3))
+            player3->shoot();
+        if(sf::Joystick::isButtonPressed(1, 0))
+            player3->takeWeapon();*/
+
     }
 
 
-    if (Game::instance()->getNPlayers() > 3) {
+    if (Game::instance()->getNPlayers() > 3)
+    {
         Character* player4 = players[3];
 
         if(sf::Joystick::getAxisPosition(2, sf::Joystick::X) > 15)
@@ -200,7 +241,7 @@ void Level::handleEvents()
             player4->jump();
         if(sf::Joystick::isButtonPressed(2, 5))
             player4->fakeDie();
-            if(sf::Joystick::getAxisPosition(2, sf::Joystick::Y) < -10)
+        if(sf::Joystick::getAxisPosition(2, sf::Joystick::Y) < -10)
             player4->lookUp();
         if(sf::Joystick::getAxisPosition(2, sf::Joystick::Y) > 30)
             player4->crouch();
@@ -213,42 +254,80 @@ void Level::handleEvents()
             player4->shoot();
         if(sf::Joystick::isButtonPressed(2, 3))
             player4->takeWeapon();
+
+        /*
+        if(sf::Joystick::getAxisPosition(2, sf::Joystick::X) > 15)
+            player4->startWalking(false);
+        else if(sf::Joystick::getAxisPosition(2, sf::Joystick::X) < -15)
+            player4->startWalking(true);
+        else
+            player4->stopWalking();
+
+        if(sf::Joystick::isButtonPressed(2, 2))
+            player4->jump();
+        if(sf::Joystick::isButtonPressed(2, 5))
+            player4->fakeDie();
+        if(sf::Joystick::getAxisPosition(2, sf::Joystick::Y) < -10)
+            player4->lookUp();
+        if(sf::Joystick::getAxisPosition(2, sf::Joystick::Y) > 40)
+            player4->crouch();
+        else
+            player4->standUp();
+
+        if(sf::Joystick::isButtonPressed(2, 1))
+            player4->dropWeapon();
+        if(sf::Joystick::isButtonPressed(2, 3))
+            player4->shoot();
+        if(sf::Joystick::isButtonPressed(2, 0))
+            player4->takeWeapon();
+        */
     }
 }
 
 void Level::update()
 {
-    //cout << "Characters:" << endl;
+    cout << "Characters:" << endl;
     int alivePlayers = 0;
     int lastPlayer = -1;
     for (int i = 0; i < nCharacters; i++)
     {
-        //cout << players[i] << endl;
+        cout << i << endl;
         players[i]->update();
-        if (!players[i]->isDead()) {
+        if (!players[i]->isDead())
+        {
             alivePlayers++;
             lastPlayer = i;
         }
     }
 
-    if (!mustEnd && alivePlayers <= 1) {
+
+    if (!mustEnd && alivePlayers <= 1)
+    {
         mustEnd = true;
         endClock.restart();
     }
-    if (mustEnd && endClock.getElapsedTime().asSeconds() >= 5) {
+    if (mustEnd && endClock.getElapsedTime().asSeconds() >= 5)
+    {
+        cout << "Adding win point" << endl;
         if (lastPlayer != -1)
             Game::instance()->addPoint(lastPlayer);
+        cout << "Win point added" << endl;
+
 
         Game::instance()->addGame();
 
         Game::instance()->popState();
+        cout << "Stablishing new level..." << endl;
         Restart();
+        cout << "New level establised" << endl;
         if (Game::instance()->getGames() < 10)
             Game::instance()->pushState(pinstance);
-        else {
+        else
+        {
             Game::instance()->pushState(new ScoreState());
             Game::instance()->resetGames();
         }
+        cout << "States de game atualizados" << endl;
     }
 
     //cout << "WeaponSpawners:" << endl;
@@ -378,25 +457,25 @@ void Level::setCamara()
 
         }
 
-    /** CALCULO DEL CENTRO DE LA CAMARA **/
+        /** CALCULO DEL CENTRO DE LA CAMARA **/
 
-    xCenter = (xMax + xMin)/2;
-    yCenter = (yMax + yMin)/2;
+        xCenter = (xMax + xMin)/2;
+        yCenter = (yMax + yMin)/2;
 
-    xCenter = oldX * 0.8 + xCenter * 0.2;
-    yCenter = oldY * 0.8 + yCenter * 0.2;
+        xCenter = oldX * 0.8 + xCenter * 0.2;
+        yCenter = oldY * 0.8 + yCenter * 0.2;
 
-    /** CALCULO TAMANYO CAMARA **/
+        /** CALCULO TAMANYO CAMARA **/
 
-    width = xMax - xMin + 300;
+        width = xMax - xMin + 300;
 
-    width = oldWidth * 0.95 + width * 0.05;
+        width = oldWidth * 0.95 + width * 0.05;
 
-    if(width < 800)
-        width = 800;
+        if(width < 800)
+            width = 800;
 
-    height = width / 1.5;
+        height = width / 1.5;
 
-    motor->setCamara(xCenter, yCenter, width, height);
+        motor->setCamara(xCenter, yCenter, width, height);
     }
 }

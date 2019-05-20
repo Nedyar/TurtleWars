@@ -2,7 +2,7 @@
 1558349625 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/Main.cpp
 	<Game.h>
 
-1558356057 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Game.h
+1558365199 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Game.h
 	<State.h>
 	<stack>
 	<motorSFML.h>
@@ -166,7 +166,7 @@
 	<assert.h>
 	<string.h>
 
-1558352567 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
+1558365970 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
 	"Character.h"
 	<Level.h>
 	<typeindex>
@@ -183,10 +183,11 @@
 	<Bullet.h>
 	<Collidable.h>
 
-1558349625 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Game.cpp
+1558363120 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Game.cpp
 	"Game.h"
 	<IntroState.h>
 	<SplashState.h>
+	<iostream>
 
 1558349625 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/IntroState.h
 	<State.h>
@@ -220,7 +221,7 @@
 	"motorSFML.h"
 	"Game.h"
 
-1558357801 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
+1558365710 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
 	"Level.h"
 	<SFML/Graphics.hpp>
 	<PauseState.h>
@@ -241,7 +242,7 @@
 1558349625 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/LevelFactory.cpp
 	"LevelFactory.h"
 
-1558349625 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/MainMenu.cpp
+1558362503 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/MainMenu.cpp
 	"MainMenu.h"
 	<Game.h>
 	<SplashState.h>

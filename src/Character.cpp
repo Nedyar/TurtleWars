@@ -374,10 +374,6 @@ void Character::update()
 
 
         yPosture = 2;
-
-        int xDir = 1 - facingLeft*2;
-        sprite->setScale(xDir,1);
-        armSprite->setScale(xDir,1);
     }
     else if (walking)
     {
@@ -389,11 +385,7 @@ void Character::update()
             xPosture = 0;
         }
 
-        int xDir = 1 - facingLeft*2;
         float str = 1.5 - facingLeft*3;
-
-        sprite->setScale(xDir,1);
-        armSprite->setScale(xDir,1);
 
         if(!cancelForces){
             body->getBody()->SetLinearVelocity(b2Vec2(str,body->getBody()->GetLinearVelocity().y));
@@ -511,6 +503,8 @@ void Character::update()
     armSprite->setPosition(body->getPositionX()-xDifArm*xDir,armPosY);
     //armSprite.setRotation(body->getAngle());
     lookingUp = false;
+    sprite->setScale(xDir,1);
+    armSprite->setScale(xDir,1);
 }
 
 int Character::getId()

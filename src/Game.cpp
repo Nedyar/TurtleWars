@@ -3,6 +3,9 @@
 #include <IntroState.h>
 #include <SplashState.h>
 
+#include <iostream>
+using namespace std;
+
 Game* Game::pinstance = nullptr;
 
 Game* Game::instance()
@@ -65,15 +68,21 @@ void Game::gameLoop()
                 delete this;
             }
 
+            cout << "Handling events" << endl;
             CurrentState()->handleEvents();
+            cout << "Events handled" << endl;
         }
 
+        cout << "Updating" << endl;
         CurrentState()->update();
+        cout << "Updated" << endl;
 
         // Clear screen
         motor->clean();
         // Draw the sprite
+        cout << "Drawing" << endl;
         CurrentState()->draw();
+        cout << "Drawed" << endl;
         // Update the window
         motor->display();
 
