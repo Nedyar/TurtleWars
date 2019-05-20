@@ -140,29 +140,29 @@ void Level::handleEvents()
     Character* player2 = players[1];
 
     if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) > 15)
-        player2->startWalking(false);
-    else if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) < -15)
-        player2->startWalking(true);
-    else
-        player2->stopWalking();
+            player2->startWalking(false);
+        else if(sf::Joystick::getAxisPosition(0, sf::Joystick::X) < -15)
+            player2->startWalking(true);
+        else
+            player2->stopWalking();
 
-    if(sf::Joystick::isButtonPressed(0, 2))
-        player2->jump();
-    if(sf::Joystick::isButtonPressed(0, 5))
-        player2->fakeDie();
-    if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y) < -10)
-        player2->lookUp();
-    if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y) > 40)
-        player2->crouch();
-    else
-        player2->standUp();
+        if(sf::Joystick::isButtonPressed(0, 0))
+            player2->jump();
+        if(sf::Joystick::isButtonPressed(0, 5))
+            player2->fakeDie();
+        if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y) < -10)
+            player2->lookUp();
+        if(sf::Joystick::getAxisPosition(0, sf::Joystick::Y) > 30)
+            player2->crouch();
+        else
+            player2->standUp();
 
-    if(sf::Joystick::isButtonPressed(0, 1))
-        player2->dropWeapon();
-    if(sf::Joystick::isButtonPressed(0, 3))
-        player2->shoot();
-    if(sf::Joystick::isButtonPressed(0, 0))
-        player2->takeWeapon();
+        if(sf::Joystick::isButtonPressed(0, 1))
+            player2->dropWeapon();
+        if(sf::Joystick::isButtonPressed(0, 2))
+            player2->shoot();
+        if(sf::Joystick::isButtonPressed(0, 3))
+            player2->takeWeapon();
 
 
     if (Game::instance()->getNPlayers() > 2)
@@ -176,9 +176,9 @@ void Level::handleEvents()
         else
             player3->stopWalking();
 
-        if(sf::Joystick::isButtonPressed(1, 2))
+        if(sf::Joystick::isButtonPressed(1, 0))
             player3->jump();
-        if(sf::Joystick::isButtonPressed(1, 6))
+        if(sf::Joystick::isButtonPressed(1, 5))
             player3->fakeDie();
         if(sf::Joystick::getAxisPosition(1, sf::Joystick::Y) < -10)
             player3->lookUp();
@@ -187,40 +187,12 @@ void Level::handleEvents()
         else
             player3->standUp();
 
-        if(sf::Joystick::isButtonPressed(1, 3))
-            player3->dropWeapon();
-        if(sf::Joystick::isButtonPressed(1, 0))
-            player3->shoot();
         if(sf::Joystick::isButtonPressed(1, 1))
-            player3->takeWeapon();
-
-
-        /*
-        if(sf::Joystick::getAxisPosition(1, sf::Joystick::X) > 15)
-            player3->startWalking(false);
-        else if(sf::Joystick::getAxisPosition(1, sf::Joystick::X) < -15)
-            player3->startWalking(true);
-        else
-            player3->stopWalking();
-
+            player3->dropWeapon();
         if(sf::Joystick::isButtonPressed(1, 2))
-            player3->jump();
-        if(sf::Joystick::isButtonPressed(1, 5))
-            player3->fakeDie();
-        if(sf::Joystick::getAxisPosition(1, sf::Joystick::Y) < -10)
-            player3->lookUp();
-        if(sf::Joystick::getAxisPosition(1, sf::Joystick::Y) > 40)
-            player3->crouch();
-        else
-            player3->standUp();Stablishing new level
-
-        if(sf::Joystick::isButtonPressed(1, 1))
-            player3->dropWeapon();
-        if(sf::Joystick::isButtonPressed(1, 3))
             player3->shoot();
-        if(sf::Joystick::isButtonPressed(1, 0))
-            player3->takeWeapon();*/
-
+        if(sf::Joystick::isButtonPressed(1, 3))
+            player3->takeWeapon();
     }
 
 
@@ -252,33 +224,6 @@ void Level::handleEvents()
             player4->shoot();
         if(sf::Joystick::isButtonPressed(2, 3))
             player4->takeWeapon();
-
-        /*
-        if(sf::Joystick::getAxisPosition(2, sf::Joystick::X) > 15)
-            player4->startWalking(false);
-        else if(sf::Joystick::getAxisPosition(2, sf::Joystick::X) < -15)
-            player4->startWalking(true);
-        else
-            player4->stopWalking();
-
-        if(sf::Joystick::isButtonPressed(2, 2))
-            player4->jump();
-        if(sf::Joystick::isButtonPressed(2, 5))
-            player4->fakeDie();
-        if(sf::Joystick::getAxisPosition(2, sf::Joystick::Y) < -10)
-            player4->lookUp();
-        if(sf::Joystick::getAxisPosition(2, sf::Joystick::Y) > 40)
-            player4->crouch();
-        else
-            player4->standUp();
-
-        if(sf::Joystick::isButtonPressed(2, 1))
-            player4->dropWeapon();
-        if(sf::Joystick::isButtonPressed(2, 3))
-            player4->shoot();
-        if(sf::Joystick::isButtonPressed(2, 0))
-            player4->takeWeapon();
-        */
     }
 }
 

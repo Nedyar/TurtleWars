@@ -223,7 +223,7 @@
 	"motorSFML.h"
 	"Game.h"
 
-1558367725 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
+1558368949 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Level.cpp
 	"Level.h"
 	<SFML/Graphics.hpp>
 	<PauseState.h>
@@ -271,19 +271,13 @@
 1558367426 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Physics2D.cpp
 	"Physics2D.h"
 
-1558349625 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/ScoreState.cpp
+1558367887 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/ScoreState.cpp
 	"ScoreState.h"
 	<Game.h>
 	<Level.h>
 	<motorSFML.h>
 	<string>
-	<MainMenu.h>
-	"ScoreState.h"
-	<Game.h>
-	<Level.h>
-	<motorSFML.h>
-	<string>
-	<MainMenu.h>
+	<IntroState.h>
 
 1558367296 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/ShotGun.cpp
 	"ShotGun.h"
