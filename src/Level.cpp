@@ -104,7 +104,7 @@ void Level::handleEvents()
     else
         player->stopWalking();
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         player->jump();
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
         player->fakeDie();
@@ -115,11 +115,11 @@ void Level::handleEvents()
     else
         player->standUp();
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         player->dropWeapon();
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         player->shoot();
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         player->takeWeapon();
 
     //START XBOX: 7 OTRO: 9
