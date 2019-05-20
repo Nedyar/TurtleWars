@@ -4,7 +4,7 @@
 1558349625 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/Main.cpp
 	<Game.h>
 
-1558371117 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Game.h
+1558372041 /home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/include/Game.h
 	<State.h>
 	<stack>
 	<motorSFML.h>
@@ -290,7 +290,7 @@
 	<assert.h>
 	<string.h>
 
-1558369270 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
+1558371988 source:/home/nedyar/Documentos/CodeBlocksWorkspace/TurtleWars/src/Character.cpp
 	"Character.h"
 	"Character.h"
 	<Level.h>

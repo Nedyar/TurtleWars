@@ -85,6 +85,8 @@ Character::~Character()
     delete armSprite;
     delete texture;
     delete armTexture;
+
+    delete body;
 }
 
 int Character::getPlayer()
