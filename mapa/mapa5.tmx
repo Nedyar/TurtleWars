@@ -639,7 +639,7 @@
   <object id="53" x="752" y="143"/>
   <object id="99" x="272.545" y="527.273"/>
  </objectgroup>
- <objectgroup id="4" name="Object Layer 3">
+ <objectgroup id="4" name="Object Layer 3" size = "4">
   <object id="30" x="480" y="224"/>
   <object id="32" x="320" y="320"/>
   <object id="76" x="208" y="448"/>

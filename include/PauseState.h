@@ -17,7 +17,7 @@ public:
 
 private:
     int action;
-    Menu menu = Menu("Resume","Controls","Back to Menu");
+    Menu menu = Menu("Resume","Skip Level","Back to Menu");
 
     sf::Clock clock;
     void resumeGame();

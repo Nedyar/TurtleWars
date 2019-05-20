@@ -3,6 +3,7 @@
 #include <Game.h>
 #include <SplashState.h>
 #include <Level.h>
+#include <ControlsState.h>
 
 MainMenu::MainMenu()
 {
@@ -133,6 +134,6 @@ void MainMenu::loadgame()
 void MainMenu::loadcontrols()
 {
 
-//    game->pushState(new ControlsState(this->game));
+    Game::instance()->pushState(new ControlsState());
 
 }

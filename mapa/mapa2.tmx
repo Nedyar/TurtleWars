@@ -618,7 +618,7 @@
   <object id="18" x="304" y="400"/>
   <object id="21" x="656.5" y="400"/>
  </objectgroup>
- <objectgroup id="4" name="Object Layer 3">
+ <objectgroup id="4" name="Object Layer 3" size="4">
   <object id="14" x="719" y="310"/>
   <object id="32" x="593" y="309"/>
   <object id="59" x="366" y="310"/>

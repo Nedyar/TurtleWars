@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "MainMenu.h"
 #include "Level.h"
+#include "ScoreState.h"
 
 PauseState::PauseState()
 {
@@ -36,7 +37,7 @@ void PauseState::update()
         {
         case 0:
             if (clock.getElapsedTime().asMilliseconds()>10)
-            resumeGame();
+                resumeGame();
             break;
         case 1:
             loadcontrols();
@@ -48,7 +49,8 @@ void PauseState::update()
     }
     action = 0;
 }
-void PauseState::draw() {
+void PauseState::draw()
+{
     Level::instance()->draw();
     motorSFML::Instance()->resetCamara();
     menu.draw("pause");
@@ -69,5 +71,19 @@ void PauseState::loadMainMenu()
 
 void PauseState::loadcontrols()
 {
-    //Game::pushState(new ControlsState());
+    Game::instance()->addGame();
+
+    Game::instance()->popState();
+
+    Level::instance()->Restart();
+
+    if (Game::instance()->getGames() < 10)
+        Game::instance()->pushState(Level::instance());
+    else
+    {
+        Game::instance()->pushState(new ScoreState());
+        Game::instance()->resetGames();
+    }
+
+
 }
