@@ -37,7 +37,7 @@ WeaponSpawner::WeaponSpawner(int t, double x, double y)
 
 WeaponSpawner::~WeaponSpawner()
 {
-    //dtor
+
 }
 
 Body* WeaponSpawner::getBody()
