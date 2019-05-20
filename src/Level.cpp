@@ -35,11 +35,16 @@ Level::~Level()
     {
         delete players[i];
     }
+    delete players;
 
     for (int i = 0; i < nWeaponSpawners; i++)
     {
         delete weaponSpawners[i];
     }
+    delete weaponSpawners;
+
+    weapons.clear();
+    bullets.clear();
 
     delete mapa;
     delete pinstance;

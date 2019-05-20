@@ -18,6 +18,7 @@ public:
     void setpos(double posx, double posy);
     void shootAnimation();
     int getId() override;
+    void smokeAnimation();
 
     void chargeSound();
 
@@ -27,9 +28,15 @@ private:
     int ammo = 0;
     sf::Clock clockAnimation;
     bool shootAnim = false;
-
     sf::Sound pistolsound;
     sf::SoundBuffer sbpistol;
+    Sprite* flashSprite;
+    Texture* flashTexture;
+
+    sf::Clock smokeClock;
+    bool smoking = false;
+    Sprite* smokeSprite;
+    Texture* smokeTexture;
 };
 
 #endif // GUN_H

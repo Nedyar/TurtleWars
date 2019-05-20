@@ -11,10 +11,11 @@ Bullet::Bullet(double posx, double posy, double ang, double maxLen)
     bulletSprite->setOrigin(0,bulletTexture->getTexture()->getSize().y/2);
     bulletSprite->setPosition(posx, posy);
     bulletSprite->setRotation(ang);
-    bulletSprite->setOrigin(bulletTexture->getTexture()->getSize().x,bulletTexture->getTexture()->getSize().y/2);
 
-    posiniX=posx;
-    posiniY=posy;
+    //bulletSprite->setOrigin(bulletTexture->getTexture()->getSize().x*cos(ang*(M_PI/180)),bulletTexture->getTexture()->getSize().y*sin(ang*(M_PI/180)));
+
+    posiniX=posx+bulletTexture->getTexture()->getSize().x*cos(ang*M_PI/180);
+    posiniY=posy+bulletTexture->getTexture()->getSize().x*sin(ang*M_PI/180);
 
     angle = ang*M_PI/180;
     maxLength = maxLen;
@@ -22,16 +23,23 @@ Bullet::Bullet(double posx, double posy, double ang, double maxLen)
     float width = bulletSprite->getLocalBounds().width;
     float height = bulletSprite->getLocalBounds().height;
 
-    body = Physics2D::Instance()->createBulletBody(posx, posy);
+    body = Physics2D::Instance()->createBulletBody(posiniX,posiniY);
+
+    posiniX=posx;
+    posiniY=posy;
     //body->getBody()->SetBullet(true);
     body->setUserData(this);
+
+    //bulletSprite->setOrigin(0,bulletTexture->getTexture()->getSize().y/2);
+
+
 }
 
 void Bullet::update()
 {
     body->getBody()->SetLinearVelocity(b2Vec2(VEL*cos(angle), VEL*sin(angle)));
 
-    bulletSprite->setPosition(body->getPositionX(), body->getPositionY());
+    bulletSprite->setPosition(body->getPositionX()-bulletTexture->getTexture()->getSize().x*cos(angle), body->getPositionY()-bulletTexture->getTexture()->getSize().x*sin(angle));
     //bulletSprite.move(VEL*cos(angle), VEL*sin(angle));
     if(sqrt(pow(bulletSprite->getPosition().x-posiniX, 2)+pow(bulletSprite->getPosition().y-posiniY, 2))>=maxLength)
     {

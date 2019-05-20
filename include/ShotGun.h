@@ -19,6 +19,8 @@ public:
     void createBody() override;
 
     void shootAnimation();
+    void smokeAnimation();
+    void flashAnim();
     int getId() override;
 
     void chargeSound();
@@ -37,6 +39,15 @@ private:
 
     sf::Sound shotgunsound;
     sf::SoundBuffer sbshotgun;
+    sf::Clock smokeClock;
+    bool smoking = false;
+    Sprite* smokeSprite;
+    Texture* smokeTexture;
+
+    sf::Clock flashClock;
+    bool flashing = false;
+    Sprite* flashSprite;
+    Texture* flashTexture;
 };
 
 #endif // SHOTGUN_H
