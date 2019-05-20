@@ -92,7 +92,7 @@ bool Gun::shoot()
             ammo--;
             shootAnim=true;
 
-            int modX = 0;
+            int modX = -10;
             if (owner->body->getBody()->GetLinearVelocity().x!=0)
                 modX += 5;
             float posx = sprite->getPosition().x+(modX+sprite->getLocalBounds().width/2)*xDirection;
@@ -107,7 +107,7 @@ bool Gun::shoot()
 
             smoking=true;
             smokeClock.restart();
-            
+
             return true;
         }
         else

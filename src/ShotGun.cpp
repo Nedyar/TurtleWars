@@ -84,7 +84,7 @@ bool ShotGun::shoot()
 
             shooted = true;
             ammo--;
-            float mod = 0;
+            float mod = -10;
             if (owner->body->getBody()->GetLinearVelocity().x!=0)
                 mod += 6;
             Level* level = Level::instance();

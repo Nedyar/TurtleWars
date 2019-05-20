@@ -1,6 +1,9 @@
 #include "Grenade.h"
 #include <Level.h>
 #include <motorSFML.h>
+#include <cmath>
+
+#define PI 3.141516
 
 Grenade::Grenade(double posx, double posy)
 {
@@ -84,15 +87,16 @@ bool Grenade::shoot()
 bool Grenade::explode()
 {
     Level* level = Level::instance();
-    level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + (-22.5),75));
-    level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + 22.5,75));
-    level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + 45+22.5,75));
-    level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + 45*2+22.5,75));
-    level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + 45*3+22.5,75));
-    level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + 45*4+22.5,75));
-    level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + 45*5+22.5,75));
-    level->addBullet(new Bullet(sprite->getPosition().x,sprite->getPosition().y,rand() % 45 + 45*6+22.5,75));
+    int bulletNumber = 16;
+    int increment = 360/bulletNumber;
 
+    for(int i=0; i<bulletNumber; i++)
+    {
+        double angulo =  rand() % increment + increment*(i);
+        //double despX = ( 46 * cos( angulo * PI / 180 ) ) * (-1);
+        //double despY = ( 46 * sin( angulo * PI / 180 ) ) * (-1);
+        level->addBullet(new Bullet(sprite->getPosition().x, sprite->getPosition().y, angulo, 75));
+    }
     grenadesound.play();
 
 
