@@ -456,6 +456,12 @@ void Level::setCamara()
 
         height = width / 1.5;
 
+        if( (yMax - yMin + 200) > height)
+        {
+            height = (yMax - yMin) + 200;
+            width = height * 1.5;
+        }
+
         motor->setCamara(xCenter, yCenter, width, height);
     }
 }
