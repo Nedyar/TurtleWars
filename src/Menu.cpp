@@ -41,6 +41,16 @@ Menu::Menu(char nombre1[], char nombre2[], char nombre3[])
     menu[2].setPosition(960/2, x+235);
 
     selectedItemIndex = 0;
+
+    tittle.setFont(font);
+
+    tittle.setCharacterSize(120);
+    tittle.setColor(sf::Color::White);
+
+
+        textureMain = new Texture("img/MenuPlay.png");
+
+        texturePause = new Texture("img/MenuPause.png");
 }
 
 Menu::~Menu()
@@ -50,11 +60,8 @@ Menu::~Menu()
 
 void Menu::draw(char name[])
 {
-    char type[]="pause";
 
-    int num = strcmp(name,type);
-    sf::Text tittle;
-    tittle.setFont(font);
+    int num = strcmp(name,"pause");
 
     if(num==0)
     {
@@ -65,23 +72,16 @@ void Menu::draw(char name[])
         tittle.setString("Turtle Royale");
     }
 
-
-    tittle.setCharacterSize(120);
-    tittle.setColor(sf::Color::White);
-
     sf::FloatRect textRect1 = tittle.getLocalBounds();
     tittle.setOrigin(textRect1.left + textRect1.width/2.0f, textRect1.top  + textRect1.height/2.0f);
 
     tittle.setPosition(960/2,125);
 
 
-    Texture* texture;
     if (num != 0)
-        texture = new Texture("img/MenuPlay.png");
+    sprite = new Sprite(*textureMain->getTexture());
     else
-        texture = new Texture("img/MenuPause.png");
-
-    Sprite* sprite = new Sprite(*texture->getTexture());
+    sprite = new Sprite(*texturePause->getTexture());
 
     sprite->setOrigin(0,0);
     sprite->setPosition(0,0);
