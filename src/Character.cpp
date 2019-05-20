@@ -64,6 +64,11 @@ Character::Character(int n, int posx, int posy)
     body = Physics2D::Instance()->createCharacterBody(posx,posy,width,height);
     body->setUserData(this);
 
+    font.loadFromFile("fonts/majorforce.ttf");
+    textWinner.setFont(font);
+    textWinner.setString("+1");
+    textWinner.setCharacterSize(18);
+
     musicCharger();
 }
 
@@ -312,6 +317,11 @@ void Character::draw()
         weapon->draw();
     if (!dead && !fakingDead)
         motor->draw(armSprite->getSprite()); //app.draw(armSprite);
+    if(winner)
+    {
+        textWinner.setPosition(sprite->getPosition().x-10, sprite->getPosition().y-40);
+        motor->draw(textWinner);
+    }
 }
 
 void Character::update()
@@ -567,4 +577,9 @@ void Character::musicCharger(){
     motorSFML::Instance()->loadSound("./sounds/hitBox.wav",sbpickup,pickupsound);
 
 
+}
+
+
+void Character::isWinner(){
+    winner=true;
 }

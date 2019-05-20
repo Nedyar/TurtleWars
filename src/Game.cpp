@@ -19,8 +19,8 @@ Game::Game()
 {
     resetPoints();
 
-    pushState(new IntroState());
-    //pushState(new SplashState());
+    //pushState(new IntroState());
+    pushState(new SplashState());
 
     motor = motorSFML::Instance();
 }

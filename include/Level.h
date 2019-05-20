@@ -48,6 +48,9 @@ private:
     std::vector<Bullet*> bullets;
     std::vector<Weapon*> weapons;
 
+    Texture* texture;
+    Sprite* sprite;
+
     bool mustEnd = false;
     sf::Clock endClock;
 

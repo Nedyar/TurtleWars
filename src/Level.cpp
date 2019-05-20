@@ -28,6 +28,12 @@ Level::Level()
     weaponSpawners = factory->spawnerLoader(nMap, nWeaponSpawners);
 
     motor->camara.setCenter(960/2, 640/2);
+
+    texture = new Texture("img/background5.png");
+    sprite = new Sprite(*texture->getTexture());
+    sprite->setOrigin(sprite->getLocalBounds().width/2,sprite->getLocalBounds().height/2);
+    sprite->setPosition(sprite->getLocalBounds().width/2,sprite->getLocalBounds().height/2);
+    //background5
 }
 
 Level::~Level()
@@ -249,14 +255,16 @@ void Level::update()
         mustEnd = true;
         endClock.restart();
     }
-    if (mustEnd && endClock.getElapsedTime().asSeconds() >= 5)
+
+    if (mustEnd && endClock.getElapsedTime().asSeconds() >= 3.7)
     {
-        cout << "Adding win point" << endl;
-        if (lastPlayer != -1)
+        if (lastPlayer != -1){
+            players[lastPlayer]->isWinner();
             Game::instance()->addPoint(lastPlayer);
-        cout << "Win point added" << endl;
+        }
+    }
 
-
+    if (mustEnd && endClock.getElapsedTime().asSeconds() >= 5) {
         Game::instance()->addGame();
 
         Game::instance()->popState();
@@ -299,6 +307,7 @@ void Level::update()
 void Level::draw()
 {
     setCamara();
+    motorSFML::Instance()->draw(sprite->getSprite());
 
     mapa->drawSpriteMatrix();
     if (drawBodies)
