@@ -64,6 +64,7 @@ void PauseState::loadMainMenu()
     Game::instance()->popState();
     Game::instance()->popState();
     Game::instance()->pushState(new MainMenu());
+    Level::instance()->Restart();
 }
 
 void PauseState::loadcontrols()

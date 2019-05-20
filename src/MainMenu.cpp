@@ -8,7 +8,7 @@ MainMenu::MainMenu()
 {
     Game::instance()->resetPoints();
     Game::instance()->resetGames();
-    Level::instance()->Restart();
+    //Level::instance()->Restart();
 }
 
 MainMenu::~MainMenu()
