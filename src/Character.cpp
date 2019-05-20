@@ -313,6 +313,34 @@ void Character::update()
     if (!sliding)
         facingLeft = mustFace;
 
+        //-------------------------------Correccion Spider Turtle
+    xPositionLastOld = xPositionOld;
+    xPositionOld = xPositionLast;
+    xPositionLast = xPositionNew;
+    xPositionNew = body->getPositionX();
+
+    double last = xPositionLastOld+xPositionOld;
+    double next = xPositionLast+xPositionNew;
+
+    lastOldFacingLeft = oldFacingLeft;
+    oldFacingLeft = lastFacingLeft;
+    lastFacingLeft = facingLeft;
+
+    if(walking && !first){
+       if(last == next){//si esta chocando contra algo, quitar fuerzas
+            cancelForces = true;
+        }
+    }
+    int lastFacing = lastOldFacingLeft +oldFacingLeft;
+    int newFacing = lastFacingLeft + facingLeft;
+
+    first = false;
+    if(!walking || lastFacing != newFacing){
+        first = true;
+        cancelForces = false;
+    }
+     //-------------------------------Correccion Spider Turtle FIN
+
     //para la muerte por caida al llegar al limite de abajo
     if(sprite->getPosition().y>LINE_OF_DEATH)
     {
@@ -357,7 +385,12 @@ void Character::update()
         sprite->setScale(xDir,1);
         armSprite->setScale(xDir,1);
 
-        body->getBody()->SetLinearVelocity(b2Vec2(str,body->getBody()->GetLinearVelocity().y));
+        if(!cancelForces){
+            body->getBody()->SetLinearVelocity(b2Vec2(str,body->getBody()->GetLinearVelocity().y));
+        }else{
+            body->getBody()->SetLinearVelocity(b2Vec2(0,body->getBody()->GetLinearVelocity().y));
+        }
+
     }
     else
     {
