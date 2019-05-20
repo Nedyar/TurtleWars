@@ -9,7 +9,6 @@ MainMenu::MainMenu()
     Game::instance()->resetPoints();
     Game::instance()->resetGames();
     Level::instance()->Restart();
-    motorSFML::Instance()->setMusic("./sounds/arcade.wav",50);
 }
 
 MainMenu::~MainMenu()
