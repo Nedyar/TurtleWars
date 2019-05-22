@@ -8,8 +8,8 @@
 
 #include <ScoreState.h>
 
-#include <iostream>
-using namespace std;
+//#include <iostream>
+//using namespace std;
 
 Level* Level::pinstance = 0;
 bool drawBodies = false;
@@ -87,14 +87,14 @@ Level::~Level()
 
 void Level::Restart()
 {
-    cout << "Reseting world..." << endl;
+//    cout << "Reseting world..." << endl;
     Physics2D::Instance()->resetWorld();
-    cout << "World reseted" << endl;
-    cout << "Reseting instance..." << endl;
+  //  cout << "World reseted" << endl;
+    //cout << "Reseting instance..." << endl;
     delete pinstance;
-    cout << "Deleted old instance..." << endl;
+    //cout << "Deleted old instance..." << endl;
     pinstance = new Level();
-    cout << "Instance reseted" << endl;
+    //cout << "Instance reseted" << endl;
 
 }
 
@@ -261,12 +261,12 @@ void Level::handleEvents()
 
 void Level::update()
 {
-    cout << "Characters:" << endl;
+//    cout << "Characters:" << endl;
     int alivePlayers = 0;
     int lastPlayer = -1;
     for (int i = 0; i < nCharacters; i++)
     {
-        cout << i << endl;
+//        cout << i << endl;
         players[i]->update();
         if (!players[i]->isDead())
         {
@@ -318,9 +318,9 @@ void Level::update()
         Game::instance()->addGame();
 
         Game::instance()->popState();
-        cout << "Stablishing new level..." << endl;
+//        cout << "Stablishing new level..." << endl;
         Restart();
-        cout << "New level establised" << endl;
+//        cout << "New level establised" << endl;
         if (Game::instance()->getGames() < 10)
             Game::instance()->pushState(pinstance);
         else
@@ -328,7 +328,7 @@ void Level::update()
             Game::instance()->pushState(new ScoreState());
             Game::instance()->resetGames();
         }
-        cout << "States de game atualizados" << endl;
+//        cout << "States de game atualizados" << endl;
     }
 }
 

@@ -1,7 +1,7 @@
 #include "EventCollider.h"
 
-/*#include <iostream>
-using namespace std;*/
+//#include <iostream>
+//using namespace std;
 
 EventCollider* EventCollider::instance = 0;
 EventCollider* EventCollider::Instance()
@@ -109,6 +109,24 @@ void EventCollider::EndContact(b2Contact* contact)
                 break;
             case 3: // Weapon
                 player->removeWeaponOver((Weapon*)objB);
+                //cout << "me separo del arma" <<endl;
+                break;
+            case 4: // Bullet
+                break;
+            }
+        }
+        else if (objB->getId() == 1)
+            //cout << "juju" << endl;
+        {
+            Character* player = (Character*) objB;
+            switch (objA->getId())
+            {
+            case 2: // WeaponSpawner
+                player->setWeaponSpawnerOver(nullptr);
+                //cout << "salgo" <<endl;
+                break;
+            case 3: // Weapon
+                player->removeWeaponOver((Weapon*)objA);
                 //cout << "me separo del arma" <<endl;
                 break;
             case 4: // Bullet

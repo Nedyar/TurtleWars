@@ -4,8 +4,8 @@
 #include <typeindex>
 #include <motorSFML.h>
 
-#include <iostream>
-using namespace std;
+//#include <iostream>
+//using namespace std;
 
 Character::Character(int n, int posx, int posy)
 {
@@ -327,6 +327,8 @@ void Character::draw()
 void Character::update()
 {
 //Cambiar body cuando se agacha
+
+//    cout << "Cosas locas" << endl;
     if((crouching || dead || fakingDead) && bigBody){
         //hacer pequeño
         b2Vec2 velo = body->getBody()->GetLinearVelocity();
@@ -336,7 +338,7 @@ void Character::update()
         body->setUserData(this);
 
         bigBody = false;
-        cout << "Me agacho una vez" << endl;
+//        cout << "Me agacho una vez" << endl;
 
     }
     if(!crouching && !fakingDead && !dead && !bigBody){
@@ -347,8 +349,9 @@ void Character::update()
         body->getBody()->SetLinearVelocity(velo);
         body->setUserData(this);
         bigBody = true;
-        cout << "Me levanto una vez" << endl;
+//        cout << "Me levanto una vez" << endl;
     }
+//    cout << "Cosas locas" << endl;
 
 
 
@@ -409,7 +412,7 @@ void Character::update()
         else if (xPosture < 2)
             xPosture += .5;
 
-        cout << xPosture << endl;
+//        cout << xPosture << endl;
 
 
         yPosture = 2;
